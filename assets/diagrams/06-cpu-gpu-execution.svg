@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">GPU acceleration is a partial execution choice</title>
+<desc id="desc">Conceptual CPU/GPU split: an eligible portion of execution may use GPU acceleration while other work stays on CPU and results are combined. Illustrative operator split only; not an observed plan, benchmark or universal speedup. Accelerated-workspace metering includes ineligible queries; toggling cancels requests.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="06-cpu-gpu-execution-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">GPU acceleration is a partial execution choice</tspan>
+</text>
+<text id="06-cpu-gpu-execution-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Public preview announced September 2026; verify workspace, region and eligibility.</tspan>
+</text>
+<polyline id="06-cpu-gpu-execution-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="06-cpu-gpu-execution-003" x="75" y="265" width="330" height="125" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-004" x="240.0" y="287.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="240.0" y="287.9">SQL request</tspan>
+<tspan x="240.0" y="327.5">Business question</tspan>
+</text>
+<rect id="06-cpu-gpu-execution-005" x="530" y="265" width="460" height="125" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-006" x="760.0" y="286.58" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="760.0" y="286.58">Plan + eligibility</tspan>
+<tspan x="760.0" y="327.5">Choose supported work</tspan>
+</text>
+<polyline id="06-cpu-gpu-execution-007" points="413,328 520,328" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="520.00,328.00 504.00,335.00 504.00,321.00" fill="#0078D4"/>
+<rect id="06-cpu-gpu-execution-008" x="75" y="475" width="720" height="270" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-009" x="97" y="492" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="97" y="492.0">CPU execution</tspan>
+</text>
+<rect id="06-cpu-gpu-execution-010" x="115" y="565" width="640" height="120" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-011" x="435.0" y="586.72" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="435.0" y="586.72">General / noneligible work</tspan>
+<tspan x="435.0" y="625.0">Coordination and remaining operators</tspan>
+</text>
+<rect id="06-cpu-gpu-execution-012" x="905" y="475" width="720" height="270" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-013" x="927" y="492" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="927" y="492.0">GPU execution  |  preview</tspan>
+</text>
+<rect id="06-cpu-gpu-execution-014" x="945" y="565" width="640" height="120" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-015" x="1265.0" y="585.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1265.0" y="585.4">Eligible accelerated work</tspan>
+<tspan x="1265.0" y="625.0">Only the supported part of a query</tspan>
+</text>
+<polyline id="06-cpu-gpu-execution-016" points="650,390 650,430 435,430 435,466" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="435.00,466.00 428.00,450.00 442.00,450.00" fill="#0078D4"/>
+<polyline id="06-cpu-gpu-execution-017" points="850,390 850,430 1265,430 1265,466" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1265.00,466.00 1258.00,450.00 1272.00,450.00" fill="#008575"/>
+<rect id="06-cpu-gpu-execution-018" x="570" y="845" width="560" height="110" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-019" x="850.0" y="860.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="860.4">Combine and return results</tspan>
+<tspan x="850.0" y="900.0">Validate correctness + total cost</tspan>
+</text>
+<polyline id="06-cpu-gpu-execution-020" points="435,745 435,900 560,900" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="560.00,900.00 544.00,907.00 544.00,893.00" fill="#0078D4"/>
+<polyline id="06-cpu-gpu-execution-021" points="1265,745 1265,900 1140,900" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1140.00,900.00 1156.00,893.00 1156.00,907.00" fill="#008575"/>
+<rect id="06-cpu-gpu-execution-022" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-023" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Do not infer GPU use from a toggle alone, or assume an ineligible query is outside the meter.</tspan>
+</text>
+<rect id="06-cpu-gpu-execution-024" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-025" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="06-cpu-gpu-execution-026" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-027" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="06-cpu-gpu-execution-028" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="06-cpu-gpu-execution-029" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="06-cpu-gpu-execution-030" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="06-cpu-gpu-execution-031" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="06-cpu-gpu-execution-032" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 06 / 24</tspan>
+</text>
+</svg>

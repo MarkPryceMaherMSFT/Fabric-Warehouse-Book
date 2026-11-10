@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Fabric's organizing layers</title>
+<desc id="desc">Conceptual containment and assignment map. A capacity supplies compute to an assigned workspace; OneLake is a storage foundation, not a second capacity. One illustrative assignment; not a physical infrastructure map.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="02-fabric-concepts-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Fabric's organizing layers</tspan>
+</text>
+<text id="02-fabric-concepts-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Tenant, capacity, workspace and item answer different administrative questions.</tspan>
+</text>
+<polyline id="02-fabric-concepts-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="02-fabric-concepts-003" x="75" y="215" width="1550" height="810" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="02-fabric-concepts-004" x="97" y="232" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="97" y="232.0">Tenant  |  organizational boundary</tspan>
+</text>
+<rect id="02-fabric-concepts-005" x="125" y="315" width="390" height="170" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="02-fabric-concepts-006" x="320.0" y="340.6" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="320.0" y="340.6">Capacity</tspan>
+<tspan x="320.0" y="380.20000000000005">Compute resources</tspan>
+<tspan x="320.0" y="419.8">and billing boundary</tspan>
+</text>
+<rect id="02-fabric-concepts-007" x="675" y="310" width="890" height="465" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="02-fabric-concepts-008" x="697" y="327" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="697" y="327.0">Workspace  |  collaboration + access</tspan>
+</text>
+<polyline id="02-fabric-concepts-009" points="523,392 665,392" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="665.00,392.00 649.00,399.00 649.00,385.00" fill="#0078D4"/>
+<text id="02-fabric-concepts-010" x="537" y="425" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="537" y="425.0">assigned</tspan>
+<tspan x="537" y="460.64">to</tspan>
+</text>
+<rect id="02-fabric-concepts-011" x="715" y="415" width="355" height="135" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="02-fabric-concepts-012" x="892.5" y="442.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="892.5" y="442.9">Warehouse item</tspan>
+<tspan x="892.5" y="482.5">SQL-owned writes</tspan>
+</text>
+<rect id="02-fabric-concepts-013" x="1140" y="415" width="355" height="135" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="02-fabric-concepts-014" x="1317.5" y="442.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1317.5" y="442.9">Lakehouse item</tspan>
+<tspan x="1317.5" y="482.5">Spark / data writers</tspan>
+</text>
+<rect id="02-fabric-concepts-015" x="715" y="600" width="355" height="115" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="02-fabric-concepts-016" x="892.5" y="619.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="892.5" y="619.22">Notebook item</tspan>
+<tspan x="892.5" y="657.5">Compute instructions</tspan>
+</text>
+<rect id="02-fabric-concepts-017" x="1140" y="600" width="355" height="115" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="02-fabric-concepts-018" x="1317.5" y="619.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1317.5" y="619.22">Semantic model</tspan>
+<tspan x="1317.5" y="657.5">Business measures</tspan>
+</text>
+<rect id="02-fabric-concepts-019" x="125" y="605" width="390" height="170" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="02-fabric-concepts-020" x="320.0" y="630.6" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="320.0" y="630.6">Item</tspan>
+<tspan x="320.0" y="670.2">A managed artifact:</tspan>
+<tspan x="320.0" y="709.8000000000001">not always a table</tspan>
+</text>
+<rect id="02-fabric-concepts-021" x="125" y="835" width="1370" height="145" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="02-fabric-concepts-022" x="147" y="852" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="147" y="852.0">OneLake  |  storage, not compute</tspan>
+</text>
+<text id="02-fabric-concepts-023" x="155" y="900" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="155" y="900.0">Items organize data and metadata; engines execute work against permitted data.</tspan>
+</text>
+<polyline id="02-fabric-concepts-024" points="892,775 892,827" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="892.00,827.00 885.00,811.00 899.00,811.00" fill="#008575"/>
+<polyline id="02-fabric-concepts-025" points="1317,775 1317,827" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1317.00,827.00 1310.00,811.00 1324.00,811.00" fill="#008575"/>
+<rect id="02-fabric-concepts-026" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="02-fabric-concepts-027" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Ask separately: who owns this item, which workspace contains it, and what compute runs it?</tspan>
+</text>
+<rect id="02-fabric-concepts-028" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="02-fabric-concepts-029" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="02-fabric-concepts-030" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="02-fabric-concepts-031" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="02-fabric-concepts-032" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="02-fabric-concepts-033" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="02-fabric-concepts-034" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="02-fabric-concepts-035" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="02-fabric-concepts-036" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 02 / 24</tspan>
+</text>
+</svg>

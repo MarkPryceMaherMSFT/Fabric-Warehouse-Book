@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Authorization depends on the access route</title>
+<desc id="desc">Conceptual security routes. Delegated endpoint mode uses SQL table authorization; user-identity mode uses OneLake roles for underlying table data. Direct storage access is a separate route and does not automatically inherit SQL policy. SQL analytics endpoint mode diagram, not a universal Warehouse security matrix. OneLake DDM is not available in user-identity mode; elevated roles require separate review.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="07-security-routes-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Authorization depends on the access route</tspan>
+</text>
+<text id="07-security-routes-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">OneLake security is authorization, not encryption; item Read alone does not grant data read.</tspan>
+</text>
+<polyline id="07-security-routes-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="07-security-routes-003" x="65" y="215" width="500" height="620" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="07-security-routes-004" x="87" y="232" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="87" y="232.0">SQL endpoint: delegated mode</tspan>
+</text>
+<rect id="07-security-routes-005" x="600" y="215" width="500" height="620" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="07-security-routes-006" x="622" y="232" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="622" y="232.0">SQL endpoint: user identity</tspan>
+</text>
+<rect id="07-security-routes-007" x="1135" y="215" width="500" height="620" rx="18" fill="none" stroke="#107C10" stroke-width="3"/>
+<text id="07-security-routes-008" x="1157" y="232" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1157" y="232.0">Direct storage route</tspan>
+</text>
+<rect id="07-security-routes-009" x="105" y="310" width="420" height="95" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="07-security-routes-010" x="315.0" y="337.7" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="315.0" y="337.7">User / application</tspan>
+</text>
+<rect id="07-security-routes-011" x="640" y="310" width="420" height="95" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="07-security-routes-012" x="850.0" y="337.7" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="337.7">User / application</tspan>
+</text>
+<rect id="07-security-routes-013" x="1175" y="310" width="420" height="95" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="07-security-routes-014" x="1385.0" y="337.7" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1385.0" y="337.7">User / application</tspan>
+</text>
+<rect id="07-security-routes-015" x="105" y="465" width="420" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="07-security-routes-016" x="315.0" y="499.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="315.0" y="499.22">SQL permissions</tspan>
+<tspan x="315.0" y="537.5">Table RLS / CLS / DDM</tspan>
+</text>
+<rect id="07-security-routes-017" x="640" y="465" width="420" height="145" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="07-security-routes-018" x="850.0" y="499.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="499.22">OneLake roles</tspan>
+<tspan x="850.0" y="537.5">Table RLS / CLS</tspan>
+</text>
+<rect id="07-security-routes-019" x="1175" y="465" width="420" height="145" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="07-security-routes-020" x="1385.0" y="501.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1385.0" y="501.86">OneLake / source access</tspan>
+<tspan x="1385.0" y="537.5">Applicable storage policies</tspan>
+</text>
+<rect id="07-security-routes-021" x="105" y="675" width="420" height="105" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="07-security-routes-022" x="315.0" y="693.18" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="315.0" y="693.18">Storage identity:</tspan>
+<tspan x="315.0" y="727.5">item owner / associated identity</tspan>
+</text>
+<rect id="07-security-routes-023" x="640" y="675" width="420" height="105" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="07-security-routes-024" x="850.0" y="689.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="689.22">Storage identity:</tspan>
+<tspan x="850.0" y="727.5">calling user</tspan>
+</text>
+<rect id="07-security-routes-025" x="1175" y="675" width="420" height="105" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="07-security-routes-026" x="1385.0" y="690.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1385.0" y="690.54">Do not assume</tspan>
+<tspan x="1385.0" y="727.5">SQL policies follow this route</tspan>
+</text>
+<polyline id="07-security-routes-027" points="315,410 315,455" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="315.00,455.00 308.00,439.00 322.00,439.00" fill="#0078D4"/>
+<polyline id="07-security-routes-028" points="315,615 315,665" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="315.00,665.00 308.00,649.00 322.00,649.00" fill="#0078D4"/>
+<polyline id="07-security-routes-029" points="850,410 850,455" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="850.00,455.00 843.00,439.00 857.00,439.00" fill="#008575"/>
+<polyline id="07-security-routes-030" points="850,615 850,665" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="850.00,665.00 843.00,649.00 857.00,649.00" fill="#008575"/>
+<polyline id="07-security-routes-031" points="1385,410 1385,455" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1385.00,455.00 1378.00,439.00 1392.00,439.00" fill="#107C10"/>
+<polyline id="07-security-routes-032" points="1385,615 1385,665" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1385.00,665.00 1378.00,649.00 1392.00,649.00" fill="#107C10"/>
+<rect id="07-security-routes-033" x="65" y="890" width="1035" height="118" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="07-security-routes-034" x="582.5" y="910.72" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="582.5" y="910.72">Both endpoint modes require initial item access.</tspan>
+<tspan x="582.5" y="949.0">SQL permissions still govern views, procedures and functions.</tspan>
+</text>
+<rect id="07-security-routes-035" x="1135" y="890" width="500" height="118" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="07-security-routes-036" x="1385.0" y="912.04" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1385.0" y="912.04">CLS controls columns.</tspan>
+<tspan x="1385.0" y="949.0">Encryption protects stored bytes.</tspan>
+</text>
+<rect id="07-security-routes-037" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="07-security-routes-038" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Changing endpoint security mode is a workspace-impacting operation, not a harmless reader exercise.</tspan>
+</text>
+<rect id="07-security-routes-039" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="07-security-routes-040" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="07-security-routes-041" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="07-security-routes-042" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="07-security-routes-043" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="07-security-routes-044" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="07-security-routes-045" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="07-security-routes-046" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="07-security-routes-047" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 07 / 24</tspan>
+</text>
+</svg>

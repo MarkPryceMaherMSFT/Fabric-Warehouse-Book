@@ -1,0 +1,3104 @@
+{
+  "schema_version": "1.0",
+  "title": "Fabric Warehouse book curated script-source register",
+  "editorial_baseline": "2026-10-08",
+  "review_method": "Public-source static inspection; no tenant execution, load test, or minimum-permission test.",
+  "selection_window": {
+    "from": "2023-10-08",
+    "through": "2026-10-08",
+    "inclusive": true,
+    "applies_to": "Substantive script revisions, not research papers or metadata-only touches."
+  },
+  "counts": {
+    "main_gists": 21,
+    "supplementary_gists": 2,
+    "repository_entries": 23,
+    "historical_gists": 3,
+    "excluded_older_gists": 2,
+    "total_entries": 51,
+    "confirmed_adapted_sources": 19,
+    "confirmed_reference_only_sources": 13,
+    "retained_research_sources": 14
+  },
+  "final_reconciliation": {
+    "completed_on": "2026-10-09",
+    "chapters_scanned": 36,
+    "standalone_scripts_scanned": 18,
+    "auxiliary_script_readmes_scanned": 1,
+    "operations_chapters_present": [
+      31,
+      32,
+      33,
+      34,
+      35,
+      36
+    ],
+    "method": "Original source integrations matched by gist IDs and repository file/bundle paths; the 9 October revision renumbered and rechecked actual file associations across 36 chapters. Source pins and the original script-selection window remain unchanged. Suggested chapters were not treated as evidence of use.",
+    "unresolved_integration_matches": [],
+    "tenant_execution": false
+  },
+  "collection_citations": [
+    {
+      "repository": "microsoft/fabric-toolbox",
+      "actual_file": "parts/06-operating-the-platform/36-development-and-automation.md",
+      "cited_url": "https://github.com/microsoft/fabric-toolbox",
+      "scope": "Collection-level citation and specific cautions concerning R05/R08/R13; not evidence that all Toolbox implementations were adopted."
+    },
+    {
+      "repository": "MarkPryceMaherMSFT/fabric-warehouse-lab",
+      "actual_file": "parts/06-operating-the-platform/36-development-and-automation.md",
+      "cited_url": "https://github.com/MarkPryceMaherMSFT/fabric-warehouse-lab/tree/3f7cdc0239cabe873d2f636f73eeac98d004494d",
+      "scope": "Repository layout and lifecycle artifacts discussed; selected files R20/R21 are not individually cited or used in worked examples."
+    },
+    {
+      "repository": "MarkPryceMaherMSFT/fabric-mirroring-synapse",
+      "actual_file": "parts/07-migration-and-production-design/README.md",
+      "cited_url": "https://github.com/MarkPryceMaherMSFT/fabric-mirroring-synapse",
+      "scope": "Part-level migration/mirroring overview; no additional implementation copied."
+    }
+  ],
+  "authors": {
+    "mark": {
+      "name": "Mark Pryce-Maher",
+      "account": "MarkPryceMaherMSFT",
+      "url": "https://github.com/MarkPryceMaherMSFT"
+    },
+    "toolbox": {
+      "name": "Microsoft Fabric CAT and repository contributors",
+      "account": "microsoft",
+      "url": "https://github.com/microsoft/fabric-toolbox",
+      "note": "Repository attribution, not a claim that every file has the same individual author."
+    }
+  },
+  "licenses": {
+    "author-authorized-no-public-license": {
+      "spdx": null,
+      "basis": "The user authorized use in this manuscript. No explicit public license was found. No automatic downstream license, copyright transfer, or permission for unrelated reuse is asserted.",
+      "notice": "../THIRD_PARTY_NOTICES.md"
+    },
+    "toolbox-mit": {
+      "spdx": "MIT",
+      "file": "../licenses/fabric-toolbox-MIT.txt",
+      "url": "https://raw.githubusercontent.com/microsoft/fabric-toolbox/b0183fb1841367fd0eaa4aae28949f7911ff4f05/LICENSE",
+      "copyright": "Copyright (c) Microsoft Corporation."
+    },
+    "pools-mit": {
+      "spdx": "MIT",
+      "file": "../licenses/fabric-sql-pools-config-MIT.txt",
+      "url": "https://raw.githubusercontent.com/MarkPryceMaherMSFT/fabric-sql-pools-config/89d3d3568ac454d64ad8744d0b726503aff73204/LICENSE",
+      "copyright": "Copyright (c) 2026 Mark Pryce-Maher"
+    },
+    "lab-apache": {
+      "spdx": "Apache-2.0",
+      "file": "../licenses/fabric-warehouse-lab-Apache-2.0.txt",
+      "url": "https://raw.githubusercontent.com/MarkPryceMaherMSFT/fabric-warehouse-lab/3f7cdc0239cabe873d2f636f73eeac98d004494d/LICENSE",
+      "copyright": null,
+      "note": "The license contains the standard unfilled appendix example. It is preserved unchanged, not converted into an invented copyright notice. No NOTICE file was found in the pinned tree."
+    }
+  },
+  "conventions": {
+    "dates": "UTC calendar dates. created and metadata_updated are GitHub metadata; last_meaningful_change is a content-bearing revision identified by static research. Nonzero line changes alone are not a guarantee of semantic improvement. Null means not established, not absent.",
+    "revision": "Full gist revision or Git commit. Gist revisions are not interchangeable with raw-file hashes.",
+    "proposed_chapters": "Suggested thematic mapping only; actual_files and integrations record final observed manuscript use.",
+    "actual_files": "Book-root-relative links to actual source citations, discussions, or explicitly labeled adaptations. Repository-level discussion requires manual confirmation of the particular pattern; a generic collection link does not adopt every file.",
+    "integration_retained_research": "retained-research means retained research/caution source, not individually cited in a chapter/standalone script or used in a worked example. Appendix references remain research citations. An empty actual_files array is a final negative match, not pending reconciliation.",
+    "integration_confirmed": "adapted-in-chapter means the stated listing was located in the manuscript and its source attribution checked. It is not tenant execution or proof that all recommended source repairs were validated.",
+    "integration_reference_only": "referenced-in-chapter records a verified source citation or discussion, not copied or adapted source code.",
+    "operation_class": "Effects of the source as published, not a promise that a future adaptation has the same effects. read-only calls can consume capacity and expose sensitive query text.",
+    "dependencies": "Capabilities inferred from operations unless explicitly documented; validate current least-privilege roles and API scopes.",
+    "coherent_repositories": "For a multi-file tool use a complete coherent checkout, not a mixture of independently pinned files.",
+    "notices": "../THIRD_PARTY_NOTICES.md"
+  },
+  "entries": [
+    {
+      "id": "G01",
+      "kind": "gist",
+      "title": "Statistics refresh generator",
+      "file": "update_indexes.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/5ab531c2964243bac287bb91a52c09ad",
+      "actual_files": [
+        "parts/05-statistics-and-performance/26-statistics.md",
+        "scripts/26-statistics-preview.sql"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/5ab531c2964243bac287bb91a52c09ad/0af570a203d55cbf139cefa63794175346ed5dae",
+      "revision": "0af570a203d55cbf139cefa63794175346ed5dae",
+      "meaningful_revision": "0af570a203d55cbf139cefa63794175346ed5dae",
+      "dates": {
+        "created": "2026-03-18",
+        "metadata_updated": "2026-03-18",
+        "last_meaningful_change": "2026-03-18"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse",
+        "SQL analytics endpoint subject to statistics support"
+      ],
+      "proposed_chapters": [
+        26,
+        27
+      ],
+      "operation_class": "mutating",
+      "integration": "adapted-in-chapter",
+      "disposition": "adapt-after-repair",
+      "integrations": [
+        {
+          "chapter": 26,
+          "file": "scripts/26-statistics-preview.sql",
+          "chapter_file": "parts/05-statistics-and-performance/26-statistics.md",
+          "use": "adapted-code jointly with G02",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only DDL preview, not statistics execution",
+          "tenant_tested": false,
+          "changes": [
+            "exact schema/table/column scope",
+            "quoted identifiers",
+            "set-based preview",
+            "one actionable histogram per column",
+            "no blanket FULLSCAN or execution loop"
+          ]
+        }
+      ],
+      "dependencies": [
+        "SQL catalog visibility",
+        "statistics-update authority"
+      ],
+      "changes_and_caveats": [
+        "Updates statistics, not indexes.",
+        "Original immediately executes FULLSCAN across discovered statistics.",
+        "Use schema/table targeting and read-only preview first; quote identifiers and evaluate scan cost.",
+        "ClusteredIndex and ACE exclusions are source policy, not a complete product contract."
+      ]
+    },
+    {
+      "id": "G02",
+      "kind": "gist",
+      "title": "CreateStats corrective example",
+      "file": "createstats.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/169461e2d381d99983f75e4980aca381",
+      "actual_files": [
+        "parts/05-statistics-and-performance/26-statistics.md",
+        "scripts/26-statistics-preview.sql"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/169461e2d381d99983f75e4980aca381/63180821e31cb7252a58ebf0c37230ee15e3ced8",
+      "revision": "63180821e31cb7252a58ebf0c37230ee15e3ced8",
+      "meaningful_revision": "63180821e31cb7252a58ebf0c37230ee15e3ced8",
+      "dates": {
+        "created": "2025-05-29",
+        "metadata_updated": "2025-05-29",
+        "last_meaningful_change": "2025-05-29"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse"
+      ],
+      "proposed_chapters": [
+        26,
+        36
+      ],
+      "operation_class": "mutating",
+      "integration": "adapted-in-chapter",
+      "disposition": "corrective-example-not-unchanged-code",
+      "integrations": [
+        {
+          "chapter": 26,
+          "file": "scripts/26-statistics-preview.sql",
+          "chapter_file": "parts/05-statistics-and-performance/26-statistics.md",
+          "use": "corrected pattern jointly with G01; original procedure not copied unchanged",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only DDL preview",
+          "tenant_tested": false,
+          "changes": [
+            "set-based preview instead of buggy column_id loop",
+            "exact object scope",
+            "quoted identifiers",
+            "one actionable histogram per column",
+            "no execution or swallowed failures"
+          ]
+        }
+      ],
+      "dependencies": [
+        "procedure creation",
+        "statistics permissions"
+      ],
+      "changes_and_caveats": [
+        "Iteration uses column_id rather than generated sequence; gaps can repeat an earlier statement.",
+        "Resolve schema and object identity; do not combine same-named tables.",
+        "Sampling variables effectively force FULLSCAN.",
+        "Prefer a new narrow teaching example rather than shipping this procedure unchanged."
+      ]
+    },
+    {
+      "id": "G03",
+      "kind": "gist",
+      "title": "Observed SQL pool pressure",
+      "file": "under_presure.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/852f837c83cbdbb73723a273e418bcd6",
+      "actual_files": [
+        "parts/06-operating-the-platform/33-workload-management-and-sql-pools.md",
+        "scripts/33-pool-pressure-events.sql"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/852f837c83cbdbb73723a273e418bcd6/faf113b480ab678ee77792ab05f71f00c6fb1765",
+      "revision": "faf113b480ab678ee77792ab05f71f00c6fb1765",
+      "meaningful_revision": "7e1f2391362694fc03c0913887e2832200df19c9",
+      "dates": {
+        "created": "2026-09-17",
+        "metadata_updated": "2026-09-26",
+        "last_meaningful_change": "2026-09-18",
+        "note": "September 26 revision has zero changed code lines; content-bearing September 18 revision verified through commits API."
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse SQL pool Query Insights"
+      ],
+      "proposed_chapters": [
+        29,
+        32,
+        33
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "adapt-with-qualified-interpretation",
+      "integrations": [
+        {
+          "chapter": 33,
+          "file": "scripts/33-pool-pressure-events.sql",
+          "chapter_file": "parts/06-operating-the-platform/33-workload-management-and-sql-pools.md",
+          "use": "explicitly labeled grouping adaptation",
+          "cited_revision": "7e1f2391362694fc03c0913887e2832200df19c9",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only",
+          "tenant_tested": false,
+          "changes": [
+            "bounded time window",
+            "pool identity and configuration context",
+            "event counts rather than wall-clock percentages",
+            "no automatic sizing advice"
+          ]
+        }
+      ],
+      "dependencies": [
+        "Query Insights visibility"
+      ],
+      "changes_and_caveats": [
+        "Group by pool as well as time.",
+        "Percentage of observations is not percentage of wall-clock time.",
+        "Remove automatic downsizing advice and author-specific threshold bands.",
+        "No observations do not prove no pressure."
+      ]
+    },
+    {
+      "id": "G04",
+      "kind": "gist",
+      "title": "Cancellation candidates around ten minutes",
+      "file": "queries_hitting_the_10min_timeout.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/9bb5cd17ef40469baa2e5d6a16f4b48c",
+      "actual_files": [
+        "parts/06-operating-the-platform/30-troubleshooting.md"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/9bb5cd17ef40469baa2e5d6a16f4b48c/42c808b1ce746ce7a6c44b4ec444b19132513d68",
+      "revision": "42c808b1ce746ce7a6c44b4ec444b19132513d68",
+      "meaningful_revision": "42c808b1ce746ce7a6c44b4ec444b19132513d68",
+      "dates": {
+        "created": "2026-09-14",
+        "metadata_updated": "2026-09-14",
+        "last_meaningful_change": "2026-09-14"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse and endpoint Query Insights"
+      ],
+      "proposed_chapters": [
+        29,
+        30,
+        31
+      ],
+      "operation_class": "read-only",
+      "integration": "referenced-in-chapter",
+      "disposition": "diagnostic-heuristic",
+      "integrations": [
+        {
+          "chapter": 30,
+          "file": "parts/06-operating-the-platform/30-troubleshooting.md",
+          "use": "linked cancellation hypothesis, not copied as a universal timeout rule",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "query-history visibility"
+      ],
+      "changes_and_caveats": [
+        "Error 3617 plus 595-630 seconds identifies candidates, not a universal timeout.",
+        "Independently aggregated MAX attributes need not belong to one execution.",
+        "Allocated CPU labeled wasted is not an invoice amount."
+      ]
+    },
+    {
+      "id": "G05",
+      "kind": "gist",
+      "title": "Explicit Query Insights projection",
+      "file": "exec_requests_history.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/8ac86364824b208fe97085e112052d16",
+      "actual_files": [
+        "parts/05-statistics-and-performance/27-query-plans-and-tuning.md",
+        "parts/06-operating-the-platform/29-monitoring.md",
+        "scripts/29-query-history.sql"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/8ac86364824b208fe97085e112052d16/e73c87d29741d25f25233ce1dc87cb4924d0d292",
+      "revision": "e73c87d29741d25f25233ce1dc87cb4924d0d292",
+      "meaningful_revision": "e73c87d29741d25f25233ce1dc87cb4924d0d292",
+      "dates": {
+        "created": "2026-03-10",
+        "metadata_updated": "2026-03-10",
+        "last_meaningful_change": "2026-03-10"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse",
+        "SQL analytics endpoint"
+      ],
+      "proposed_chapters": [
+        27,
+        29,
+        31
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "selected-diagnostic",
+      "integrations": [
+        {
+          "chapter": 27,
+          "file": "parts/05-statistics-and-performance/27-query-plans-and-tuning.md",
+          "use": "diagnostic source cited",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        },
+        {
+          "chapter": 29,
+          "file": "scripts/29-query-history.sql",
+          "chapter_file": "parts/06-operating-the-platform/29-monitoring.md",
+          "use": "adapted-code",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only",
+          "tenant_tested": false,
+          "changes": [
+            "one-day lookback",
+            "bounded explicit projection",
+            "no error_severity/error_state dependency",
+            "no default command-text export",
+            "CPU not labeled as billed CU"
+          ]
+        }
+      ],
+      "dependencies": [
+        "Query Insights visibility"
+      ],
+      "changes_and_caveats": [
+        "Add bounded UTC filters and protect SQL text and identities.",
+        "The commented sql_pool_name column is not proof of tenant schema.",
+        "Distinguish cache-source scan metrics from result-set cache hits."
+      ]
+    },
+    {
+      "id": "G06",
+      "kind": "gist",
+      "title": "Live DMV collection",
+      "file": "dmvs.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/c6f706d41a614cec9672ae04675ebd09",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/c6f706d41a614cec9672ae04675ebd09/351f157702918355fc27f74543e0aa2f9dc16514",
+      "revision": "351f157702918355fc27f74543e0aa2f9dc16514",
+      "meaningful_revision": "351f157702918355fc27f74543e0aa2f9dc16514",
+      "dates": {
+        "created": "2026-05-21",
+        "metadata_updated": "2026-05-21",
+        "last_meaningful_change": "2026-05-21"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse",
+        "SQL analytics endpoint within DMV support"
+      ],
+      "proposed_chapters": [
+        29,
+        30
+      ],
+      "operation_class": "mixed",
+      "integration": "retained-research",
+      "disposition": "select-only-adaptation",
+      "dependencies": [
+        "DMV visibility",
+        "workspace Admin for dm_exec_connections",
+        "external sp_WhoIsActive call in original"
+      ],
+      "changes_and_caveats": [
+        "SELECT statements are read-only; behavior of externally supplied sp_WhoIsActive was not audited.",
+        "Remove the undeclared third-party procedure call.",
+        "Differentiate own-session visibility from administrative visibility."
+      ]
+    },
+    {
+      "id": "G07",
+      "kind": "gist",
+      "title": "Capacity SKU inventory",
+      "file": "DWCapacity.ipynb",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/269f144af33383914a95517648fb1c40",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/269f144af33383914a95517648fb1c40/45a2972d91d847eaa91915c863fef434572c9ef6",
+      "revision": "45a2972d91d847eaa91915c863fef434572c9ef6",
+      "meaningful_revision": "45a2972d91d847eaa91915c863fef434572c9ef6",
+      "dates": {
+        "created": "2026-09-01",
+        "metadata_updated": "2026-09-01",
+        "last_meaningful_change": "2026-09-01"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Fabric capacity inventory"
+      ],
+      "proposed_chapters": [
+        31,
+        32
+      ],
+      "operation_class": "read-only",
+      "integration": "retained-research",
+      "disposition": "inventory-pattern",
+      "dependencies": [
+        "Fabric notebook",
+        "SemPy",
+        "pandas",
+        "Spark",
+        "capacity-list visibility"
+      ],
+      "changes_and_caveats": [
+        "SKU reference data is not observed Warehouse utilization.",
+        "Revalidate hardcoded SKU characteristics.",
+        "Retain pagination and handle an inaccessible or absent workspace capacity instead of unguarded next()."
+      ]
+    },
+    {
+      "id": "G08",
+      "kind": "gist",
+      "title": "Selected-table metadata refresh",
+      "file": "MDSync-Sync-selected-tables.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/190fa079d89a2f301af2847583d5d757",
+      "actual_files": [
+        "parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md",
+        "parts/06-operating-the-platform/30-troubleshooting.md",
+        "scripts/15-refresh-selected-tables.py"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/190fa079d89a2f301af2847583d5d757/ae4988bf8c833ca581cd1fe8071855bdddebfb47",
+      "revision": "ae4988bf8c833ca581cd1fe8071855bdddebfb47",
+      "meaningful_revision": "ae4988bf8c833ca581cd1fe8071855bdddebfb47",
+      "dates": {
+        "created": "2026-08-16",
+        "metadata_updated": "2026-08-16",
+        "last_meaningful_change": "2026-08-16"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Lakehouse SQL analytics endpoint"
+      ],
+      "proposed_chapters": [
+        15,
+        30,
+        36
+      ],
+      "operation_class": "mutating",
+      "integration": "adapted-in-chapter",
+      "disposition": "preferred-refresh-pattern",
+      "integrations": [
+        {
+          "chapter": 15,
+          "file": "scripts/15-refresh-selected-tables.py",
+          "chapter_file": "parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md",
+          "use": "adapted-code",
+          "observed_on": "2026-10-08",
+          "last_reviewed_on": "2026-11-09",
+          "adapted_effect": "endpoint metadata refresh; no source Delta writes",
+          "tenant_tested": false,
+          "changes": [
+            "one discovery GET",
+            "require provisioningStatus Success before POST",
+            "nonempty bounded table selection",
+            "no nonexistent table",
+            "failure propagation",
+            "complete per-table success validation",
+            "no recreation/reset"
+          ]
+        }
+      ],
+      "dependencies": [
+        "Fabric notebook",
+        "SemPy",
+        "attached Lakehouse context",
+        "refresh permission"
+      ],
+      "changes_and_caveats": [
+        "Metadata mutation, not source-table DML.",
+        "Remove nonexistent table and redundant GET.",
+        "Require provisioningStatus Success; missing, in-progress, failed or unknown status stops before POST.",
+        "Preserve exceptions and inspect per-table results after lro_wait.",
+        "Use actual schema-enabled book tables and current tables payload."
+      ]
+    },
+    {
+      "id": "G09",
+      "kind": "gist",
+      "title": "Workspace-wide refresh and logging",
+      "file": "sync_everything.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/6ed04f79fccc02ee0755921c2fdfea0d",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/6ed04f79fccc02ee0755921c2fdfea0d/2706a9fff1b1505454bc75ab4dc2a0a3bb4efe1a",
+      "revision": "2706a9fff1b1505454bc75ab4dc2a0a3bb4efe1a",
+      "meaningful_revision": "2706a9fff1b1505454bc75ab4dc2a0a3bb4efe1a",
+      "dates": {
+        "created": "2025-09-04",
+        "metadata_updated": "2026-08-18",
+        "last_meaningful_change": "2025-09-04",
+        "note": "2026 touched metadata is not a 2026 code revision."
+      },
+      "in_window": true,
+      "applies_to": [
+        "Lakehouse SQL endpoints",
+        "Lakehouse log table"
+      ],
+      "proposed_chapters": [
+        15,
+        29,
+        36
+      ],
+      "operation_class": "mutating",
+      "integration": "retained-research",
+      "disposition": "repair-before-adaptation",
+      "dependencies": [
+        "requests",
+        "notebook utilities",
+        "SemPy",
+        "Spark",
+        "endpoint refresh and Lakehouse write rights"
+      ],
+      "changes_and_caveats": [
+        "Tuple order places a properties dictionary in sql_endpoint_id and the endpoint ID in sync_status.",
+        "Replace positional tuples with explicit mappings; add paging and HTTP checks.",
+        "Scope inventory and refresh to an allow-list."
+      ]
+    },
+    {
+      "id": "G10",
+      "kind": "gist",
+      "title": "Delta-log file inventory",
+      "file": "gistfile1.txt",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/2af9c203fd17157a4b68509bf055e0d9",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/2af9c203fd17157a4b68509bf055e0d9/86f298c85e6ec8566da2c6e1777ba9404185e1f1",
+      "revision": "86f298c85e6ec8566da2c6e1777ba9404185e1f1",
+      "meaningful_revision": "86f298c85e6ec8566da2c6e1777ba9404185e1f1",
+      "dates": {
+        "created": "2024-08-27",
+        "metadata_updated": "2024-08-28",
+        "last_meaningful_change": "2024-08-28"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Lakehouse OneLake files"
+      ],
+      "proposed_chapters": [
+        15,
+        23,
+        28
+      ],
+      "operation_class": "read-only",
+      "integration": "retained-research",
+      "disposition": "adapt-inventory",
+      "dependencies": [
+        "notebook utilities",
+        "OneLake listing access"
+      ],
+      "changes_and_caveats": [
+        "Reports Delta log files, not data partition sizes.",
+        "Support schema subdirectories and nested sidecars.",
+        "50-file and 1-MiB cutoffs are heuristics, not engine limits.",
+        "Bound recursive traversal and handle access failures."
+      ]
+    },
+    {
+      "id": "G11",
+      "kind": "gist",
+      "title": "Recursive physical storage inventory",
+      "file": "workspace size.ipynb",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/04939610b48df6a8b79d18ec46485dfd",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/04939610b48df6a8b79d18ec46485dfd/3b7f49bbdffd8350651fc29d34b1b7f2b03f1781",
+      "revision": "3b7f49bbdffd8350651fc29d34b1b7f2b03f1781",
+      "meaningful_revision": "3b7f49bbdffd8350651fc29d34b1b7f2b03f1781",
+      "dates": {
+        "created": "2024-11-26",
+        "metadata_updated": "2026-03-13",
+        "last_meaningful_change": "2024-11-28",
+        "note": "2026 API update is not the latest code date."
+      },
+      "in_window": true,
+      "applies_to": [
+        "OneLake inventory"
+      ],
+      "proposed_chapters": [
+        28,
+        31,
+        35
+      ],
+      "operation_class": "read-only",
+      "integration": "retained-research",
+      "disposition": "adapt-inventory",
+      "dependencies": [
+        "notebook utilities",
+        "OneLake listing access"
+      ],
+      "changes_and_caveats": [
+        "Enumerated physical bytes are neither current Delta snapshot size nor billing consumption.",
+        "Add the explicit module import, error handling and traversal limits."
+      ]
+    },
+    {
+      "id": "G12",
+      "kind": "gist",
+      "title": "Delta V2 checkpoint demonstration",
+      "file": "delta-v2-checkpoints-demo.ipynb",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/1e9d70c6c87887cb1239790b81d4afba",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/1e9d70c6c87887cb1239790b81d4afba/ec21dff411b2b06e4f5c84b6bb95773d60ef9541",
+      "revision": "ec21dff411b2b06e4f5c84b6bb95773d60ef9541",
+      "meaningful_revision": "22138a0a5b535aaf3d7831afc6094370adb8bf3e",
+      "dates": {
+        "created": "2026-09-02",
+        "metadata_updated": "2026-09-02",
+        "last_meaningful_change": "2026-09-02",
+        "note": "Final same-day revision has zero code-line changes."
+      },
+      "in_window": true,
+      "applies_to": [
+        "compatible Spark/Delta runtime"
+      ],
+      "proposed_chapters": [
+        15,
+        23,
+        28
+      ],
+      "operation_class": "destructive",
+      "integration": "retained-research",
+      "disposition": "disposable-lab-or-link-only",
+      "dependencies": [
+        "Lakehouse write access",
+        "V2-checkpoint-compatible Delta runtime"
+      ],
+      "changes_and_caveats": [
+        "Clean-slate cell drops a table; never run all against existing data.",
+        "Delta checkpoint V2 is unrelated to new metadata sync.",
+        "Writing a checkpoint does not prove SQL endpoint reader compatibility.",
+        "Independently verify downgrade and sidecar claims."
+      ]
+    },
+    {
+      "id": "G13",
+      "kind": "gist",
+      "title": "Warehouse Delta publication visibility test",
+      "file": "delta_publishing_test.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/4f9c825c9622f2a2d3a8687fb2ac7905",
+      "actual_files": [
+        "parts/04-how-the-engine-works/23-storage-onelake-and-delta-log-publishing.md"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/4f9c825c9622f2a2d3a8687fb2ac7905/7c2b133bb2ad70831bfacf6e49ca376edb073189",
+      "revision": "7c2b133bb2ad70831bfacf6e49ca376edb073189",
+      "meaningful_revision": "7c2b133bb2ad70831bfacf6e49ca376edb073189",
+      "dates": {
+        "created": "2025-09-01",
+        "metadata_updated": "2025-09-05",
+        "last_meaningful_change": "2025-09-01"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse SQL writer",
+        "Spark Delta reader"
+      ],
+      "proposed_chapters": [
+        23,
+        30
+      ],
+      "operation_class": "mutating",
+      "integration": "adapted-in-chapter",
+      "disposition": "isolated-marker-test",
+      "integrations": [
+        {
+          "chapter": 23,
+          "file": "parts/04-how-the-engine-works/23-storage-onelake-and-delta-log-publishing.md",
+          "use": "adapted visibility experiment",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "isolated lab SQL writes and Spark polling",
+          "tenant_tested": false,
+          "changes": [
+            "disposable BookPublicationLab Warehouse",
+            "UUID marker instead of count equality",
+            "no personal paths",
+            "bounded polling with timeout exception",
+            "dedicated authenticated connection"
+          ]
+        }
+      ],
+      "dependencies": [
+        "SemPy",
+        "notebook utilities",
+        "SQLAlchemy",
+        "pyodbc",
+        "ODBC 18",
+        "pandas",
+        "Spark",
+        "SQL INSERT/SELECT and OneLake read access"
+      ],
+      "changes_and_caveats": [
+        "Direction is Warehouse SQL to Spark, not Lakehouse-to-SQL metadata sync.",
+        "Replace count equality with a unique marker under concurrent writes.",
+        "Parameterize paths; use SQL-audience authentication, bounded polling and explicit timeout failure."
+      ]
+    },
+    {
+      "id": "G14",
+      "kind": "gist",
+      "title": "Schema inventory",
+      "file": "tables-columns-datatypes.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "integration_exclusions": [
+        {
+          "chapters": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "decision": "reviewed-not-adopted",
+          "confirmed_on": "2026-10-08",
+          "note": "Foundation catalog queries are independently authored; adaptations in Chapters 12 and 37 remain separately recorded."
+        }
+      ],
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/32f9e21deb2f784bbb47b2d50f71d412",
+      "actual_files": [
+        "parts/02-building-analytical-solutions/11-tsql-compatibility.md",
+        "parts/07-migration-and-production-design/37-migration-planning.md",
+        "scripts/37-schema-inventory.sql"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/32f9e21deb2f784bbb47b2d50f71d412/47df0d6920436ac9a85ece3d3fea4fc6d4fe0aaa",
+      "revision": "47df0d6920436ac9a85ece3d3fea4fc6d4fe0aaa",
+      "meaningful_revision": "47df0d6920436ac9a85ece3d3fea4fc6d4fe0aaa",
+      "dates": {
+        "created": "2026-03-10",
+        "metadata_updated": "2026-03-10",
+        "last_meaningful_change": "2026-03-10"
+      },
+      "in_window": true,
+      "applies_to": [
+        "SQL catalogs in supported source/target engines"
+      ],
+      "proposed_chapters": [
+        8,
+        11,
+        37,
+        39,
+        41
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "inventory-input-not-comparator",
+      "integrations": [
+        {
+          "chapter": 11,
+          "file": "parts/02-building-analytical-solutions/11-tsql-compatibility.md",
+          "use": "adapted-code",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only",
+          "tenant_tested": false,
+          "changes": [
+            "book schema filter",
+            "column ordinal and collation",
+            "no joins to user data tables"
+          ]
+        },
+        {
+          "chapter": 37,
+          "file": "scripts/37-schema-inventory.sql",
+          "chapter_file": "parts/07-migration-and-production-design/37-migration-planning.md",
+          "use": "adapted-code",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only",
+          "tenant_tested": false,
+          "changes": [
+            "book filter",
+            "object and column IDs",
+            "collation",
+            "max_length explicitly named as bytes",
+            "no automatic type conversion"
+          ]
+        }
+      ],
+      "dependencies": [
+        "catalog visibility"
+      ],
+      "changes_and_caveats": [
+        "Retain schema/table/column keys.",
+        "Add collation, defaults and computed definitions when required.",
+        "It inventories one database; it does not compare two systems."
+      ]
+    },
+    {
+      "id": "G15",
+      "kind": "gist",
+      "title": "SQL Server view migration",
+      "file": "migrate_views.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/a834d3043c38ea498029e147d061624b",
+      "actual_files": [
+        "parts/02-building-analytical-solutions/11-tsql-compatibility.md",
+        "parts/07-migration-and-production-design/39-migrating-sql-server-and-azure-sql.md",
+        "scripts/39-review-view-definitions.sql"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/a834d3043c38ea498029e147d061624b/aa59d2d2453a61dbe5b57383cd79bb521f0a5be6",
+      "revision": "aa59d2d2453a61dbe5b57383cd79bb521f0a5be6",
+      "meaningful_revision": "aa59d2d2453a61dbe5b57383cd79bb521f0a5be6",
+      "dates": {
+        "created": "2025-08-11",
+        "metadata_updated": "2025-08-11",
+        "last_meaningful_change": "2025-08-11"
+      },
+      "in_window": true,
+      "applies_to": [
+        "SQL Server source",
+        "Fabric SQL target view objects"
+      ],
+      "proposed_chapters": [
+        11,
+        36,
+        39
+      ],
+      "operation_class": "mutating",
+      "integration": "adapted-in-chapter",
+      "disposition": "repair-and-review-generated-ddl",
+      "integrations": [
+        {
+          "chapter": 11,
+          "file": "parts/02-building-analytical-solutions/11-tsql-compatibility.md",
+          "use": "adapted-code",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only source-definition template",
+          "tenant_tested": false,
+          "changes": [
+            "schema-qualified parameterization",
+            "missing-definition guard",
+            "review-only output instead of automatic rewrite/execution",
+            "no file writes"
+          ]
+        },
+        {
+          "chapter": 39,
+          "file": "scripts/39-review-view-definitions.sql",
+          "chapter_file": "parts/07-migration-and-production-design/39-migrating-sql-server-and-azure-sql.md",
+          "use": "discovery pattern adapted into SQL-only review",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only source-definition and dependency inventory",
+          "tenant_tested": false,
+          "changes": [
+            "schema-qualified filters",
+            "dependency inventory",
+            "unavailable-definition warning",
+            "no regex rewriting, credentials, automatic execution or file writes"
+          ]
+        }
+      ],
+      "dependencies": [
+        "pandas",
+        "SQLAlchemy",
+        "pyodbc",
+        "ODBC 18",
+        "SemPy",
+        "source definitions",
+        "target DDL and file-write rights"
+      ],
+      "changes_and_caveats": [
+        "Use schema-aware selection, dependency order and an explicit target database.",
+        "Use SQL-audience tokens rather than copying older Power BI-resource helpers.",
+        "CREATE OR ALTER changes existing views; export and review first.",
+        "No unsupported-SQL translation or verified managed-identity claim."
+      ]
+    },
+    {
+      "id": "G16",
+      "kind": "gist",
+      "title": "Regex Spark view conversion pitfalls",
+      "file": "ConvertViews.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "integration_exclusions": [
+        {
+          "chapters": [
+            33,
+            34,
+            35,
+            36,
+            37,
+            38
+          ],
+          "decision": "not-adopted",
+          "confirmed_on": "2026-10-08",
+          "note": "Migration chapters do not use this converter; prospective chapter mappings do not assert adoption."
+        }
+      ],
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/db9f98e051c7633c0b1ac90d5a66f397",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/db9f98e051c7633c0b1ac90d5a66f397/6bdacb9424fb53c73e73e10998d168ce8d436b36",
+      "revision": "6bdacb9424fb53c73e73e10998d168ce8d436b36",
+      "meaningful_revision": "6bdacb9424fb53c73e73e10998d168ce8d436b36",
+      "dates": {
+        "created": "2025-10-03",
+        "metadata_updated": "2025-10-04",
+        "last_meaningful_change": "2025-10-03"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Spark source definitions",
+        "SQL endpoint views"
+      ],
+      "proposed_chapters": [
+        11,
+        40,
+        41
+      ],
+      "operation_class": "mutating",
+      "integration": "retained-research",
+      "disposition": "negative-example-link-only",
+      "dependencies": [
+        "Spark",
+        "SemPy",
+        "SQLAlchemy",
+        "pyodbc",
+        "target DDL authority"
+      ],
+      "changes_and_caveats": [
+        "Not a working general translator.",
+        "Backticks become opening brackets at both ends.",
+        "RLIKE to LIKE, SIZE to LEN, and CONCAT_WS to CONCAT change semantics.",
+        "Date functions need argument transformations; use dialect-aware conversion and result tests."
+      ]
+    },
+    {
+      "id": "G17",
+      "kind": "gist",
+      "title": "Case-insensitive view DDL generator",
+      "file": "collation_views.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "integration_exclusions": [
+        {
+          "chapters": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "decision": "reviewed-not-adopted",
+          "confirmed_on": "2026-10-08",
+          "note": "Not adopted in foundations; the Chapter 12 adaptation remains separately recorded."
+        }
+      ],
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/b9f735684b3bc968ab9a95c7682b5e73",
+      "actual_files": [
+        "parts/02-building-analytical-solutions/11-tsql-compatibility.md"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/b9f735684b3bc968ab9a95c7682b5e73/f70f496c3ca4ac61f110e19a2d5865585d099b23",
+      "revision": "f70f496c3ca4ac61f110e19a2d5865585d099b23",
+      "meaningful_revision": "f70f496c3ca4ac61f110e19a2d5865585d099b23",
+      "dates": {
+        "created": "2025-02-24",
+        "metadata_updated": "2025-02-24",
+        "last_meaningful_change": "2025-02-24"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse",
+        "SQL analytics endpoint views"
+      ],
+      "proposed_chapters": [
+        7,
+        11,
+        39
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "generator-repair-required",
+      "integrations": [
+        {
+          "chapter": 11,
+          "file": "parts/02-building-analytical-solutions/11-tsql-compatibility.md",
+          "use": "adapted-code jointly with R06",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only DDL generation; separate application creates a view",
+          "tenant_tested": false,
+          "changes": [
+            "one book object",
+            "quoted identifiers",
+            "max-width ordered aggregation",
+            "UTF-8 collation and char support",
+            "no automatic execution"
+          ]
+        }
+      ],
+      "dependencies": [
+        "catalog visibility",
+        "view/schema authority only if generated DDL is subsequently executed"
+      ],
+      "changes_and_caveats": [
+        "Original generates but does not execute DDL.",
+        "Quote column identifiers, specify conversion lengths and order aggregation.",
+        "Avoid bounded STRING_AGG truncation.",
+        "Expression collation is not database collation."
+      ]
+    },
+    {
+      "id": "G18",
+      "kind": "gist",
+      "title": "Warehouse provisioning with collation",
+      "file": "createwarehouse.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "integration_exclusions": [
+        {
+          "chapters": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "decision": "reviewed-not-adopted",
+          "confirmed_on": "2026-10-08",
+          "note": "Foundation provisioning and original seed scripts do not adopt this gist."
+        }
+      ],
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/2f26b7317e43a014bce0bad5480b9255",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/2f26b7317e43a014bce0bad5480b9255/e5c62a0095e4abc8a3ee14637391e08e734bcf19",
+      "revision": "e5c62a0095e4abc8a3ee14637391e08e734bcf19",
+      "meaningful_revision": "e5c62a0095e4abc8a3ee14637391e08e734bcf19",
+      "dates": {
+        "created": "2024-10-10",
+        "metadata_updated": "2024-11-30",
+        "last_meaningful_change": "2024-11-30"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Fabric Warehouse item creation"
+      ],
+      "proposed_chapters": [
+        4,
+        11,
+        36
+      ],
+      "operation_class": "mutating",
+      "integration": "retained-research",
+      "disposition": "reconcile-current-api-before-use",
+      "dependencies": [
+        "Fabric notebook",
+        "SemPy",
+        "item-creation authority"
+      ],
+      "changes_and_caveats": [
+        "Validate current creationPayload/defaultCollation contract.",
+        "Handle duplicate names and long-running operations.",
+        "Creates a billable-service item, not merely a local SQL script."
+      ]
+    },
+    {
+      "id": "G19",
+      "kind": "gist",
+      "title": "Application identity ODBC connection",
+      "file": "ConnectToDW.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/f584f1fea298976ec97a9dd3235f1529",
+      "actual_files": [
+        "parts/02-building-analytical-solutions/13-power-bi-and-clients.md"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/f584f1fea298976ec97a9dd3235f1529/e63042e87d328488372fe60e2ee17c26e5b0825a",
+      "revision": "e63042e87d328488372fe60e2ee17c26e5b0825a",
+      "meaningful_revision": "e63042e87d328488372fe60e2ee17c26e5b0825a",
+      "dates": {
+        "created": "2026-07-06",
+        "metadata_updated": "2026-07-06",
+        "last_meaningful_change": "2026-07-06"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse TDS",
+        "SQL analytics endpoint TDS"
+      ],
+      "proposed_chapters": [
+        12,
+        13,
+        36
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "security-corrected-template",
+      "integrations": [
+        {
+          "chapter": 13,
+          "file": "parts/02-building-analytical-solutions/13-power-bi-and-clients.md",
+          "use": "adapted-code",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only synthetic query template",
+          "tenant_tested": false,
+          "changes": [
+            "approved Azure CLI identity",
+            "no client-secret or token logging",
+            "explicit catalog and timeouts",
+            "no pooled stale-token reuse",
+            "deterministic connection cleanup"
+          ]
+        }
+      ],
+      "dependencies": [
+        "azure-identity",
+        "pyodbc",
+        "ODBC 18",
+        "application SQL access"
+      ],
+      "changes_and_caveats": [
+        "Keep SQL audience https://database.windows.net/.default and correct UTF-16LE token packing.",
+        "Remove token-prefix printing and unverified JWT decoding; PyJWT is unnecessary for the corrected pattern.",
+        "Use approved secret retrieval, never embed credentials, and close connections."
+      ]
+    },
+    {
+      "id": "G20",
+      "kind": "gist",
+      "title": "Time-zone-aware presentation",
+      "file": "datetime with timezone example.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/30ef052159876d798dec4b9d7b941fb0",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/30ef052159876d798dec4b9d7b941fb0/ecaa1f72cfaecb0526ad23281cb12c8ce1da0d93",
+      "revision": "ecaa1f72cfaecb0526ad23281cb12c8ce1da0d93",
+      "meaningful_revision": "ecaa1f72cfaecb0526ad23281cb12c8ce1da0d93",
+      "dates": {
+        "created": "2025-03-19",
+        "metadata_updated": "2025-03-19",
+        "last_meaningful_change": "2025-03-19"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse"
+      ],
+      "proposed_chapters": [
+        7,
+        11,
+        41
+      ],
+      "operation_class": "mutating",
+      "integration": "retained-research",
+      "disposition": "isolated-temporal-lab",
+      "dependencies": [
+        "CREATE TABLE",
+        "INSERT",
+        "SELECT"
+      ],
+      "changes_and_caveats": [
+        "datetime2(6) stores no offset.",
+        "Timezone name plus local datetime is not automatic UTC normalization.",
+        "Test daylight-saving overlaps and gaps.",
+        "Use uniquely named lab objects with explicit cleanup."
+      ]
+    },
+    {
+      "id": "G21",
+      "kind": "gist",
+      "title": "Database and Fabric item properties",
+      "file": "info.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/a244cf5e4ff58ec2a89c7d330342cceb",
+      "actual_files": [
+        "parts/01-getting-started/04-first-warehouse.md"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/a244cf5e4ff58ec2a89c7d330342cceb/379032325627883a87db564fa951852d9ec15a42",
+      "revision": "379032325627883a87db564fa951852d9ec15a42",
+      "meaningful_revision": "379032325627883a87db564fa951852d9ec15a42",
+      "dates": {
+        "created": "2025-05-22",
+        "metadata_updated": "2025-05-22",
+        "last_meaningful_change": "2025-05-22"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse",
+        "SQL analytics endpoint"
+      ],
+      "proposed_chapters": [
+        4,
+        5,
+        29,
+        36
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "selected-diagnostic",
+      "integrations": [
+        {
+          "chapter": 4,
+          "file": "parts/01-getting-started/04-first-warehouse.md",
+          "use": "adapted-code",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only item-property lookup",
+          "tenant_tested": false,
+          "changes": [
+            "one four-column current-context result set",
+            "no discovery loop or dynamic execution",
+            "handle null/unexpected values as unavailable and verify item in portal",
+            "no guarantee of support for every source property"
+          ]
+        }
+      ],
+      "dependencies": [
+        "SQL connection and property visibility"
+      ],
+      "changes_and_caveats": [
+        "Connect SQL observations to workspace/artifact inventory.",
+        "Verify supported DATABASEPROPERTYEX properties and handle NULL; sample code does not establish a support guarantee."
+      ]
+    },
+    {
+      "id": "G22",
+      "kind": "supplementary-gist",
+      "title": "Canceled-query duration buckets",
+      "file": "canceled_queries_in_bucket.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/c8750e42fafed6de892071fd715d7d07",
+      "actual_files": [
+        "parts/06-operating-the-platform/30-troubleshooting.md",
+        "scripts/30-cancellation-analysis.sql"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/c8750e42fafed6de892071fd715d7d07/a6ec44863ef08bf165c5bf198e95d53ae25e7048",
+      "revision": "a6ec44863ef08bf165c5bf198e95d53ae25e7048",
+      "meaningful_revision": "a6ec44863ef08bf165c5bf198e95d53ae25e7048",
+      "dates": {
+        "created": "2026-09-14",
+        "metadata_updated": "2026-09-14",
+        "last_meaningful_change": "2026-09-14"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse and endpoint Query Insights"
+      ],
+      "proposed_chapters": [
+        29,
+        30
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "qualified-cancellation-diagnostic",
+      "integrations": [
+        {
+          "chapter": 30,
+          "file": "scripts/30-cancellation-analysis.sql",
+          "chapter_file": "parts/06-operating-the-platform/30-troubleshooting.md",
+          "use": "adapted-code",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only",
+          "tenant_tested": false,
+          "changes": [
+            "one-day scope and output limit",
+            "completed nonnegative intervals",
+            "DATEDIFF_BIG",
+            "no window-function denominator",
+            "neutral CPU naming",
+            "no presumed universal timeout"
+          ]
+        }
+      ],
+      "dependencies": [
+        "Query Insights visibility"
+      ],
+      "changes_and_caveats": [
+        "Five-second buckets group canceled requests by program_name and error_code.",
+        "Original completed-request filter is commented out; require valid end times and nonnegative intervals.",
+        "submit_time-to-end_time is observed server lifecycle, not full client download duration.",
+        "Duration clusters suggest investigation, not proof of which layer canceled.",
+        "Original wasted_cpu labels are analytical judgments, not billing measurements."
+      ]
+    },
+    {
+      "id": "G23",
+      "kind": "supplementary-gist",
+      "title": "Daily near-ten-minute cancellation trend",
+      "file": "daily_10_min_cancelssql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/49d4792e0b60a15dc4b294986c0b57c6",
+      "actual_files": [
+        "parts/06-operating-the-platform/30-troubleshooting.md"
+      ],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/49d4792e0b60a15dc4b294986c0b57c6/6b67a6c93d823319a5c05f5eaf5fc3ed51714361",
+      "revision": "6b67a6c93d823319a5c05f5eaf5fc3ed51714361",
+      "meaningful_revision": "6b67a6c93d823319a5c05f5eaf5fc3ed51714361",
+      "dates": {
+        "created": "2026-09-14",
+        "metadata_updated": "2026-09-14",
+        "last_meaningful_change": "2026-09-14"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse and endpoint Query Insights"
+      ],
+      "proposed_chapters": [
+        29,
+        30
+      ],
+      "operation_class": "read-only",
+      "integration": "referenced-in-chapter",
+      "disposition": "heuristic-reference-not-universal-timeout",
+      "integrations": [
+        {
+          "chapter": 30,
+          "file": "parts/06-operating-the-platform/30-troubleshooting.md",
+          "use": "daily-trend source linked as a diagnostic hypothesis, not copied",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "Query Insights visibility"
+      ],
+      "changes_and_caveats": [
+        "Preserves the source's unusual filename exactly.",
+        "Defaults select error 3617 and elapsed 595-630 seconds over 30 days.",
+        "Do not label all such rows as proven client timeouts without client settings/log evidence.",
+        "Daily counts and allocated CPU do not establish billing or a platform-wide timeout."
+      ]
+    },
+    {
+      "id": "R01",
+      "kind": "repository-file",
+      "title": "Active requests",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "scripts/dw-active-requests/dw-active-requests.sql",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/scripts/dw-active-requests/dw-active-requests.sql",
+      "actual_files": [
+        "parts/06-operating-the-platform/29-monitoring.md",
+        "scripts/29-live-requests.sql"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/60805e6aa3b7f49a58b63e8b0164d14e6a8973de/scripts/dw-active-requests/dw-active-requests.sql",
+      "revision": "60805e6aa3b7f49a58b63e8b0164d14e6a8973de",
+      "meaningful_revision": "833657b0cfbf42820508844442d7d7045359343c",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-01-28",
+        "note": "Selected later pin records a 100% rename, not a new implementation."
+      },
+      "edition_snapshot": {
+        "revision": "b0183fb1841367fd0eaa4aae28949f7911ff4f05",
+        "snapshot_date": "2026-10-07",
+        "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/b0183fb1841367fd0eaa4aae28949f7911ff4f05/scripts/dw-active-requests/dw-active-requests.sql",
+        "content_identical_to_registered_pin": true,
+        "verified_on": "2026-10-08",
+        "note": "Snapshot date does not replace the meaningful 2025-01-28 content date."
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse",
+        "SQL analytics endpoint"
+      ],
+      "proposed_chapters": [
+        29,
+        30
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "selected-diagnostic",
+      "integrations": [
+        {
+          "chapter": 29,
+          "file": "scripts/29-live-requests.sql",
+          "chapter_file": "parts/06-operating-the-platform/29-monitoring.md",
+          "use": "adapted-code",
+          "cited_revision": "b0183fb1841367fd0eaa4aae28949f7911ff4f05",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only",
+          "tenant_tested": false,
+          "changes": [
+            "current database and output bound",
+            "no connection DMV dependency",
+            "OUTER APPLY preserves requests without readable text",
+            "whole batch explicitly labeled",
+            "no misleading exact-statement claim"
+          ]
+        }
+      ],
+      "dependencies": [
+        "workspace Admin for connection DMV"
+      ],
+      "changes_and_caveats": [
+        "Omit dm_exec_connections for a non-admin adaptation.",
+        "DMV dist_statement_id differs from history distributed_statement_id.",
+        "Extract statement text with byte-offset semantics and protect query text."
+      ]
+    },
+    {
+      "id": "R02",
+      "kind": "repository-file",
+      "title": "Warehouse and endpoint identity",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "scripts/dw-properties/properties.sql",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/scripts/dw-properties/properties.sql",
+      "actual_files": [
+        "parts/01-getting-started/04-first-warehouse.md"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/44f214fd7ccf7c81d93c4b61db8ffcd25c597b3b/scripts/dw-properties/properties.sql",
+      "revision": "44f214fd7ccf7c81d93c4b61db8ffcd25c597b3b",
+      "meaningful_revision": "44f214fd7ccf7c81d93c4b61db8ffcd25c597b3b",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-07-11"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse",
+        "SQL analytics endpoint"
+      ],
+      "proposed_chapters": [
+        1,
+        4,
+        5,
+        36
+      ],
+      "operation_class": "read-only",
+      "integration": "referenced-in-chapter",
+      "disposition": "selected-diagnostic",
+      "integrations": [
+        {
+          "chapter": 4,
+          "file": "parts/01-getting-started/04-first-warehouse.md",
+          "use": "related pattern cited; not separately copied",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "SQL connection and catalog visibility"
+      ],
+      "changes_and_caveats": [
+        "Check returned edition and IDs; do not assume every TDS connection is a writable Warehouse.",
+        "Overlaps G21; do not count both as independently necessary implementations."
+      ]
+    },
+    {
+      "id": "R03",
+      "kind": "repository-file",
+      "title": "Completed requests overlapping a timepoint",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "scripts/dw-queries-running-at-timepoint/dw-queries-running-at-timepoint.sql",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/scripts/dw-queries-running-at-timepoint/dw-queries-running-at-timepoint.sql",
+      "actual_files": [
+        "parts/06-operating-the-platform/29-monitoring.md",
+        "scripts/29-overlapping-requests.sql"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/8f1293d698a561dbb953f7409fdb0a45eb247de3/scripts/dw-queries-running-at-timepoint/dw-queries-running-at-timepoint.sql",
+      "revision": "8f1293d698a561dbb953f7409fdb0a45eb247de3",
+      "meaningful_revision": "833657b0cfbf42820508844442d7d7045359343c",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-01-28",
+        "note": "January 29 selected commit is a rename. A December 2023 example literal is not the source revision date."
+      },
+      "edition_snapshot": {
+        "revision": "b0183fb1841367fd0eaa4aae28949f7911ff4f05",
+        "snapshot_date": "2026-10-07",
+        "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/b0183fb1841367fd0eaa4aae28949f7911ff4f05/scripts/dw-queries-running-at-timepoint/dw-queries-running-at-timepoint.sql",
+        "content_identical_to_registered_pin": true,
+        "verified_on": "2026-10-08",
+        "note": "Snapshot date does not replace the meaningful 2025-01-28 content date."
+      },
+      "in_window": true,
+      "applies_to": [
+        "Query Insights"
+      ],
+      "proposed_chapters": [
+        29,
+        30,
+        31
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "selected-diagnostic",
+      "integrations": [
+        {
+          "chapter": 29,
+          "file": "scripts/29-overlapping-requests.sql",
+          "chapter_file": "parts/06-operating-the-platform/29-monitoring.md",
+          "use": "adapted-code",
+          "cited_revision": "b0183fb1841367fd0eaa4aae28949f7911ff4f05",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only",
+          "tenant_tested": false,
+          "changes": [
+            "typed UTC parameter",
+            "explicit bounded projection",
+            "half-open execution interval",
+            "history lag and truncated-result caveats",
+            "not a live concurrency or billing measure"
+          ]
+        }
+      ],
+      "dependencies": [
+        "Query Insights visibility"
+      ],
+      "changes_and_caveats": [
+        "Use a typed UTC parameter.",
+        "Completed history is not a live feed; account for retention and ingestion delay.",
+        "Use half-open intervals for bucket expansion to avoid boundary double-counting."
+      ]
+    },
+    {
+      "id": "R04",
+      "kind": "repository-file",
+      "title": "System-view materialization workaround",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "scripts/dw-copy-dmv-to-table/copy-dmv-to-table.sql",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/scripts/dw-copy-dmv-to-table/copy-dmv-to-table.sql",
+      "actual_files": [],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/60805e6aa3b7f49a58b63e8b0164d14e6a8973de/scripts/dw-copy-dmv-to-table/copy-dmv-to-table.sql",
+      "revision": "60805e6aa3b7f49a58b63e8b0164d14e6a8973de",
+      "meaningful_revision": "833657b0cfbf42820508844442d7d7045359343c",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-01-28"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse"
+      ],
+      "proposed_chapters": [
+        29,
+        36
+      ],
+      "operation_class": "destructive",
+      "integration": "retained-research",
+      "disposition": "caution-link-only",
+      "dependencies": [
+        "catalog read",
+        "table DDL and writes"
+      ],
+      "changes_and_caveats": [
+        "Drops sys_tables; do not execute unchanged.",
+        "Escape apostrophes, cast aggregation to varchar(max), chunk output and handle empty input.",
+        "Recheck whether the workaround is still needed."
+      ]
+    },
+    {
+      "id": "R05",
+      "kind": "repository-file",
+      "title": "Automated query cancellation",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "scripts/dw-sp-kill-queries/sp-killqueries.sql",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/scripts/dw-sp-kill-queries/sp-killqueries.sql",
+      "actual_files": [
+        "parts/06-operating-the-platform/30-troubleshooting.md",
+        "parts/06-operating-the-platform/36-development-and-automation.md",
+        "scripts/30-cancellation-candidates.sql"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/60805e6aa3b7f49a58b63e8b0164d14e6a8973de/scripts/dw-sp-kill-queries/sp-killqueries.sql",
+      "revision": "60805e6aa3b7f49a58b63e8b0164d14e6a8973de",
+      "meaningful_revision": "833657b0cfbf42820508844442d7d7045359343c",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-01-28"
+      },
+      "edition_snapshot": {
+        "revision": "b0183fb1841367fd0eaa4aae28949f7911ff4f05",
+        "snapshot_date": "2026-10-07",
+        "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/b0183fb1841367fd0eaa4aae28949f7911ff4f05/scripts/dw-sp-kill-queries/sp-killqueries.sql",
+        "content_identical_to_registered_pin": true,
+        "verified_on": "2026-10-08",
+        "note": "Snapshot date does not replace the meaningful 2025-01-28 content date."
+      },
+      "in_window": true,
+      "applies_to": [
+        "administrative Warehouse/endpoint sessions"
+      ],
+      "proposed_chapters": [
+        30,
+        33
+      ],
+      "operation_class": "destructive",
+      "integration": "adapted-in-chapter",
+      "disposition": "anti-pattern-source-with-read-only-replacement",
+      "integrations": [
+        {
+          "chapter": 30,
+          "file": "scripts/30-cancellation-candidates.sql",
+          "chapter_file": "parts/06-operating-the-platform/30-troubleshooting.md",
+          "use": "selection concept informs original safe replacement; KILL procedure not copied",
+          "cited_revision": "b0183fb1841367fd0eaa4aae28949f7911ff4f05",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only candidate review; no KILL generated or executed",
+          "tenant_tested": false,
+          "changes": [
+            "no installation, dynamic SQL or mutation",
+            "current database and bounded output",
+            "explicit request/blocking context",
+            "separate authorization required for administrative action"
+          ]
+        }
+      ],
+      "dependencies": [
+        "workspace Admin"
+      ],
+      "changes_and_caveats": [
+        "KILL disrupts active work; printed commands are still immediately executed.",
+        "Require preview, approval, database scope, exclusions and audit.",
+        "nvarchar(100) command buffer is insufficient for many sessions."
+      ]
+    },
+    {
+      "id": "R06",
+      "kind": "repository-file",
+      "title": "Case-insensitive view procedure",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "scripts/dw-ci-views/ci_views.sql",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/scripts/dw-ci-views/ci_views.sql",
+      "actual_files": [
+        "parts/02-building-analytical-solutions/08-dimensional-modeling.md",
+        "parts/02-building-analytical-solutions/11-tsql-compatibility.md"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/a50e780e744dd847c331d85da56f544cabaaa2af/scripts/dw-ci-views/ci_views.sql",
+      "revision": "a50e780e744dd847c331d85da56f544cabaaa2af",
+      "meaningful_revision": "a50e780e744dd847c331d85da56f544cabaaa2af",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-07-11"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse and endpoint views"
+      ],
+      "proposed_chapters": [
+        8,
+        11,
+        13,
+        39
+      ],
+      "operation_class": "mixed",
+      "integration": "adapted-in-chapter",
+      "disposition": "preview-first-after-repair",
+      "integrations": [
+        {
+          "chapter": 8,
+          "file": "parts/02-building-analytical-solutions/08-dimensional-modeling.md",
+          "use": "concept adapted into original SELECT comparisons; generator not reproduced",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only",
+          "tenant_tested": false,
+          "changes": [
+            "two explicit supported UTF-8 collation comparisons",
+            "no generated DDL or view replacement"
+          ]
+        },
+        {
+          "chapter": 11,
+          "file": "parts/02-building-analytical-solutions/11-tsql-compatibility.md",
+          "use": "adapted-code jointly with G17",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only DDL generation; separate application creates a view",
+          "tenant_tested": false,
+          "changes": [
+            "single book object",
+            "quoted identifiers",
+            "wide ordered aggregation",
+            "UTF-8 collation and char support",
+            "no automatic execution"
+          ]
+        }
+      ],
+      "dependencies": [
+        "source access",
+        "view creation and schema permissions"
+      ],
+      "changes_and_caveats": [
+        "Mode 1 previews, modes 2/3 apply DDL.",
+        "Fix identifier buffers and quoting, column order and 8000-character DDL limit.",
+        "Changes expression comparisons, not database collation."
+      ]
+    },
+    {
+      "id": "R07",
+      "kind": "repository-file",
+      "title": "Cross-database table-to-view generator",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "scripts/dw-table-to-view/table-to-view.sql",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/scripts/dw-table-to-view/table-to-view.sql",
+      "actual_files": [],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/714246f3b4a34a0a72ad116cbdaaf34f04c3ee94/scripts/dw-table-to-view/table-to-view.sql",
+      "revision": "714246f3b4a34a0a72ad116cbdaaf34f04c3ee94",
+      "meaningful_revision": "714246f3b4a34a0a72ad116cbdaaf34f04c3ee94",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-01-13",
+        "note": "Column-name conversion fix, not metadata-only activity."
+      },
+      "in_window": true,
+      "applies_to": [
+        "supported Fabric cross-database SQL serving layer"
+      ],
+      "proposed_chapters": [
+        13,
+        14,
+        36
+      ],
+      "operation_class": "mixed",
+      "integration": "retained-research",
+      "disposition": "preview-first-after-repair",
+      "dependencies": [
+        "source visibility",
+        "target schemas and view DDL"
+      ],
+      "changes_and_caveats": [
+        "Mode 0 previews.",
+        "Quote all identifiers, preserve column order and create destination schemas explicitly.",
+        "Review generated DDL before execution."
+      ]
+    },
+    {
+      "id": "R08",
+      "kind": "repository-file",
+      "title": "Alter-column copy-and-swap workaround",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "scripts/dw-alter-table/alter_table.sql",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/scripts/dw-alter-table/alter_table.sql",
+      "actual_files": [
+        "parts/06-operating-the-platform/30-troubleshooting.md",
+        "parts/06-operating-the-platform/36-development-and-automation.md"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/fe1810f8630e05560c1ed10c9d74ecc6ac0939f8/scripts/dw-alter-table/alter_table.sql",
+      "revision": "fe1810f8630e05560c1ed10c9d74ecc6ac0939f8",
+      "meaningful_revision": "fe1810f8630e05560c1ed10c9d74ecc6ac0939f8",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-03-28"
+      },
+      "edition_snapshot": {
+        "revision": "b0183fb1841367fd0eaa4aae28949f7911ff4f05",
+        "snapshot_date": "2026-10-07",
+        "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/b0183fb1841367fd0eaa4aae28949f7911ff4f05/scripts/dw-alter-table/alter_table.sql",
+        "content_identical_to_registered_pin": true,
+        "verified_on": "2026-10-08",
+        "note": "Snapshot date does not replace the meaningful 2025-03-28 content date."
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse"
+      ],
+      "proposed_chapters": [
+        11,
+        30,
+        36,
+        41
+      ],
+      "operation_class": "destructive",
+      "integration": "referenced-in-chapter",
+      "disposition": "anti-pattern-link-only",
+      "integrations": [
+        {
+          "chapter": 30,
+          "file": "parts/06-operating-the-platform/30-troubleshooting.md",
+          "use": "cautionary linked workaround, not reproduced",
+          "cited_revision": "b0183fb1841367fd0eaa4aae28949f7911ff4f05",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "broad table DDL and data-copy rights"
+      ],
+      "changes_and_caveats": [
+        "Hardcoded demo/demo_tmp renames violate the parameterized appearance.",
+        "Unsafe concatenation and incomplete dependency/recovery preservation.",
+        "Check current native ALTER support; do not publish this as a ready-to-run workaround."
+      ]
+    },
+    {
+      "id": "R09",
+      "kind": "repository-file",
+      "title": "Metadata refresh notebook",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "samples/notebook-refresh-tables-in-sql-endpoint/MDSyncNewRESTAPI.ipynb",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/samples/notebook-refresh-tables-in-sql-endpoint/MDSyncNewRESTAPI.ipynb",
+      "actual_files": [
+        "parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/6a0a0dfa51566e356316ccaa6607a11a93f41529/samples/notebook-refresh-tables-in-sql-endpoint/MDSyncNewRESTAPI.ipynb",
+      "revision": "6a0a0dfa51566e356316ccaa6607a11a93f41529",
+      "meaningful_revision": "6a0a0dfa51566e356316ccaa6607a11a93f41529",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-08-05",
+        "note": "Removes preview=true."
+      },
+      "in_window": true,
+      "applies_to": [
+        "Lakehouse SQL analytics endpoint"
+      ],
+      "proposed_chapters": [
+        15,
+        36
+      ],
+      "operation_class": "mutating",
+      "integration": "referenced-in-chapter",
+      "disposition": "selected-refresh-pattern",
+      "integrations": [
+        {
+          "chapter": 15,
+          "file": "parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md",
+          "use": "reference-only discussion of parent-item discovery and LRO waiting; no copied code",
+          "observed_on": "2026-11-09",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "SemPy",
+        "attached Lakehouse context",
+        "refresh rights"
+      ],
+      "changes_and_caveats": [
+        "Reattach to the reader's own Lakehouse.",
+        "Check current REST schema and use numeric timeout rather than string 60.",
+        "Inspect per-table outcomes, not just HTTP/LRO completion; prefer G08 for selective refresh."
+      ]
+    },
+    {
+      "id": "R10",
+      "kind": "repository-file",
+      "title": "Metadata refresh Fabric User Data Function",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "samples/notebook-refresh-tables-in-sql-endpoint/RefreshTableinSQLEndpoint.py",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/samples/notebook-refresh-tables-in-sql-endpoint/RefreshTableinSQLEndpoint.py",
+      "actual_files": [
+        "parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/6a0a0dfa51566e356316ccaa6607a11a93f41529/samples/notebook-refresh-tables-in-sql-endpoint/RefreshTableinSQLEndpoint.py",
+      "revision": "6a0a0dfa51566e356316ccaa6607a11a93f41529",
+      "meaningful_revision": "6a0a0dfa51566e356316ccaa6607a11a93f41529",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-08-05"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Fabric Functions orchestration of SQL endpoint refresh"
+      ],
+      "proposed_chapters": [
+        15,
+        36
+      ],
+      "operation_class": "mutating",
+      "integration": "referenced-in-chapter",
+      "disposition": "repair-before-adaptation",
+      "integrations": [
+        {
+          "chapter": 15,
+          "file": "parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md",
+          "use": "reference-only caution: SPN endpoint enumeration conflicts with the documented List identity contract; no copied code",
+          "observed_on": "2026-11-09",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "Fabric Functions",
+        "MSAL",
+        "requests",
+        "refresh rights"
+      ],
+      "changes_and_caveats": [
+        "Fabric User Data Functions are not T-SQL scalar UDFs.",
+        "Current List SQL Endpoints contract does not support service principals or managed identities; do not inherit enumeration from this example.",
+        "Reconcile api.powerbi.com refresh/polling with documented api.fabric.microsoft.com.",
+        "Use secret retrieval, pagination, bounded polling, HTTP timeouts and failure/cancellation handling."
+      ]
+    },
+    {
+      "id": "R11",
+      "kind": "repository-bundle",
+      "title": "Synapse dedicated SQL pool migration bundle",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "tools/Gen2toFabricDW",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/tree/main/tools/Gen2toFabricDW",
+      "actual_files": [
+        "parts/07-migration-and-production-design/38-migrating-synapse-dedicated-sql-pools.md"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/tree/7b6a874839a3407b5b3227a7d212eb6ba2cf8172/tools/Gen2toFabricDW",
+      "revision": "7b6a874839a3407b5b3227a7d212eb6ba2cf8172",
+      "meaningful_revision": "7b6a874839a3407b5b3227a7d212eb6ba2cf8172",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-02-18"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Synapse dedicated SQL pool source",
+        "ADLS staging",
+        "Warehouse target"
+      ],
+      "proposed_chapters": [
+        37,
+        38,
+        41
+      ],
+      "operation_class": "destructive",
+      "integration": "referenced-in-chapter",
+      "disposition": "reviewed-design-source-not-run-all",
+      "integrations": [
+        {
+          "chapter": 38,
+          "file": "parts/07-migration-and-production-design/38-migrating-synapse-dedicated-sql-pools.md",
+          "use": "linked design and safety analysis; executable not redistributed",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false,
+          "cited_revision": "7b6a874839a3407b5b3227a7d212eb6ba2cf8172",
+          "changes": [
+            "discussion requires DropDestinationTable=False and TruncateDestination=False in an evaluated fork",
+            "explicitly warns these flags do not make the remaining writes a dry run"
+          ]
+        }
+      ],
+      "dependencies": [
+        ".NET 8",
+        "SqlClient 6.0.1",
+        "CETAS and external-object rights",
+        "staging storage",
+        "target DDL/load rights"
+      ],
+      "changes_and_caveats": [
+        "Inspected generatetableschema.ssql and Program.cs.",
+        "Configuration can drop/truncate destination tables.",
+        "Review Unicode and binary lengths, datetimeoffset conversion, legacy text types and composite constraints.",
+        "Use narrowly scoped credentials and staged reconciliation."
+      ]
+    },
+    {
+      "id": "R12",
+      "kind": "repository-file",
+      "title": "Query/capacity interval correlation",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "monitoring/query-capacity-correlation/query-executions.template.sql",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/monitoring/query-capacity-correlation/query-executions.template.sql",
+      "actual_files": [],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/c7e14e642d0881ac7b74bcd3e52c180cb5f7fb45/monitoring/query-capacity-correlation/query-executions.template.sql",
+      "revision": "c7e14e642d0881ac7b74bcd3e52c180cb5f7fb45",
+      "meaningful_revision": "c7e14e642d0881ac7b74bcd3e52c180cb5f7fb45",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-09-10"
+      },
+      "coherent_checkout": "c55158dafdc81c3a9b95b6f96a23196318368349",
+      "in_window": true,
+      "applies_to": [
+        "Query Insights and Capacity Metrics model"
+      ],
+      "proposed_chapters": [
+        29,
+        31,
+        32
+      ],
+      "operation_class": "read-only",
+      "integration": "retained-research",
+      "disposition": "qualified-attribution-model",
+      "dependencies": [
+        "Query Insights visibility",
+        "PBIP and Azure CLI for full package",
+        "Capacity Metrics semantic-model access"
+      ],
+      "changes_and_caveats": [
+        "error_severity/error_state are not in the inspected public history column list; reconcile before running.",
+        "Do not sum repeated CPU across expanded hourly rows.",
+        "Correlate item plus UTC overlap, not Operation ID equals statement ID.",
+        "Weighted query attribution is a model, not exact billing.",
+        "Coherent-checkout pin includes accompanying model fixes."
+      ]
+    },
+    {
+      "id": "R13",
+      "kind": "repository-file",
+      "title": "OneLake Warehouse-file copier",
+      "repository": "microsoft/fabric-toolbox",
+      "file": "tools/copy-warehouse/Program.cs",
+      "author_ref": "toolbox",
+      "license_ref": "toolbox-mit",
+      "canonical_url": "https://github.com/microsoft/fabric-toolbox/blob/main/tools/copy-warehouse/Program.cs",
+      "actual_files": [
+        "parts/06-operating-the-platform/36-development-and-automation.md"
+      ],
+      "pinned_url": "https://github.com/microsoft/fabric-toolbox/blob/833657b0cfbf42820508844442d7d7045359343c/tools/copy-warehouse/Program.cs",
+      "revision": "833657b0cfbf42820508844442d7d7045359343c",
+      "meaningful_revision": "833657b0cfbf42820508844442d7d7045359343c",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2025-01-28"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse OneLake files to Lakehouse destination"
+      ],
+      "proposed_chapters": [
+        35,
+        38,
+        41
+      ],
+      "operation_class": "mutating",
+      "integration": "referenced-in-chapter",
+      "disposition": "caution-link-only",
+      "integrations": [
+        {
+          "chapter": 36,
+          "file": "parts/06-operating-the-platform/36-development-and-automation.md",
+          "use": "copy-Warehouse tool cautioned against as a default repair action; no source code copied",
+          "citation_scope": "named tool in a collection-level discussion",
+          "cited_url": "https://github.com/microsoft/fabric-toolbox",
+          "cited_revision": null,
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "DefaultAzureCredential",
+        "source file read and destination file write access"
+      ],
+      "changes_and_caveats": [
+        "Not a transactional Warehouse backup/restore.",
+        "Skips existing destination files; use isolated destination and consistent snapshot/quiescence.",
+        "Validate Delta consistency, permissions and queryability; never imply native restore semantics."
+      ]
+    },
+    {
+      "id": "R14",
+      "kind": "repository-file",
+      "title": "Custom SQL pool inventory and optional enablement",
+      "repository": "MarkPryceMaherMSFT/fabric-sql-pools-config",
+      "file": "SQL Pools Configuration Inventory.ipynb",
+      "author_ref": "mark",
+      "license_ref": "pools-mit",
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/fabric-sql-pools-config/blob/main/SQL%20Pools%20Configuration%20Inventory.ipynb",
+      "actual_files": [
+        "parts/06-operating-the-platform/33-workload-management-and-sql-pools.md",
+        "parts/06-operating-the-platform/36-development-and-automation.md"
+      ],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/fabric-sql-pools-config/blob/de784c921be39e612a19d02337ecbd132bdef4a6/SQL%20Pools%20Configuration%20Inventory.ipynb",
+      "revision": "de784c921be39e612a19d02337ecbd132bdef4a6",
+      "meaningful_revision": "de784c921be39e612a19d02337ecbd132bdef4a6",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-09-18"
+      },
+      "edition_snapshot": {
+        "revision": "89d3d3568ac454d64ad8744d0b726503aff73204",
+        "snapshot_date": "2026-09-18",
+        "pinned_url": "https://github.com/MarkPryceMaherMSFT/fabric-sql-pools-config/blob/89d3d3568ac454d64ad8744d0b726503aff73204/SQL%20Pools%20Configuration%20Inventory.ipynb",
+        "content_identical_to_registered_pin": true,
+        "verified_on": "2026-10-08"
+      },
+      "in_window": true,
+      "applies_to": [
+        "workspace Warehouse custom pools",
+        "Lakehouse audit outputs"
+      ],
+      "proposed_chapters": [
+        32,
+        33,
+        36
+      ],
+      "operation_class": "mixed",
+      "integration": "referenced-in-chapter",
+      "disposition": "preserve-dry-run-and-allow-list",
+      "integrations": [
+        {
+          "chapter": 33,
+          "file": "parts/06-operating-the-platform/33-workload-management-and-sql-pools.md",
+          "use": "substantive notebook review and offline proposal exercise; notebook listing not copied",
+          "cited_revision": "89d3d3568ac454d64ad8744d0b726503aff73204",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        },
+        {
+          "chapter": 36,
+          "file": "parts/06-operating-the-platform/36-development-and-automation.md",
+          "use": "dry-run, evidence-capture and approval discipline discussed; no notebook code copied",
+          "cited_revision": "89d3d3568ac454d64ad8744d0b726503aff73204",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "workspace Admin",
+        "attached Lakehouse or output path",
+        "beta pools API"
+      ],
+      "changes_and_caveats": [
+        "DRY_RUN=True does not imply no inventory/audit writes.",
+        "Keep FORCE_UPDATE=False unless explicitly approved and backed up.",
+        "PATCH removes omitted pools; preserve the whole desired configuration.",
+        "Single pool at 15% is an example, not universal sizing guidance."
+      ]
+    },
+    {
+      "id": "R15",
+      "kind": "repository-file",
+      "title": "Lakehouse table-health collector",
+      "repository": "MarkPryceMaherMSFT/fabric-table-health-metrics",
+      "file": "Get-TableHealthMetrics.ps1",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/fabric-table-health-metrics/blob/main/Get-TableHealthMetrics.ps1",
+      "actual_files": [
+        "parts/05-statistics-and-performance/28-layout-caching-and-maintenance.md",
+        "scripts/28-table-health.sql"
+      ],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/fabric-table-health-metrics/blob/605889dd4dee7119299ee0192ee6bd386d6c1ab2/Get-TableHealthMetrics.ps1",
+      "revision": "605889dd4dee7119299ee0192ee6bd386d6c1ab2",
+      "meaningful_revision": "605889dd4dee7119299ee0192ee6bd386d6c1ab2",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-07-29"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Lakehouse tables via SQL analytics endpoint"
+      ],
+      "proposed_chapters": [
+        28,
+        29,
+        30
+      ],
+      "operation_class": "mixed",
+      "integration": "adapted-in-chapter",
+      "disposition": "repair-collector-use-native-diagnostic",
+      "integrations": [
+        {
+          "chapter": 28,
+          "file": "scripts/28-table-health.sql",
+          "chapter_file": "parts/05-statistics-and-performance/28-layout-caching-and-maintenance.md",
+          "use": "native diagnostic pattern adapted; external collector not copied",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only endpoint diagnostics",
+          "tenant_tested": false,
+          "changes": [
+            "four book-table allowlist",
+            "endpoint-only applicability",
+            "no external connection or CSV/parser dependency",
+            "explicit identity and error result sets"
+          ]
+        }
+      ],
+      "dependencies": [
+        "PowerShell",
+        "Go sqlcmd",
+        "VIEW DEFINITION on inspected tables",
+        "local CSV write access"
+      ],
+      "changes_and_caveats": [
+        "SQL call is read-only but collector writes CSV.",
+        "Not a generic Warehouse physical-table diagnostic despite repository description.",
+        "Quote names and validate result shape instead of brittle 36-column positions.",
+        "Advertised service-principal path lacks application-ID -U in actual invocation; repair before use."
+      ]
+    },
+    {
+      "id": "R16",
+      "kind": "repository-file",
+      "title": "Workspace Query Insights collector",
+      "repository": "MarkPryceMaherMSFT/fabric-warehouse-demo",
+      "file": "sp_collect_exec_requests_history.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/fabric-warehouse-demo/blob/main/sp_collect_exec_requests_history.sql",
+      "actual_files": [
+        "parts/06-operating-the-platform/29-monitoring.md",
+        "parts/06-operating-the-platform/36-development-and-automation.md"
+      ],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/fabric-warehouse-demo/blob/805b43d2d07ce951f47ad9c23c17f0a53f0e2091/sp_collect_exec_requests_history.sql",
+      "revision": "805b43d2d07ce951f47ad9c23c17f0a53f0e2091",
+      "meaningful_revision": "805b43d2d07ce951f47ad9c23c17f0a53f0e2091",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-08-21"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse persistence",
+        "SQL endpoint result-set mode"
+      ],
+      "proposed_chapters": [
+        29,
+        30,
+        42
+      ],
+      "operation_class": "destructive",
+      "integration": "referenced-in-chapter",
+      "disposition": "architecture-pattern-repair-required",
+      "integrations": [
+        {
+          "chapter": 29,
+          "file": "parts/06-operating-the-platform/29-monitoring.md",
+          "use": "collector architecture discussed; truncating collector not installed/copied",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        },
+        {
+          "chapter": 36,
+          "file": "parts/06-operating-the-platform/36-development-and-automation.md",
+          "use": "collector persistence/retention design discussed, not reproduced",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "history visibility across intended databases",
+        "Warehouse DDL/write rights",
+        "persistent-session client"
+      ],
+      "changes_and_caveats": [
+        "Warehouse output is truncated each run, not archival retention.",
+        "Use explicit schemas and deduplicated append/upsert for archives.",
+        "Avoid persistent SELECT * shape and inspect skipped/error messages."
+      ]
+    },
+    {
+      "id": "R17",
+      "kind": "repository-file",
+      "title": "Query-history analytical examples",
+      "repository": "MarkPryceMaherMSFT/fabric-warehouse-demo",
+      "file": "sample_queries_exec_requests_history.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/fabric-warehouse-demo/blob/main/sample_queries_exec_requests_history.sql",
+      "actual_files": [
+        "parts/05-statistics-and-performance/27-query-plans-and-tuning.md",
+        "parts/06-operating-the-platform/29-monitoring.md",
+        "scripts/29-history-analysis.sql"
+      ],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/fabric-warehouse-demo/blob/805b43d2d07ce951f47ad9c23c17f0a53f0e2091/sample_queries_exec_requests_history.sql",
+      "revision": "805b43d2d07ce951f47ad9c23c17f0a53f0e2091",
+      "meaningful_revision": "805b43d2d07ce951f47ad9c23c17f0a53f0e2091",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-08-21"
+      },
+      "in_window": true,
+      "applies_to": [
+        "collected Query Insights history"
+      ],
+      "proposed_chapters": [
+        27,
+        29,
+        31
+      ],
+      "operation_class": "read-only",
+      "integration": "adapted-in-chapter",
+      "disposition": "selected-diagnostic",
+      "integrations": [
+        {
+          "chapter": 29,
+          "file": "scripts/29-history-analysis.sql",
+          "chapter_file": "parts/06-operating-the-platform/29-monitoring.md",
+          "use": "adapted analytic pattern",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only per-item Query Insights",
+          "tenant_tested": false,
+          "changes": [
+            "no collector installation or output clearing",
+            "finite window and bounded groups",
+            "status/client/cache-separated groups",
+            "wide elapsed accumulation and decimal average",
+            "no query-text export"
+          ]
+        }
+      ],
+      "dependencies": [
+        "history collector outputs or reconciled source view"
+      ],
+      "changes_and_caveats": [
+        "result_cache_hit=2 is distinct from memory/disk data caching.",
+        "Cast arithmetic correctly and do not rename allocated CPU as billed CU.",
+        "Protect persisted commands and user identities."
+      ]
+    },
+    {
+      "id": "R18",
+      "kind": "repository-file",
+      "title": "Historical snapshot wrapper",
+      "repository": "MarkPryceMaherMSFT/FindChanges",
+      "file": "findchanges_safe.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "integration_exclusions": [
+        {
+          "chapters": [
+            33,
+            34,
+            35,
+            36,
+            37,
+            38
+          ],
+          "decision": "not-adopted",
+          "confirmed_on": "2026-10-08",
+          "note": "Migration reconciliation does not adopt FindChanges; the confirmed Chapter 35 adaptation is recorded separately."
+        }
+      ],
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/FindChanges/blob/master/findchanges_safe.sql",
+      "actual_files": [
+        "parts/06-operating-the-platform/35-recovery-and-retention.md",
+        "scripts/35-facts-at-time.sql"
+      ],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/FindChanges/blob/dea63d69c7ec784c2688273ee59f5cc01c184ac7/findchanges_safe.sql",
+      "revision": "dea63d69c7ec784c2688273ee59f5cc01c184ac7",
+      "meaningful_revision": "dea63d69c7ec784c2688273ee59f5cc01c184ac7",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-06-08"
+      },
+      "edition_snapshot": {
+        "revision": "cc7cb7f2f232e87f7709879bfc2ac5a97a16734e",
+        "snapshot_date": "2026-06-08",
+        "pinned_url": "https://github.com/MarkPryceMaherMSFT/FindChanges/blob/cc7cb7f2f232e87f7709879bfc2ac5a97a16734e/findchanges_safe.sql",
+        "content_identical_to_registered_pin": true,
+        "verified_on": "2026-10-08"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse time travel",
+        "eligible new-sync endpoint subject to current preview support"
+      ],
+      "proposed_chapters": [
+        35,
+        41
+      ],
+      "operation_class": "mixed",
+      "integration": "adapted-in-chapter",
+      "disposition": "snapshot-pattern-not-change-feed",
+      "integrations": [
+        {
+          "chapter": 35,
+          "file": "scripts/35-facts-at-time.sql",
+          "chapter_file": "parts/06-operating-the-platform/35-recovery-and-retention.md",
+          "use": "explicitly labeled snapshot-pattern adaptation",
+          "cited_revision": "cc7cb7f2f232e87f7709879bfc2ac5a97a16734e",
+          "observed_on": "2026-10-08",
+          "adapted_effect": "read-only historical query; no procedure installation",
+          "tenant_tested": false,
+          "changes": [
+            "fixed book.FactSales and explicit projection",
+            "reject NULL/future/pre-creation/out-of-retention timestamps",
+            "no silent timestamp clamping",
+            "no persistent procedure or staging table",
+            "snapshot, not CDC"
+          ]
+        }
+      ],
+      "dependencies": [
+        "procedure DDL for installation",
+        "SELECT and valid retained history for execution"
+      ],
+      "changes_and_caveats": [
+        "Returns a historical snapshot, not changes or CDC.",
+        "Reject NULL timestamps and reveal effective clamped timestamp.",
+        "Clamping does not establish retention or schema compatibility.",
+        "Associated demo drops dbo.Orders and must not be run unchanged."
+      ]
+    },
+    {
+      "id": "R19",
+      "kind": "repository-file",
+      "title": "Original snapshot difference procedure",
+      "repository": "MarkPryceMaherMSFT/FindChanges",
+      "file": "findchanges.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "integration_exclusions": [
+        {
+          "chapters": [
+            33,
+            34,
+            35,
+            36,
+            37,
+            38
+          ],
+          "decision": "not-adopted",
+          "confirmed_on": "2026-10-08",
+          "note": "Migration reconciliation does not adopt this procedure or its duplicate-losing EXCEPT algorithm."
+        }
+      ],
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/FindChanges/blob/master/findchanges.sql",
+      "actual_files": [
+        "parts/06-operating-the-platform/35-recovery-and-retention.md"
+      ],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/FindChanges/blob/5146c3a28f9b88e8322feb9e4e4dc022cfbbdb88/findchanges.sql",
+      "revision": "5146c3a28f9b88e8322feb9e4e4dc022cfbbdb88",
+      "meaningful_revision": "5146c3a28f9b88e8322feb9e4e4dc022cfbbdb88",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-06-06"
+      },
+      "edition_snapshot": {
+        "revision": "cc7cb7f2f232e87f7709879bfc2ac5a97a16734e",
+        "snapshot_date": "2026-06-08",
+        "pinned_url": "https://github.com/MarkPryceMaherMSFT/FindChanges/blob/cc7cb7f2f232e87f7709879bfc2ac5a97a16734e/findchanges.sql",
+        "content_identical_to_registered_pin": true,
+        "verified_on": "2026-10-08",
+        "note": "Repository snapshot does not replace the meaningful 2026-06-06 file date."
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse, not unchanged SQL endpoint use"
+      ],
+      "proposed_chapters": [
+        35,
+        41
+      ],
+      "operation_class": "destructive",
+      "integration": "referenced-in-chapter",
+      "disposition": "algorithm-caution-link-only",
+      "integrations": [
+        {
+          "chapter": 35,
+          "file": "parts/06-operating-the-platform/35-recovery-and-retention.md",
+          "use": "EXCEPT duplicate-loss and not-CDC critique within pinned repository discussion; procedure not copied",
+          "cited_revision": "cc7cb7f2f232e87f7709879bfc2ac5a97a16734e",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false
+        }
+      ],
+      "dependencies": [
+        "permanent table DDL/write rights",
+        "time-travel SELECT"
+      ],
+      "changes_and_caveats": [
+        "EXCEPT loses duplicate multiplicity.",
+        "Concatenated inputs, fixed staging names and drops are unsafe for concurrent/general use.",
+        "Not CDC; use explicit key and multiset reconciliation semantics."
+      ]
+    },
+    {
+      "id": "R20",
+      "kind": "repository-file",
+      "title": "Predicate-aligned clustered fact DDL",
+      "repository": "MarkPryceMaherMSFT/fabric-warehouse-lab",
+      "file": "demowarehouse.Warehouse/dbo/Tables/lineitem_clustered.sql",
+      "author_ref": "mark",
+      "license_ref": "lab-apache",
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/fabric-warehouse-lab/blob/main/demowarehouse.Warehouse/dbo/Tables/lineitem_clustered.sql",
+      "actual_files": [],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/fabric-warehouse-lab/blob/a62a8efb114b2955b7841863a7ea914fa4ea9dc2/demowarehouse.Warehouse/dbo/Tables/lineitem_clustered.sql",
+      "revision": "a62a8efb114b2955b7841863a7ea914fa4ea9dc2",
+      "meaningful_revision": "a62a8efb114b2955b7841863a7ea914fa4ea9dc2",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-08-12"
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse physical tables"
+      ],
+      "proposed_chapters": [
+        8,
+        27,
+        28
+      ],
+      "operation_class": "mutating",
+      "integration": "retained-research",
+      "disposition": "selected-ddl-pattern",
+      "collection_context_files": [
+        "parts/06-operating-the-platform/36-development-and-automation.md"
+      ],
+      "final_use_note": "Parent repository layout is discussed in Chapter 36; this clustered-table file is not individually cited or used in a worked example.",
+      "dependencies": [
+        "Warehouse CREATE TABLE/schema authority"
+      ],
+      "changes_and_caveats": [
+        "CLUSTER BY on ship date is an example, not a universal layout.",
+        "Not SQL endpoint table-creation DDL.",
+        "TPC-H-shaped examples are not certified benchmark results; adapt to original book lab names."
+      ]
+    },
+    {
+      "id": "R21",
+      "kind": "repository-file",
+      "title": "Integrated Warehouse notebook",
+      "repository": "MarkPryceMaherMSFT/fabric-warehouse-lab",
+      "file": "d76e3b70-594c-8ea0-4eb4-dd0621fe43be.Notebook/notebook-content.sql",
+      "author_ref": "mark",
+      "license_ref": "lab-apache",
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/fabric-warehouse-lab/blob/main/d76e3b70-594c-8ea0-4eb4-dd0621fe43be.Notebook/notebook-content.sql",
+      "actual_files": [],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/fabric-warehouse-lab/blob/0ae8ed700293d295d8b5b0cc3bc3867fe9e19ce2/d76e3b70-594c-8ea0-4eb4-dd0621fe43be.Notebook/notebook-content.sql",
+      "revision": "0ae8ed700293d295d8b5b0cc3bc3867fe9e19ce2",
+      "meaningful_revision": "0ae8ed700293d295d8b5b0cc3bc3867fe9e19ce2",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-08-21",
+        "note": "VARCHAR typo and load-path corrections, not only workspace metadata changes."
+      },
+      "in_window": true,
+      "applies_to": [
+        "Warehouse",
+        "Fabric notebook orchestration"
+      ],
+      "proposed_chapters": [
+        9,
+        10,
+        27,
+        28,
+        42
+      ],
+      "operation_class": "destructive",
+      "integration": "retained-research",
+      "disposition": "selected-cells-only-no-run-all",
+      "collection_context_files": [
+        "parts/06-operating-the-platform/36-development-and-automation.md"
+      ],
+      "final_use_note": "Parent repository layout is discussed in Chapter 36; no selected notebook cell is reproduced or used as a worked example.",
+      "dependencies": [
+        "Warehouse DDL/DML",
+        "staging data access",
+        "notebook context"
+      ],
+      "changes_and_caveats": [
+        "Setup drops named tables; remap all item IDs, paths and databases.",
+        "Pools calls omit beta; purported disable example uses GET.",
+        "A 4GB comment accompanies a 400-GiB expression.",
+        "Reconcile time-travel claims against current support; extract clean original-book exercises."
+      ]
+    },
+    {
+      "id": "R22",
+      "kind": "repository-file",
+      "title": "Author toolkit Synapse replication orchestrator",
+      "repository": "MarkPryceMaherMSFT/fabric-mirroring-synapse",
+      "file": "sql/06_Orchestrator_Procedure.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/fabric-mirroring-synapse/blob/master/sql/06_Orchestrator_Procedure.sql",
+      "actual_files": [
+        "parts/07-migration-and-production-design/38-migrating-synapse-dedicated-sql-pools.md"
+      ],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/fabric-mirroring-synapse/blob/6cb823d17477943eac884c4deca6eff1d722372a/sql/06_Orchestrator_Procedure.sql",
+      "revision": "6cb823d17477943eac884c4deca6eff1d722372a",
+      "meaningful_revision": "6cb823d17477943eac884c4deca6eff1d722372a",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-08-22"
+      },
+      "coherent_checkout": "f9ce29f0e473a49e40dfc85c9eb2c349513b2386",
+      "in_window": true,
+      "applies_to": [
+        "Synapse dedicated SQL pool source-side toolkit"
+      ],
+      "proposed_chapters": [
+        37,
+        38,
+        41
+      ],
+      "operation_class": "mutating",
+      "integration": "referenced-in-chapter",
+      "disposition": "architecture-and-correctness-review",
+      "integrations": [
+        {
+          "chapter": 38,
+          "file": "parts/07-migration-and-production-design/38-migrating-synapse-dedicated-sql-pools.md",
+          "use": "coherent repository architecture discussed; registered procedure not reproduced",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false,
+          "cited_revision": "f9ce29f0e473a49e40dfc85c9eb2c349513b2386"
+        }
+      ],
+      "dependencies": [
+        "complete numbered repository migrations",
+        "sqlcmd",
+        "Synapse DDL/extract authority",
+        "staging storage credentials"
+      ],
+      "changes_and_caveats": [
+        "Not native managed Fabric mirroring.",
+        "@ControlID is required; pass NULL for all due tables.",
+        "Locked/skipped tables can count as succeeded; inspect detailed logs.",
+        "Use coherent September 8 checkout, which removes zero-row staging files, not this file alone.",
+        "Review certificate validation and credential handling."
+      ]
+    },
+    {
+      "id": "R23",
+      "kind": "repository-file",
+      "title": "Append-only watermark replication",
+      "repository": "MarkPryceMaherMSFT/fabric-mirroring-synapse",
+      "file": "sql/14_ReplicateWatermark_Procedure.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://github.com/MarkPryceMaherMSFT/fabric-mirroring-synapse/blob/master/sql/14_ReplicateWatermark_Procedure.sql",
+      "actual_files": [
+        "parts/07-migration-and-production-design/38-migrating-synapse-dedicated-sql-pools.md",
+        "parts/07-migration-and-production-design/41-reconciliation-cutover-and-rollback.md"
+      ],
+      "pinned_url": "https://github.com/MarkPryceMaherMSFT/fabric-mirroring-synapse/blob/4015808a22f17648b07c87653c76a33195c70bc0/sql/14_ReplicateWatermark_Procedure.sql",
+      "revision": "4015808a22f17648b07c87653c76a33195c70bc0",
+      "meaningful_revision": "4015808a22f17648b07c87653c76a33195c70bc0",
+      "dates": {
+        "created": null,
+        "metadata_updated": null,
+        "last_meaningful_change": "2026-09-05",
+        "note": "Makes __rowMarker__=4 the final extracted column."
+      },
+      "coherent_checkout": "f9ce29f0e473a49e40dfc85c9eb2c349513b2386",
+      "in_window": true,
+      "applies_to": [
+        "Synapse dedicated SQL pool source-side toolkit"
+      ],
+      "proposed_chapters": [
+        38,
+        41,
+        42
+      ],
+      "operation_class": "mutating",
+      "integration": "referenced-in-chapter",
+      "disposition": "correctness-sidebar-not-production-default",
+      "integrations": [
+        {
+          "chapter": 38,
+          "file": "parts/07-migration-and-production-design/38-migrating-synapse-dedicated-sql-pools.md",
+          "use": "watermark correctness discussion at coherent repository version",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false,
+          "cited_revision": "f9ce29f0e473a49e40dfc85c9eb2c349513b2386"
+        },
+        {
+          "chapter": 41,
+          "file": "parts/07-migration-and-production-design/41-reconciliation-cutover-and-rollback.md",
+          "use": "pinned procedure analyzed, not reproduced or endorsed for concurrent production capture",
+          "observed_on": "2026-10-08",
+          "tenant_tested": false,
+          "cited_revision": "f9ce29f0e473a49e40dfc85c9eb2c349513b2386"
+        }
+      ],
+      "dependencies": [
+        "coherent replication repository",
+        "CETAS/staging access",
+        "control-table writes"
+      ],
+      "changes_and_caveats": [
+        "Append-only mode does not capture updates/deletes.",
+        "Separate extraction and live MAX(watermark) can skip intervening inserts.",
+        "Capture a consistent upper bound and use it for both extraction and checkpoint; define tie/late-arrival semantics.",
+        "README marker 0 contradicts inspected code marker 4."
+      ]
+    },
+    {
+      "id": "H01",
+      "kind": "historical-gist",
+      "title": "Legacy lhdatamarts refresh",
+      "file": "Refresh Tables in SQL Endpoint.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/853cdc0d9d421482814b8195aba55434",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/853cdc0d9d421482814b8195aba55434/8572c269c3785dd0323a5a4851e5cf36a61bde6a",
+      "revision": "8572c269c3785dd0323a5a4851e5cf36a61bde6a",
+      "meaningful_revision": "8572c269c3785dd0323a5a4851e5cf36a61bde6a",
+      "dates": {
+        "created": "2024-12-13",
+        "metadata_updated": "2026-03-03",
+        "last_meaningful_change": "2025-01-13"
+      },
+      "in_window": true,
+      "applies_to": [
+        "historical endpoint refresh"
+      ],
+      "proposed_chapters": [
+        15
+      ],
+      "operation_class": "mutating",
+      "integration": "history-only",
+      "disposition": "superseded-link-only",
+      "dependencies": [
+        "SemPy",
+        "notebook context"
+      ],
+      "changes_and_caveats": [
+        "Undocumented historical lhdatamarts/MetadataRefreshExternalCommand workaround; prefer G08.",
+        "AS-IS disclaimer is not a complete license."
+      ]
+    },
+    {
+      "id": "H02",
+      "kind": "historical-gist",
+      "title": "Early preview refresh API",
+      "file": "sync-api.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/e16bb7799c4b067b8078cbac8b271f1d",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/e16bb7799c4b067b8078cbac8b271f1d/e5e4778f4212c2b71f93edf82a9f36d325d1b8a0",
+      "revision": "e5e4778f4212c2b71f93edf82a9f36d325d1b8a0",
+      "meaningful_revision": "e5e4778f4212c2b71f93edf82a9f36d325d1b8a0",
+      "dates": {
+        "created": "2025-05-29",
+        "metadata_updated": "2026-08-16",
+        "last_meaningful_change": "2025-05-30"
+      },
+      "in_window": true,
+      "applies_to": [
+        "historical endpoint refresh"
+      ],
+      "proposed_chapters": [
+        15
+      ],
+      "operation_class": "mutating",
+      "integration": "history-only",
+      "disposition": "superseded-link-only",
+      "dependencies": [
+        "SemPy",
+        "attached Lakehouse",
+        "refresh rights"
+      ],
+      "changes_and_caveats": [
+        "Uses preview=true and commented tableDefinitions payload; prefer current tables contract and G08."
+      ]
+    },
+    {
+      "id": "H03",
+      "kind": "historical-gist",
+      "title": "Early refresh response handling",
+      "file": "mdsync-rest-api.py",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/e55a12c4955e624aeb3b33b183c356e9",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/e55a12c4955e624aeb3b33b183c356e9/d4d9a150405ad701fbf3981119baf457936a8103",
+      "revision": "d4d9a150405ad701fbf3981119baf457936a8103",
+      "meaningful_revision": "d4d9a150405ad701fbf3981119baf457936a8103",
+      "dates": {
+        "created": "2025-06-04",
+        "metadata_updated": "2025-11-12",
+        "last_meaningful_change": "2025-06-09"
+      },
+      "in_window": true,
+      "applies_to": [
+        "historical endpoint refresh"
+      ],
+      "proposed_chapters": [
+        15
+      ],
+      "operation_class": "mutating",
+      "integration": "history-only",
+      "disposition": "superseded-link-only",
+      "dependencies": [
+        "SemPy",
+        "notebook context",
+        "refresh rights"
+      ],
+      "changes_and_caveats": [
+        "Preview route and bare-table response assumption require contract review; not preferred recipe."
+      ]
+    },
+    {
+      "id": "X01",
+      "kind": "excluded-gist",
+      "title": "Older Synapse Delta-reading proof of concept",
+      "file": "Delta Lake.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/15309b956cc6ebd528449ba0fdbb8832",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/15309b956cc6ebd528449ba0fdbb8832/b3747357e907f1bf8d3299dfbe2a7fbad7d90345",
+      "revision": "b3747357e907f1bf8d3299dfbe2a7fbad7d90345",
+      "meaningful_revision": "b3747357e907f1bf8d3299dfbe2a7fbad7d90345",
+      "dates": {
+        "created": "2022-07-05",
+        "metadata_updated": "2026-01-14",
+        "last_meaningful_change": "2022-07-16"
+      },
+      "in_window": false,
+      "applies_to": [
+        "historical Synapse POC"
+      ],
+      "proposed_chapters": [],
+      "operation_class": "mutating",
+      "integration": "excluded",
+      "disposition": "outside-script-window",
+      "dependencies": [
+        "historical Synapse SQL context"
+      ],
+      "changes_and_caveats": [
+        "Recent API touch does not qualify the script.",
+        "Distribution/heap temporary-table syntax is not a current Fabric implementation."
+      ]
+    },
+    {
+      "id": "X02",
+      "kind": "excluded-gist",
+      "title": "Older table profiler",
+      "file": "Profile_table.sql",
+      "author_ref": "mark",
+      "license_ref": "author-authorized-no-public-license",
+      "canonical_url": "https://gist.github.com/MarkPryceMaherMSFT/135771ae2cee0dc88b7f693da9c89d8a",
+      "actual_files": [],
+      "pinned_url": "https://gist.github.com/MarkPryceMaherMSFT/135771ae2cee0dc88b7f693da9c89d8a/57a4ef80f6618ea9e6d9e0ba1f0e2c97426abce8",
+      "revision": "57a4ef80f6618ea9e6d9e0ba1f0e2c97426abce8",
+      "meaningful_revision": "57a4ef80f6618ea9e6d9e0ba1f0e2c97426abce8",
+      "dates": {
+        "created": "2022-04-26",
+        "metadata_updated": "2024-08-12",
+        "last_meaningful_change": "2022-05-03"
+      },
+      "in_window": false,
+      "applies_to": [
+        "historical SQL profiler"
+      ],
+      "proposed_chapters": [],
+      "operation_class": "mutating",
+      "integration": "excluded",
+      "disposition": "outside-script-window",
+      "dependencies": [
+        "table scan and permanent results-table writes"
+      ],
+      "changes_and_caveats": [
+        "Recent API touch does not qualify the script.",
+        "Original warns of slow execution and writes permanent results."
+      ]
+    }
+  ],
+  "structural_revision": {
+    "date": "2026-10-09",
+    "chapter_number_map": {
+      "1": 1,
+      "2": 4,
+      "3": 5,
+      "4": 6,
+      "5": 8,
+      "6": 9,
+      "7": 10,
+      "8": 11,
+      "9": 12,
+      "10": 13,
+      "11": 15,
+      "12": 16,
+      "13": 17,
+      "14": 18,
+      "15": 19,
+      "16": 20,
+      "17": 21,
+      "18": 22,
+      "19": 23,
+      "20": 24,
+      "21": 25,
+      "22": 26,
+      "23": 27,
+      "24": 28,
+      "25": 29,
+      "26": 30,
+      "27": 31,
+      "28": 32,
+      "29": 33,
+      "30": 34,
+      "31": 35,
+      "32": 36
+    },
+    "note": "Chapter/script paths renumbered; source revisions, source-selection window and LabXX object IDs preserved."
+  },
+  "architecture_revision": {
+    "date": "2026-10-10",
+    "chapter_count": 42,
+    "previous_chapter_count": 36,
+    "chapter_number_map": {
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6,
+      "7": 7,
+      "8": 8,
+      "9": 9,
+      "10": 10,
+      "11": 11,
+      "12": 12,
+      "13": 13,
+      "14": 14,
+      "15": 15,
+      "16": 17,
+      "17": 22,
+      "18": 24,
+      "19": 25,
+      "20": 26,
+      "21": 27,
+      "22": 28,
+      "23": 29,
+      "24": 30,
+      "25": 31,
+      "26": 32,
+      "27": 33,
+      "28": 34,
+      "29": 35,
+      "30": 36,
+      "31": 37,
+      "32": 38,
+      "33": 39,
+      "34": 40,
+      "35": 41,
+      "36": 42
+    },
+    "new_architecture_chapters": [
+      16,
+      18,
+      19,
+      20,
+      21,
+      23
+    ],
+    "note": "Current chapter/script associations rebased. The 9 October final reconciliation and structural revision remain historical records; source pins, original script-selection window and lab object identifiers are unchanged. New literature is recorded in Appendix D, not counted as newly adopted code."
+  },
+  "endpoint_and_delta_revision": {
+    "reviewed_on": "2026-11-09",
+    "chapter_count": 42,
+    "part_count": 7,
+    "method": "Consolidated prior item/comparison chapters in endpoint overview14; added early Delta anatomy3; moved metadata sync15 and OneLake security16. Earlier dated reconciliation/architecture snapshots are retained.",
+    "chapter_mapping": {
+      "1": 1,
+      "2": 2,
+      "3": 14,
+      "4": 4,
+      "5": 5,
+      "6": 14,
+      "7": 6,
+      "8": 7,
+      "9": 8,
+      "10": 9,
+      "11": 10,
+      "12": 11,
+      "13": 12,
+      "14": 16,
+      "15": 13,
+      "16": 17,
+      "17": 18,
+      "18": 19,
+      "19": 20,
+      "20": 21,
+      "21": 22,
+      "22": 23,
+      "23": 24,
+      "24": 15,
+      "25": 25,
+      "26": 26,
+      "27": 27,
+      "28": 28,
+      "29": 29,
+      "30": 30,
+      "31": 31,
+      "32": 32,
+      "33": 33,
+      "34": 34,
+      "35": 35,
+      "36": 36,
+      "37": 37,
+      "38": 38,
+      "39": 39,
+      "40": 40,
+      "41": 41,
+      "42": 42
+    },
+    "lab_object_names_preserved": true,
+    "public_source_pins_unchanged": true,
+    "tenant_execution": false
+  }
+}

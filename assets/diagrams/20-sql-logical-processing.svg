@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">SQL's logical filter order</title>
+<desc id="desc">Conceptual logical SQL evaluation order: sources and joins, WHERE, grouping and HAVING, window computation, QUALIFY, and final ORDER BY. QUALIFY filters window results. Simplified reasoning model, not a complete clause grammar or physical plan. New analytical syntax is preview for Fabric Warehouse and SQL analytics endpoints at the evidence cutoff.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="20-sql-logical-processing-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">SQL's logical filter order</tspan>
+</text>
+<text id="20-sql-logical-processing-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Reason about which rows a clause sees. This is not the physical execution order chosen by QO.</tspan>
+</text>
+<polyline id="20-sql-logical-processing-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="20-sql-logical-processing-003" x="70" y="230" width="400" height="100" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="20-sql-logical-processing-004" x="270.0" y="260.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="270.0" y="260.86">1  FROM + JOIN</tspan>
+</text>
+<rect id="20-sql-logical-processing-005" x="70" y="360" width="400" height="115" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="20-sql-logical-processing-006" x="270.0" y="399.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="270.0" y="399.68">Build the input relation</tspan>
+</text>
+<rect id="20-sql-logical-processing-007" x="650" y="230" width="400" height="100" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="20-sql-logical-processing-008" x="850.0" y="260.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="260.86">2  WHERE</tspan>
+</text>
+<rect id="20-sql-logical-processing-009" x="650" y="360" width="400" height="115" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="20-sql-logical-processing-010" x="850.0" y="399.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="399.68">Filter individual input rows</tspan>
+</text>
+<rect id="20-sql-logical-processing-011" x="1230" y="230" width="400" height="100" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="20-sql-logical-processing-012" x="1430.0" y="260.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1430.0" y="260.86">3  GROUP BY + HAVING</tspan>
+</text>
+<rect id="20-sql-logical-processing-013" x="1230" y="360" width="400" height="115" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="20-sql-logical-processing-014" x="1430.0" y="399.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1430.0" y="399.68">Aggregate, then filter groups</tspan>
+</text>
+<rect id="20-sql-logical-processing-015" x="1230" y="625" width="400" height="100" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="20-sql-logical-processing-016" x="1430.0" y="655.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1430.0" y="655.86">4  WINDOW</tspan>
+</text>
+<rect id="20-sql-logical-processing-017" x="1230" y="755" width="400" height="115" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="20-sql-logical-processing-018" x="1430.0" y="794.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1430.0" y="794.68">Compute window values</tspan>
+</text>
+<rect id="20-sql-logical-processing-019" x="650" y="625" width="400" height="100" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="20-sql-logical-processing-020" x="850.0" y="655.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="655.86">5  QUALIFY</tspan>
+</text>
+<rect id="20-sql-logical-processing-021" x="650" y="755" width="400" height="115" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="20-sql-logical-processing-022" x="850.0" y="794.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="794.68">Filter using window results</tspan>
+</text>
+<rect id="20-sql-logical-processing-023" x="70" y="625" width="400" height="100" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="20-sql-logical-processing-024" x="270.0" y="655.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="270.0" y="655.86">6  ORDER BY</tspan>
+</text>
+<rect id="20-sql-logical-processing-025" x="70" y="755" width="400" height="115" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="20-sql-logical-processing-026" x="270.0" y="794.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="270.0" y="794.68">Sort the surviving result</tspan>
+</text>
+<polyline id="20-sql-logical-processing-027" points="480,410 640,410" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="640.00,410.00 624.00,417.00 624.00,403.00" fill="#0078D4"/>
+<polyline id="20-sql-logical-processing-028" points="1060,410 1220,410" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1220.00,410.00 1204.00,417.00 1204.00,403.00" fill="#008575"/>
+<polyline id="20-sql-logical-processing-029" points="1430,475 1430,615" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1430.00,615.00 1423.00,599.00 1437.00,599.00" fill="#008575"/>
+<polyline id="20-sql-logical-processing-030" points="1220,810 1060,810" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1060.00,810.00 1076.00,803.00 1076.00,817.00" fill="#008575"/>
+<polyline id="20-sql-logical-processing-031" points="640,810 480,810" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="480.00,810.00 496.00,803.00 496.00,817.00" fill="#107C10"/>
+<rect id="20-sql-logical-processing-032" x="70" y="930" width="1560" height="88" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="20-sql-logical-processing-033" x="850.0" y="955.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="955.52">Latest sale per customer: ROW_NUMBER by DateKey DESC, SalesKey DESC → QUALIFY rank = 1</tspan>
+</text>
+<rect id="20-sql-logical-processing-034" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="20-sql-logical-processing-035" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">WHERE cannot perform QUALIFY's job: the window value does not exist yet in this logical reasoning order.</tspan>
+</text>
+<rect id="20-sql-logical-processing-036" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="20-sql-logical-processing-037" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="20-sql-logical-processing-038" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="20-sql-logical-processing-039" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="20-sql-logical-processing-040" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="20-sql-logical-processing-041" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="20-sql-logical-processing-042" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="20-sql-logical-processing-043" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="20-sql-logical-processing-044" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 20 / 24</tspan>
+</text>
+</svg>

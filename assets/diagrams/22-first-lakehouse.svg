@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">First Lakehouse: write with Spark, read through SQL</title>
+<desc id="desc">Concrete high-level walkthrough: create a schema-enabled BookLakehouse, attach it to a Spark notebook, run 05-create-book-lakehouse.py, then verify discovery and read the canonical rows through the SQL analytics endpoint. The endpoint is a read surface for Lakehouse tables. Metadata readiness must be verified; no fixed wait guarantees freshness. Expected totals are offline seed checks.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="22-first-lakehouse-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">First Lakehouse: write with Spark, read through SQL</tspan>
+</text>
+<text id="22-first-lakehouse-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">BookLakehouse / book  |  Same canonical seed, independent tables and write ownership.</tspan>
+</text>
+<polyline id="22-first-lakehouse-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="22-first-lakehouse-003" x="65" y="235" width="350" height="180" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="22-first-lakehouse-004" x="240.0" y="267.58" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="240.0" y="267.58">1  Create Lakehouse</tspan>
+<tspan x="240.0" y="305.86">BookLakehouse</tspan>
+<tspan x="240.0" y="344.14">Schema-enabled</tspan>
+</text>
+<rect id="22-first-lakehouse-005" x="470" y="235" width="350" height="180" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="22-first-lakehouse-006" x="645.0" y="267.58" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="645.0" y="267.58">2  Attach notebook</tspan>
+<tspan x="645.0" y="305.86">Spark seed script</tspan>
+<tspan x="645.0" y="344.14">Writes Delta tables</tspan>
+</text>
+<rect id="22-first-lakehouse-007" x="875" y="235" width="350" height="180" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="22-first-lakehouse-008" x="1050.0" y="269.56" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1050.0" y="269.56">3  Verify SQL metadata</tspan>
+<tspan x="1050.0" y="306.52">Discover book tables</tspan>
+<tspan x="1050.0" y="343.48">Check freshness</tspan>
+</text>
+<rect id="22-first-lakehouse-009" x="1280" y="235" width="350" height="180" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="22-first-lakehouse-010" x="1455.0" y="271.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1455.0" y="271.54">4  Read with SQL</tspan>
+<tspan x="1455.0" y="307.18">Use the Lakehouse</tspan>
+<tspan x="1455.0" y="342.82000000000005">SQL analytics endpoint</tspan>
+</text>
+<polyline id="22-first-lakehouse-011" points="425,325 460,325" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="460.00,325.00 444.00,332.00 444.00,318.00" fill="#008575"/>
+<polyline id="22-first-lakehouse-012" points="830,325 865,325" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="865.00,325.00 849.00,332.00 849.00,318.00" fill="#008575"/>
+<polyline id="22-first-lakehouse-013" points="1235,325 1270,325" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1270.00,325.00 1254.00,332.00 1254.00,318.00" fill="#008575"/>
+<text id="22-first-lakehouse-014" x="75" y="453" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="75" y="453.0">Script: 05-create-book-lakehouse.py</tspan>
+</text>
+<rect id="22-first-lakehouse-015" x="75" y="535" width="920" height="465" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="22-first-lakehouse-016" x="97" y="552" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="97" y="552.0">Canonical book model  |  January 1-3, 2026</tspan>
+</text>
+<rect id="22-first-lakehouse-017" x="110" y="625" width="265" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="22-first-lakehouse-018" x="242.5" y="639.56" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="242.5" y="639.56">DimCustomer</tspan>
+<tspan x="242.5" y="676.52">3 customers</tspan>
+<tspan x="242.5" y="713.4799999999999">GB / DE</tspan>
+</text>
+<rect id="22-first-lakehouse-019" x="405" y="625" width="265" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="22-first-lakehouse-020" x="537.5" y="639.56" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="537.5" y="639.56">DimProduct</tspan>
+<tspan x="537.5" y="676.52">4 products</tspan>
+<tspan x="537.5" y="713.4799999999999">4 categories</tspan>
+</text>
+<rect id="22-first-lakehouse-021" x="700" y="625" width="260" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="22-first-lakehouse-022" x="830.0" y="639.56" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="830.0" y="639.56">DimDate</tspan>
+<tspan x="830.0" y="676.52">3 dates</tspan>
+<tspan x="830.0" y="713.4799999999999">January 2026</tspan>
+</text>
+<rect id="22-first-lakehouse-023" x="275" y="835" width="520" height="120" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="22-first-lakehouse-024" x="535.0" y="855.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="535.0" y="855.4">book.FactSales</tspan>
+<tspan x="535.0" y="895.0">6 rows  |  SalesKey 1001-1006</tspan>
+</text>
+<polyline id="22-first-lakehouse-025" points="242,765 242,790 345,790 345,825" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="345.00,825.00 338.00,809.00 352.00,809.00" fill="#008575"/>
+<polyline id="22-first-lakehouse-026" points="537,765 537,790 537,790 537,825" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="537.00,825.00 530.00,809.00 544.00,809.00" fill="#008575"/>
+<polyline id="22-first-lakehouse-027" points="830,765 830,790 725,790 725,825" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="725.00,825.00 718.00,809.00 732.00,809.00" fill="#008575"/>
+<rect id="22-first-lakehouse-028" x="1100" y="535" width="525" height="465" rx="18" fill="none" stroke="#107C10" stroke-width="3"/>
+<text id="22-first-lakehouse-029" x="1122" y="552" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1122" y="552.0">SQL endpoint check</tspan>
+</text>
+<rect id="22-first-lakehouse-030" x="1140" y="625" width="445" height="160" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="22-first-lakehouse-031" x="1362.5" y="639.66" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="33" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1362.5" y="639.66">6 facts</tspan>
+<tspan x="1362.5" y="683.22">10 units</tspan>
+<tspan x="1362.5" y="726.78">365.00 revenue</tspan>
+</text>
+<rect id="22-first-lakehouse-032" x="1140" y="825" width="445" height="125" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="22-first-lakehouse-033" x="1362.5" y="850.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1362.5" y="850.54">Country reconciliation</tspan>
+<tspan x="1362.5" y="887.5">GB 185.00  |  DE 180.00</tspan>
+</text>
+<polyline id="22-first-lakehouse-034" points="1005,895 1090,895" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1090.00,895.00 1074.00,902.00 1074.00,888.00" fill="#107C10"/>
+<text id="22-first-lakehouse-035" x="1100" y="493" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1100" y="493.0">Read-only verification after discovery</tspan>
+</text>
+<rect id="22-first-lakehouse-036" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="22-first-lakehouse-037" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Spark seeds the Lakehouse. The SQL endpoint reads its tables; it is not a second writer or a Warehouse copy.</tspan>
+</text>
+<rect id="22-first-lakehouse-038" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="22-first-lakehouse-039" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="22-first-lakehouse-040" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="22-first-lakehouse-041" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="22-first-lakehouse-042" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="22-first-lakehouse-043" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="22-first-lakehouse-044" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="22-first-lakehouse-045" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="22-first-lakehouse-046" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 22 / 24</tspan>
+</text>
+</svg>

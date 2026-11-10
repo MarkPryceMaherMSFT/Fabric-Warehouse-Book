@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2400" viewBox="0 0 1600 2400" role="img" aria-labelledby="title description">
+  <title id="title">Microsoft Fabric Warehouse and SQL Analytics Endpoint</title>
+  <desc id="description">Book cover by Mark Pryce-Maher. From First Query to Engine Internals and Production Operations. Large white and mint typography on a navy-to-teal background, with a fine grid and three luminous stacked geometric planes. First edition manuscript draft, October 2026.</desc>
+  <defs>
+    <linearGradient id="background" x2="0.7" y2="1">
+      <stop stop-color="#0A1730"/>
+      <stop offset=".46" stop-color="#0D2149"/>
+      <stop offset="1" stop-color="#0A3A50"/>
+    </linearGradient>
+    <radialGradient id="blue-glow">
+      <stop stop-color="#60A5FA" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#60A5FA" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="teal-glow">
+      <stop stop-color="#34D399" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#34D399" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge">
+      <stop stop-color="#60A5FA"/>
+      <stop offset="1" stop-color="#34D399"/>
+    </linearGradient>
+    <linearGradient id="grid-fade" x2="0" y2="1">
+      <stop stop-color="white" stop-opacity=".8"/>
+      <stop offset=".8" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="grid-mask"><rect width="1600" height="2400" fill="url(#grid-fade)"/></mask>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="white" stroke-opacity=".045"/>
+    </pattern>
+    <linearGradient id="horizon">
+      <stop stop-color="#60A5FA" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#93C5FD" stop-opacity=".65"/>
+      <stop offset="1" stop-color="#34D399" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="2400" fill="url(#background)"/>
+  <ellipse cx="250" cy="1280" rx="920" ry="820" fill="url(#blue-glow)"/>
+  <ellipse cx="1240" cy="1600" rx="880" ry="900" fill="url(#teal-glow)"/>
+  <rect width="1600" height="2400" fill="url(#grid)" mask="url(#grid-mask)"/>
+  <g font-family="Segoe UI, Aptos, Calibri, Arial, sans-serif">
+    <text x="128" y="160" fill="#9FC6FF" font-size="28" font-weight="600" letter-spacing="6">MICROSOFT FABRIC</text>
+    <g fill="white" font-size="148" font-weight="700" letter-spacing="-2">
+      <text x="122" y="390">Fabric</text>
+      <text x="122" y="555">Warehouse</text>
+    </g>
+    <text x="128" y="653" fill="#8FD9C4" font-size="57">and SQL Analytics Endpoint</text>
+    <rect x="128" y="712" width="160" height="6" rx="3" fill="url(#edge)"/>
+    <g fill="#D9E7F7" font-size="43">
+      <text x="128" y="807">From First Query to Engine Internals</text>
+      <text x="128" y="868">and Production Operations</text>
+    </g>
+  </g>
+  <g stroke="url(#edge)" stroke-width="3" stroke-linejoin="round">
+    <path d="M440 1520 800 1320 1160 1520 800 1720Z" fill="url(#edge)" fill-opacity=".07" opacity=".55"/>
+    <path d="M440 1395 800 1195 1160 1395 800 1595Z" fill="url(#edge)" fill-opacity=".12" opacity=".8"/>
+    <path d="M440 1270 800 1070 1160 1270 800 1470Z" fill="url(#edge)" fill-opacity=".2"/>
+    <path d="M440 1270V1520 M800 1470V1720 M1160 1270V1520" fill="none" stroke-dasharray="5 11" opacity=".4"/>
+    <path d="M620 1170 980 1370 M530 1220 890 1420 M710 1120 1070 1320 M620 1370 980 1170 M530 1320 890 1120 M710 1420 1070 1220" fill="none" opacity=".32" stroke-width="2"/>
+  </g>
+  <ellipse cx="800" cy="1810" rx="600" ry="85" fill="url(#teal-glow)"/>
+  <path d="M230 1810H1370" stroke="url(#horizon)" stroke-width="2"/>
+  <g font-family="Segoe UI, Aptos, Calibri, Arial, sans-serif">
+    <text x="128" y="2165" fill="white" font-size="50" font-weight="600">Mark Pryce-Maher</text>
+    <text x="130" y="2250" fill="#9FC6FF" font-size="24" letter-spacing="3">FIRST EDITION  /  MANUSCRIPT DRAFT</text>
+    <text x="130" y="2294" fill="#8FD9C4" font-size="24">October 2026</text>
+  </g>
+</svg>

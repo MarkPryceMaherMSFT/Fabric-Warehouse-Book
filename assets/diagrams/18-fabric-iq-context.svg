@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Business context does not replace the query engine</title>
+<desc id="desc">Conceptual Fabric IQ map. Preview ontology binds business entities to sources; it is not a new storage or query engine. Current IQ MCP supports read-only semantic-model and report discovery plus DAX; Warehouse-specific IQ integration is future. Optional graph materialization is not a universal execution path. Current IQ MCP does not establish ontology or data-agent support; source execution remains source-specific.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="18-fabric-iq-context-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Business context does not replace the query engine</tspan>
+</text>
+<text id="18-fabric-iq-context-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Ontology bindings, current IQ MCP access and future Warehouse integration are distinct contracts.</tspan>
+</text>
+<polyline id="18-fabric-iq-context-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="18-fabric-iq-context-003" x="70" y="220" width="745" height="795" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="18-fabric-iq-context-004" x="92" y="237" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="237.0">Ontology  |  preview business context</tspan>
+</text>
+<rect id="18-fabric-iq-context-005" x="110" y="325" width="665" height="145" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="18-fabric-iq-context-006" x="442.5" y="338.1" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="442.5" y="338.1">Customer → Sale → Product</tspan>
+<tspan x="442.5" y="377.70000000000005">Entities, properties, relationships</tspan>
+<tspan x="442.5" y="417.3">Definitions + bindings</tspan>
+</text>
+<rect id="18-fabric-iq-context-007" x="110" y="610" width="300" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="18-fabric-iq-context-008" x="260.0" y="627.06" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="260.0" y="627.06">Warehouse source</tspan>
+<tspan x="260.0" y="664.02">Supported binding</tspan>
+<tspan x="260.0" y="700.9799999999999">SQL execution</tspan>
+</text>
+<rect id="18-fabric-iq-context-009" x="475" y="610" width="300" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="18-fabric-iq-context-010" x="625.0" y="627.06" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="625.0" y="627.06">Other bound source</tspan>
+<tspan x="625.0" y="664.02">Source-specific</tspan>
+<tspan x="625.0" y="700.9799999999999">execution</tspan>
+</text>
+<polyline id="18-fabric-iq-context-011" points="265,470 265,600" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="265.00,600.00 258.00,584.00 272.00,584.00" fill="#008575"/>
+<polyline id="18-fabric-iq-context-012" points="625,470 625,600" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="625.00,600.00 618.00,584.00 632.00,584.00" fill="#008575"/>
+<text id="18-fabric-iq-context-013" x="305" y="518" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="305" y="518.0">bindings</tspan>
+</text>
+<rect id="18-fabric-iq-context-014" x="110" y="855" width="665" height="105" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="18-fabric-iq-context-015" x="442.5" y="887.7" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="442.5" y="887.7">Not a query engine or a new data lake</tspan>
+</text>
+<rect id="18-fabric-iq-context-016" x="905" y="220" width="725" height="485" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="18-fabric-iq-context-017" x="927" y="237" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="927" y="237.0">IQ MCP  |  current documented scope</tspan>
+</text>
+<rect id="18-fabric-iq-context-018" x="945" y="325" width="645" height="120" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="18-fabric-iq-context-019" x="1267.5" y="345.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1267.5" y="345.4">Authorized client</tspan>
+<tspan x="1267.5" y="385.0">Delegated user identity</tspan>
+</text>
+<rect id="18-fabric-iq-context-020" x="945" y="525" width="645" height="120" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="18-fabric-iq-context-021" x="1267.5" y="546.72" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1267.5" y="546.72">Power BI semantic models + reports</tspan>
+<tspan x="1267.5" y="585.0">Read-only discovery and DAX</tspan>
+</text>
+<polyline id="18-fabric-iq-context-022" points="1267,445 1267,515" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1267.00,515.00 1260.00,499.00 1274.00,499.00" fill="#0078D4"/>
+<rect id="18-fabric-iq-context-023" x="905" y="780" width="725" height="235" rx="18" fill="none" stroke="#008575" stroke-width="3" stroke-dasharray="13 9"/>
+<text id="18-fabric-iq-context-024" x="927" y="797" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="927" y="797.0">Warehouse-specific IQ integration</tspan>
+</text>
+<rect id="18-fabric-iq-context-025" x="945" y="860" width="645" height="110" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3" stroke-dasharray="13 9"/>
+<text id="18-fabric-iq-context-026" x="1267.5" y="879.36" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1267.5" y="879.36">Announced - coming soon</tspan>
+<tspan x="1267.5" y="915.0">Not a shipped MCP-to-Warehouse contract</tspan>
+</text>
+<rect id="18-fabric-iq-context-027" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="18-fabric-iq-context-028" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Business meaning can guide a request; permissions, execution and freshness still belong to the actual data route.</tspan>
+</text>
+<rect id="18-fabric-iq-context-029" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="18-fabric-iq-context-030" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="18-fabric-iq-context-031" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="18-fabric-iq-context-032" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="18-fabric-iq-context-033" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="18-fabric-iq-context-034" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="18-fabric-iq-context-035" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="18-fabric-iq-context-036" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="18-fabric-iq-context-037" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 18 / 24</tspan>
+</text>
+</svg>

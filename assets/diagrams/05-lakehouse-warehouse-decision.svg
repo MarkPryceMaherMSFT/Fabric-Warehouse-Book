@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Choose by the work and its owner</title>
+<desc id="desc">Conceptual decision tree: SQL-managed relational writes favor Warehouse; Spark and file-centered engineering favor Lakehouse. Mixed solutions keep ownership explicit. A design aid, not an exhaustive feature matrix or a claim that one path excludes the other.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="05-lakehouse-warehouse-decision-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Choose by the work and its owner</tspan>
+</text>
+<text id="05-lakehouse-warehouse-decision-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Both paths can serve analytics. Start with the supported write workflow, not a format slogan.</tspan>
+</text>
+<polyline id="05-lakehouse-warehouse-decision-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="05-lakehouse-warehouse-decision-003" x="500" y="220" width="700" height="100" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-004" x="850.0" y="249.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="249.54">What should own the transformation writes?</tspan>
+</text>
+<polyline id="05-lakehouse-warehouse-decision-005" points="715,320 715,370 435,370 435,420" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="435.00,420.00 428.00,404.00 442.00,404.00" fill="#0078D4"/>
+<polyline id="05-lakehouse-warehouse-decision-006" points="985,320 985,370 1265,370 1265,420" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1265.00,420.00 1258.00,404.00 1272.00,404.00" fill="#008575"/>
+<rect id="05-lakehouse-warehouse-decision-007" x="75" y="420" width="720" height="395" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-008" x="97" y="437" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="97" y="437.0">SQL-led relational workflow</tspan>
+</text>
+<rect id="05-lakehouse-warehouse-decision-009" x="905" y="420" width="720" height="395" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-010" x="927" y="437" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="927" y="437.0">Spark / file-led engineering workflow</tspan>
+</text>
+<rect id="05-lakehouse-warehouse-decision-011" x="115" y="510" width="640" height="110" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-012" x="435.0" y="524.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="435.0" y="524.08">Warehouse</tspan>
+<tspan x="435.0" y="565.0">T-SQL DML + transactions</tspan>
+</text>
+<rect id="05-lakehouse-warehouse-decision-013" x="945" y="510" width="640" height="110" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-014" x="1265.0" y="524.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1265.0" y="524.08">Lakehouse</tspan>
+<tspan x="1265.0" y="565.0">Spark + supported Delta writers</tspan>
+</text>
+<rect id="05-lakehouse-warehouse-decision-015" x="115" y="665" width="640" height="105" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-016" x="435.0" y="699.02" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="435.0" y="699.02">Example: controlled sales mart loads</tspan>
+</text>
+<rect id="05-lakehouse-warehouse-decision-017" x="945" y="665" width="640" height="105" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-018" x="1265.0" y="699.02" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1265.0" y="699.02">Example: notebook shaping raw files</tspan>
+</text>
+<polyline id="05-lakehouse-warehouse-decision-019" points="435,815 435,860 675,860 675,900" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="675.00,900.00 668.00,884.00 682.00,884.00" fill="#0078D4"/>
+<polyline id="05-lakehouse-warehouse-decision-020" points="1265,815 1265,860 1025,860 1025,900" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1025.00,900.00 1018.00,884.00 1032.00,884.00" fill="#008575"/>
+<rect id="05-lakehouse-warehouse-decision-021" x="300" y="900" width="1100" height="105" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-022" x="850.0" y="914.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="914.22">Both: SQL reads, BI consumers and governance</tspan>
+<tspan x="850.0" y="952.5">Mixed architecture: define the handoff and verify freshness.</tspan>
+</text>
+<rect id="05-lakehouse-warehouse-decision-023" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-024" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">The Lakehouse SQL endpoint does not turn a Spark-owned table into a Warehouse-write table.</tspan>
+</text>
+<rect id="05-lakehouse-warehouse-decision-025" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-026" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="05-lakehouse-warehouse-decision-027" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-028" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="05-lakehouse-warehouse-decision-029" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="05-lakehouse-warehouse-decision-030" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="05-lakehouse-warehouse-decision-031" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="05-lakehouse-warehouse-decision-032" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="05-lakehouse-warehouse-decision-033" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 05 / 24</tspan>
+</text>
+</svg>

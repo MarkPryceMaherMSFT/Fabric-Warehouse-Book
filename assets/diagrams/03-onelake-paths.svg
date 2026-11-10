@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">OneLake paths connect readers to data</title>
+<desc id="desc">Conceptual direct and shortcut read paths. An external shortcut references existing data rather than creating an independent authoritative copy. Reader, shortcut type and source determine supported features and permissions.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="03-onelake-paths-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">OneLake paths connect readers to data</tspan>
+</text>
+<text id="03-onelake-paths-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">A shortcut points to a source; compute and authorization still live on the reading route.</tspan>
+</text>
+<polyline id="03-onelake-paths-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="03-onelake-paths-003" x="70" y="220" width="720" height="525" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="03-onelake-paths-004" x="92" y="237" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="237.0">Storage and references</tspan>
+</text>
+<rect id="03-onelake-paths-005" x="110" y="330" width="300" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="03-onelake-paths-006" x="260.0" y="359.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="260.0" y="359.08">OneLake</tspan>
+<tspan x="260.0" y="400.0">Managed table</tspan>
+</text>
+<rect id="03-onelake-paths-007" x="110" y="545" width="300" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="03-onelake-paths-008" x="260.0" y="575.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="260.0" y="575.4">External source</tspan>
+<tspan x="260.0" y="615.0">Existing data</tspan>
+</text>
+<rect id="03-onelake-paths-009" x="475" y="545" width="265" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="03-onelake-paths-010" x="607.5" y="575.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="607.5" y="575.4">Shortcut</tspan>
+<tspan x="607.5" y="615.0">Reference</tspan>
+</text>
+<polyline id="03-onelake-paths-011" points="475,615 420,615" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="420.00,615.00 436.00,608.00 436.00,622.00" fill="#008575"/>
+<text id="03-onelake-paths-012" x="470" y="492" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="470" y="492.0">resolves to source</tspan>
+</text>
+<rect id="03-onelake-paths-013" x="955" y="220" width="675" height="525" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="03-onelake-paths-014" x="977" y="237" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="977" y="237.0">Compute reads through a supported route</tspan>
+</text>
+<rect id="03-onelake-paths-015" x="1000" y="330" width="580" height="140" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="03-onelake-paths-016" x="1290.0" y="360.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1290.0" y="360.4">SQL / Spark / other reader</tspan>
+<tspan x="1290.0" y="400.0">Compatibility + identity matter</tspan>
+</text>
+<rect id="03-onelake-paths-017" x="1000" y="545" width="580" height="140" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="03-onelake-paths-018" x="1290.0" y="575.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1290.0" y="575.4">Result</tspan>
+<tspan x="1290.0" y="615.0">Rows computed when requested</tspan>
+</text>
+<polyline id="03-onelake-paths-019" points="420,400 990,400" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="990.00,400.00 974.00,407.00 974.00,393.00" fill="#008575"/>
+<text id="03-onelake-paths-020" x="815" y="341" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="815" y="341.0">read data</tspan>
+</text>
+<polyline id="03-onelake-paths-021" points="740,614 860,614 860,451 990,451" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="990.00,451.00 974.00,458.00 974.00,444.00" fill="#008575"/>
+<polyline id="03-onelake-paths-022" points="1290,470 1290,535" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1290.00,535.00 1283.00,519.00 1297.00,519.00" fill="#0078D4"/>
+<rect id="03-onelake-paths-023" x="70" y="825" width="745" height="160" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="03-onelake-paths-024" x="442.5" y="845.6" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="442.5" y="845.6">Path is not permission</tspan>
+<tspan x="442.5" y="885.2">Source access and consumer access</tspan>
+<tspan x="442.5" y="924.8000000000001">must both be designed.</tspan>
+</text>
+<rect id="03-onelake-paths-025" x="875" y="825" width="755" height="160" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="03-onelake-paths-026" x="1252.5" y="847.58" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1252.5" y="847.58">Reference is not ownership</tspan>
+<tspan x="1252.5" y="885.86">A shortcut does not grant permission</tspan>
+<tspan x="1252.5" y="924.1400000000001">to rewrite Warehouse-managed files.</tspan>
+</text>
+<rect id="03-onelake-paths-027" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="03-onelake-paths-028" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Separate three questions: where are the bytes, who may read them, and which engine computes?</tspan>
+</text>
+<rect id="03-onelake-paths-029" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="03-onelake-paths-030" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="03-onelake-paths-031" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="03-onelake-paths-032" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="03-onelake-paths-033" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="03-onelake-paths-034" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="03-onelake-paths-035" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="03-onelake-paths-036" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="03-onelake-paths-037" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 03 / 24</tspan>
+</text>
+</svg>

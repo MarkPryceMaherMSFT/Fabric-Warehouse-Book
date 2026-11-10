@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">COPY INTO uses two authorization contexts</title>
+<desc id="desc">Conceptual COPY INTO authorization: the caller retains target INSERT responsibility, while the Fabric-managed workspace identity reads the authorized source. Workspace Identity COPY INTO is GA as of August 2026. Source-specific role, ACL, network and workspace-membership requirements still apply.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="08-workspace-identity-ingest-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">COPY INTO uses two authorization contexts</tspan>
+</text>
+<text id="08-workspace-identity-ingest-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Workspace Identity authorizes the source read; it does not replace the caller's target SQL rights.</tspan>
+</text>
+<polyline id="08-workspace-identity-ingest-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="08-workspace-identity-ingest-003" x="70" y="245" width="470" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-004" x="305.0" y="260.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="305.0" y="260.08">Caller</tspan>
+<tspan x="305.0" y="298.36">SQL context + target INSERT</tspan>
+<tspan x="305.0" y="336.64">Required workspace membership</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-005" x="695" y="245" width="590" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-006" x="990.0" y="277.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="990.0" y="277.9">COPY INTO target table</tspan>
+<tspan x="990.0" y="317.5">Credential: Workspace Identity</tspan>
+</text>
+<polyline id="08-workspace-identity-ingest-007" points="550,318 685,318" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="685.00,318.00 669.00,325.00 669.00,311.00" fill="#0078D4"/>
+<text id="08-workspace-identity-ingest-008" x="565" y="263" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="565" y="263.0">submits</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-009" x="70" y="490" width="690" height="400" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-010" x="92" y="507" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="507.0">Source authorization</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-011" x="110" y="580" width="610" height="115" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-012" x="415.0" y="599.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="415.0" y="599.22">Workspace Identity</tspan>
+<tspan x="415.0" y="637.5">Fabric-managed Entra service principal</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-013" x="110" y="755" width="610" height="95" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-014" x="415.0" y="782.04" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="415.0" y="782.04">Authorized source files</tspan>
+</text>
+<polyline id="08-workspace-identity-ingest-015" points="415,695 415,745" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="415.00,745.00 408.00,729.00 422.00,729.00" fill="#008575"/>
+<rect id="08-workspace-identity-ingest-016" x="930" y="490" width="700" height="400" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-017" x="952" y="507" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="952" y="507.0">Target authorization</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-018" x="970" y="580" width="620" height="115" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-019" x="1280.0" y="599.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1280.0" y="599.22">Warehouse table</tspan>
+<tspan x="1280.0" y="637.5">Caller must have INSERT permission</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-020" x="970" y="755" width="620" height="95" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-021" x="1280.0" y="783.36" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1280.0" y="783.36">Committed rows after successful load</tspan>
+</text>
+<polyline id="08-workspace-identity-ingest-022" points="1280,695 1280,745" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1280.00,745.00 1273.00,729.00 1287.00,729.00" fill="#107C10"/>
+<polyline id="08-workspace-identity-ingest-023" points="870,390 870,440 415,440 415,480" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="415.00,480.00 408.00,464.00 422.00,464.00" fill="#008575"/>
+<polyline id="08-workspace-identity-ingest-024" points="1110,390 1110,450 1280,450 1280,480" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1280.00,480.00 1273.00,464.00 1287.00,464.00" fill="#0078D4"/>
+<polyline id="08-workspace-identity-ingest-025" points="760,805 920,805" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="920.00,805.00 904.00,812.00 904.00,798.00" fill="#008575"/>
+<text id="08-workspace-identity-ingest-026" x="779" y="746" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="779" y="746.0">file data</tspan>
+</text>
+<text id="08-workspace-identity-ingest-027" x="70" y="952" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="70" y="952.0">One identity reads the source. A different authorization context permits the target write.</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-028" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-029" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Grant source access to the workspace identity and target rights to the caller; troubleshoot them separately.</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-030" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-031" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-032" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-033" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="08-workspace-identity-ingest-034" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="08-workspace-identity-ingest-035" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="08-workspace-identity-ingest-036" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="08-workspace-identity-ingest-037" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="08-workspace-identity-ingest-038" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 08 / 24</tspan>
+</text>
+</svg>

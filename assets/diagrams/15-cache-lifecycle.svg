@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Cache warmth changes work, not query semantics</title>
+<desc id="desc">Conceptual cache lifecycle: a read may fetch data from OneLake or reuse managed disk and memory caches. Announced cooldown controls are not shown as an existing UI. Cache cooldown public preview is coming soon. Exact timers, defaults, scope, affected layers and billing are unpublished. Result-set caching is a separate feature.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="15-cache-lifecycle-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Cache warmth changes work, not query semantics</tspan>
+</text>
+<text id="15-cache-lifecycle-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Managed data caching exists today. Configurable cooldown is a forthcoming capability.</tspan>
+</text>
+<polyline id="15-cache-lifecycle-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="15-cache-lifecycle-003" x="70" y="220" width="1560" height="420" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="15-cache-lifecycle-004" x="92" y="237" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="237.0">Current managed data caching</tspan>
+</text>
+<rect id="15-cache-lifecycle-005" x="110" y="330" width="365" height="160" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="15-cache-lifecycle-006" x="292.5" y="369.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="292.5" y="369.08">Read request</tspan>
+<tspan x="292.5" y="410.0">Need table data</tspan>
+</text>
+<rect id="15-cache-lifecycle-007" x="670" y="330" width="390" height="160" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="15-cache-lifecycle-008" x="865.0" y="369.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="865.0" y="369.08">Warm data cache</tspan>
+<tspan x="865.0" y="410.0">Memory / local disk</tspan>
+</text>
+<rect id="15-cache-lifecycle-009" x="1220" y="330" width="370" height="160" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="15-cache-lifecycle-010" x="1405.0" y="369.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1405.0" y="369.08">OneLake</tspan>
+<tspan x="1405.0" y="410.0">Remote table data</tspan>
+</text>
+<polyline id="15-cache-lifecycle-011" points="485,365 660,365" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="660.00,365.00 644.00,372.00 644.00,358.00" fill="#0078D4"/>
+<text id="15-cache-lifecycle-012" x="485" y="305" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="485" y="305.0">cache lookup</tspan>
+</text>
+<polyline id="15-cache-lifecycle-013" points="1070,410 1210,410" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1210.00,410.00 1194.00,417.00 1194.00,403.00" fill="#008575"/>
+<text id="15-cache-lifecycle-014" x="1090" y="352" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1090" y="352.0">on miss</tspan>
+</text>
+<polyline id="15-cache-lifecycle-015" points="1405,500 1405,560 865,560 865,500" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="865.00,500.00 872.00,516.00 858.00,516.00" fill="#008575"/>
+<text id="15-cache-lifecycle-016" x="1100" y="569" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1100" y="569.0">fetched data can warm caches</tspan>
+</text>
+<rect id="15-cache-lifecycle-017" x="70" y="725" width="970" height="280" rx="18" fill="none" stroke="#008575" stroke-width="3" stroke-dasharray="13 9"/>
+<text id="15-cache-lifecycle-018" x="92" y="742" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="742.0">Cooldown controls  |  Announced - coming soon</tspan>
+</text>
+<rect id="15-cache-lifecycle-019" x="110" y="820" width="890" height="115" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3" stroke-dasharray="13 9"/>
+<text id="15-cache-lifecycle-020" x="555.0" y="840.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="555.0" y="840.54">Intent: balance warm performance and cache lifecycle cost</tspan>
+<tspan x="555.0" y="877.5">No documented timer, ALTER setting or configuration UI here</tspan>
+</text>
+<rect id="15-cache-lifecycle-021" x="1120" y="760" width="510" height="205" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="15-cache-lifecycle-022" x="1375.0" y="785.94" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1375.0" y="785.94">Separate feature</tspan>
+<tspan x="1375.0" y="824.22">Result-set cache reuses</tspan>
+<tspan x="1375.0" y="862.5">an eligible prior answer;</tspan>
+<tspan x="1375.0" y="900.7800000000001">a data cache reuses data.</tspan>
+</text>
+<rect id="15-cache-lifecycle-023" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="15-cache-lifecycle-024" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">A faster second run is evidence to investigate, not proof of a changed plan or complete answer reuse.</tspan>
+</text>
+<rect id="15-cache-lifecycle-025" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="15-cache-lifecycle-026" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="15-cache-lifecycle-027" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="15-cache-lifecycle-028" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="15-cache-lifecycle-029" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="15-cache-lifecycle-030" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="15-cache-lifecycle-031" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="15-cache-lifecycle-032" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="15-cache-lifecycle-033" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 15 / 24</tspan>
+</text>
+</svg>

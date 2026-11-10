@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Commit and publication are different boundaries</title>
+<desc id="desc">Conceptual visibility paths separating Warehouse transaction commit and asynchronous Delta publication from Lakehouse SQL endpoint metadata synchronization. Not a timing diagram or latency SLA. External readers must verify their required data condition.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="10-storage-publication-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Commit and publication are different boundaries</tspan>
+</text>
+<text id="10-storage-publication-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Warehouse publishes outward to Delta readers; Lakehouse metadata sync exposes changes inward to SQL.</tspan>
+</text>
+<polyline id="10-storage-publication-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="10-storage-publication-003" x="70" y="225" width="1560" height="400" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="10-storage-publication-004" x="92" y="242" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="242.0">Warehouse write and external read path</tspan>
+</text>
+<rect id="10-storage-publication-005" x="110" y="330" width="300" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="10-storage-publication-006" x="260.0" y="364.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="260.0" y="364.22">SQL write</tspan>
+<tspan x="260.0" y="402.5">Managed changes</tspan>
+</text>
+<rect id="10-storage-publication-007" x="490" y="330" width="300" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="10-storage-publication-008" x="640.0" y="364.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="640.0" y="364.22">SQL commit</tspan>
+<tspan x="640.0" y="402.5">SQL-visible state</tspan>
+</text>
+<rect id="10-storage-publication-009" x="875" y="330" width="325" height="145" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="10-storage-publication-010" x="1037.5" y="364.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1037.5" y="364.22">Background</tspan>
+<tspan x="1037.5" y="402.5">Delta publication</tspan>
+</text>
+<rect id="10-storage-publication-011" x="1280" y="330" width="310" height="145" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="10-storage-publication-012" x="1435.0" y="364.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1435.0" y="364.22">External reader</tspan>
+<tspan x="1435.0" y="402.5">Read-only access</tspan>
+</text>
+<polyline id="10-storage-publication-013" points="420,402 480,402" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="480.00,402.00 464.00,409.00 464.00,395.00" fill="#008575"/>
+<polyline id="10-storage-publication-014" points="800,402 865,402" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="865.00,402.00 849.00,409.00 849.00,395.00" fill="#008575"/>
+<polyline id="10-storage-publication-015" points="1210,402 1270,402" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1270.00,402.00 1254.00,409.00 1254.00,395.00" fill="#008575"/>
+<text id="10-storage-publication-016" x="120" y="535" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="120" y="535.0">SQL commit does not wait for every external consumer to observe the published snapshot.</tspan>
+</text>
+<rect id="10-storage-publication-017" x="70" y="710" width="1560" height="290" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="10-storage-publication-018" x="92" y="727" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="727.0">Lakehouse-to-SQL path: a different mechanism</tspan>
+</text>
+<rect id="10-storage-publication-019" x="110" y="810" width="400" height="130" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="10-storage-publication-020" x="310.0" y="835.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="310.0" y="835.4">Spark / Delta commit</tspan>
+<tspan x="310.0" y="875.0">Lakehouse-owned write</tspan>
+</text>
+<rect id="10-storage-publication-021" x="650" y="810" width="400" height="130" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="10-storage-publication-022" x="850.0" y="835.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="835.4">Metadata sync</tspan>
+<tspan x="850.0" y="875.0">Discovery + freshness</tspan>
+</text>
+<rect id="10-storage-publication-023" x="1190" y="810" width="400" height="130" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="10-storage-publication-024" x="1390.0" y="836.72" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1390.0" y="836.72">SQL analytics endpoint</tspan>
+<tspan x="1390.0" y="875.0">Read Lakehouse tables</tspan>
+</text>
+<polyline id="10-storage-publication-025" points="520,875 640,875" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="640.00,875.00 624.00,882.00 624.00,868.00" fill="#008575"/>
+<polyline id="10-storage-publication-026" points="1060,875 1180,875" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1180.00,875.00 1164.00,882.00 1164.00,868.00" fill="#0078D4"/>
+<rect id="10-storage-publication-027" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="10-storage-publication-028" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Validate the consumer's batch marker; files existing, SQL committing and a reader catching up are not synonyms.</tspan>
+</text>
+<rect id="10-storage-publication-029" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="10-storage-publication-030" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="10-storage-publication-031" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="10-storage-publication-032" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="10-storage-publication-033" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="10-storage-publication-034" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="10-storage-publication-035" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="10-storage-publication-036" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="10-storage-publication-037" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 10 / 24</tspan>
+</text>
+</svg>

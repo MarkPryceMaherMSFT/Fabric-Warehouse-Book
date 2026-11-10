@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Three artifacts, three write owners</title>
+<desc id="desc">Conceptual write-ownership lanes for Warehouse, Lakehouse and mirrored database. The mirrored upstream system remains authoritative for source writes. Mirroring is source-specific. SQL endpoint reads do not transfer ownership of data writes.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="04-artifact-ownership-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Three artifacts, three write owners</tspan>
+</text>
+<text id="04-artifact-ownership-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Warehouse writes differ from Lakehouse and mirrored SQL analytics endpoint reads.</tspan>
+</text>
+<polyline id="04-artifact-ownership-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<text id="04-artifact-ownership-003" x="75" y="221" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="75" y="221.0">Authoritative writer</tspan>
+</text>
+<text id="04-artifact-ownership-004" x="450" y="221" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="450" y="221.0">Fabric item + data</tspan>
+</text>
+<text id="04-artifact-ownership-005" x="1110" y="221" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1110" y="221.0">SQL surface</tspan>
+</text>
+<rect id="04-artifact-ownership-006" x="75" y="290" width="330" height="165" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="04-artifact-ownership-007" x="240.0" y="336.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="240.0" y="336.86">Warehouse SQL</tspan>
+<tspan x="240.0" y="372.5">Insert / update / delete</tspan>
+</text>
+<rect id="04-artifact-ownership-008" x="490" y="290" width="535" height="165" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="04-artifact-ownership-009" x="757.5" y="332.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="757.5" y="332.9">Warehouse</tspan>
+<tspan x="757.5" y="372.5">Managed OneLake tables</tspan>
+</text>
+<rect id="04-artifact-ownership-010" x="1110" y="290" width="520" height="165" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="04-artifact-ownership-011" x="1370.0" y="334.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1370.0" y="334.22">Warehouse SQL</tspan>
+<tspan x="1370.0" y="372.5">Reads + managed writes</tspan>
+</text>
+<polyline id="04-artifact-ownership-012" points="410,372 480,372" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="480.00,372.00 464.00,379.00 464.00,365.00" fill="#0078D4"/>
+<polyline id="04-artifact-ownership-013" points="1030,372 1100,372" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1100.00,372.00 1084.00,379.00 1084.00,365.00" fill="#0078D4"/>
+<rect id="04-artifact-ownership-014" x="75" y="535" width="330" height="165" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="04-artifact-ownership-015" x="240.0" y="581.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="240.0" y="581.86">Spark + ingestion</tspan>
+<tspan x="240.0" y="617.5">Lakehouse owns writes</tspan>
+</text>
+<rect id="04-artifact-ownership-016" x="490" y="535" width="535" height="165" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="04-artifact-ownership-017" x="757.5" y="577.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="757.5" y="577.9">Lakehouse</tspan>
+<tspan x="757.5" y="617.5">Delta tables in OneLake</tspan>
+</text>
+<rect id="04-artifact-ownership-018" x="1110" y="535" width="520" height="165" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="04-artifact-ownership-019" x="1370.0" y="579.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1370.0" y="579.22">SQL analytics endpoint</tspan>
+<tspan x="1370.0" y="617.5">Reads Lakehouse tables</tspan>
+</text>
+<polyline id="04-artifact-ownership-020" points="410,617 480,617" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="480.00,617.00 464.00,624.00 464.00,610.00" fill="#008575"/>
+<polyline id="04-artifact-ownership-021" points="1030,617 1100,617" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1100.00,617.00 1084.00,624.00 1084.00,610.00" fill="#008575"/>
+<rect id="04-artifact-ownership-022" x="75" y="780" width="330" height="165" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="04-artifact-ownership-023" x="240.0" y="826.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="240.0" y="826.86">Upstream database</tspan>
+<tspan x="240.0" y="862.5">Source owns writes</tspan>
+</text>
+<rect id="04-artifact-ownership-024" x="490" y="780" width="535" height="165" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="04-artifact-ownership-025" x="757.5" y="822.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="757.5" y="822.9">Mirrored database</tspan>
+<tspan x="757.5" y="862.5">Replicated copy in OneLake</tspan>
+</text>
+<rect id="04-artifact-ownership-026" x="1110" y="780" width="520" height="165" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="04-artifact-ownership-027" x="1370.0" y="824.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1370.0" y="824.22">SQL analytics endpoint</tspan>
+<tspan x="1370.0" y="862.5">Reads mirrored copy</tspan>
+</text>
+<polyline id="04-artifact-ownership-028" points="410,862 480,862" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="480.00,862.00 464.00,869.00 464.00,855.00" fill="#107C10"/>
+<polyline id="04-artifact-ownership-029" points="1030,862 1100,862" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1100.00,862.00 1084.00,869.00 1084.00,855.00" fill="#107C10"/>
+<text id="04-artifact-ownership-030" x="75" y="984" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="75" y="984.0">Independent lanes: no Warehouse-to-Lakehouse replication is implied.</tspan>
+</text>
+<rect id="04-artifact-ownership-031" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="04-artifact-ownership-032" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Shared storage formats do not make all artifacts interchangeable or all engines valid writers.</tspan>
+</text>
+<rect id="04-artifact-ownership-033" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="04-artifact-ownership-034" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="04-artifact-ownership-035" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="04-artifact-ownership-036" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="04-artifact-ownership-037" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="04-artifact-ownership-038" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="04-artifact-ownership-039" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="04-artifact-ownership-040" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="04-artifact-ownership-041" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 04 / 24</tspan>
+</text>
+</svg>

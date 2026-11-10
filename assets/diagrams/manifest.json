@@ -1,0 +1,476 @@
+{
+  "schema_version": 1,
+  "evidence_cutoff": "2026-10-09",
+  "evidence_cutoff_scope": "Original figures 1-22; later figures carry their own evidence_reviewed_on.",
+  "latest_diagram_addition": "2026-11-09",
+  "diagram_count": 24,
+  "canvas": {
+    "width": 1700,
+    "height": 1200,
+    "background": "#ffffff"
+  },
+  "generation": "Offline Pillow + standard-library SVG + editable Excalidraw, one shared scene",
+  "validation": {
+    "all_formats_parsed": true,
+    "png_svg_dimensions_checked": true,
+    "unique_element_ids_checked": true,
+    "text_widths_and_box_heights_checked": true,
+    "arrow_label_intersections_checked": true,
+    "canonical_seed_totals_checked_offline": true
+  },
+  "rendering_limits": [
+    "Conceptual diagrams are not measured tenant topology, observed plans or performance benchmarks.",
+    "PNG uses local Segoe UI. SVG has Segoe UI/Arial fallbacks; Excalidraw uses its Helvetica family.",
+    "Excalidraw text has explicit generous dimensions and groups with leaf shapes; font metrics may vary when edited.",
+    "Roadmap boundaries are dashed and labeled; preview is not synonymous with coming soon."
+  ],
+  "figures": [
+    {
+      "id": "01-platform-journey",
+      "title": "From operational records to decisions",
+      "intended_chapters": [
+        1
+      ],
+      "filenames": {
+        "png": "01-platform-journey.png",
+        "svg": "01-platform-journey.svg",
+        "excalidraw": "01-platform-journey.excalidraw"
+      },
+      "caption": "Conceptual analytics journey: ingest operational data, shape a governed model, and serve decisions while OneLake storage remains separate from compute.",
+      "conceptual_status_caveat": "Conceptual responsibility map, not a measured deployment or fixed topology.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 47
+    },
+    {
+      "id": "02-fabric-concepts",
+      "title": "Fabric's organizing layers",
+      "intended_chapters": [
+        2
+      ],
+      "filenames": {
+        "png": "02-fabric-concepts.png",
+        "svg": "02-fabric-concepts.svg",
+        "excalidraw": "02-fabric-concepts.excalidraw"
+      },
+      "caption": "Conceptual containment and assignment map. A capacity supplies compute to an assigned workspace; OneLake is a storage foundation, not a second capacity.",
+      "conceptual_status_caveat": "One illustrative assignment; not a physical infrastructure map.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 37
+    },
+    {
+      "id": "03-onelake-paths",
+      "title": "OneLake paths connect readers to data",
+      "intended_chapters": [
+        2
+      ],
+      "filenames": {
+        "png": "03-onelake-paths.png",
+        "svg": "03-onelake-paths.svg",
+        "excalidraw": "03-onelake-paths.excalidraw"
+      },
+      "caption": "Conceptual direct and shortcut read paths. An external shortcut references existing data rather than creating an independent authoritative copy.",
+      "conceptual_status_caveat": "Reader, shortcut type and source determine supported features and permissions.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 38
+    },
+    {
+      "id": "04-artifact-ownership",
+      "title": "Three artifacts, three write owners",
+      "intended_chapters": [
+        14
+      ],
+      "filenames": {
+        "png": "04-artifact-ownership.png",
+        "svg": "04-artifact-ownership.svg",
+        "excalidraw": "04-artifact-ownership.excalidraw"
+      },
+      "caption": "Conceptual write-ownership lanes for Warehouse, Lakehouse and mirrored database. The mirrored upstream system remains authoritative for source writes.",
+      "conceptual_status_caveat": "Mirroring is source-specific. SQL endpoint reads do not transfer ownership of data writes.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 42
+    },
+    {
+      "id": "05-lakehouse-warehouse-decision",
+      "title": "Choose by the work and its owner",
+      "intended_chapters": [
+        14
+      ],
+      "filenames": {
+        "png": "05-lakehouse-warehouse-decision.png",
+        "svg": "05-lakehouse-warehouse-decision.svg",
+        "excalidraw": "05-lakehouse-warehouse-decision.excalidraw"
+      },
+      "caption": "Conceptual decision tree: SQL-managed relational writes favor Warehouse; Spark and file-centered engineering favor Lakehouse. Mixed solutions keep ownership explicit.",
+      "conceptual_status_caveat": "A design aid, not an exhaustive feature matrix or a claim that one path excludes the other.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 34
+    },
+    {
+      "id": "06-cpu-gpu-execution",
+      "title": "GPU acceleration is a partial execution choice",
+      "intended_chapters": [
+        6,
+        34
+      ],
+      "filenames": {
+        "png": "06-cpu-gpu-execution.png",
+        "svg": "06-cpu-gpu-execution.svg",
+        "excalidraw": "06-cpu-gpu-execution.excalidraw"
+      },
+      "caption": "Conceptual CPU/GPU split: an eligible portion of execution may use GPU acceleration while other work stays on CPU and results are combined.",
+      "conceptual_status_caveat": "Illustrative operator split only; not an observed plan, benchmark or universal speedup. Accelerated-workspace metering includes ineligible queries; toggling cancels requests.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 33
+    },
+    {
+      "id": "07-security-routes",
+      "title": "Authorization depends on the access route",
+      "intended_chapters": [
+        12,
+        16
+      ],
+      "filenames": {
+        "png": "07-security-routes.png",
+        "svg": "07-security-routes.svg",
+        "excalidraw": "07-security-routes.excalidraw"
+      },
+      "caption": "Conceptual security routes. Delegated endpoint mode uses SQL table authorization; user-identity mode uses OneLake roles for underlying table data. Direct storage access is a separate route and does not automatically inherit SQL policy.",
+      "conceptual_status_caveat": "SQL analytics endpoint mode diagram, not a universal Warehouse security matrix. OneLake DDM is not available in user-identity mode; elevated roles require separate review.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 48
+    },
+    {
+      "id": "08-workspace-identity-ingest",
+      "title": "COPY INTO uses two authorization contexts",
+      "intended_chapters": [
+        9
+      ],
+      "filenames": {
+        "png": "08-workspace-identity-ingest.png",
+        "svg": "08-workspace-identity-ingest.svg",
+        "excalidraw": "08-workspace-identity-ingest.excalidraw"
+      },
+      "caption": "Conceptual COPY INTO authorization: the caller retains target INSERT responsibility, while the Fabric-managed workspace identity reads the authorized source.",
+      "conceptual_status_caveat": "Workspace Identity COPY INTO is GA as of August 2026. Source-specific role, ACL, network and workspace-membership requirements still apply.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 39
+    },
+    {
+      "id": "09-query-lifecycle",
+      "title": "QO chooses; DQP coordinates; QE executes",
+      "intended_chapters": [
+        18,
+        25
+      ],
+      "filenames": {
+        "png": "09-query-lifecycle.png",
+        "svg": "09-query-lifecycle.svg",
+        "excalidraw": "09-query-lifecycle.excalidraw"
+      },
+      "caption": "Conceptual query lifecycle distinguishing the query optimizer (QO), Distributed Query Processor (DQP) and local query execution engines (QE).",
+      "conceptual_status_caveat": "Task counts, placement, retries and scheduler algorithms are illustrative, not product guarantees.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 38
+    },
+    {
+      "id": "10-storage-publication",
+      "title": "Commit and publication are different boundaries",
+      "intended_chapters": [
+        23
+      ],
+      "filenames": {
+        "png": "10-storage-publication.png",
+        "svg": "10-storage-publication.svg",
+        "excalidraw": "10-storage-publication.excalidraw"
+      },
+      "caption": "Conceptual visibility paths separating Warehouse transaction commit and asynchronous Delta publication from Lakehouse SQL endpoint metadata synchronization.",
+      "conceptual_status_caveat": "Not a timing diagram or latency SLA. External readers must verify their required data condition.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 38
+    },
+    {
+      "id": "11-metadata-sync-generations",
+      "title": "Metadata sync separates discovery from freshness",
+      "intended_chapters": [
+        15
+      ],
+      "filenames": {
+        "png": "11-metadata-sync-generations.png",
+        "svg": "11-metadata-sync-generations.svg",
+        "excalidraw": "11-metadata-sync-generations.excalidraw"
+      },
+      "caption": "Conceptual comparison of legacy background synchronization and new preview metadata sync, where schema discovery and existing-table data freshness are decoupled.",
+      "conceptual_status_caveat": "New sync is preview and opt-in for newly created endpoints; existing endpoints are not automatically upgraded. Query refresh is not synchronous schema discovery.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 40
+    },
+    {
+      "id": "12-statistics-feedback",
+      "title": "Statistics inform estimates, not business truth",
+      "intended_chapters": [
+        26
+      ],
+      "filenames": {
+        "png": "12-statistics-feedback.png",
+        "svg": "12-statistics-feedback.svg",
+        "excalidraw": "12-statistics-feedback.excalidraw"
+      },
+      "caption": "Conceptual diagnostic loop linking distributions, statistics, cardinality estimates, plan decisions and observed execution evidence.",
+      "conceptual_status_caveat": "The return loop is an operator's investigation, not a promised automatic query-feedback feature.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 35
+    },
+    {
+      "id": "13-monitoring-evidence",
+      "title": "Match the evidence to the question",
+      "intended_chapters": [
+        29
+      ],
+      "filenames": {
+        "png": "13-monitoring-evidence.png",
+        "svg": "13-monitoring-evidence.svg",
+        "excalidraw": "13-monitoring-evidence.excalidraw"
+      },
+      "caption": "Conceptual evidence map. WarehouseExecutions.OperationId correlates with Query Insights distributed_statement_id, not Capacity Metrics Operation ID.",
+      "conceptual_status_caveat": "WarehouseExecutions and the Data Warehouse Monitor have preview prerequisites. Agentic monitoring is announced, coming soon; available operations diagnostics are bounded, not autofix.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 50
+    },
+    {
+      "id": "14-capacity-models",
+      "title": "Do not confuse three different control points",
+      "intended_chapters": [
+        31,
+        32
+      ],
+      "filenames": {
+        "png": "14-capacity-models.png",
+        "svg": "14-capacity-models.svg",
+        "excalidraw": "14-capacity-models.excalidraw"
+      },
+      "caption": "Conceptual comparison of the existing capacity model and announced on-demand Warehouse model. A compute ceiling queues or slows work; a separate rolling spending limit can pause new operations while in-flight work finishes.",
+      "conceptual_status_caveat": "On-demand Warehouse billing is public preview coming soon at the 9 October 2026 evidence cutoff. Queue discipline, timeouts and rollout details are not published.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 34
+    },
+    {
+      "id": "15-cache-lifecycle",
+      "title": "Cache warmth changes work, not query semantics",
+      "intended_chapters": [
+        28
+      ],
+      "filenames": {
+        "png": "15-cache-lifecycle.png",
+        "svg": "15-cache-lifecycle.svg",
+        "excalidraw": "15-cache-lifecycle.excalidraw"
+      },
+      "caption": "Conceptual cache lifecycle: a read may fetch data from OneLake or reuse managed disk and memory caches. Announced cooldown controls are not shown as an existing UI.",
+      "conceptual_status_caveat": "Cache cooldown public preview is coming soon. Exact timers, defaults, scope, affected layers and billing are unpublished. Result-set caching is a separate feature.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 34
+    },
+    {
+      "id": "16-release-pipeline",
+      "title": "A deployment is a reviewed change, not just a file push",
+      "intended_chapters": [
+        36
+      ],
+      "filenames": {
+        "png": "16-release-pipeline.png",
+        "svg": "16-release-pipeline.svg",
+        "excalidraw": "16-release-pipeline.excalidraw"
+      },
+      "caption": "Conceptual release pipeline with schema comparison, a reviewed deployment artifact, one designated pre-deployment script, model deployment, one post-deployment script and validation.",
+      "conceptual_status_caveat": "Scripts run every deployment, must be idempotent and are not model-validated at build. Failures halt deployment. Existing Git projects require the documented upgrade.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 38
+    },
+    {
+      "id": "17-migration-flow",
+      "title": "Migrate schema and data as separate workstreams",
+      "intended_chapters": [
+        37,
+        40,
+        41,
+        42
+      ],
+      "filenames": {
+        "png": "17-migration-flow.png",
+        "svg": "17-migration-flow.svg",
+        "excalidraw": "17-migration-flow.excalidraw"
+      },
+      "caption": "Conceptual migration plan with parallel schema/logic and data movement workstreams converging on correctness validation and an approved cutover.",
+      "conceptual_status_caveat": "Assistant and connector capabilities vary. Watermarks do not propagate deletes; CDC requires a supported CDC-enabled source. No translation equivalence is promised.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 40
+    },
+    {
+      "id": "18-fabric-iq-context",
+      "title": "Business context does not replace the query engine",
+      "intended_chapters": [
+        13
+      ],
+      "filenames": {
+        "png": "18-fabric-iq-context.png",
+        "svg": "18-fabric-iq-context.svg",
+        "excalidraw": "18-fabric-iq-context.excalidraw"
+      },
+      "caption": "Conceptual Fabric IQ map. Preview ontology binds business entities to sources; it is not a new storage or query engine. Current IQ MCP supports read-only semantic-model and report discovery plus DAX; Warehouse-specific IQ integration is future.",
+      "conceptual_status_caveat": "Optional graph materialization is not a universal execution path. Current IQ MCP does not establish ontology or data-agent support; source execution remains source-specific.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 38
+    },
+    {
+      "id": "19-clone-scopes",
+      "title": "Table clone and whole-Warehouse clone differ in scope",
+      "intended_chapters": [
+        35
+      ],
+      "filenames": {
+        "png": "19-clone-scopes.png",
+        "svg": "19-clone-scopes.svg",
+        "excalidraw": "19-clone-scopes.excalidraw"
+      },
+      "caption": "Conceptual clone-scope comparison. Current CREATE TABLE AS CLONE OF targets a table; announced whole-Warehouse cloning is a separate forthcoming capability.",
+      "conceptual_status_caveat": "Warehouse-level clone public preview is coming soon. No Warehouse syntax, security inheritance or cross-workspace behavior is implied.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 41
+    },
+    {
+      "id": "20-sql-logical-processing",
+      "title": "SQL's logical filter order",
+      "intended_chapters": [
+        7
+      ],
+      "filenames": {
+        "png": "20-sql-logical-processing.png",
+        "svg": "20-sql-logical-processing.svg",
+        "excalidraw": "20-sql-logical-processing.excalidraw"
+      },
+      "caption": "Conceptual logical SQL evaluation order: sources and joins, WHERE, grouping and HAVING, window computation, QUALIFY, and final ORDER BY. QUALIFY filters window results.",
+      "conceptual_status_caveat": "Simplified reasoning model, not a complete clause grammar or physical plan. New analytical syntax is preview for Fabric Warehouse and SQL analytics endpoints at the evidence cutoff.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 45
+    },
+    {
+      "id": "21-first-warehouse",
+      "title": "First Warehouse: create, seed, then reconcile",
+      "intended_chapters": [
+        4
+      ],
+      "filenames": {
+        "png": "21-first-warehouse.png",
+        "svg": "21-first-warehouse.svg",
+        "excalidraw": "21-first-warehouse.excalidraw"
+      },
+      "caption": "Concrete high-level walkthrough of the book's Warehouse seed: create BookWarehouse, run 04-create-book-warehouse.sql, then verify the six canonical sales, ten units and 365.00 revenue, with GB 185.00 and DE 180.00.",
+      "conceptual_status_caveat": "Expected values are computed offline from the canonical seed, not measured against a live tenant. Run write scripts only in the isolated book lab.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 44
+    },
+    {
+      "id": "22-first-lakehouse",
+      "title": "First Lakehouse: write with Spark, read through SQL",
+      "intended_chapters": [
+        5
+      ],
+      "filenames": {
+        "png": "22-first-lakehouse.png",
+        "svg": "22-first-lakehouse.svg",
+        "excalidraw": "22-first-lakehouse.excalidraw"
+      },
+      "caption": "Concrete high-level walkthrough: create a schema-enabled BookLakehouse, attach it to a Spark notebook, run 05-create-book-lakehouse.py, then verify discovery and read the canonical rows through the SQL analytics endpoint.",
+      "conceptual_status_caveat": "The endpoint is a read surface for Lakehouse tables. Metadata readiness must be verified; no fixed wait guarantees freshness. Expected totals are offline seed checks.",
+      "evidence_reviewed_on": "2026-10-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 47
+    },
+    {
+      "id": "23-hybrid-warehouse-architecture",
+      "title": "Warehouse + Lakehouse: one SQL architecture",
+      "intended_chapters": [
+        9
+      ],
+      "filenames": {
+        "png": "23-hybrid-warehouse-architecture.png",
+        "svg": "23-hybrid-warehouse-architecture.svg",
+        "excalidraw": "23-hybrid-warehouse-architecture.excalidraw"
+      },
+      "caption": "Cloud Delta tables and mirrored-database targets are exposed through integration Lakehouse shortcuts beside hosted Delta tables. The Lakehouse SQL analytics endpoint serves Warehouse three-part reads, with optional Warehouse-owned gold materialization.",
+      "conceptual_status_caveat": "Conceptual current architecture, not a measured deployment or a claim that arbitrary files are SQL tables. Shortcut/source identities, formats and freshness remain separate.",
+      "evidence_reviewed_on": "2026-11-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 43
+    },
+    {
+      "id": "24-delta-table-anatomy",
+      "title": "Anatomy of a Delta table: values plus valid state",
+      "intended_chapters": [
+        3,
+        11,
+        39
+      ],
+      "filenames": {
+        "png": "24-delta-table-anatomy.png",
+        "svg": "24-delta-table-anatomy.svg",
+        "excalidraw": "24-delta-table-anatomy.excalidraw"
+      },
+      "caption": "A simplified Delta table combines Parquet data files, JSON transaction actions and checkpoint metadata. Warehouse SQL commit, background Delta publication and an authorized external reader observing that state are separate boundaries.",
+      "conceptual_status_caveat": "Conceptual format/publishing map, not a private Warehouse directory layout. A checkpoint holds metadata, not another batch of business rows; external access does not automatically inherit SQL RLS or CLS.",
+      "evidence_reviewed_on": "2026-11-09",
+      "width": 1700,
+      "height": 1200,
+      "element_count": 39
+    }
+  ],
+  "contact_sheets": [
+    "contact-sheet-01.png",
+    "contact-sheet-02.png",
+    "contact-sheet-03.png",
+    "contact-sheet-04.png"
+  ]
+}

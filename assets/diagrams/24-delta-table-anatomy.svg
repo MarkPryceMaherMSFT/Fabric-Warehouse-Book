@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Anatomy of a Delta table: values plus valid state</title>
+<desc id="desc">A simplified Delta table combines Parquet data files, JSON transaction actions and checkpoint metadata. Warehouse SQL commit, background Delta publication and an authorized external reader observing that state are separate boundaries. Conceptual format/publishing map, not a private Warehouse directory layout. A checkpoint holds metadata, not another batch of business rows; external access does not automatically inherit SQL RLS or CLS.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="24-delta-table-anatomy-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Anatomy of a Delta table: values plus valid state</tspan>
+</text>
+<text id="24-delta-table-anatomy-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Parquet encodes values. Delta selects a table snapshot. Warehouse publishes outward after SQL commit.</tspan>
+</text>
+<polyline id="24-delta-table-anatomy-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="24-delta-table-anatomy-003" x="65" y="225" width="1000" height="770" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="24-delta-table-anatomy-004" x="87" y="242" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="87" y="242.0">A Delta table (simplified)</tspan>
+</text>
+<rect id="24-delta-table-anatomy-005" x="100" y="320" width="425" height="200" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="24-delta-table-anatomy-006" x="312.5" y="354.0" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="312.5" y="354.0">Parquet data files</tspan>
+<tspan x="312.5" y="387.0">Row groups &gt; column chunks</tspan>
+<tspan x="312.5" y="420.0">Encoded/compressed pages</tspan>
+<tspan x="312.5" y="453.0">Footer + type annotations</tspan>
+</text>
+<rect id="24-delta-table-anatomy-007" x="100" y="600" width="425" height="170" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="24-delta-table-anatomy-008" x="312.5" y="635.5" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="312.5" y="635.5">Version 0: A + B</tspan>
+<tspan x="312.5" y="668.5">Version 1: B + C</tspan>
+<tspan x="312.5" y="701.5">A can remain for retention</tspan>
+</text>
+<rect id="24-delta-table-anatomy-009" x="575" y="300" width="455" height="545" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="24-delta-table-anatomy-010" x="597" y="317" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="597" y="317.0">_delta_log (metadata)</tspan>
+</text>
+<rect id="24-delta-table-anatomy-011" x="610" y="385" width="385" height="160" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="24-delta-table-anatomy-012" x="802.5" y="417.48" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="802.5" y="417.48">JSON commit versions</tspan>
+<tspan x="802.5" y="449.16">Schema + protocol</tspan>
+<tspan x="802.5" y="480.84000000000003">Add/remove file actions</tspan>
+</text>
+<rect id="24-delta-table-anatomy-013" x="610" y="625" width="385" height="155" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="24-delta-table-anatomy-014" x="802.5" y="654.98" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="802.5" y="654.98">Checkpoint metadata</tspan>
+<tspan x="802.5" y="686.66">Summarizes log state</tspan>
+<tspan x="802.5" y="718.34">Not sales rows</tspan>
+</text>
+<polyline id="24-delta-table-anatomy-015" points="800,555 800,615" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="800.00,615.00 793.00,599.00 807.00,599.00" fill="#0078D4"/>
+<rect id="24-delta-table-anatomy-016" x="100" y="895" width="895" height="70" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="24-delta-table-anatomy-017" x="547.5" y="913.5" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="547.5" y="913.5">Delta selects active files; a Parquet glob does not.</tspan>
+</text>
+<rect id="24-delta-table-anatomy-018" x="1115" y="225" width="525" height="770" rx="18" fill="none" stroke="#605E5C" stroke-width="3"/>
+<text id="24-delta-table-anatomy-019" x="1137" y="242" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1137" y="242.0">Warehouse publication</tspan>
+</text>
+<rect id="24-delta-table-anatomy-020" x="1150" y="335" width="455" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="24-delta-table-anatomy-021" x="1377.5" y="374.5" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1377.5" y="374.5">1  SQL transaction commits</tspan>
+<tspan x="1377.5" y="407.5">New SQL reads can be current</tspan>
+</text>
+<rect id="24-delta-table-anatomy-022" x="1150" y="565" width="455" height="145" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="24-delta-table-anatomy-023" x="1377.5" y="604.5" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1377.5" y="604.5">2  Background publisher</tspan>
+<tspan x="1377.5" y="637.5">Emits compatible Delta state</tspan>
+</text>
+<rect id="24-delta-table-anatomy-024" x="1150" y="795" width="455" height="145" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="24-delta-table-anatomy-025" x="1377.5" y="818.0" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1377.5" y="818.0">3  External Delta reader</tspan>
+<tspan x="1377.5" y="851.0">Checks its own access and</tspan>
+<tspan x="1377.5" y="884.0">observes published state</tspan>
+</text>
+<polyline id="24-delta-table-anatomy-026" points="1375,490 1375,555" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1375.00,555.00 1368.00,539.00 1382.00,539.00" fill="#008575"/>
+<polyline id="24-delta-table-anatomy-027" points="1375,720 1375,785" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1375.00,785.00 1368.00,769.00 1382.00,769.00" fill="#107C10"/>
+<rect id="24-delta-table-anatomy-028" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="24-delta-table-anatomy-029" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Persisted types and reader compatibility are contracts; visible files alone do not prove a committed table state.</tspan>
+</text>
+<rect id="24-delta-table-anatomy-030" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="24-delta-table-anatomy-031" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="24-delta-table-anatomy-032" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="24-delta-table-anatomy-033" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="24-delta-table-anatomy-034" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="24-delta-table-anatomy-035" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="24-delta-table-anatomy-036" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="24-delta-table-anatomy-037" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="24-delta-table-anatomy-038" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 24 / 24</tspan>
+</text>
+</svg>

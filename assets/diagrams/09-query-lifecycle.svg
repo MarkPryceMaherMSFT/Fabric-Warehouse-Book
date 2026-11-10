@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">QO chooses; DQP coordinates; QE executes</title>
+<desc id="desc">Conceptual query lifecycle distinguishing the query optimizer (QO), Distributed Query Processor (DQP) and local query execution engines (QE). Task counts, placement, retries and scheduler algorithms are illustrative, not product guarantees.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="09-query-lifecycle-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">QO chooses; DQP coordinates; QE executes</tspan>
+</text>
+<text id="09-query-lifecycle-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">A responsibility map from SQL text to distributed results, not a fixed private service topology.</tspan>
+</text>
+<polyline id="09-query-lifecycle-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="09-query-lifecycle-003" x="70" y="250" width="335" height="155" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="09-query-lifecycle-004" x="237.5" y="268.1" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="237.5" y="268.1">Bind SQL</tspan>
+<tspan x="237.5" y="307.70000000000005">Objects, types,</tspan>
+<tspan x="237.5" y="347.3">security context</tspan>
+</text>
+<rect id="09-query-lifecycle-005" x="505" y="250" width="465" height="155" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="09-query-lifecycle-006" x="737.5" y="268.1" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="737.5" y="268.1">QO: query optimizer</tspan>
+<tspan x="737.5" y="307.70000000000005">Estimate + cost alternatives</tspan>
+<tspan x="737.5" y="347.3">Choose physical strategy</tspan>
+</text>
+<rect id="09-query-lifecycle-007" x="1070" y="250" width="560" height="155" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="09-query-lifecycle-008" x="1350.0" y="270.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1350.0" y="270.08">DQP: distributed coordination</tspan>
+<tspan x="1350.0" y="308.36">Task dependencies + resources</tspan>
+<tspan x="1350.0" y="346.64">Schedule eligible work</tspan>
+</text>
+<polyline id="09-query-lifecycle-009" points="415,327 495,327" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="495.00,327.00 479.00,334.00 479.00,320.00" fill="#0078D4"/>
+<polyline id="09-query-lifecycle-010" points="980,327 1060,327" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1060.00,327.00 1044.00,334.00 1044.00,320.00" fill="#0078D4"/>
+<rect id="09-query-lifecycle-011" x="70" y="520" width="1560" height="295" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="09-query-lifecycle-012" x="92" y="537" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="537.0">QE: local SQL execution engines</tspan>
+</text>
+<rect id="09-query-lifecycle-013" x="110" y="620" width="460" height="125" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="09-query-lifecycle-014" x="340.0" y="641.58" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="340.0" y="641.58">Assigned operators</tspan>
+<tspan x="340.0" y="682.5">Scan + filter</tspan>
+</text>
+<rect id="09-query-lifecycle-015" x="615" y="620" width="460" height="125" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="09-query-lifecycle-016" x="845.0" y="641.58" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="845.0" y="641.58">Assigned operators</tspan>
+<tspan x="845.0" y="682.5">Join + aggregate</tspan>
+</text>
+<rect id="09-query-lifecycle-017" x="1120" y="620" width="460" height="125" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="09-query-lifecycle-018" x="1350.0" y="641.58" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1350.0" y="641.58">Assigned operators</tspan>
+<tspan x="1350.0" y="682.5">Combine work</tspan>
+</text>
+<polyline id="09-query-lifecycle-019" points="1350,405 1350,510" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1350.00,510.00 1343.00,494.00 1357.00,494.00" fill="#008575"/>
+<text id="09-query-lifecycle-020" x="100" y="455" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="100" y="455.0">Tasks may run concurrently when dependencies and resources permit.</tspan>
+</text>
+<rect id="09-query-lifecycle-021" x="70" y="895" width="700" height="105" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="09-query-lifecycle-022" x="420.0" y="907.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="420.0" y="907.9">OneLake data + managed caches</tspan>
+<tspan x="420.0" y="947.5">Storage is not the scheduler</tspan>
+</text>
+<rect id="09-query-lifecycle-023" x="990" y="895" width="640" height="105" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="09-query-lifecycle-024" x="1310.0" y="907.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1310.0" y="907.9">Results returned to the client</tspan>
+<tspan x="1310.0" y="947.5">Completion is coordinated</tspan>
+</text>
+<polyline id="09-query-lifecycle-025" points="420,895 420,825" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="420.00,825.00 427.00,841.00 413.00,841.00" fill="#008575"/>
+<polyline id="09-query-lifecycle-026" points="1310,815 1310,885" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1310.00,885.00 1303.00,869.00 1317.00,869.00" fill="#107C10"/>
+<rect id="09-query-lifecycle-027" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="09-query-lifecycle-028" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">A poor estimate, a scheduling wait and slow local execution are different hypotheses to investigate.</tspan>
+</text>
+<rect id="09-query-lifecycle-029" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="09-query-lifecycle-030" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="09-query-lifecycle-031" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="09-query-lifecycle-032" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="09-query-lifecycle-033" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="09-query-lifecycle-034" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="09-query-lifecycle-035" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="09-query-lifecycle-036" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="09-query-lifecycle-037" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 09 / 24</tspan>
+</text>
+</svg>

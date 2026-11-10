@@ -1,0 +1,156 @@
+# What's new: Warehouse, SQL analytics endpoint and this book
+
+[Read the book](front-matter/title-page.md) | [Contents](index.md) | [Feature ledger](appendices/C-feature-status.md) | [Dated roadmap](appendices/H-roadmap-snapshot.md) | [Edition history](history.md)
+
+**Review date: 9 November 2026.** This is the change list for this manuscript review: FabCon/SQLCon Barcelona Warehouse and SQL analytics endpoint announcements, relevant earlier features, subsequent public updates, and the book changes they inform. It is not a complete release history of every Fabric workload.
+
+The [Fabric Updates Blog][fabric-blog], [sqltidy][sqltidy], current Learn/API references and [James Serra's Barcelona roundup][serra] provide different evidence. The roundup is a useful discovery index, not the authority for every component's support status. Announced, documented, preview, coming soon and roadmap targets are kept separate below.
+
+## Read the status before adopting the feature
+
+**GA announced** records an explicit release announcement, not universal tenant availability or GA for every related API. **Preview** preserves the specific component's qualification. **Documented** means the inspected current reference supplies a contract without inventing a new GA date. **Coming soon / planned** is not a current lab prerequisite. Where an index claim could not be independently confirmed, the limitation is explicit.
+
+## SQL, types and query development
+
+| Change or improvement | Status at this review | What matters | Read more |
+| --- | --- | --- | --- |
+| `FROM ... SELECT` | Preview; included in Jovan Popovic's **20 October 2026** language post. | Source-first authoring does not change logical semantics or guarantee faster execution. | [Chapter 7](parts/02-building-analytical-solutions/07-tsql-for-analytics.md#from-first-start-with-the-available-data); [original article][tsql-blog]. |
+| `GROUP BY ALL` | Preview. | Projection changes can change grouping grain; this is not the legacy SQL Server form. | [Chapter 7](parts/02-building-analytical-solutions/07-tsql-for-analytics.md#group-by-all-convenience-with-a-visible-grain); [Fabric syntax][group-by]. |
+| `ORDER BY ALL` | Preview; all four language additions are now covered. | Sorts by projected columns in projection order; one optional ASC/DESC applies to all. It does not invent a unique tie-breaker. | [Chapter 7](parts/02-building-analytical-solutions/07-tsql-for-analytics.md#order-by-all-projection-changes-can-change-presentation); [specific reference][order-by]. |
+| `QUALIFY` | Preview. | Filters after window computation; deterministic ranking and duplicate rules still matter. | [Chapter 7](parts/02-building-analytical-solutions/07-tsql-for-analytics.md#qualify-filter-the-result-of-a-window); [reference][qualify]. |
+| MEDIAN/QUANTILE and approximate forms | Preview in the original September announcement and current references. | Aggregate/window forms, nulls, argument order and floating-point results need separate acceptance criteria. | [Chapter 7](parts/02-building-analytical-solutions/07-tsql-for-analytics.md#medians-and-quantiles-say-which-distribution-you-mean); [September announcement][september]. |
+| Aggregate `PERCENTILE_CONT`/`PERCENTILE_DISC` | Preview extension in the analytical-function bundle. | Aggregate syntax is not the same as the existing window form; continuous and discrete results can differ. | [Chapter 7](parts/02-building-analytical-solutions/07-tsql-for-analytics.md#medians-and-quantiles-say-which-distribution-you-mean). |
+| Scalar REGEX functions | Preview; **5 November** product post and dedicated analytical-SQL documentation. | Five scalar functions, not the two regex TVFs; flags, 8,000-byte patterns and 2-MB MAX input limits are specific contracts. | [Chapter 7](parts/02-building-analytical-solutions/07-tsql-for-analytics.md#regular-expressions-validate-a-shape-not-a-business-fact); [original post][regex-blog]. |
+| Fuzzy-string functions | Preview in the detailed references; dedicated guide added in October. | Similarity is candidate evidence, not customer identity. Distance caps, nulls, collation and MAX exclusions matter. | [Chapter 7](parts/02-building-analytical-solutions/07-tsql-for-analytics.md#fuzzy-strings-find-candidates-without-inventing-identities); [guide][similarity]. |
+| Broader scalar-UDF use/inlining | Native scalar UDFs remain preview; guidance rewritten **20 October**. | Distinguish Expression Block from scalar UDF inlining. Masks 0-3 and `INLINE = AUTO` do not guarantee distributed use. | [Chapter 11](parts/02-building-analytical-solutions/11-tsql-compatibility.md#read-the-inlining-mechanism-not-just-the-word-inlineable); [specific guide][udf-guide]. |
+| SQL integration with Fabric User Data Functions | Preview integration. | A SQL proxy invokes remote Python; side effects, permissions and lifecycle do not become local SQL inlining. | [Chapters 11](parts/02-building-analytical-solutions/11-tsql-compatibility.md#fabricfunctions-integration-useful-python-explicit-remote-work) and [36](parts/06-operating-the-platform/36-development-and-automation.md); [integration contract][external-udf]. |
+| IDENTITY and explicit identity inserts | GA announced in the earlier August update; retained as an important migration feature. | BIGINT/system-managed allocation, explicit column lists and the documented reseed sequence; not gap-free business identifiers. | [Chapter 8](parts/02-building-analytical-solutions/08-dimensional-modeling.md#identity-now-exists-but-not-as-a-sql-server-clone); [reference][identity]. |
+| `sys.sp_refreshview` guidance | Documented Warehouse operation; explicit guidance added **13 October**. | Current-database scope and ALTER-on-view requirement; not Delta data refresh or recovery. | [Chapter 36](parts/06-operating-the-platform/36-development-and-automation.md#refresh-dependent-view-metadata-after-schema-changes). |
+
+## Performance, compute, caching and cost
+
+| Change or improvement | Status at this review | What matters | Read more |
+| --- | --- | --- | --- |
+| GPU query acceleration | Public preview announced **29 September**; older onboarding references still describe limited-preview approval. | Eligible fragments, not every operator; workspace meter scope and disruptive toggles require a whole-workload evaluation. | [Chapters 6](parts/01-getting-started/06-gpu-acceleration-overview.md) and [34](parts/06-operating-the-platform/34-gpu-acceleration.md); [original Analytics article][analytics]. |
+| Custom SQL pools | GA announced in September; technical guidance/API qualifications differ. | Routing/resource isolation is not data security, a guaranteed latency or a hard spending cap. Current API how-to still uses `beta=true`. | [Chapter 33](parts/06-operating-the-platform/33-workload-management-and-sql-pools.md); [September source][september]. |
+| SELECT/NONSELECT classifier | GA announced. | Rebalances distributed execution classes without application-name rules; not every front-end-only statement is classified. | [Chapter 33](parts/06-operating-the-platform/33-workload-management-and-sql-pools.md#statement-type-routing-rebalance-select-and-nonselect-without-naming-clients). |
+| Distributed Bitmap Filters | GA explicitly announced in September. | Can reduce unnecessary movement for eligible selective fact/dimension joins. Vendor case gains are not universal workload promises. | [Chapter 25](parts/04-how-the-engine-works/25-query-processing.md); [original announcement][september]. |
+| Result-set caching | Current reference documents default enablement; the roundup's GA listing is not used to invent a new GA date. | Eligibility/invalidation rules remain. Six facts do not meet the 100,000-row condition; cross-database queries are excluded. Data cache and result cache are different. | [Chapter 28](parts/05-statistics-and-performance/28-layout-caching-and-maintenance.md); [exact contract][result-cache]. |
+| Cache cooldown configurability | Coming-soon/looking-ahead qualification retained. | The **9 November** pool notice still says adjustment applies once available. A one-minute illustration is not a current setting/API. | [Chapter 28](parts/05-statistics-and-performance/28-layout-caching-and-maintenance.md#cache-cooldown-plan-the-trade-off-not-an-invented-setting); [advance notice][pool-unification]. |
+| Warehouse on-demand billing/F0 | Preview announced with rollout forthcoming in the inspected sources. | Planned CU-hour/category billing is separate from today's allocation/smoothing and Spark's established billing route. F0 is not free/unlimited compute or storage. | [Chapters 31-32](parts/06-operating-the-platform/31-billing-and-consumption.md); [Coming Soon source][september], [platform article][platform]. |
+| Unified SQL-pool configuration | **9 November advance notice**, not a completed rollout. | Prepare inactive/effective-configuration GET dependencies by mid-December; January 2027 new-workspace defaults and planned flag removal need a versioned client change. Existing active configurations remain. | [Chapter 33](parts/06-operating-the-platform/33-workload-management-and-sql-pools.md#upcoming-unification-prepare-clients-without-changing-todays-payload); [source][pool-unification]. |
+| Capacity overage and larger SKUs | Platform article explicitly announces GA for overage and F4096/F8192. | Overage does not enlarge execution resources; thresholds are not hard spending caps. Do not equate this with unsmoothed on-demand billing. | [Chapter 32](parts/06-operating-the-platform/32-capacity-management.md); [platform source][platform], [overage contract][overage]. |
+| Workspace surge/Capacity Insights | Component-specific preview/coming-soon qualifications. | A unified-management GA heading does not make workspace surge or every action GA. | [Chapter 32](parts/06-operating-the-platform/32-capacity-management.md#overage-and-surge-protection-are-not-resizing); [platform source][platform]. |
+| Automatic cardinality-statistics clarification | **29 October** documentation clarification. | `ACE-Cardinality` is created only when other row-count metadata is unavailable; absence is not a maintenance diagnosis. | [Chapter 26](parts/05-statistics-and-performance/26-statistics.md). |
+
+## Editor, monitoring, automation and migration
+
+| Change or improvement | Status at this review | What matters | Read more |
+| --- | --- | --- | --- |
+| Faster grid/Object Explorer/IntelliSense | GA in Salil Kanade's **8 September** editor article. | UI responsiveness and bounded previews do not prove row completeness or a faster query plan. | [Chapters 4](parts/01-getting-started/04-first-warehouse.md) and [5](parts/01-getting-started/05-first-lakehouse-and-sql-endpoint.md); [primary post][editor-blog]. |
+| Autosave, bulk query management, `.sql` import/export | GA in that article. | Saved query text is not committed data, a deployment or a backup. | [Chapter 4](parts/01-getting-started/04-first-warehouse.md#save-text-without-confusing-it-with-saved-data). |
+| Copy/share query with result context | Preview in the primary editor article. | Sharing results can disclose data; retain identity, version and review of the shared content. | [Chapter 4](parts/01-getting-started/04-first-warehouse.md); [source][editor-blog]. |
+| Start notebooks/Eventhouse analysis or a semantic model from SQL | GA integrations in the primary editor article. | Other engines read through supported paths; this is not permission to overwrite Warehouse files or bypass model/source security. | [Chapters 4](parts/01-getting-started/04-first-warehouse.md) and [13](parts/02-building-analytical-solutions/13-power-bi-and-clients.md). |
+| Activator SQL-query rules | Preview in the primary article, with a specific rule guide. | Scheduled SELECTs and notification/activity actions are real processing and outbound effects; no rule is enabled by this book. | [Chapter 29](parts/06-operating-the-platform/29-monitoring.md); [rule guide][activator]. |
+| Estimated graphical plan in Fabric | Coming soon in the inspected monthly source. | Supported `SHOWPLAN_XML` does not depend on that future portal UI and remains an estimate, not actual runtime/billing. | [Chapter 27](parts/05-statistics-and-performance/27-query-plans-and-tuning.md); [source][september]. |
+| Profiles, visual schema design and new interactive charts | Index/keynote preview claim; a complete primary operational contract was not independently established. | Do not relabel existing Visualize/Explore tools as every announced new UI, or invent click paths. | [Chapter 4](parts/01-getting-started/04-first-warehouse.md); [validation notes below](#what-was-validated-in-the-fabcon-roundup). |
+| Monitor in warehouse from Capacity Metrics | **GA action announced 4 November**, while the broader Monitor guide retains preview wording. | Item/time navigation, not a Capacity Metrics Operation ID-to-SQL-statement join; Admin plus Metrics access. | [Chapter 29](parts/06-operating-the-platform/29-monitoring.md#open-monitor-from-capacity-metrics-without-inventing-an-id-join); [post][monitor-blog]. |
+| Warehouse workspace monitoring | Preview has a documented current `WarehouseExecutions` contract, despite its earlier Coming Soon placement. | Completed qualifying distributed events, not live/system/all billable work. Its OperationId has a different identity contract from Capacity Metrics. | [Chapter 29](parts/06-operating-the-platform/29-monitoring.md#workspace-monitoring-is-now-part-of-the-toolkit); [reference][workspace-monitor]. |
+| AI Insights/agentic DW Monitor | Coming soon in the monthly source. | Keep future insight cards/Copilot investigation separate from today's operations skill and from autonomous remediation. | [Chapters 29-30](parts/06-operating-the-platform/29-monitoring.md); [source][september]. |
+| SQL DW operations skill | GA explicitly announced. | Bounded read-only operations mode does not make the entire skill's authoring capability read-only. | [Chapters 29](parts/06-operating-the-platform/29-monitoring.md#agent-assisted-diagnosis-available-skill-forthcoming-experience) and [36](parts/06-operating-the-platform/36-development-and-automation.md). |
+| Warehouse CI/CD 2.0/DacFx | Preview in specific current guidance. | Upgrade deliberately, review incremental plans and residual drift; tool GA is not lifecycle GA. | [Chapter 36](parts/06-operating-the-platform/36-development-and-automation.md#cicd-20-and-dacfx-upgrade-the-project-contract-deliberately). |
+| Pre/post-deployment scripts | Preview; specific September/October reference. | Designated shared queries execute around deployment; build success does not validate their SQL or promise one atomic rollback across all effects. | [Chapter 36](parts/06-operating-the-platform/36-development-and-automation.md#prepost-deployment-scripts-preview-use-the-newer-contract). |
+| Warehouse definition CRUD APIs | Current operation contracts are documented; no new GA day is inferred from an unqualified heading. | Definition export/update is not row-data backup. Get needs the documented permissions; update overrides definitions and supports LROs. | [Chapter 36](parts/06-operating-the-platform/36-development-and-automation.md); [API group][warehouse-api]. |
+| Native Migration Assistant/Teradata | Native guided migration; Teradata metadata remains preview. | Definitions, security remediation, Copy job transfer, reconciliation and cutover are distinct gates. | [Chapters 37-40](parts/07-migration-and-production-design/37-migration-planning.md#fabric-dw-migrations-with-migration-assistant); [canonical guide][migration]. |
+| Incremental definition migration | Existing-Warehouse workflow documented in October. | **Keep incoming drops/recreates a conflicting table**; restoring its old definition does not restore rows. | [Chapters 37](parts/07-migration-and-production-design/37-migration-planning.md#iterate-metadata-without-assuming-data-preservation) and [41](parts/07-migration-and-production-design/41-reconciliation-cutover-and-rollback.md). |
+| Incremental data copying/CDC | Current CDC guide and **9 November** connector matrix separate base CDC from **SCD Type 2 preview**. | Warehouse/Synapse being CDC destinations does not make them CDC sources. Watermarks do not capture deletes; connector eligibility and source enablement remain. | [Chapters 38-41](parts/07-migration-and-production-design/41-reconciliation-cutover-and-rollback.md#migration-assistant-incremental-migration-and-copy-job); [current matrix][copy-matrix]. |
+| Synapse mirroring/migration toolkit | Author-maintained project; current public HEAD rechecked at the existing September pin. | Initial copy, ongoing FULL/HIGHWATERMARK and definition paths can support a migration; source consistency, destructive reseeds, reconciliation and cutover remain owned engineering work. | [Chapter 38](parts/07-migration-and-production-design/38-migrating-synapse-dedicated-sql-pools.md#mirroring-and-migration-toolkit-fabric-mirroring-synapse); [project][synapse-tool]. |
+
+## Related foundations and earlier features worth retaining
+
+| Topic | What the source check establishes | Read more |
+| --- | --- | --- |
+| Semantic views in OneLake | Early-look direction in the Analytics announcement, not a documented current Warehouse SQL-view/MV feature or replacement for every semantic model. Complete authoring/security/execution details were not established. | [Chapter 13](parts/02-building-analytical-solutions/13-power-bi-and-clients.md); [original article][analytics]. |
+| Fabric Runtime 2.0 | Current **October** reference says GA/default for new environments/workspaces, Spark 4.1, Delta 4.2 and Python 3.13. An older September Analytics article says Spark/Delta 4.0. Use the dated current runtime contract; this is not a Warehouse engine version or universal upgrade. | [Runtime reference][runtime]; [Chapters 5](parts/01-getting-started/05-first-lakehouse-and-sql-endpoint.md) and [28](parts/05-statistics-and-performance/28-layout-caching-and-maintenance.md). |
+| Materialized lake views | Base GA announcement is separate from PySpark-authoring and update/delete optimal-refresh previews. An MLV persists Lakehouse Delta output; it is not native Warehouse materialized-view syntax. | [Chapter 9](parts/02-building-analytical-solutions/09-loading-and-accessing-data.md); [overview][mlv], [optimal refresh][mlv-refresh]. |
+| OneLake permissions/RLS/CLS | Roles, engine integration, schema/row/column scope and endpoint mode determine enforcement. Broad group/GA headlines do not resolve exact producer/consumer/SPN-owner caveats. | [SQL security, Chapter 12](parts/02-building-analytical-solutions/12-security-and-governance.md); [OneLake security, Chapter 16](parts/03-sql-analytics-endpoint/16-onelake-security.md). |
+| Workspace Identity COPY and SQL audit filters | Earlier GA announcements remain useful; source authentication is not target authorization, and capture predicates can discard audit evidence. | [Chapters 9](parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#workspace-identity-for-copy-into-two-authorization-checks) and [12](parts/02-building-analytical-solutions/12-security-and-governance.md#sql-audit-predicate-filtering-choose-what-is-captured). |
+| New endpoint metadata sync/LOBs/history | Preview/new-endpoint prerequisites and reader/type limits remain. A workspace toggle does not upgrade existing endpoints; SQL commit, publication, sync and model refresh are different clocks. | [Part III](parts/03-sql-analytics-endpoint/README.md), especially [Chapter 15](parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md). |
+| Fabric IQ and remote SQL MCP | Ontology preview and GA semantic-model IQ MCP differ from the separate remote SQL MCP preview and forward-looking Warehouse-specific IQ integration. | [Chapters 13](parts/02-building-analytical-solutions/13-power-bi-and-clients.md) and [36](parts/06-operating-the-platform/36-development-and-automation.md). |
+| Delta-log publishing | Mark's **September 2025** articles explain the outward handoff. Their few observed timing trials are not an SLA; the book uses marker-based, bounded verification rather than a fixed sleep or count alone. | [Chapter 3](parts/01-getting-started/03-anatomy-of-a-delta-table.md), [Chapter 23](parts/04-how-the-engine-works/23-storage-onelake-and-delta-log-publishing.md); [article][publishing], [Part 2][publishing2]. |
+| Direct Lake deployment parameters | November documentation adds a parameter-rule procedure, not proof of a November feature launch. Use the Lakehouse/Warehouse source item ID, not SQL endpoint ID. | [Chapter 36](parts/06-operating-the-platform/36-development-and-automation.md#rebind-direct-lake-on-onelake-with-parameter-rules). |
+| Warehouse snapshot behavior | Stable data is not immutable schema or historical permissions. Parent retention, recovery and supported clients are distinct. | [Chapter 35](parts/06-operating-the-platform/35-recovery-and-retention.md). |
+
+## Upcoming roadmap items: snapshot, not delivery promises
+
+**The roadmap snapshot was taken on 9 November 2026.** The [complete 25-card Data Warehouse/Planned listing](appendices/H-roadmap-snapshot.md#snapshot-9-november-2026) preserves exact titles, target stages, quarters and live item links. It includes stale/conflicting labels; **25 Planned cards does not mean 25 unavailable capabilities**.
+
+The main design dependencies include Warehouse-native shortcuts and whole-Warehouse clones (planned public preview Q1 2027), TDS redirect/workspace-friendly connections and native SQL endpoint lifecycle improvements (listed Q4 2026), and planned observability/concurrency/type-evolution improvements. Their targets do not establish current syntax, driver support, permissions, availability or atomic deployment behavior.
+
+Use the current Lakehouse-shortcut/three-part-query architecture without waiting for Warehouse-native shortcuts. Keep current transaction/retry, supported-type and deployment controls until a new contract is verified. Dates, scope and delivery can change or an item may not ship.
+
+## What was validated in the FabCon roundup
+
+James Serra's article was published **8 October 2026** and modified **12 October**, according to its page metadata. The Warehouse-relevant topics were traced to original Analytics, monthly Warehouse, editor and language posts and specific current references. Related Spark/capacity features were kept separate from Warehouse contracts.
+
+Some qualifications are substantive:
+
+- The Analytics article confirms GPU **public preview**, but vendor benchmark headlines and onboarding details do not establish universal eligibility or equal-CU savings.
+- The monthly source places Warehouse on-demand billing, graphical plans and AI Insights under **Coming Soon**; a broad public-preview grouping is not a ready-to-run walkthrough.
+- The roundup calls Warehouse CLONE **private preview**. Its linked Analytics destination describes clones as looking ahead; this review did not independently establish a public private-preview contract or enrollment route. That claim remains **unverified detail**, separate from the dated public-preview roadmap target.
+- The preview profiles/visual schema/new-chart claims did not yield a complete independent primary operational contract. The verified editor article separately labels core productivity GA and query sharing/Activator preview.
+- The result-cache reference establishes behavior/defaults; an index GA listing and a release page linking an older preview announcement are not used to invent a new GA date.
+- A generic Fabric Remote MCP/SQL tool announcement is not proof that the **Warehouse SQL MCP** component is GA. Similarly, SQL Server, Hyperscale, vector-index, Eventhouse and Spark announcements are not imported as Warehouse features.
+
+No source's customer benchmark, live-test claim, role inheritance or unsupported-feature list is adopted unchanged merely because it appears in a useful blog.
+
+## What changed in this manuscript
+
+The current book retains **42 continuously numbered chapters**, now in **seven parts**. The earlier item-overview and Lakehouse/Warehouse comparison material is consolidated into the endpoint introduction rather than discarded.
+
+| Manuscript change | Where it now lives |
+| --- | --- |
+| Professionally edited author foreword, using Mark's supplied experience and purpose | [Foreword](front-matter/foreword.md). |
+| Early Parquet/Delta anatomy, persisted versus variable types, datetime2 precision and outward publication | [Chapter 3](parts/01-getting-started/03-anatomy-of-a-delta-table.md). |
+| Medallion/modern architectures, hosted plus ADLS/S3/GCS/mirrored-data shortcuts and same-workspace three-part SQL | [Part II architecture section](parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#building-architectures-with-warehouse). |
+| Dedicated endpoint differences, metadata sync, and OneLake access-control/RLS/CLS treatment | [Part III](parts/03-sql-analytics-endpoint/README.md). |
+| Explicit shared SQL-engine grants, SQL RLS, SQL column permissions and their relation to OneLake | [Chapter 12](parts/02-building-analytical-solutions/12-security-and-governance.md). |
+| Complete prior four-feature T-SQL bundle, REGEX/fuzzy examples and updated UDF mechanisms | [Chapters 7](parts/02-building-analytical-solutions/07-tsql-for-analytics.md) and [11](parts/02-building-analytical-solutions/11-tsql-compatibility.md). |
+| Expanded migration guidance, native Assistant, dedicated Synapse path and the author's migration/mirroring toolkit | [Part VII](parts/07-migration-and-production-design/README.md). |
+| Dated product evidence, source comparisons and retained public code pins | [Feature ledger](appendices/C-feature-status.md), [bibliography](appendices/D-bibliography.md), [script register](appendices/B-script-source-register.md). |
+| Archived planning fields rather than an undated moving-roadmap promise | [Appendix H](appendices/H-roadmap-snapshot.md). |
+| More explanatory illustrations and credited local copies of licensed Microsoft documentation images | [Figure/source index](appendices/F-diagram-index.md). |
+
+The [edition history](history.md) records manuscript revisions; the [feature ledger](appendices/C-feature-status.md) records product evidence. A book edit, a blog publication and a service rollout are not the same event. No tenant migration, permission/mode change, AI invocation or performance test is implied by this review.
+
+[fabric-blog]: https://community.fabric.microsoft.com/category/fabricupdatesblogs/blog/fbc_fabricupdatesblogs
+[sqltidy]: https://medium.com/@sqltidy
+[serra]: https://www.jamesserra.com/archive/2026/10/announcements-from-the-microsoft-fabric-community-conference-barcelona-2026/
+[analytics]: https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/bringing-governed-analytics-into-the-flow-of-work-fabric-analytics-at-fabcon-eur/5368918
+[september]: https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-september-2026-feature-summary/5325825
+[tsql-blog]: https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/t-sql-language-enhancements-in-microsoft-fabric-data-warehouse-preview/5375433
+[group-by]: https://learn.microsoft.com/en-us/sql/t-sql/queries/select-group-by-transact-sql?view=fabric#group-by-all
+[order-by]: https://learn.microsoft.com/en-us/sql/t-sql/queries/select-order-by-clause-transact-sql?view=fabric&preserve-view=true#all
+[qualify]: https://learn.microsoft.com/en-us/sql/t-sql/queries/select-qualify-clause-transact-sql?view=fabric
+[regex-blog]: https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/regular-expression-functions-in-microsoft-fabric-data-warehouse-preview/5382375
+[similarity]: https://learn.microsoft.com/en-us/fabric/data-warehouse/string-similarity
+[udf-guide]: https://learn.microsoft.com/en-us/fabric/data-warehouse/how-to-inline-udf
+[external-udf]: https://learn.microsoft.com/en-us/fabric/data-warehouse/fabric-user-data-functions
+[identity]: https://learn.microsoft.com/en-us/fabric/data-warehouse/identity
+[result-cache]: https://learn.microsoft.com/en-us/fabric/data-warehouse/result-set-caching
+[pool-unification]: https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/unifying-sql-pools-upcoming-changes-to-ui-and-apis/5397390
+[platform]: https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/build-deploy-and-govern-microsoft-fabric-at-scale/5369145
+[overage]: https://learn.microsoft.com/en-us/fabric/enterprise/capacity-overage-overview
+[editor-blog]: https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/advancing-the-microsoft-fabric-sql-query-editor/5364033
+[activator]: https://learn.microsoft.com/en-us/fabric/real-time-intelligence/data-activator/set-alerts-warehouse-sql-query
+[monitor-blog]: https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/find-expensive-queries-from-capacity-metrics-generally-available/5393588
+[workspace-monitor]: https://learn.microsoft.com/en-us/fabric/data-warehouse/warehouse-workspace-monitoring
+[warehouse-api]: https://learn.microsoft.com/en-us/rest/api/fabric/warehouse/items
+[migration]: https://learn.microsoft.com/en-us/fabric/data-warehouse/migration-assistant
+[copy-matrix]: https://learn.microsoft.com/en-us/fabric/data-factory/copy-job-connectors
+[synapse-tool]: https://github.com/MarkPryceMaherMSFT/fabric-mirroring-synapse
+[runtime]: https://learn.microsoft.com/en-us/fabric/data-engineering/runtime-2-0
+[mlv]: https://learn.microsoft.com/en-us/fabric/data-engineering/materialized-lake-views/overview-materialized-lake-view
+[mlv-refresh]: https://learn.microsoft.com/en-us/fabric/data-engineering/materialized-lake-views/optimal-refresh-handling-deletes-updates
+[publishing]: https://medium.com/@sqltidy/fabric-warehouse-delta-log-publishing-477c1508d060
+[publishing2]: https://medium.com/@sqltidy/fabric-warehouse-delta-log-publishing-part-2-0730cc6fba06

@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Statistics inform estimates, not business truth</title>
+<desc id="desc">Conceptual diagnostic loop linking distributions, statistics, cardinality estimates, plan decisions and observed execution evidence. The return loop is an operator's investigation, not a promised automatic query-feedback feature.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="12-statistics-feedback-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Statistics inform estimates, not business truth</tspan>
+</text>
+<text id="12-statistics-feedback-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Compare predicted rows with observed work before choosing a targeted maintenance action.</tspan>
+</text>
+<polyline id="12-statistics-feedback-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="12-statistics-feedback-003" x="75" y="250" width="390" height="160" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="12-statistics-feedback-004" x="270.0" y="270.6" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="270.0" y="270.6">Data distribution</tspan>
+<tspan x="270.0" y="310.20000000000005">Skew, correlation,</tspan>
+<tspan x="270.0" y="349.8">new or changed rows</tspan>
+</text>
+<rect id="12-statistics-feedback-005" x="650" y="250" width="390" height="160" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="12-statistics-feedback-006" x="845.0" y="270.6" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="845.0" y="270.6">Statistics</tspan>
+<tspan x="845.0" y="310.20000000000005">Compact summaries</tspan>
+<tspan x="845.0" y="349.8">of column values</tspan>
+</text>
+<rect id="12-statistics-feedback-007" x="1225" y="250" width="400" height="160" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="12-statistics-feedback-008" x="1425.0" y="270.6" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1425.0" y="270.6">QO estimates</tspan>
+<tspan x="1425.0" y="310.20000000000005">Expected rows</tspan>
+<tspan x="1425.0" y="349.8">at plan operators</tspan>
+</text>
+<polyline id="12-statistics-feedback-009" points="475,330 640,330" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="640.00,330.00 624.00,337.00 624.00,323.00" fill="#008575"/>
+<polyline id="12-statistics-feedback-010" points="1050,330 1215,330" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1215.00,330.00 1199.00,337.00 1199.00,323.00" fill="#0078D4"/>
+<rect id="12-statistics-feedback-011" x="1225" y="620" width="400" height="175" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="12-statistics-feedback-012" x="1425.0" y="648.1" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1425.0" y="648.1">Plan choices</tspan>
+<tspan x="1425.0" y="687.7">Join strategy,</tspan>
+<tspan x="1425.0" y="727.3000000000001">movement + memory</tspan>
+</text>
+<rect id="12-statistics-feedback-013" x="650" y="620" width="390" height="175" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="12-statistics-feedback-014" x="845.0" y="650.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="845.0" y="650.08">Execution evidence</tspan>
+<tspan x="845.0" y="688.36">Actual row volumes</tspan>
+<tspan x="845.0" y="726.6400000000001">and resource pressure</tspan>
+</text>
+<rect id="12-statistics-feedback-015" x="75" y="620" width="390" height="175" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="12-statistics-feedback-016" x="270.0" y="650.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="270.0" y="650.08">Targeted response</tspan>
+<tspan x="270.0" y="688.36">Inspect statistics,</tspan>
+<tspan x="270.0" y="726.6400000000001">SQL and data shape</tspan>
+</text>
+<polyline id="12-statistics-feedback-017" points="1425,410 1425,610" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1425.00,610.00 1418.00,594.00 1432.00,594.00" fill="#0078D4"/>
+<polyline id="12-statistics-feedback-018" points="1215,707 1050,707" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1050.00,707.00 1066.00,700.00 1066.00,714.00" fill="#0078D4"/>
+<polyline id="12-statistics-feedback-019" points="640,707 475,707" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="475.00,707.00 491.00,700.00 491.00,714.00" fill="#107C10"/>
+<polyline id="12-statistics-feedback-020" points="270,620 270,515 845,515 845,420" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="845.00,420.00 852.00,436.00 838.00,436.00" fill="#107C10"/>
+<text id="12-statistics-feedback-021" x="310" y="550" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="310" y="550.0">Human diagnostic loop: refresh only when evidence justifies it</tspan>
+</text>
+<rect id="12-statistics-feedback-022" x="75" y="885" width="1550" height="112" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="12-statistics-feedback-023" x="850.0" y="901.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="901.4">A good histogram cannot discover a missing Lakehouse table,</tspan>
+<tspan x="850.0" y="941.0">repair duplicate dimension keys or guarantee a globally optimal plan.</tspan>
+</text>
+<rect id="12-statistics-feedback-024" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="12-statistics-feedback-025" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Validate semantics first; statistics maintenance improves information available to the optimizer.</tspan>
+</text>
+<rect id="12-statistics-feedback-026" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="12-statistics-feedback-027" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="12-statistics-feedback-028" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="12-statistics-feedback-029" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="12-statistics-feedback-030" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="12-statistics-feedback-031" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="12-statistics-feedback-032" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="12-statistics-feedback-033" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="12-statistics-feedback-034" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 12 / 24</tspan>
+</text>
+</svg>

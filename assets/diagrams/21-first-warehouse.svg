@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">First Warehouse: create, seed, then reconcile</title>
+<desc id="desc">Concrete high-level walkthrough of the book's Warehouse seed: create BookWarehouse, run 04-create-book-warehouse.sql, then verify the six canonical sales, ten units and 365.00 revenue, with GB 185.00 and DE 180.00. Expected values are computed offline from the canonical seed, not measured against a live tenant. Run write scripts only in the isolated book lab.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="21-first-warehouse-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">First Warehouse: create, seed, then reconcile</tspan>
+</text>
+<text id="21-first-warehouse-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">BookWarehouse / book  |  SQL writes own this independent teaching dataset.</tspan>
+</text>
+<polyline id="21-first-warehouse-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="21-first-warehouse-003" x="75" y="235" width="430" height="165" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="21-first-warehouse-004" x="290.0" y="258.1" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="290.0" y="258.1">1  Create Warehouse</tspan>
+<tspan x="290.0" y="297.70000000000005">Name: BookWarehouse</tspan>
+<tspan x="290.0" y="337.3">Open its SQL context</tspan>
+</text>
+<rect id="21-first-warehouse-005" x="635" y="235" width="430" height="165" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="21-first-warehouse-006" x="850.0" y="260.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="260.08">2  Run the seed script</tspan>
+<tspan x="850.0" y="298.36">Create book schema + tables</tspan>
+<tspan x="850.0" y="336.64">Insert canonical rows</tspan>
+</text>
+<rect id="21-first-warehouse-007" x="1195" y="235" width="430" height="165" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="21-first-warehouse-008" x="1410.0" y="260.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1410.0" y="260.08">3  Query and reconcile</tspan>
+<tspan x="1410.0" y="298.36">Check object names,</tspan>
+<tspan x="1410.0" y="336.64">row counts and revenue</tspan>
+</text>
+<polyline id="21-first-warehouse-009" points="515,317 625,317" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="625.00,317.00 609.00,324.00 609.00,310.00" fill="#0078D4"/>
+<polyline id="21-first-warehouse-010" points="1075,317 1185,317" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1185.00,317.00 1169.00,324.00 1169.00,310.00" fill="#107C10"/>
+<text id="21-first-warehouse-011" x="75" y="443" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="75" y="443.0">Script: 04-create-book-warehouse.sql</tspan>
+</text>
+<rect id="21-first-warehouse-012" x="75" y="535" width="920" height="465" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="21-first-warehouse-013" x="97" y="552" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="97" y="552.0">Canonical book model  |  January 1-3, 2026</tspan>
+</text>
+<rect id="21-first-warehouse-014" x="110" y="625" width="265" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="21-first-warehouse-015" x="242.5" y="639.56" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="242.5" y="639.56">DimCustomer</tspan>
+<tspan x="242.5" y="676.52">3 customers</tspan>
+<tspan x="242.5" y="713.4799999999999">GB / DE</tspan>
+</text>
+<rect id="21-first-warehouse-016" x="405" y="625" width="265" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="21-first-warehouse-017" x="537.5" y="639.56" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="537.5" y="639.56">DimProduct</tspan>
+<tspan x="537.5" y="676.52">4 products</tspan>
+<tspan x="537.5" y="713.4799999999999">4 categories</tspan>
+</text>
+<rect id="21-first-warehouse-018" x="700" y="625" width="260" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="21-first-warehouse-019" x="830.0" y="639.56" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="830.0" y="639.56">DimDate</tspan>
+<tspan x="830.0" y="676.52">3 dates</tspan>
+<tspan x="830.0" y="713.4799999999999">January 2026</tspan>
+</text>
+<rect id="21-first-warehouse-020" x="275" y="835" width="520" height="120" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="21-first-warehouse-021" x="535.0" y="855.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="535.0" y="855.4">book.FactSales</tspan>
+<tspan x="535.0" y="895.0">6 rows  |  SalesKey 1001-1006</tspan>
+</text>
+<polyline id="21-first-warehouse-022" points="242,765 242,790 345,790 345,825" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="345.00,825.00 338.00,809.00 352.00,809.00" fill="#008575"/>
+<polyline id="21-first-warehouse-023" points="537,765 537,790 537,790 537,825" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="537.00,825.00 530.00,809.00 544.00,809.00" fill="#008575"/>
+<polyline id="21-first-warehouse-024" points="830,765 830,790 725,790 725,825" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="725.00,825.00 718.00,809.00 732.00,809.00" fill="#008575"/>
+<rect id="21-first-warehouse-025" x="1100" y="535" width="525" height="465" rx="18" fill="none" stroke="#107C10" stroke-width="3"/>
+<text id="21-first-warehouse-026" x="1122" y="552" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1122" y="552.0">Warehouse SQL check</tspan>
+</text>
+<rect id="21-first-warehouse-027" x="1140" y="625" width="445" height="160" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="21-first-warehouse-028" x="1362.5" y="639.66" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="33" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1362.5" y="639.66">6 facts</tspan>
+<tspan x="1362.5" y="683.22">10 units</tspan>
+<tspan x="1362.5" y="726.78">365.00 revenue</tspan>
+</text>
+<rect id="21-first-warehouse-029" x="1140" y="825" width="445" height="125" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="21-first-warehouse-030" x="1362.5" y="850.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1362.5" y="850.54">Country reconciliation</tspan>
+<tspan x="1362.5" y="887.5">GB 185.00  |  DE 180.00</tspan>
+</text>
+<polyline id="21-first-warehouse-031" points="1005,895 1090,895" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1090.00,895.00 1074.00,902.00 1074.00,888.00" fill="#107C10"/>
+<text id="21-first-warehouse-032" x="1100" y="493" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1100" y="493.0">Read-only verification after seeding</tspan>
+</text>
+<rect id="21-first-warehouse-033" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="21-first-warehouse-034" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">These rows are separate from BookLakehouse's identical starting seed; changing one does not update the other.</tspan>
+</text>
+<rect id="21-first-warehouse-035" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="21-first-warehouse-036" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="21-first-warehouse-037" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="21-first-warehouse-038" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="21-first-warehouse-039" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="21-first-warehouse-040" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="21-first-warehouse-041" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="21-first-warehouse-042" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="21-first-warehouse-043" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 21 / 24</tspan>
+</text>
+</svg>

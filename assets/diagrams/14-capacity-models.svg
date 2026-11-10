@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Do not confuse three different control points</title>
+<desc id="desc">Conceptual comparison of the existing capacity model and announced on-demand Warehouse model. A compute ceiling queues or slows work; a separate rolling spending limit can pause new operations while in-flight work finishes. On-demand Warehouse billing is public preview coming soon at the 9 October 2026 evidence cutoff. Queue discipline, timeouts and rollout details are not published.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="14-capacity-models-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Do not confuse three different control points</tspan>
+</text>
+<text id="14-capacity-models-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Existing capacity throttling, future compute ceilings and future spending limits have different effects.</tspan>
+</text>
+<polyline id="14-capacity-models-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="14-capacity-models-003" x="65" y="220" width="545" height="795" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="14-capacity-models-004" x="87" y="237" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="87" y="237.0">Existing capacity model</tspan>
+</text>
+<rect id="14-capacity-models-005" x="105" y="330" width="465" height="155" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="14-capacity-models-006" x="337.5" y="350.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="337.5" y="350.08">Shared capacity</tspan>
+<tspan x="337.5" y="388.36">Consumption + smoothing</tspan>
+<tspan x="337.5" y="426.64">Capacity pressure matters</tspan>
+</text>
+<polyline id="14-capacity-models-007" points="337,485 337,580" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="337.00,580.00 330.00,564.00 344.00,564.00" fill="#0078D4"/>
+<rect id="14-capacity-models-008" x="105" y="590" width="465" height="155" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="14-capacity-models-009" x="337.5" y="610.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="337.5" y="610.08">Capacity throttling</tspan>
+<tspan x="337.5" y="648.36">Delays / rejections under</tspan>
+<tspan x="337.5" y="686.6400000000001">applicable capacity rules</tspan>
+</text>
+<text id="14-capacity-models-010" x="105" y="825" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="105" y="825.0">Not the same as the announced</tspan>
+<tspan x="105" y="861.96">on-demand control model.</tspan>
+</text>
+<rect id="14-capacity-models-011" x="675" y="220" width="960" height="795" rx="18" fill="none" stroke="#008575" stroke-width="3" stroke-dasharray="13 9"/>
+<text id="14-capacity-models-012" x="697" y="237" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="697" y="237.0">On-demand Warehouse  |  Announced - coming soon</tspan>
+</text>
+<rect id="14-capacity-models-013" x="715" y="330" width="880" height="115" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3" stroke-dasharray="13 9"/>
+<text id="14-capacity-models-014" x="1155.0" y="349.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1155.0" y="349.22">Planned consumption billing: CU-hours without smoothing</tspan>
+<tspan x="1155.0" y="387.5">Storage remains separate</tspan>
+</text>
+<rect id="14-capacity-models-015" x="715" y="550" width="410" height="160" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3" stroke-dasharray="13 9"/>
+<text id="14-capacity-models-016" x="920.0" y="574.56" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="920.0" y="574.56">Workspace compute ceiling</tspan>
+<tspan x="920.0" y="611.52">Work queues / slows</tspan>
+<tspan x="920.0" y="648.4799999999999">at the compute limit</tspan>
+</text>
+<rect id="14-capacity-models-017" x="1185" y="550" width="410" height="160" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3" stroke-dasharray="13 9"/>
+<text id="14-capacity-models-018" x="1390.0" y="576.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1390.0" y="576.54">Rolling 24-hour spend limit</tspan>
+<tspan x="1390.0" y="612.18">New operations may pause;</tspan>
+<tspan x="1390.0" y="647.8199999999999">in-flight work finishes</tspan>
+</text>
+<polyline id="14-capacity-models-019" points="940,445 940,540" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="940.00,540.00 933.00,524.00 947.00,524.00" fill="#008575"/>
+<polyline id="14-capacity-models-020" points="1390,445 1390,540" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<polygon points="1390.00,540.00 1383.00,524.00 1397.00,524.00" fill="#107C10"/>
+<rect id="14-capacity-models-021" x="715" y="805" width="880" height="145" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="14-capacity-models-022" x="1155.0" y="822.06" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1155.0" y="822.06">SQL pools (current) classify and isolate workload shares.</tspan>
+<tspan x="1155.0" y="859.02">They are not authorization boundaries or spending caps.</tspan>
+<tspan x="1155.0" y="895.9799999999999">Do not read "queues" as unlimited compute or no quotas.</tspan>
+</text>
+<rect id="14-capacity-models-023" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="14-capacity-models-024" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Treat resource ceilings, budget safeguards and existing capacity throttling as separate operational policies.</tspan>
+</text>
+<rect id="14-capacity-models-025" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="14-capacity-models-026" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="14-capacity-models-027" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="14-capacity-models-028" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="14-capacity-models-029" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="14-capacity-models-030" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="14-capacity-models-031" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="14-capacity-models-032" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="14-capacity-models-033" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 14 / 24</tspan>
+</text>
+</svg>

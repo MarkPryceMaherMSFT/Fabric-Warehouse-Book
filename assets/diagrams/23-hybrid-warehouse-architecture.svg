@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Warehouse + Lakehouse: one SQL architecture</title>
+<desc id="desc">Cloud Delta tables and mirrored-database targets are exposed through integration Lakehouse shortcuts beside hosted Delta tables. The Lakehouse SQL analytics endpoint serves Warehouse three-part reads, with optional Warehouse-owned gold materialization. Conceptual current architecture, not a measured deployment or a claim that arbitrary files are SQL tables. Shortcut/source identities, formats and freshness remain separate.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="23-hybrid-warehouse-architecture-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Warehouse + Lakehouse: one SQL architecture</tspan>
+</text>
+<text id="23-hybrid-warehouse-architecture-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Hosted Delta and cloud/OneLake shortcuts feed a governed, same-workspace SQL route.</tspan>
+</text>
+<polyline id="23-hybrid-warehouse-architecture-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="23-hybrid-warehouse-architecture-003" x="65" y="270" width="300" height="220" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-004" x="215.0" y="328.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="215.0" y="328.52">Cloud Delta tables</tspan>
+<tspan x="215.0" y="362.84">ADLS Gen2</tspan>
+<tspan x="215.0" y="397.15999999999997">Amazon S3 / GCS</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-005" x="65" y="560" width="300" height="190" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-006" x="215.0" y="605.5" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="215.0" y="605.5">Mirrored databases</tspan>
+<tspan x="215.0" y="638.5">OneLake table targets</tspan>
+<tspan x="215.0" y="671.5">Producer-owned</tspan>
+</text>
+<text id="23-hybrid-warehouse-architecture-007" x="65" y="770" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="22" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="65" y="770.0">GCS = Google Cloud Storage</tspan>
+</text>
+<text id="23-hybrid-warehouse-architecture-008" x="65" y="815" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="65" y="815.0">A shortcut is a reference,</tspan>
+<tspan x="65" y="846.68">not an immutable archive.</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-009" x="425" y="220" width="1220" height="790" rx="18" fill="none" stroke="#605E5C" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-010" x="447" y="237" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="447" y="237.0">Consumer workspace: SQL three-part scope</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-011" x="460" y="290" width="530" height="490" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-012" x="482" y="307" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="482" y="307.0">Integration Lakehouse</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-013" x="495" y="365" width="230" height="150" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-014" x="610.0" y="390.5" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="610.0" y="390.5">Tables shortcuts</tspan>
+<tspan x="610.0" y="423.5">Cloud + OneLake</tspan>
+<tspan x="610.0" y="456.5">Read references</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-015" x="755" y="365" width="200" height="150" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-016" x="855.0" y="388.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="855.0" y="388.52">Hosted</tspan>
+<tspan x="855.0" y="422.84">Delta tables</tspan>
+<tspan x="855.0" y="457.15999999999997">Local writer</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-017" x="495" y="640" width="460" height="105" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-018" x="725.0" y="656.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="725.0" y="656.86">SQL analytics endpoint</tspan>
+<tspan x="725.0" y="692.5">Exposes eligible tables</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-019" x="1125" y="345" width="475" height="235" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-020" x="1362.5" y="405.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1362.5" y="405.08">Warehouse</tspan>
+<tspan x="1362.5" y="443.36">SQL joins + transformation</tspan>
+<tspan x="1362.5" y="481.64">Optional gold tables</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-021" x="1125" y="700" width="475" height="130" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-022" x="1362.5" y="730.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1362.5" y="730.68">Governed consumers</tspan>
+<tspan x="1362.5" y="765.0">SQL clients / Power BI</tspan>
+</text>
+<polyline id="23-hybrid-warehouse-architecture-023" points="365,380 410,380 410,405 485,405" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="485.00,405.00 469.00,412.00 469.00,398.00" fill="#008575"/>
+<polyline id="23-hybrid-warehouse-architecture-024" points="365,655 410,655 410,470 485,470" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="485.00,470.00 469.00,477.00 469.00,463.00" fill="#008575"/>
+<polyline id="23-hybrid-warehouse-architecture-025" points="610,525 610,630" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="610.00,630.00 603.00,614.00 617.00,614.00" fill="#008575"/>
+<polyline id="23-hybrid-warehouse-architecture-026" points="855,525 855,630" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="855.00,630.00 848.00,614.00 862.00,614.00" fill="#008575"/>
+<polyline id="23-hybrid-warehouse-architecture-027" points="965,692 1055,692 1055,470 1115,470" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1115.00,470.00 1099.00,477.00 1099.00,463.00" fill="#0078D4"/>
+<text id="23-hybrid-warehouse-architecture-028" x="1005" y="715" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1005" y="715.0">SQL read</tspan>
+</text>
+<polyline id="23-hybrid-warehouse-architecture-029" points="1360,590 1360,690" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1360.00,690.00 1353.00,674.00 1367.00,674.00" fill="#107C10"/>
+<rect id="23-hybrid-warehouse-architecture-030" x="460" y="855" width="1140" height="100" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-031" x="1030.0" y="872.0" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="25" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1030.0" y="872.0">Warehouse SQL: [IntegrationLakehouse].[schema].[table]</tspan>
+<tspan x="1030.0" y="905.0">Formats, identities, freshness and write ownership still matter.</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-032" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-033" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Query in place when appropriate. Materialize gold deliberately; a shortcut does not transfer write ownership.</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-034" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-035" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-036" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-037" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="23-hybrid-warehouse-architecture-038" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="23-hybrid-warehouse-architecture-039" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="23-hybrid-warehouse-architecture-040" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="23-hybrid-warehouse-architecture-041" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="23-hybrid-warehouse-architecture-042" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 23 / 24</tspan>
+</text>
+</svg>

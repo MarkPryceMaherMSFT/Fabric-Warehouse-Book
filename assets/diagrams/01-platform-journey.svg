@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">From operational records to decisions</title>
+<desc id="desc">Conceptual analytics journey: ingest operational data, shape a governed model, and serve decisions while OneLake storage remains separate from compute. Conceptual responsibility map, not a measured deployment or fixed topology.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="01-platform-journey-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">From operational records to decisions</tspan>
+</text>
+<text id="01-platform-journey-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">A sales question crosses several responsibilities, not one magic database.</tspan>
+</text>
+<polyline id="01-platform-journey-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="01-platform-journey-003" x="70" y="245" width="330" height="80" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="01-platform-journey-004" x="235.0" y="263.88" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="235.0" y="263.88">1  Land</tspan>
+</text>
+<rect id="01-platform-journey-005" x="70" y="360" width="330" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="01-platform-journey-006" x="235.0" y="395.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="235.0" y="395.54">Operational records</tspan>
+<tspan x="235.0" y="432.5">Files and changes</tspan>
+</text>
+<rect id="01-platform-journey-007" x="480" y="245" width="330" height="80" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="01-platform-journey-008" x="645.0" y="263.88" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="645.0" y="263.88">2  Shape</tspan>
+</text>
+<rect id="01-platform-journey-009" x="480" y="360" width="330" height="145" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="01-platform-journey-010" x="645.0" y="395.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="645.0" y="395.54">Warehouse SQL</tspan>
+<tspan x="645.0" y="432.5">or Lakehouse Spark</tspan>
+</text>
+<rect id="01-platform-journey-011" x="890" y="245" width="330" height="80" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="01-platform-journey-012" x="1055.0" y="263.88" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1055.0" y="263.88">3  Serve</tspan>
+</text>
+<rect id="01-platform-journey-013" x="890" y="360" width="330" height="145" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="01-platform-journey-014" x="1055.0" y="395.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1055.0" y="395.54">SQL + semantic model</tspan>
+<tspan x="1055.0" y="432.5">Business measures</tspan>
+</text>
+<rect id="01-platform-journey-015" x="1300" y="245" width="330" height="80" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="01-platform-journey-016" x="1465.0" y="263.88" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1465.0" y="263.88">4  Decide</tspan>
+</text>
+<rect id="01-platform-journey-017" x="1300" y="360" width="330" height="145" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="01-platform-journey-018" x="1465.0" y="395.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1465.0" y="395.54">Reports and clients</tspan>
+<tspan x="1465.0" y="432.5">Revenue by country</tspan>
+</text>
+<polyline id="01-platform-journey-019" points="405,433 473,433" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="473.00,433.00 457.00,440.00 457.00,426.00" fill="#008575"/>
+<polyline id="01-platform-journey-020" points="815,433 883,433" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="883.00,433.00 867.00,440.00 867.00,426.00" fill="#008575"/>
+<polyline id="01-platform-journey-021" points="1225,433 1293,433" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1293.00,433.00 1277.00,440.00 1277.00,426.00" fill="#008575"/>
+<rect id="01-platform-journey-022" x="70" y="585" width="1560" height="195" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="01-platform-journey-023" x="92" y="602" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="602.0">OneLake: shared storage foundation</tspan>
+</text>
+<rect id="01-platform-journey-024" x="110" y="665" width="480" height="76" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="01-platform-journey-025" x="350.0" y="683.2" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="350.0" y="683.2">Managed tables + open data</tspan>
+</text>
+<rect id="01-platform-journey-026" x="650" y="665" width="400" height="76" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="01-platform-journey-027" x="850.0" y="683.2" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="683.2">Governed access paths</tspan>
+</text>
+<rect id="01-platform-journey-028" x="1110" y="665" width="470" height="76" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="01-platform-journey-029" x="1345.0" y="683.2" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1345.0" y="683.2">Not an execution engine</tspan>
+</text>
+<polyline id="01-platform-journey-030" points="645,505 645,577" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="645.00,577.00 638.00,561.00 652.00,561.00" fill="#008575"/>
+<polyline id="01-platform-journey-031" points="1055,585 1055,513" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1055.00,513.00 1062.00,529.00 1048.00,529.00" fill="#008575"/>
+<rect id="01-platform-journey-032" x="70" y="835" width="735" height="155" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="01-platform-journey-033" x="437.5" y="855.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="437.5" y="855.08">MPP / Polaris</tspan>
+<tspan x="437.5" y="893.36">Split eligible work into tasks;</tspan>
+<tspan x="437.5" y="931.6400000000001">coordinate and combine results.</tspan>
+</text>
+<rect id="01-platform-journey-034" x="865" y="835" width="765" height="155" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="01-platform-journey-035" x="1247.5" y="855.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1247.5" y="855.08">Business contract</tspan>
+<tspan x="1247.5" y="893.36">Use the right grain and permissions;</tspan>
+<tspan x="1247.5" y="931.6400000000001">verify the answer before tuning.</tspan>
+</text>
+<rect id="01-platform-journey-036" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="01-platform-journey-037" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">One platform does not erase write ownership, security boundaries or freshness checks.</tspan>
+</text>
+<rect id="01-platform-journey-038" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="01-platform-journey-039" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="01-platform-journey-040" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="01-platform-journey-041" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="01-platform-journey-042" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="01-platform-journey-043" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="01-platform-journey-044" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="01-platform-journey-045" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="01-platform-journey-046" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 01 / 24</tspan>
+</text>
+</svg>

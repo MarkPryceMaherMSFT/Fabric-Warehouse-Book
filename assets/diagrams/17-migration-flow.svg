@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Migrate schema and data as separate workstreams</title>
+<desc id="desc">Conceptual migration plan with parallel schema/logic and data movement workstreams converging on correctness validation and an approved cutover. Assistant and connector capabilities vary. Watermarks do not propagate deletes; CDC requires a supported CDC-enabled source. No translation equivalence is promised.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="17-migration-flow-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Migrate schema and data as separate workstreams</tspan>
+</text>
+<text id="17-migration-flow-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Translation is a starting point; reconciliation and a reversible cutover prove the migration.</tspan>
+</text>
+<polyline id="17-migration-flow-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="17-migration-flow-003" x="535" y="215" width="630" height="105" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="17-migration-flow-004" x="850.0" y="227.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="227.9">Assess source + approve scope</tspan>
+<tspan x="850.0" y="267.5">Dependencies, access and rollback plan</tspan>
+</text>
+<rect id="17-migration-flow-005" x="70" y="415" width="720" height="365" rx="18" fill="none" stroke="#0078D4" stroke-width="3"/>
+<text id="17-migration-flow-006" x="92" y="432" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="92" y="432.0">Schema and SQL logic</tspan>
+</text>
+<rect id="17-migration-flow-007" x="910" y="415" width="720" height="365" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="17-migration-flow-008" x="932" y="432" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="932" y="432.0">Data movement</tspan>
+</text>
+<rect id="17-migration-flow-009" x="110" y="510" width="640" height="100" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="17-migration-flow-010" x="430.0" y="540.2" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="430.0" y="540.2">Translate definitions → remediate</tspan>
+</text>
+<rect id="17-migration-flow-011" x="110" y="655" width="640" height="90" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="17-migration-flow-012" x="430.0" y="682.18" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="430.0" y="682.18">Review unsupported behavior + orchestration</tspan>
+</text>
+<rect id="17-migration-flow-013" x="950" y="510" width="640" height="100" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="17-migration-flow-014" x="1270.0" y="540.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1270.0" y="540.86">Initial full load → incremental catch-up</tspan>
+</text>
+<rect id="17-migration-flow-015" x="950" y="655" width="640" height="90" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="17-migration-flow-016" x="1270.0" y="682.18" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1270.0" y="682.18">Watermark ≠ deletes; CDC is source-specific</tspan>
+</text>
+<polyline id="17-migration-flow-017" points="700,320 700,370 430,370 430,405" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="430.00,405.00 423.00,389.00 437.00,389.00" fill="#0078D4"/>
+<polyline id="17-migration-flow-018" points="1000,320 1000,370 1270,370 1270,405" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1270.00,405.00 1263.00,389.00 1277.00,389.00" fill="#008575"/>
+<rect id="17-migration-flow-019" x="70" y="900" width="460" height="105" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="17-migration-flow-020" x="300.0" y="912.9" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="300.0" y="912.9">Reconcile</tspan>
+<tspan x="300.0" y="952.5">Rows, totals, edge cases</tspan>
+</text>
+<rect id="17-migration-flow-021" x="620" y="900" width="460" height="105" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="17-migration-flow-022" x="850.0" y="914.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="914.22">Controlled cutover</tspan>
+<tspan x="850.0" y="952.5">Freeze / catch up / switch</tspan>
+</text>
+<rect id="17-migration-flow-023" x="1170" y="900" width="460" height="105" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="17-migration-flow-024" x="1400.0" y="914.22" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1400.0" y="914.22">Rollback readiness</tspan>
+<tspan x="1400.0" y="952.5">Keep a tested route back</tspan>
+</text>
+<polyline id="17-migration-flow-025" points="430,780 430,890" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="430.00,890.00 423.00,874.00 437.00,874.00" fill="#0078D4"/>
+<polyline id="17-migration-flow-026" points="1270,780 1270,835 300,835 300,890" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="300.00,890.00 293.00,874.00 307.00,874.00" fill="#008575"/>
+<polyline id="17-migration-flow-027" points="540,952 610,952" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="610.00,952.00 594.00,959.00 594.00,945.00" fill="#107C10"/>
+<polyline id="17-migration-flow-028" points="1090,952 1160,952" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1160.00,952.00 1144.00,959.00 1144.00,945.00" fill="#107C10"/>
+<rect id="17-migration-flow-029" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="17-migration-flow-030" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Do not equate successful translation, successful copying and a business-correct destination.</tspan>
+</text>
+<rect id="17-migration-flow-031" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="17-migration-flow-032" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="17-migration-flow-033" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="17-migration-flow-034" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="17-migration-flow-035" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="17-migration-flow-036" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="17-migration-flow-037" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="17-migration-flow-038" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="17-migration-flow-039" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 17 / 24</tspan>
+</text>
+</svg>

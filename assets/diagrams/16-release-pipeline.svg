@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">A deployment is a reviewed change, not just a file push</title>
+<desc id="desc">Conceptual release pipeline with schema comparison, a reviewed deployment artifact, one designated pre-deployment script, model deployment, one post-deployment script and validation. Scripts run every deployment, must be idempotent and are not model-validated at build. Failures halt deployment. Existing Git projects require the documented upgrade.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="16-release-pipeline-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">A deployment is a reviewed change, not just a file push</tspan>
+</text>
+<text id="16-release-pipeline-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">CI/CD 2.0 DacFx and deployment scripts are preview; check the project's upgrade prerequisites.</tspan>
+</text>
+<polyline id="16-release-pipeline-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="16-release-pipeline-003" x="75" y="235" width="380" height="140" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="16-release-pipeline-004" x="265.0" y="264.08" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="265.0" y="264.08">Source-controlled model</tspan>
+<tspan x="265.0" y="305.0">SQL project / Git</tspan>
+</text>
+<rect id="16-release-pipeline-005" x="655" y="235" width="390" height="140" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="16-release-pipeline-006" x="850.0" y="265.4" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="265.4">Schema compare</tspan>
+<tspan x="850.0" y="305.0">Review / exclude / script</tspan>
+</text>
+<rect id="16-release-pipeline-007" x="1245" y="235" width="380" height="140" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="16-release-pipeline-008" x="1435.0" y="266.72" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1435.0" y="266.72">Approved artifact</tspan>
+<tspan x="1435.0" y="305.0">DACPAC / deployment</tspan>
+</text>
+<polyline id="16-release-pipeline-009" points="465,305 645,305" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="645.00,305.00 629.00,312.00 629.00,298.00" fill="#0078D4"/>
+<polyline id="16-release-pipeline-010" points="1055,305 1235,305" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1235.00,305.00 1219.00,312.00 1219.00,298.00" fill="#0078D4"/>
+<rect id="16-release-pipeline-011" x="75" y="505" width="1550" height="320" rx="18" fill="none" stroke="#008575" stroke-width="3"/>
+<text id="16-release-pipeline-012" x="97" y="522" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="31" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="97" y="522.0">Target deployment  |  preview integration</tspan>
+</text>
+<rect id="16-release-pipeline-013" x="115" y="610" width="360" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="16-release-pipeline-014" x="295.0" y="641.72" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="295.0" y="641.72">1  Pre-deploy script</tspan>
+<tspan x="295.0" y="680.0">Idempotent preparation</tspan>
+</text>
+<rect id="16-release-pipeline-015" x="670" y="610" width="360" height="140" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="16-release-pipeline-016" x="850.0" y="641.72" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="641.72">2  Model deployment</tspan>
+<tspan x="850.0" y="680.0">Incremental changes</tspan>
+</text>
+<rect id="16-release-pipeline-017" x="1225" y="610" width="360" height="140" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="16-release-pipeline-018" x="1405.0" y="641.72" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="29" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1405.0" y="641.72">3  Post-deploy script</tspan>
+<tspan x="1405.0" y="680.0">Idempotent follow-up</tspan>
+</text>
+<polyline id="16-release-pipeline-019" points="485,680 660,680" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="660.00,680.00 644.00,687.00 644.00,673.00" fill="#0078D4"/>
+<polyline id="16-release-pipeline-020" points="1040,680 1215,680" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1215.00,680.00 1199.00,687.00 1199.00,673.00" fill="#0078D4"/>
+<polyline id="16-release-pipeline-021" points="1435,375 1435,443 295,443 295,495" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="295.00,495.00 288.00,479.00 302.00,479.00" fill="#107C10"/>
+<rect id="16-release-pipeline-022" x="75" y="900" width="700" height="100" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="16-release-pipeline-023" x="425.0" y="930.2" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="425.0" y="930.2">Failure: stop and inspect the evidence</tspan>
+</text>
+<rect id="16-release-pipeline-024" x="965" y="900" width="660" height="100" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="16-release-pipeline-025" x="1295.0" y="930.2" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1295.0" y="930.2">Validate schema + data + permissions</tspan>
+</text>
+<polyline id="16-release-pipeline-026" points="1405,825 1405,890" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1405.00,890.00 1398.00,874.00 1412.00,874.00" fill="#107C10"/>
+<rect id="16-release-pipeline-027" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="16-release-pipeline-028" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Schema Compare being GA does not make the Fabric deployment integration GA or eliminate review.</tspan>
+</text>
+<rect id="16-release-pipeline-029" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="16-release-pipeline-030" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="16-release-pipeline-031" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="16-release-pipeline-032" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="16-release-pipeline-033" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="16-release-pipeline-034" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="16-release-pipeline-035" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="16-release-pipeline-036" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="16-release-pipeline-037" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 16 / 24</tspan>
+</text>
+</svg>

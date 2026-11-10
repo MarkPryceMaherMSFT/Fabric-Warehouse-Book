@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1200" viewBox="0 0 1700 1200" role="img" aria-labelledby="title desc">
+<title id="title">Match the evidence to the question</title>
+<desc id="desc">Conceptual evidence map. WarehouseExecutions.OperationId correlates with Query Insights distributed_statement_id, not Capacity Metrics Operation ID. WarehouseExecutions and the Data Warehouse Monitor have preview prerequisites. Agentic monitoring is announced, coming soon; available operations diagnostics are bounded, not autofix.</desc>
+<rect width="1700" height="1200" fill="#ffffff"/>
+<text id="13-monitoring-evidence-000" x="60" y="45" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="45.0">Match the evidence to the question</tspan>
+</text>
+<text id="13-monitoring-evidence-001" x="60" y="116" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="60" y="116.0">Live activity, completed-query history, capacity consumption and audit records are different lenses.</tspan>
+</text>
+<polyline id="13-monitoring-evidence-002" points="60,174 1640,174" fill="none" stroke="#0078D4" stroke-width="3" stroke-linejoin="round"/>
+<rect id="13-monitoring-evidence-003" x="65" y="230" width="460" height="125" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="13-monitoring-evidence-004" x="295.0" y="274.02" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="295.0" y="274.02">What is running now?</tspan>
+</text>
+<rect id="13-monitoring-evidence-005" x="610" y="230" width="500" height="125" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="13-monitoring-evidence-006" x="860.0" y="274.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="860.0" y="274.68">DMVs + Data Warehouse Monitor</tspan>
+</text>
+<rect id="13-monitoring-evidence-007" x="1195" y="230" width="440" height="125" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="13-monitoring-evidence-008" x="1415.0" y="258.18" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1415.0" y="258.18">Live activity / waits</tspan>
+<tspan x="1415.0" y="292.5">Monitor: preview + admin scope</tspan>
+</text>
+<polyline id="13-monitoring-evidence-009" points="535,292 600,292" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="600.00,292.00 584.00,299.00 584.00,285.00" fill="#0078D4"/>
+<polyline id="13-monitoring-evidence-010" points="1120,292 1185,292" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1185.00,292.00 1169.00,299.00 1169.00,285.00" fill="#0078D4"/>
+<rect id="13-monitoring-evidence-011" x="65" y="405" width="460" height="125" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="13-monitoring-evidence-012" x="295.0" y="449.02" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="295.0" y="449.02">What finished?</tspan>
+</text>
+<rect id="13-monitoring-evidence-013" x="610" y="405" width="500" height="125" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="13-monitoring-evidence-014" x="860.0" y="431.86" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="860.0" y="431.86">Query Insights +</tspan>
+<tspan x="860.0" y="467.5">WarehouseExecutions (preview)</tspan>
+</text>
+<rect id="13-monitoring-evidence-015" x="1195" y="405" width="440" height="125" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="13-monitoring-evidence-016" x="1415.0" y="433.18" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1415.0" y="433.18">Completed query evidence</tspan>
+<tspan x="1415.0" y="467.5">Coverage + ingestion lag matter</tspan>
+</text>
+<polyline id="13-monitoring-evidence-017" points="535,467 600,467" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="600.00,467.00 584.00,474.00 584.00,460.00" fill="#008575"/>
+<polyline id="13-monitoring-evidence-018" points="1120,467 1185,467" fill="none" stroke="#008575" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1185.00,467.00 1169.00,474.00 1169.00,460.00" fill="#008575"/>
+<rect id="13-monitoring-evidence-019" x="65" y="580" width="460" height="125" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="13-monitoring-evidence-020" x="295.0" y="624.02" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="295.0" y="624.02">What consumed capacity?</tspan>
+</text>
+<rect id="13-monitoring-evidence-021" x="610" y="580" width="500" height="125" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="13-monitoring-evidence-022" x="860.0" y="624.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="860.0" y="624.68">Capacity Metrics</tspan>
+</text>
+<rect id="13-monitoring-evidence-023" x="1195" y="580" width="440" height="125" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="13-monitoring-evidence-024" x="1415.0" y="608.18" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1415.0" y="608.18">CU consumption + pressure</tspan>
+<tspan x="1415.0" y="642.5">Do not equate operation IDs</tspan>
+</text>
+<polyline id="13-monitoring-evidence-025" points="535,642 600,642" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="600.00,642.00 584.00,649.00 584.00,635.00" fill="#0078D4"/>
+<polyline id="13-monitoring-evidence-026" points="1120,642 1185,642" fill="none" stroke="#0078D4" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1185.00,642.00 1169.00,649.00 1169.00,635.00" fill="#0078D4"/>
+<rect id="13-monitoring-evidence-027" x="65" y="755" width="460" height="125" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="13-monitoring-evidence-028" x="295.0" y="799.02" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="295.0" y="799.02">Which SQL event was recorded?</tspan>
+</text>
+<rect id="13-monitoring-evidence-029" x="610" y="755" width="500" height="125" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="13-monitoring-evidence-030" x="860.0" y="799.68" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="27" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="860.0" y="799.68">SQL audit</tspan>
+</text>
+<rect id="13-monitoring-evidence-031" x="1195" y="755" width="440" height="125" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="13-monitoring-evidence-032" x="1415.0" y="783.18" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1415.0" y="783.18">Enabled groups + capture filter</tspan>
+<tspan x="1415.0" y="817.5">Excluded events are lost</tspan>
+</text>
+<polyline id="13-monitoring-evidence-033" points="535,817 600,817" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="600.00,817.00 584.00,824.00 584.00,810.00" fill="#107C10"/>
+<polyline id="13-monitoring-evidence-034" points="1120,817 1185,817" fill="none" stroke="#107C10" stroke-width="4" stroke-linejoin="round"/>
+<polygon points="1185.00,817.00 1169.00,824.00 1169.00,810.00" fill="#107C10"/>
+<rect id="13-monitoring-evidence-035" x="65" y="925" width="990" height="105" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="13-monitoring-evidence-036" x="560.0" y="940.54" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="560.0" y="940.54">WarehouseExecutions.OperationId</tspan>
+<tspan x="560.0" y="977.5">= Query Insights distributed_statement_id</tspan>
+</text>
+<rect id="13-monitoring-evidence-037" x="1115" y="925" width="520" height="95" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3" stroke-dasharray="13 9"/>
+<text id="13-monitoring-evidence-038" x="1375.0" y="938.18" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="1375.0" y="938.18">Agentic monitoring</tspan>
+<tspan x="1375.0" y="972.5">Announced - coming soon</tspan>
+</text>
+<rect id="13-monitoring-evidence-039" x="60" y="1050" width="1580" height="82" rx="16" fill="#F3F2F1" stroke="#605E5C" stroke-width="3"/>
+<text id="13-monitoring-evidence-040" x="850.0" y="1072.52" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="400" text-anchor="middle" dominant-baseline="text-before-edge">
+<tspan x="850.0" y="1072.52">Preserve UTC timestamps, item context and the correct identifiers before proposing a fix.</tspan>
+</text>
+<rect id="13-monitoring-evidence-041" x="63" y="1157" width="23" height="23" rx="16" fill="#CFE4FA" stroke="#0078D4" stroke-width="3"/>
+<text id="13-monitoring-evidence-042" x="96" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="96" y="1150.0">SQL / control</tspan>
+</text>
+<rect id="13-monitoring-evidence-043" x="329" y="1157" width="23" height="23" rx="16" fill="#D5F1ED" stroke="#008575" stroke-width="3"/>
+<text id="13-monitoring-evidence-044" x="362" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="362" y="1150.0">Storage / flow</tspan>
+</text>
+<rect id="13-monitoring-evidence-045" x="598" y="1157" width="23" height="23" rx="16" fill="#DFF6DD" stroke="#107C10" stroke-width="3"/>
+<text id="13-monitoring-evidence-046" x="631" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="631" y="1150.0">Output / checks</tspan>
+</text>
+<polyline id="13-monitoring-evidence-047" points="885,1169 946,1169" fill="none" stroke="#605E5C" stroke-width="3" stroke-linejoin="round" stroke-dasharray="13 9"/>
+<text id="13-monitoring-evidence-048" x="958" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="958" y="1150.0">Announced - coming soon</tspan>
+</text>
+<text id="13-monitoring-evidence-049" x="1435" y="1150" fill="#000000" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="400" text-anchor="start" dominant-baseline="text-before-edge">
+<tspan x="1435" y="1150.0">Figure 13 / 24</tspan>
+</text>
+</svg>
