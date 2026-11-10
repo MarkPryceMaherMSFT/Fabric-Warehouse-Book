@@ -8,7 +8,7 @@
 **Subtitle:** From First Query to Engine Internals and Production Operations  
 **Author:** Mark Pryce-Maher  
 **Edition:** First edition, illustrated manuscript draft  
-**Manuscript revision:** 9 November 2026
+**Manuscript revision:** 10 November 2026
 
 This is a working manuscript, not a final typeset publication. The foreword is the author's own introduction, based on the career history and purpose he supplied for this edition; it is not a guest endorsement. Introductory wording remains subject to the author's editorial approval. No publisher, ISBN or publication date is implied.
 
@@ -47,6 +47,8 @@ The [November ledger](../appendices/C-feature-status.md#9-november-2026-document
 The later 9 November structural/image review retains **42 chapters in seven parts**. It consolidates the earlier item/comparison material in the dedicated endpoint introduction, adds early Delta anatomy and expands shared SQL versus OneLake security. The [full chapter review](../appendices/I-chapter-review.md) compares relevant verified sqltidy bodies without claiming that every topic has a matching blog. The author's archive is used beyond the ten-entry RSS window, with original Medium links and dated caveats preserved.
 
 The [What's New page](../whats-new.md) records the verified FabCon scope and explicit uncorroborated details from the supplied James Serra index. The [roadmap table](../appendices/H-roadmap-snapshot.md) records the snapshot date, listing status, target stage and quarter for each observed card. Future reviews must not silently overwrite a dated observation or equate planned GA with current support.
+
+The **10 November targeted follow-up** reads Tino Tereshko's June Build roundup in full, confirms its 4 June publication / 5 June modification, and maps all 21 unique topic groups in [Appendix J](../appendices/J-build-2026-coverage.md). It adds original SQL/schema/optimizer/ingestion explanations and qualifies editor, migration, cache and benchmark claims. This is not a new all-source cutoff: the **9 November roadmap snapshot**, earlier chapter-wide audit, image retrieval dates, fixed script pins and research-review limits remain unchanged. No blog figures are copied and no tenant behavior is reported as tested.
 
 Some announcement wording is intentionally unresolved. For example, a product-team reference to "Fabric UDFs GA" does not make every T-SQL function integration GA. OneLake column-level security, masking, and encryption are different controls; the reviewed evidence does not establish a new SQL-endpoint column-encryption feature. Read the [coverage map](../appendices/E-feature-coverage.md) and [dated status ledger](../appendices/C-feature-status.md) rather than treating a launch roundup as one universal support contract.
 

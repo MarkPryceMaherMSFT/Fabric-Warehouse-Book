@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part II contents](README.md) | [Previous: Chapter 10](10-transformations-and-transactions.md) | [Next: Chapter 12](12-security-and-governance.md)
 
-**Applies to:** Warehouse and Lakehouse SQL analytics endpoint, with write differences identified below. **Level:** Intermediate. **Feature baseline:** original engine comparison retained at 8 October 2026; scalar-UDF, string-function and view-refresh additions reviewed 9 November 2026. Native scalar UDFs and Warehouse external UDF integration remain preview. This is a compatibility investigation, not a claim of tenant validation.
+**Applies to:** Warehouse and Lakehouse SQL analytics endpoint, with write differences identified below. **Level:** Intermediate. **Feature baseline:** original engine comparison retained at 8 October 2026; scalar-UDF, string-function and view-refresh additions reviewed 9 November; targeted ALTER COLUMN review 10 November 2026. Native scalar UDFs, Warehouse external UDF integration and ALTER COLUMN remain preview. This is a compatibility investigation, not a claim of tenant validation.
 
 ## Familiar language, different contract
 
@@ -251,6 +251,56 @@ Expect two generated positive keys, not necessarily 1 and 2. The constraint does
 
 For the complete explicit-insert sequence, including `SET IDENTITY_INSERT` on/off, an explicit column list, and Fabric's system-managed `DBCC CHECKIDENT(..., RESEED)`, use the separate migration-key lab in [Chapter 8](08-dimensional-modeling.md). Its imported keys do not alter the canonical dimensions.
 
+## ALTER COLUMN: widen the contract without assuming every conversion
+
+**Warehouse preview, reviewed 10 November 2026.** Twinkle Cyril's [5 May announcement](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/simplify-schema-changes-in-fabric-data-warehouse-with-alter-column-preview/5177593), also summarized in the June Build roundup, explains the benefit: supported changes update metadata without rewriting existing Parquet files. The [Fabric-specific ALTER COLUMN reference](https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-table-transact-sql?view=fabric&preserve-view=true#alter-column), not the surrounding SQL Server examples, defines permitted conversions.
+
+| Family | Examples and limits in the checked contract |
+| --- | --- |
+| Integer and floating point | `smallint` to `int`/`bigint`, `int` to `bigint`, and specified wider floating-point representations. Float/real interchange is not permission to narrow an eight-byte double to a four-byte real. |
+| Decimal | `decimal(p,s)` to `decimal(p+k1,s+k2)` requires `k1 >= k2 >= 0`, within supported precision. Increasing scale without enough extra precision would reduce integer capacity. Decimal/numeric interchange preserves the specified precision/scale. |
+| Date/time | Specified time-to-datetime2 and datetime2 precision increases; the persisted Fabric limit remains **six fractional digits**, not seven. |
+| Character and binary | Specified char/varchar widening and longer varbinary definitions. Consult the exact pair and length rules rather than assuming every string/binary conversion works. |
+
+There are explicit exclusions: no NULL-to-NOT-NULL change, identity-column alteration, different collation, same-type size reduction, or alteration of a column with manually created statistics or a clustering-index dependency. A source DDL generator must inspect those dependencies and retain a reviewed alternative, not discard statistics or constraints silently.
+
+One subtle migration difference deserves its own acceptance case: the reference says interpreting a supported **time-to-datetime2** change supplies the date **1 January 1970**, unlike SQL Server's **1 January 1900**. That is not an application event date or a timezone conversion. Avoid the conversion when that interpretation does not match the business meaning.
+
+### Small widening lab on a separate Warehouse table
+
+**Optional preview T-SQL - Warehouse only; requires the `book` schema and table-create/ALTER permissions. Creates only `book.Lab11TypeWidening`, and fails if that name already exists. The shared seed is untouched.**
+
+```sql
+CREATE TABLE book.Lab11TypeWidening
+(
+    Label varchar(20) NULL,
+    Amount decimal(12,2) NULL
+);
+
+INSERT INTO book.Lab11TypeWidening (Label, Amount)
+VALUES ('Synthetic label', 12.34);
+
+ALTER TABLE book.Lab11TypeWidening
+ALTER COLUMN Label varchar(80) NULL;
+
+ALTER TABLE book.Lab11TypeWidening
+ALTER COLUMN Amount decimal(14,4) NULL;
+
+SELECT Label, Amount
+FROM book.Lab11TypeWidening;
+
+SELECT name, max_length, precision, scale, is_nullable
+FROM sys.columns
+WHERE object_id = OBJECT_ID(N'book.Lab11TypeWidening')
+ORDER BY column_id;
+```
+
+Expect the same label and numeric value, now represented as `decimal(14,4)` (`12.3400`); the varchar metadata reports an 80-byte limit. The decimal example adds two digits of precision and two of scale, preserving its integer capacity. These statements are not one transaction: if a statement fails, stop and inspect the isolated lab instead of assuming earlier changes rolled back. [Chapter 10](10-transformations-and-transactions.md#alter-table-inside-a-transaction-one-schema-release) explains atomic groups.
+
+**Metadata-only is not lock-free.** ALTER COLUMN takes a schema-modification lock and can block or be blocked by concurrent workloads. The announcement's uninterrupted-pipeline wording is not a zero-blocking guarantee. Review dependent views, procedures, loaders and model bindings, including supported [view-metadata refresh](../06-operating-the-platform/36-development-and-automation.md#refresh-dependent-view-metadata-after-schema-changes).
+
+Some supported operations enable **Delta type widening**. External engines reading the same table must understand compatible read-time interpretation; SQL success alone does not establish Spark, Direct Lake or another reader's compatibility. Check the [cross-engine feature matrix](https://learn.microsoft.com/en-us/fabric/fundamentals/delta-lake-interoperability#delta-lake-features-and-fabric-experiences). The documented CTAS alternative can create a new table without the widening history, but that is a separately approved data copy with dependency, permission and cutover work, not an automatic repair of the existing table.
+
 ## Three function concepts, three different contracts
 
 The abbreviation "UDF" is not sufficient to assess compatibility. Distinguish a native T-SQL function, the **Fabric User Data Functions** Python service, and the Warehouse proxy integration connecting them.
@@ -333,6 +383,8 @@ The editor's result display is bounded: current documentation distinguishes up t
 
 Other experiences need their own status labels. **Save as table** uses CTAS and writes data; **Visualize results** is a documented report-creation action, while **Explore this data** is explicitly preview. Do not assign a uniform preview/GA label to all three from proximity in the ribbon. The primary editor article separately marks query/result sharing and Activator integration preview. No-code table-creation, table-deep-dive and new interactive-chart announcements do not yet supply a complete verified operational walkthrough here, so no click path is invented. Review resulting schema, write effects and permissions.
 
+The earlier Build article also names Table Overview, inline Copilot, editor-created Copy jobs and ontology entry points. [Chapter 4](../01-getting-started/04-first-warehouse.md#table-overview-and-inline-copilot-inspect-first-review-generated-sql) records their announced purpose without treating that preview group as blanket GA or equating it with every later UI promise.
+
 ## A maintained compatibility test beats a static list
 
 The current surface-area page still lists triggers, synonyms, recursive queries, and materialized views as unsupported. Supported `ALTER TABLE` operations are a subset, with `ALTER COLUMN` documented as preview. Session temporary tables exist; that does not mean every SQL Server temporary-object recipe or distributed-pool option applies everywhere.
@@ -350,6 +402,7 @@ For this lab, inspect the four core tables, review the generated customer view, 
 **Runnable T-SQL - Warehouse; deletes only the created Chapter 11 objects. Drop the view on the SQL endpoint instead if that is where you created it.**
 
 ```sql
+DROP TABLE IF EXISTS book.Lab11TypeWidening;
 DROP VIEW IF EXISTS book.Lab09CustomerCI;
 DROP TABLE IF EXISTS book.Lab09Identity;
 DROP TABLE IF EXISTS book.Lab09Physical;
@@ -384,6 +437,10 @@ If the separately approved external-function template was deployed, remove only 
 12. Microsoft Learn, [SQL query editor](https://learn.microsoft.com/en-us/fabric/data-warehouse/sql-query-editor) and [Data preview](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-preview), display limits and separately scoped preview actions.
 13. Microsoft Learn, [Regular expressions](https://learn.microsoft.com/en-us/fabric/data-warehouse/regular-expressions) and [String similarity](https://learn.microsoft.com/en-us/fabric/data-warehouse/string-similarity), explicit Warehouse/SQL endpoint applicability and function-specific limits; reviewed 9 November 2026.
 14. Microsoft Learn, [Warehouse tables](https://learn.microsoft.com/en-us/fabric/data-warehouse/tables) and [sp_refreshview](https://learn.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-refreshview-transact-sql?view=fabric&preserve-view=true), view-metadata guidance added 13 October 2026.
+15. Microsoft Learn, [ALTER TABLE - Fabric ALTER COLUMN](https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-table-transact-sql?view=fabric&preserve-view=true#alter-column), preview conversion matrix, exclusions, epoch interpretation and schema locks; checked 10 November 2026.
+16. Twinkle Cyril, [Simplify Schema Changes in Fabric Data Warehouse with ALTER COLUMN (Preview)](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/simplify-schema-changes-in-fabric-data-warehouse-with-alter-column-preview/5177593), 5 May 2026; actual body and structured date reviewed 10 November.
+17. Microsoft Learn, [Delta Lake table format interoperability](https://learn.microsoft.com/en-us/fabric/fundamentals/delta-lake-interoperability#delta-lake-features-and-fabric-experiences), external-reader type-widening compatibility.
+18. Tino Tereshko, [Build 2026 Warehouse roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), 4 June 2026, modified 5 June; historical preview announcements, not a universal compatibility or zero-blocking contract.
 
 ---
 

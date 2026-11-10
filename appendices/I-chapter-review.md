@@ -6,6 +6,8 @@
 
 The book has seven parts without adding lettered chapters: item/comparison material is consolidated in Chapter 14, freeing early Chapter 3 for Delta anatomy. Existing lab object names and public code pins remain unchanged.
 
+The targeted **10 November Build-roundup follow-up** is recorded separately in [Appendix J](J-build-2026-coverage.md). Its new explanations do not redate this complete 9 November chapter/blog/illustration audit.
+
 ## Reviewed blog corpus
 
 Recent bodies were read through the author's public RSS feed; older bodies, their Medium links and date fields were read in his [author-maintained archive at `6fbe0f3`](https://github.com/MarkPryceMaherMSFT/MarkPryceMaherMSFT.github.io/tree/6fbe0f311b5de5c0d0d18eeb17053170c79a5164). These are scoped reviewed articles, not a claim that a ten-entry feed is an exhaustive archive. An old article's date does not become November because it was re-read. No direct reviewed match means no match in this corpus, not that the author has never written about the subject.

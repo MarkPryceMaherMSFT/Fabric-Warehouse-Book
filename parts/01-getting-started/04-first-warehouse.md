@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part I contents](README.md) | [Previous: Chapter 3](03-anatomy-of-a-delta-table.md) | [Next: Chapter 5](05-first-lakehouse-and-sql-endpoint.md)
 
-**Applies to:** Fabric Warehouse; the creation and seed steps do not run on a Lakehouse SQL analytics endpoint. **Level:** 100. **Feature scope:** core walkthrough checked 8 October 2026; the original editor article and current UI references rechecked 9 November. No preview integration is required for the seed.
+**Applies to:** Fabric Warehouse; the creation and seed steps do not run on a Lakehouse SQL analytics endpoint. **Level:** 100. **Feature scope:** core walkthrough checked 8 October 2026; editor references rechecked 9 November; targeted Build editor-announcement follow-up 10 November. No preview integration is required for the seed.
 
 ## What a successful first lab proves
 
@@ -83,6 +83,14 @@ Autosave can now be switched on or off. It preserves query text; it is not a dat
 
 The editor also supports importing and exporting **`.sql` files**. You can import the supplied seed rather than paste it, but still read the complete text and verify the target before execution. Exporting a validation query is useful for review; exporting SQL text is not exporting or backing up the Warehouse's table data. This lab needs no secrets in saved query text.
 
+### Table Overview and inline Copilot: inspect first, review generated SQL
+
+Tino Tereshko's [4 June 2026 Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), reviewed 10 November, announced a **Table Overview Page**, streamlined query management and **inline Copilot chat** as preview web experiences. Table Overview is a landing page for table structure and key details before Data preview; it is not proof that the full dataset arrived or that every later table-profiling/deep-dive feature is available.
+
+Inline Copilot brings questions and SQL generation/refinement into the editor context. That convenience does not validate the proposed query's meaning, permissions or write effects. Use approved synthetic context, inspect the target item and complete SQL, and check the result against the explicit expectations in this chapter. A suggestion to create, change or delete an object requires a separate deliberate execution; generated text is not permission to run it.
+
+The current [SQL editor guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/sql-query-editor) documents Copilot actions and its chat pane. That corroborates an authoring integration, not a new GA date for the entire June preview bundle. The later September core-productivity GA labels above remain separately sourced.
+
 ### No-code creation and table deep dive: announced, not a guessed walkthrough
 
 Tino Tereshko's [29 September roundup](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC) names **no-code table creation** and **table deep dive** among a mixed preview/GA group of UI updates. Their individual release status and exact workflows were not independently established by the public sources available for this revision.
@@ -109,6 +117,8 @@ Salil Kanade's **8 September 2026** [editor article](https://community.fabric.mi
 | Create an Activator rule from a SQL SELECT | Preview | Scheduled query work and notification/activity actions have cost, permission and outbound effects. A rule is not enabled by reading this chapter. |
 
 These are component-specific announcement labels, not a promise that every adjacent preview has shipped. [Chapter 13](../02-building-analytical-solutions/13-power-bi-and-clients.md) handles semantic models and identity; [Chapter 29](../06-operating-the-platform/29-monitoring.md) distinguishes diagnosis from alerting or intervention.
+
+The June Build roundup additionally names **Copy Job creation** and **Fabric Ontologies** in its preview editor-integration group. Creating a Copy job configures movement with source, target, schedule and write-policy responsibilities; it is not CTAS or automatic CDC. An ontology supplies business concepts and relationships over governed data, not a second SQL engine or automatic access grants. [Chapter 9](../02-building-analytical-solutions/09-loading-and-accessing-data.md#client-bulk-copy-is-not-server-side-copy-into) explains the loading routes, and [Chapter 13](../02-building-analytical-solutions/13-power-bi-and-clients.md) separates ontology, model and SQL contracts. No additional job, ontology or AI call is required for the first lab.
 
 ## Read the seed before running it
 

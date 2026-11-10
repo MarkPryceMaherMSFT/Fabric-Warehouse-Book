@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part V contents](README.md) | [Previous: Chapter 27](27-query-plans-and-tuning.md) | [Next: Chapter 29](../06-operating-the-platform/29-monitoring.md)
 
-**Applies to:** Warehouse-managed tables and Lakehouse tables read through the SQL analytics endpoint; maintenance ownership differs. **Level:** Intermediate to advanced. **Feature baseline:** original revision checked 9 October 2026; health-result and retained-history boundaries rechecked 9 November. Warehouse data clustering is labeled preview in the cited Learn reference. Cache cooldown remains forward-looking, not an available control assumed by the labs.
+**Applies to:** Warehouse-managed tables and Lakehouse tables read through the SQL analytics endpoint; maintenance ownership differs. **Level:** Intermediate to advanced. **Feature baseline:** original revision checked 9 October 2026; health-result and retained-history boundaries rechecked 9 November; announced cooldown scope reviewed 10 November. Warehouse data clustering is labeled preview in the cited Learn reference. Cache cooldown remains forward-looking, not an available control assumed by the labs.
 
 ## Start with the owner of the files
 
@@ -61,7 +61,9 @@ The tiny book seed is particularly useful for learning this distinction. The cur
 
 ## Cache cooldown: plan the trade-off, not an invented setting
 
-**Public preview coming soon, as of this revision.** Tino Tereshko's [29 September announcement](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC) describes configurable cache lifecycle to balance warm/cold performance. Bogdan Crivat's [FabCon Europe article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/bringing-governed-analytics-into-the-flow-of-work-fabric-analytics-at-fabcon-eur/5368918) connects cache cooldown with flexibility in consumption and isolation. Neither establishes a supported timer, default, configuration syntax, exact cache-layer scope, or billing formula. This book therefore supplies no cache-TTL API or `ALTER DATABASE` cooldown command.
+**Forward-looking; source follow-up 10 November 2026.** Tino Tereshko's [4 June Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621) explicitly announces a **SQL-pool-level cooldown duration** and describes cache nodes scaling with demand. The intended choice is to retain warm data longer for latency-sensitive arrivals or shorten its resource lifetime when that trade-off fits the workload. This establishes the announced pool scope, not a verified current activation or charging contract.
+
+His [29 September announcement](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC) still calls public preview coming soon. Bogdan Crivat's [FabCon Europe article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/bringing-governed-analytics-into-the-flow-of-work-fabric-analytics-at-fabcon-eur/5368918) connects cooldown with flexibility in consumption and isolation. The reviewed sources do not establish a currently supported timer range, default, configuration syntax, exact cache-layer behavior or billing formula. This book therefore supplies no cache-TTL API or `ALTER DATABASE` cooldown command, and does not adopt the June headline's elimination of cold latency as an operational guarantee.
 
 The operational choice is still worth learning. A dashboard used every few minutes may benefit from retaining a warm working set between visits. A weekly analysis with a long quiet interval may favor a different resource-lifetime trade-off, accepting a slower first query. The correct objective is not "make every query warm"; it is "meet the service objective for the whole arrival pattern at acceptable consumption."
 
@@ -72,7 +74,7 @@ Before a future pilot, answer these questions:
 - How often does the same working set return, and how long are the quiet gaps?
 - Is first-query latency part of the business commitment, or can the application tolerate a cold start?
 - Do measured improvements come from memory/disk reads, result-cache hits, or no SQL request because the client cached the answer?
-- Which documented layer and scope will the eventual cooldown control affect, and what does that mean for neighboring workloads?
+- Which cache layers will the documented pool-level control affect, and what does that mean for neighboring workloads sharing that pool?
 
 Design the comparison now without changing a tenant: record cold-first and warm-repeat latency, scanned data by tier, result-cache state, arrival times, and whole-window consumption. Include any deliberate warm-up work rather than hiding it. When the feature becomes available, validate its actual contract before assigning a timer or predicting savings. Current automatic memory/disk caching and the separately documented result-set cache remain today's mechanisms; a roadmap lifecycle control is not permission to flush caches or serve stale data.
 
@@ -143,6 +145,7 @@ All supplied diagnostics are read-only and were not tenant-tested. No cleanup of
 5. [Microsoft Learn, Result set caching][5], dated 22 September 2026.
 6. [Microsoft Learn, sys.sp_get_table_health_metrics][6], endpoint applicability and result schema.
 7. [Mark Pryce-Maher, table-health collector][7], commit `605889dd4dee7119299ee0192ee6bd386d6c1ab2`, 29 July 2026; user-authorized source, no license inferred.
+8. Tino Tereshko, [Build 2026 Warehouse roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), 4 June 2026, modified 5 June; announced pool-level cache lifecycle and Lakehouse-health scope, reviewed 10 November.
 
 [1]: https://learn.microsoft.com/en-us/fabric/fundamentals/table-maintenance-optimization
 [2]: https://learn.microsoft.com/en-us/fabric/data-engineering/sql-analytics-endpoint-performance

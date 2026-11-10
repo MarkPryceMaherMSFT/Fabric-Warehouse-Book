@@ -4,6 +4,14 @@
 
 This records changes to the manuscript, not a complete Microsoft Fabric product-release history. For dated product claims, use the [feature-status ledger](appendices/C-feature-status.md).
 
+## 10 November 2026 - Complete Build 2026 Warehouse article coverage
+
+Reviewed Tino Tereshko's requested Build roundup in full, confirming publication on 4 June and modification on 5 June 2026. Added [Appendix J](appendices/J-build-2026-coverage.md), mapping all 21 unique topic groups to chapter explanations and later evidence; the duplicated CRUD mention is counted once. Corrected the bibliography's previously unconfirmed publication date.
+
+Expanded Chapters 4, 7, 9-11, 19, 28, 34 and 37 with pipe concatenation/assignment, Unicode construction, typed date bucketing, transactional ALTER, preview ALTER COLUMN widening and cross-engine limits, actual-cardinality learning, client BCP ingestion, editor entry points and migration chronology. Added an isolated widening lab and read-only SQL examples without changing the shared seed. Explicitly retained the announced SQL-pool-level cooldown scope, separate GPU comparison conditions and attributed QubicaAMF migration account.
+
+Updated What's New, feature/status/source maps, navigation, index and edition notes. Historical preview/GA/Looking ahead labels are not treated as one current release status. The 42-chapter/seven-part structure, 9 November roadmap snapshot, all source-code pins, companion scripts and image/licence bytes remain unchanged. No live query, migration, AI invocation, configuration change or performance reproduction was performed.
+
 ## 9 November 2026 - Delta foundations, endpoint part and complete chapter review
 
 Retained 42 continuous chapters while introducing a seventh part dedicated to the SQL analytics endpoint. Consolidated the previous item-overview and Lakehouse/Warehouse comparison material in Chapter 14, added early Delta-table anatomy in Chapter 3, and relocated metadata sync and OneLake security to Chapters 15-16. Updated current paths, navigation, script/diagram/source associations and reading routes; lab object names, source pins and dated historical records remain unchanged.

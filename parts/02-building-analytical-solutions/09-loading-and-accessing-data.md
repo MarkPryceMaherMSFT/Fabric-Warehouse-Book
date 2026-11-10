@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part II contents](README.md) | [Previous: Chapter 8](08-dimensional-modeling.md) | [Next: Chapter 10](10-transformations-and-transactions.md)
 
-**Applies to:** Warehouse-led and hybrid architectures, Warehouse ingestion and Lakehouse SQL analytics endpoint reads. **Level:** Foundation to intermediate. **Feature baseline:** ingestion review 9 October; architecture/shortcut contracts checked 9 November 2026. Workspace Identity for COPY INTO is GA; BCP API ingestion retains its documented preview scope. Examples are prepared for reader execution, not tenant-tested for this manuscript.
+**Applies to:** Warehouse-led and hybrid architectures, Warehouse ingestion and Lakehouse SQL analytics endpoint reads. **Level:** Foundation to intermediate. **Feature baseline:** ingestion review 9 October; architecture/shortcut contracts checked 9 November; targeted BCP/Build-roundup review 10 November 2026. Workspace Identity for COPY INTO is GA; BCP API ingestion retains its documented preview scope. Examples are prepared for reader execution, not tenant-tested for this manuscript.
 
 ## Start with the destination contract
 
@@ -120,6 +120,24 @@ Use `COPY INTO` for staged files when T-SQL orchestration is appropriate. Curren
 Use `INSERT ... SELECT` when the destination already exists and you want to preserve its declared contract. Use `CREATE TABLE AS SELECT`, or CTAS, when a new table is the intended product. CTAS is especially convenient for stage tables and transformed copies, but its columns derive from the expressions in the query. Explicit casts and a subsequent schema inspection are more reliable than assuming the destination inherited every source property.
 
 Same-workspace Warehouse and SQL endpoint tables can be read with three-part names. This is not an arbitrary linked-server facility: the source must be supported and accessible, and a cross-database reference does not confer permission. A query against `BookLakehouse.book.FactSales` reaches the Lakehouse's SQL representation; it does not directly run Spark.
+
+## Client bulk copy is not server-side COPY INTO
+
+**BCP API preview, detailed guidance rechecked 10 November 2026.** The [client bulk-copy guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/ingest-data-bulk-copy) documents a SQL-connection route through `bcp.exe`, .NET `Microsoft.Data.SqlClient.SqlBulkCopy`, or Java `SQLServerBulkCopy`. It is useful when an application already holds rows in memory or cannot stage files first. The client streams batches over TDS rather than submitting one SQL INSERT request per row.
+
+With `COPY INTO`, the service reads approved staged files. With BCP, the client uploads the rows, so client memory, upload bandwidth, region, timeouts, encoding and batch boundaries affect the result. The current ingestion guide still recommends **COPY INTO for highest-throughput file-based loading when staging is possible**. BCP's usefulness does not make it the preferred route for every large load or a way to write Lakehouse tables through their SQL endpoint.
+
+Prepare the destination's types and permissions first, use **Microsoft Entra authentication**, and make column mappings explicit when names/order differ. Warehouse does not support a SQL username/password authentication workaround. The guide says `CheckConstraints`, `TableLock`, `KeepNulls` and `FireTriggers` options are ignored in this implementation; setting familiar client flags does not enable source-engine constraint, locking, default or trigger behavior.
+
+The current sizing guidance suggests roughly **150 MB-1 GB per batch**, with **250-500 MB** as a starting point for many larger workloads. These are byte-oriented tuning suggestions, not a mandatory row count, a latency guarantee or a suitable size for every micro-batch. Bound memory and timeout budgets and measure the actual client/network/target combination.
+
+Tino Tereshko's [4 June Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621) reports **5-10 times** the performance of row-by-row INSERT for its bulk-copy comparison. It is not a comparison with staged COPY INTO, and the article supplies no complete reproducible configuration. Do not turn that range into a book benchmark or guaranteed improvement.
+
+Finally, batch transport is not business-level exactly-once publication. Capture failed/rejected rows and errors, establish which batches committed after a timeout or disconnect, and reconcile before replay. Do not assume one client method call or `BatchSize` setting makes a multi-batch import atomic. A stage-and-publish design can separate upload recovery from the final business release described in [Chapter 10](10-transformations-and-transactions.md).
+
+### A Copy job entry point is not a new loading protocol
+
+The same June article announces **Copy Job creation from the SQL editor** inside its preview integration group. This is a more convenient place to configure a movement job, not a promise that a SELECT automatically becomes ingestion or that every connector captures deletes. Review source, destination, mappings, schedule, write mode and identity before starting the job. The current connector-specific movement contract still governs; [Chapter 37](../07-migration-and-production-design/37-migration-planning.md) separates the Assistant's Copy job handoff from definition conversion.
 
 ## Lab: stage, inspect, and reconcile
 
@@ -328,6 +346,8 @@ DROP TABLE IF EXISTS book.Lab07SalesStage;
 10. Microsoft Learn, [Medallion architecture deployment models](https://learn.microsoft.com/en-us/fabric/onelake/onelake-medallion-lakehouse-architecture#deployment-model) and [OneLake architecture patterns](https://learn.microsoft.com/en-us/fabric/onelake/architecture-patterns), checked 9 November 2026.
 11. Microsoft Learn, [OneLake shortcuts](https://learn.microsoft.com/en-us/fabric/onelake/onelake-shortcuts), updated 8 November 2026; external cloud and internal mirrored-database targets, SQL table discovery, identity and caching boundaries.
 12. Microsoft Learn, [Cross-database queries](https://learn.microsoft.com/en-us/fabric/data-warehouse/query-warehouse#write-a-cross-database-query) and [Lakehouse schemas](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-schemas), checked 9 November 2026; SQL three-part same-workspace scope versus Spark four-part namespaces.
+13. Microsoft Learn, [Ingest using BCP API (preview)](https://learn.microsoft.com/en-us/fabric/data-warehouse/ingest-data-bulk-copy), detailed client interfaces, ignored options, batch sizing and COPY comparison; checked 10 November 2026.
+14. Tino Tereshko, [Build 2026 Warehouse roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), 4 June 2026, modified 5 June; historical client-throughput claim and editor Copy job announcement, reviewed 10 November.
 
 ---
 

@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part VII contents](README.md) | [Previous: Chapter 36](../06-operating-the-platform/36-development-and-automation.md) | [Next: Chapter 38](38-migrating-synapse-dedicated-sql-pools.md)
 
-**Applies to:** Fabric Warehouse as a writable analytical destination; Lakehouse SQL analytics endpoint as a read-only SQL surface over lake data. **Level:** Intermediate to advanced. **Revision evidence:** original planning review 9 October 2026; Migration Assistant's incremental metadata workflow reviewed 9 November against the 16 October documentation addition. Connector eligibility and preview status still require checks before execution.
+**Applies to:** Fabric Warehouse as a writable analytical destination; Lakehouse SQL analytics endpoint as a read-only SQL surface over lake data. **Level:** Intermediate to advanced. **Revision evidence:** original planning review 9 October 2026; incremental metadata workflow reviewed 9 November against the 16 October documentation addition; targeted Build migration chronology/customer account reviewed 10 November. Connector eligibility and preview status still require checks before execution.
 
 ## Begin with the service, not the table count
 
@@ -58,6 +58,8 @@ The native [Migration Assistant for Fabric Data Warehouse](https://learn.microso
 
 The source families listed in the overview are **Azure Synapse dedicated SQL pools**, **SQL Server and other SQL Database Engine platforms**, and **Teradata metadata (preview)**. Source selection matters. The supported routes include a direct connection or an appropriate definition package: DACPAC and source-specific SQL/BTEQ zip workflows are not interchangeable formats for every source.
 
+The earlier [4 June 2026 Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621) explicitly labels **live source connectivity GA** and **SQL-file input preview**. Those historical labels apply to the named routes, not every source family, package or feature in the Assistant. Its shorthand "any T-SQL database" must be bounded by today's supported source/connection/package guidance. Direct connectivity removes the mandatory offline DACPAC step for an eligible route; it does not remove permissions, source assessment or target review.
+
 | Stage | What the Assistant supports | Acceptance gate owned by the migration team |
 | --- | --- | --- |
 | Select and assess | Connect to the documented source route or upload its supported metadata package. | Confirm source/target identities, approved object scope, export protection, permissions and an owned consistency boundary. |
@@ -74,6 +76,10 @@ Copilot can suggest repairs when enabled, but generated SQL can be wrong or chan
 **Security migration is not identity equivalence.** SQL-authenticated users need a supported Microsoft Entra design and Fabric item access. Roles/grants/masks that migrate must still be tested under representative users, including inherited access and every direct-storage/report route. Masking is not encryption: the overview's mitigation suggestions do not make DDM equivalent to source column-level cryptography. Unresolved protection requirements need their own supported design.
 
 The supported current T-SQL reference, not a generic source-type mapping or AI suggestion, governs the target. For example, IDENTITY support has Fabric-specific rules, and unsupported source objects such as external tables or multi-statement TVFs need a deliberate disposition. Do not remove a behavior merely because its DDL could not be copied.
+
+### A customer account is evidence of one migration, not a sizing rule
+
+The June roundup attributes a migration account to **QubicaAMF**: a move from Azure Data Factory and Azure SQL Database into Fabric covering **more than 300 pipelines, 500 tables and 450 GB**, with **approximately 66% less overall effort**. These are the customer's reported outcomes for its broader migration, not measurements made for this book or an isolated benchmark of the Assistant. The account does not supply a universal conversion rate, project duration or guarantee that another source estate needs the same amount of redevelopment.
 
 ![Reviewing a native Migration Assistant migration](../../assets/documentation/migration-assistant-review.png)
 
@@ -178,6 +184,7 @@ The next chapters apply these contracts to [dedicated Synapse](38-migrating-syna
 8. Microsoft, [`synapse-migration/SKILL.md`, pinned reading reference](https://github.com/microsoft/skills-for-fabric/blob/bc42aaf734771bf752c1d7082dd91e5a6ca72b9f/skills/synapse-migration/SKILL.md), reviewed 9 October 2026; not installed or executed for this book.
 9. Tino Tereshko, [Fabric Data Warehouse announcement roundup](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC), 29 September 2026; original post text reviewed 9 October 2026.
 10. Microsoft Learn, [Migration Assistant: connect to a source and migrate more objects](https://learn.microsoft.com/en-us/fabric/data-warehouse/migrate-using-connection-to-source-system), incremental metadata/conflict guidance added 16 October 2026; reviewed 9 November.
+11. Tino Tereshko, [Build 2026 Warehouse roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), 4 June 2026, modified 5 June; route-specific release labels and attributed QubicaAMF account, reviewed 10 November.
 
 ---
 

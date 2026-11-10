@@ -2,11 +2,24 @@
 
 [Book contents](../index.md) | [Appendices](README.md) | [Source register](B-script-source-register.md) | [Bibliography](D-bibliography.md)
 
-**Original evidence review: 8 October 2026; feature extension: 9 October; targeted documentation refresh: 9 November 2026.** This ledger records what the inspected public sources say, not what has been enabled in any particular tenant. No Fabric tenant was queried for this manuscript. Announcement date, substantive documentation change, API version and actual availability are different facts.
+**Original evidence review: 8 October 2026; feature extension: 9 October; targeted documentation refresh: 9 November; full Build-roundup follow-up: 10 November 2026.** This ledger records what the inspected public sources say, not what has been enabled in any particular tenant. No Fabric tenant was queried for this manuscript. Announcement date, substantive documentation change, API version and actual availability are different facts.
 
 Use four questions when reading a changing service: **What was announced? What does the current reference document? What can this tenant use? What is still forward-looking?** A newer announcement may change release terminology without updating every API page. Conversely, a sample that succeeds somewhere is not evidence of general availability. `updated_at` is page metadata, not necessarily a feature release date.
 
 For the complete bounded review, use [What's New](../whats-new.md), the [25-card roadmap snapshot taken 9 November 2026](H-roadmap-snapshot.md#snapshot-9-november-2026), and the [chapter-by-chapter comparison](I-chapter-review.md). Roadmap target stage/quarter is not current availability, and a past-looking Planned card does not force an already documented capability back into a future state.
+
+## 10 November 2026 Build-roundup follow-up
+
+The actual [4 June article, modified 5 June](D-bibliography.md#bld01), has been reviewed in full rather than used only for cooldown. [Appendix J](J-build-2026-coverage.md) maps all 21 unique topic groups, including the later status of already covered features. This does not redate the 9 November roadmap snapshot.
+
+| Topic | Dated qualification | Book treatment |
+| --- | --- | --- |
+| **Pipe operators, UNISTR and DATE_BUCKET** | Announced in the June **preview** bundle; current detailed references explicitly include Warehouse and SQL analytics endpoint. No later GA day independently established. [BLD02](D-bibliography.md#bld02). | Original read-only examples and NULL/width, Unicode/input-collation and typed-origin rules in Chapter 7. Existing fuzzy-string and ANY_VALUE coverage completes the named bundle. |
+| **Transactional ALTER versus ALTER COLUMN** | June roundup explicitly labels the supported transactional ALTER subset **GA**, and ALTER COLUMN **preview**. Current references preserve the preview conversion limits. [BLD03](D-bibliography.md#bld03). | Chapters 10-11 name the allowlist, widening/dependency/epoch rules, schema locks and Delta-reader compatibility. Atomicity and metadata-only changes do not mean no blocking. |
+| **Usage-based resource estimates** | Article describes learned correction of underestimates as existing and announces extension to overestimates. Current rollout/control details not independently established. | Chapter 19 explains actual-cardinality learning, resource demand and concurrency without inventing feedback switches, a reset API or fixed learning cadence. |
+| **BCP API** | June Looking ahead; current detailed Warehouse guide remains **preview**. [BLD04](D-bibliography.md#bld04). | Chapter 9 explains client streaming, authentication, ignored flags, batches and replay. Historical 5-10-times versus singleton INSERT is not guaranteed or a comparison with server COPY INTO. |
+| **Editor and migration routes** | Table Overview/inline Copilot/integration group was June **preview**; live migration connectivity was **GA**, SQL-file input **preview**. Later September editor labels remain component-specific. | Chapters 4/9/37 add announced purposes, source-family/package bounds and the attributed customer account, without invented click paths or universal source support. |
+| **Cache scope and GPU comparisons** | June announces **SQL-pool-level** cooldown under Looking ahead and GPU under Coming Soon. September public-preview GPU evidence and 9 November future-conditional cooldown notice remain separate. | Chapter 28 corrects the formerly incomplete pool-scope description without inventing current settings. Chapter 34 keeps the June provider comparison distinct from CoddSpeed, TQP++ and Bogdan's experiment. |
 
 ## 9 November 2026 documentation refresh
 

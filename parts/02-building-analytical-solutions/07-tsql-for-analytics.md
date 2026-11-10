@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part II contents](README.md) | [Previous: Chapter 6](../01-getting-started/06-gpu-acceleration-overview.md) | [Next: Chapter 8](08-dimensional-modeling.md)
 
-**Applies to:** Fabric Warehouse and the Lakehouse SQL analytics endpoint for all queries below. **Level:** 100-200. **Feature scope:** established examples retained from 8 October 2026; prior SQL enhancements, including the 20 October language article and ORDER BY ALL, rechecked 9 November alongside REGEX/fuzzy-string contracts. These newer SQL features remain **preview**. Support here does not imply identical support in SQL Server or SQL database in Fabric.
+**Applies to:** Fabric Warehouse and the Lakehouse SQL analytics endpoint for all queries below. **Level:** 100-200. **Feature scope:** established examples retained from 8 October 2026; the four-feature language bundle and REGEX/fuzzy-string contracts rechecked 9 November. Build-roundup concatenation, Unicode and date-bucketing additions checked 10 November 2026. Preserve each section's preview qualification; a current syntax reference is not an independently established GA date. Support here does not imply identical support in SQL Server or SQL database in Fabric.
 
 ## Ask what one result row means
 
@@ -62,6 +62,71 @@ String comparisons depend on collation. `CountryCode = 'GB'` expresses the actua
 `NULL` means an absent or unknown value, not an empty string and not zero. Use `IS NULL`, not `= NULL`. Most aggregates ignore null expressions; `COUNT(*)` counts result rows, while `COUNT(column)` counts rows whose specified column is non-null. Although the seed has no nulls, an outer join can introduce them immediately.
 
 Avoid replacing all missing measures with zero merely to make a report look complete. "No sale occurred" and "the sale value is missing" are different facts. Choose the business interpretation before choosing `COALESCE`.
+
+## Pipe concatenation: choose NULL behavior deliberately
+
+**Build additions, announced as preview on 4 June 2026; detailed references checked 10 November for Warehouse and SQL analytics endpoint.** Tino Tereshko's [Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621) includes `||`, `||=`, `UNISTR` and `DATE_BUCKET`, not just the later September language bundle. The specific references now explicitly include both analytical SQL surfaces; no later GA milestone is inferred here.
+
+The [pipe concatenation operator](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql?view=fabric&preserve-view=true) joins compatible character or binary expressions. Its [compound-assignment form](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql?view=fabric&preserve-view=true), `SET @variable ||= expression`, appends and assigns to a variable. It does not update a table column.
+
+**Optional T-SQL with feature availability - either SQL surface; local variables and literal expressions only, no persisted changes. Run the whole block together.**
+
+```sql
+DECLARE @label varchar(80) = 'Aster Retail';
+SET @label ||= ' / GB';
+
+SELECT @label AS Label,
+       'Aster' || ' ' || 'Retail' AS ConcatenatedName,
+       CASE
+           WHEN ('Aster' || CAST(NULL AS varchar(10))) IS NULL
+           THEN 'NULL propagated'
+           ELSE 'Not NULL'
+       END AS NullBehavior;
+```
+
+Expect `Aster Retail / GB`, `Aster Retail`, and `NULL propagated`. Either NULL input makes the concatenation NULL, independently of `CONCAT_NULL_YIELDS_NULL`; an empty string is different. This is not the same missing-value policy as `CONCAT`, which treats NULL arguments as empty strings. Choose the policy rather than mechanically replacing one spelling with another.
+
+Type precedence and width still matter. A non-LOB intermediate concatenation can truncate at **8,000 bytes**, and `||=` can truncate to the declared variable width. Introducing a MAX operand only after an earlier intermediate has truncated does not recover the lost text. Size and convert deliberately, especially with UTF-8 byte lengths; a shorter operator is not a wider data contract.
+
+## UNISTR: construct Unicode without changing the storage contract
+
+**Same June preview announcement; detailed applicability checked 10 November 2026.** [UNISTR](https://learn.microsoft.com/en-us/sql/t-sql/functions/unistr-transact-sql?view=fabric&preserve-view=true) interprets Unicode escapes inside a string. With the default backslash escape, `\xxxx` identifies a UTF-16 code unit and `\+xxxxxx` identifies a Unicode code point. A second argument can choose a different escape character.
+
+**Optional T-SQL with feature availability - either SQL surface; literal-only, read-only.**
+
+```sql
+SELECT UNISTR(N'Caf\00E9 Retail') AS UnicodeLabel;
+```
+
+Expect **Café Retail**. The `N` prefix makes the input a Unicode expression rather than relying on a legacy code page. For `char`/`varchar` inputs the reference requires a UTF-8 collation. This function constructs characters; it does not normalize customer identities, extend UTF-8's character repertoire, or make `nvarchar` a supported persisted Warehouse column type. [Chapter 3](../01-getting-started/03-anatomy-of-a-delta-table.md) explains why expression support and table storage differ.
+
+## DATE_BUCKET: align intervals to an explicit origin
+
+**Same June preview announcement; detailed applicability checked 10 November 2026.** [DATE_BUCKET](https://learn.microsoft.com/en-us/sql/t-sql/functions/date-bucket-transact-sql?view=fabric&preserve-view=true) returns the start of the interval containing a date/time value. Supply a literal datepart, a positive integer width, a typed date/time expression and, optionally, an origin of the **same type**. The default origin is Monday, 1 January 1900; specify your intended alignment instead of assuming that default expresses a business calendar.
+
+**Optional T-SQL with feature availability - either unchanged seeded SQL surface; read-only.**
+
+```sql
+WITH BucketedSales AS
+(
+    SELECT DATE_BUCKET(day, 2, d.CalendarDate,
+                       CAST('20260101' AS date)) AS BucketStart,
+           f.Quantity, f.UnitPrice
+    FROM book.FactSales AS f
+    JOIN book.DimDate AS d ON d.DateKey = f.DateKey
+)
+SELECT BucketStart,
+       COUNT_BIG(*) AS SalesLines,
+       SUM(Quantity) AS Units,
+       CAST(SUM(Quantity * UnitPrice) AS decimal(18,2)) AS Revenue
+FROM BucketedSales
+GROUP BY BucketStart
+ORDER BY BucketStart;
+```
+
+Expect **1 January: four lines, seven units, 185.00** and **3 January: two lines, three units, 180.00**. The first interval contains 1 and 2 January; the second starts on 3 January. Both input and origin are `date`, so the bucket result is also `date`. The totals remain six lines, ten units and 365.00.
+
+A bare string literal is not a valid typed date argument for this function, and mismatched date/origin types can error. Bucketing does not convert time zones, define a fiscal calendar, provide a unique event sequence or capture changes for a migration. Decide those contracts separately.
 
 ## Join cardinality determines whether totals are believable
 
@@ -373,6 +438,8 @@ Run the established listings and compare each result with its stated expectation
 
 For the preview extension, compare FROM-first with SELECT-first, rewrite `GROUP BY ALL` as an explicit group list, and compare `ORDER BY ALL` with the equivalent explicit sort list. Then compare QUALIFY with a CTE plus outer `WHERE`. Independently sort the six line revenues to check 65, 90, and 50 for the exact statistics. Record approximate observations without making them equality assertions. No preview exercise changes the canonical data.
 
+For the earlier Build additions, verify the pipe operators' NULL result, the Unicode label and the two explicitly aligned date buckets. Check their output shape as well as the unchanged revenue total; two groups with the same grand total are not necessarily the intended two groups.
+
 Before calling the exercise complete, describe the input grain, output grain, join keys, treatment of missing values, and ordering for your query. Ask whether the same query would remain correct if a customer had no sales, two customers had the same name, or a product dimension accidentally contained a duplicate key. These are reasoning tests; do not damage the seed to simulate them.
 
 Queries can execute successfully while answering the wrong question. Your strongest early tuning technique is therefore also your strongest correctness technique: express only the needed columns, rows, relationships, and aggregates, and verify the result against an independent expectation.
@@ -406,6 +473,10 @@ Queries can execute successfully while answering the wrong question. Your strong
 16. Jovan Popovic, [Regular expression functions in Fabric Data Warehouse (Preview)](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/regular-expression-functions-in-microsoft-fabric-data-warehouse-preview/5382375), 5 November 2026; extraction/refinement scenarios, not automatic business-key validation.
 17. Jovan Popovic, [T-SQL language enhancements in Microsoft Fabric Data Warehouse (Preview)](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/t-sql-language-enhancements-in-microsoft-fabric-data-warehouse-preview/5375433), 20 October 2026; actual article body/byline/date reviewed, covering all four language additions.
 18. Microsoft Learn, [ORDER BY ALL](https://learn.microsoft.com/en-us/sql/t-sql/queries/select-order-by-clause-transact-sql?view=fabric&preserve-view=true#all), Fabric-specific applicability, projection order and common direction; updated 2 November 2026.
+19. Tino Tereshko, [From query acceleration to cache cooldown: Everything new in Fabric Data Warehouse at Build 2026](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), published 4 June, modified 5 June 2026; full article reviewed 10 November.
+20. Microsoft Learn, [pipe concatenation](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql?view=fabric&preserve-view=true) and [compound assignment](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql?view=fabric&preserve-view=true), analytical-SQL applicability, NULL semantics and intermediate/variable truncation.
+21. Microsoft Learn, [UNISTR](https://learn.microsoft.com/en-us/sql/t-sql/functions/unistr-transact-sql?view=fabric&preserve-view=true), Unicode escapes, input types and collation.
+22. Microsoft Learn, [DATE_BUCKET](https://learn.microsoft.com/en-us/sql/t-sql/functions/date-bucket-transact-sql?view=fabric&preserve-view=true), positive width, typed origin, result type and errors. References 20-22 checked 10 November 2026.
 
 ---
 

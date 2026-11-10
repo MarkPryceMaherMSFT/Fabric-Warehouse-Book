@@ -18,6 +18,8 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Acknowledgements | [Acknowledgements](../front-matter/acknowledgements.md) |
 | Aggregation and grain | [7: Exact arithmetic and meaningful averages](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#exact-arithmetic-and-meaningful-averages); [25: Worked lab: aggregate at the business grain](../parts/04-how-the-engine-works/25-query-processing.md#worked-lab-aggregate-at-the-business-grain) |
 | AI-assisted query review | [27: A hypothesis generator, not autonomous tuning](../parts/05-statistics-and-performance/27-query-plans-and-tuning.md#ai-assisted-review-is-a-hypothesis-generator) |
+| ALTER COLUMN and type widening | [11: Widen the contract without assuming every conversion](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#alter-column-widen-the-contract-without-assuming-every-conversion) |
+| ALTER TABLE in transactions | [10: One schema release](../parts/02-building-analytical-solutions/10-transformations-and-transactions.md#alter-table-inside-a-transaction-one-schema-release) |
 | API refresh, metadata | [15: Selected-table REST refresh that really fails on failure](../parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#selected-table-rest-refresh-that-really-fails-on-failure) |
 | Architecture, Warehouse | [17: Six building blocks](../parts/04-how-the-engine-works/17-warehouse-architecture.md#the-six-building-blocks) |
 | Attribution, consumption | [31: Weighted attribution, honestly labeled](../parts/06-operating-the-platform/31-billing-and-consumption.md#weighted-attribution-honestly-labeled) |
@@ -34,10 +36,12 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Subject | Where to read |
 | --- | --- |
 | Batch execution | [21: Columnar data and batch execution](../parts/04-how-the-engine-works/21-query-execution-engine.md#columnar-data-and-batch-execution-solve-different-problems) |
+| BCP API and client bulk copy | [9: Client streaming versus server COPY INTO](../parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#client-bulk-copy-is-not-server-side-copy-into) |
 | Bibliography | [Appendix D. Annotated public-source bibliography](D-bibliography.md) |
 | Billing | [31: Three questions that should not share one answer](../parts/06-operating-the-platform/31-billing-and-consumption.md#three-questions-that-should-not-share-one-answer) |
 | BookLakehouse | [5: Create a schema-enabled item](../parts/01-getting-started/05-first-lakehouse-and-sql-endpoint.md#create-a-schema-enabled-item) |
 | BookWarehouse | [4: Create the item, not the sample database](../parts/01-getting-started/04-first-warehouse.md#create-the-item-not-the-sample-database) |
+| Build 2026 Warehouse roundup | [Appendix J: complete dated coverage](J-build-2026-coverage.md) |
 | Bursting | [32: Bursting is useful, finite, and not free](../parts/06-operating-the-platform/32-capacity-management.md#bursting-is-useful-finite-and-not-free) |
 
 [Back to index](#appendix-g-subject-index)
@@ -66,6 +70,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Conflicts, migration definitions | [37: Iterate metadata without assuming data preservation](../parts/07-migration-and-production-design/37-migration-planning.md#iterate-metadata-without-assuming-data-preservation) |
 | Constraints | [8: Constraints describe; validation proves](../parts/02-building-analytical-solutions/08-dimensional-modeling.md#constraints-describe-validation-proves) |
 | Consumption units and vNodes | [31: A dated conversion, not a physical inventory](../parts/06-operating-the-platform/31-billing-and-consumption.md#a-dated-conversion-not-a-physical-inventory) |
+| Copilot, inline SQL assistance | [4: Inspect first, review generated SQL](../parts/01-getting-started/04-first-warehouse.md#table-overview-and-inline-copilot-inspect-first-review-generated-sql) |
 | COPY INTO and workspace identity | [9: Workspace Identity for COPY INTO: two authorization checks](../parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#workspace-identity-for-copy-into-two-authorization-checks) |
 | CTEs | [7: CTEs organize reasoning, not storage](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#ctes-organize-reasoning-not-storage) |
 | Custom SQL pools | [33: Begin with the isolation problem](../parts/06-operating-the-platform/33-workload-management-and-sql-pools.md#begin-with-the-isolation-problem); [33: What a resource percentage means](../parts/06-operating-the-platform/33-workload-management-and-sql-pools.md#what-a-resource-percentage-means) |
@@ -81,6 +86,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | DacFx | [36: CI/CD 2.0 and DacFx: upgrade the project contract deliberately](../parts/06-operating-the-platform/36-development-and-automation.md#cicd-20-and-dacfx-upgrade-the-project-contract-deliberately) |
 | DAL, data abstraction | [34: CoddSpeed architecture](../parts/06-operating-the-platform/34-gpu-acceleration.md#coddspeed-architectural-evidence-with-a-clear-boundary) |
 | Data types | [11: Types can change business meaning](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#types-can-change-business-meaning); [39: Map values, not just type names](../parts/07-migration-and-production-design/39-migrating-sql-server-and-azure-sql.md#map-values-not-just-type-names) |
+| DATE_BUCKET | [7: Align intervals to an explicit origin](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#date_bucket-align-intervals-to-an-explicit-origin) |
 | Delta feature and column compatibility | [15: Check table features and column representation separately](../parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#check-table-features-and-column-representation-separately) |
 | Delta Lake and Parquet | [23: What the files and logs contribute](../parts/04-how-the-engine-works/23-storage-onelake-and-delta-log-publishing.md#what-the-files-and-logs-contribute) |
 | Delta-log publication | [23: One table, different visibility boundaries](../parts/04-how-the-engine-works/23-storage-onelake-and-delta-log-publishing.md#one-table-different-visibility-boundaries); [30: Investigation four: Warehouse SQL is newer than Delta readers](../parts/06-operating-the-platform/30-troubleshooting.md#investigation-four-warehouse-sql-is-newer-than-delta-readers) |
@@ -239,6 +245,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Performance measurement | [14: Why this is not a performance contest](../parts/03-sql-analytics-endpoint/14-sql-analytics-endpoint.md#why-this-is-not-a-performance-contest); [27: Design the test around the workload](../parts/05-statistics-and-performance/27-query-plans-and-tuning.md#design-the-test-around-the-workload) |
 | Permissions | [12: Two layers of permission](../parts/02-building-analytical-solutions/12-security-and-governance.md#two-layers-of-permission); [16: Safe exercise: write the permission worksheet first](../parts/03-sql-analytics-endpoint/16-onelake-security.md#safe-exercise-write-the-permission-worksheet-first) |
 | Physical row counts, table health | [28: Table health without pretending to repair it](../parts/05-statistics-and-performance/28-layout-caching-and-maintenance.md#table-health-without-pretending-to-repair-it) |
+| Pipe concatenation and assignment | [7: Choose NULL behavior deliberately](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#pipe-concatenation-choose-null-behavior-deliberately) |
 | Polaris | [18: Separate storage from compute, then separate state](../parts/04-how-the-engine-works/18-polaris.md#separate-storage-from-compute-then-separate-state) |
 | Pool pressure | [33: Read pool pressure as events](../parts/06-operating-the-platform/33-workload-management-and-sql-pools.md#read-pool-pressure-as-events) |
 | Power BI | [13: Start with a semantic contract](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#start-with-a-semantic-contract); [13: Import, DirectQuery, and Direct Lake](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#import-directquery-and-direct-lake) |
@@ -269,6 +276,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Recovery objectives | [35: Define what must be recovered](../parts/06-operating-the-platform/35-recovery-and-retention.md#define-what-must-be-recovered); [35: Make recovery measurable](../parts/06-operating-the-platform/35-recovery-and-retention.md#make-recovery-measurable) |
 | REGEX functions and limits | [7: Regular expressions: validate a shape, not a business fact](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#regular-expressions-validate-a-shape-not-a-business-fact) |
 | Research-to-product boundary | [34: Productization choices](../parts/06-operating-the-platform/34-gpu-acceleration.md#the-research-to-product-boundary-is-explicit) |
+| Resource-estimate corrections | [19: Learn from actual cardinalities](../parts/04-how-the-engine-works/19-unified-query-optimizer.md#usage-based-resource-estimates-learn-from-actual-cardinalities) |
 | Result extraction | [13: Large extracts need a different question](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#large-extracts-need-a-different-question) |
 | Retention and time travel | [35: Warehouse historical reads](../parts/06-operating-the-platform/35-recovery-and-retention.md#time-travel-answers-a-data-question); [15: SQL endpoint history and retained Delta files](../parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#historical-sql-reads-need-retained-delta-history) |
 | Retries and replay | [9: Make reruns a business operation](../parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#make-reruns-a-business-operation); [41: Replay is part of the normal path](../parts/07-migration-and-production-design/41-reconciliation-cutover-and-rollback.md#replay-is-part-of-the-normal-path) |
@@ -308,6 +316,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Subject | Where to read |
 | --- | --- |
 | Table health | [28: Table health without pretending to repair it](../parts/05-statistics-and-performance/28-layout-caching-and-maintenance.md#table-health-without-pretending-to-repair-it) |
+| Table Overview | [4: Structure and context before preview](../parts/01-getting-started/04-first-warehouse.md#table-overview-and-inline-copilot-inspect-first-review-generated-sql) |
 | Teradata migration | [40: Teradata: a documented metadata route, with preview boundaries](../parts/07-migration-and-production-design/40-migrating-other-platforms.md#teradata-a-documented-metadata-route-with-preview-boundaries) |
 | Throttling | [32: Throttling is not a mid-query cancellation policy](../parts/06-operating-the-platform/32-capacity-management.md#throttling-is-not-a-mid-query-cancellation-policy) |
 | Time travel | [35: Time travel answers a data question](../parts/06-operating-the-platform/35-recovery-and-retention.md#time-travel-answers-a-data-question) |
@@ -325,6 +334,8 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | --- | --- |
 | UDFs | [11: Three function concepts, three different contracts](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#three-function-concepts-three-different-contracts) |
 | Unified query optimizer | [19: Dedicated optimizer chapter](../parts/04-how-the-engine-works/19-unified-query-optimizer.md) |
+| UNISTR and Unicode construction | [7: Expressions and the storage contract](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#unistr-construct-unicode-without-changing-the-storage-contract) |
+| Usage-based estimates | [19: Actual-cardinality learning and resource demand](../parts/04-how-the-engine-works/19-unified-query-optimizer.md#usage-based-resource-estimates-learn-from-actual-cardinalities) |
 
 [Back to index](#appendix-g-subject-index)
 

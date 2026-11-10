@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part II contents](README.md) | [Previous: Chapter 9](09-loading-and-accessing-data.md) | [Next: Chapter 11](11-tsql-compatibility.md)
 
-**Applies to:** Warehouse transformations and writes; shared read-only SQL patterns also apply to SQL analytics endpoints. **Level:** Intermediate. **Feature baseline:** 8 October 2026; `MERGE` is generally available. Labs are authored examples, not reported tenant executions.
+**Applies to:** Warehouse transformations and writes; shared read-only SQL patterns also apply to SQL analytics endpoints. **Level:** Intermediate. **Feature baseline:** 8 October 2026; supported transactional ALTER and the Build announcement rechecked 10 November. `MERGE` and the announced transactional ALTER subset are generally available; ALTER COLUMN retains its separate preview qualification. Labs are authored examples, not reported tenant executions.
 
 ## A transformation is a publication decision
 
@@ -29,6 +29,21 @@ Type expressions at the boundary. A `datetime2(6)` modification timestamp here m
 Deduplicate according to a deterministic source contract. If two changes share a sales key and timestamp but disagree on quantity, arbitrarily taking one is not data cleaning. Request an additional sequence, classify the conflict, or reject the batch. `ROW_NUMBER()` without a complete tie-breaking order merely conceals uncertainty.
 
 The optional preview `QUALIFY` examples in [Chapter 7](07-tsql-for-analytics.md) shorten window-result filtering without changing that rule. The canonical seed's modification timestamps all tie; its latest-sale exercise therefore orders by sale date and sales key, not modification timestamp alone. A production change feed needs its own version/tie contract. Do not mechanically transplant the exercise's order into a loader and call the result deduplication.
+
+## ALTER TABLE inside a transaction: one schema release
+
+Tino Tereshko's [4 June 2026 Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621) explicitly announces **ALTER TABLE inside explicit transactions as generally available**. The current [transaction allowlist](https://learn.microsoft.com/en-us/fabric/data-warehouse/transactions#explicit-transactions), checked 10 November, supplies the operation boundary:
+
+| Supported change in the transaction | Responsibility that remains |
+| --- | --- |
+| Add nullable columns; drop columns | Use supported persisted types, review dependencies and avoid assuming NOT NULL additions/defaults are part of this subset. |
+| Add/drop PRIMARY KEY, UNIQUE and FOREIGN KEY constraints | Required constraints are **NOT ENFORCED**; PK/UNIQUE use the documented NONCLUSTERED form. Atomic DDL does not validate duplicate or orphan data. |
+| Execute multiple supported ALTER TABLE statements | Publish the approved group with COMMIT, or roll it back as a unit; do not continue a release after an error. |
+| Alter distributed temporary tables | Keep the Warehouse-specific temporary-table and session contract; this does not authorize SQL writes to Lakehouse data. |
+
+This supports a coordinated schema release rather than exposing half of a multi-step change. It does **not** make arbitrary SQL Server DDL portable. The current allowlist also includes supported **ALTER COLUMN** operations, but that feature's **preview** type/conversion restrictions remain; [Chapter 11](11-tsql-compatibility.md#alter-column-widen-the-contract-without-assuming-every-conversion) examines them separately.
+
+Atomicity is not uninterrupted availability. ALTER acquires schema-modification locks and can block readers, writers and catalog queries until the relevant locks are released. Keep the transaction short and schedule schema changes deliberately. Retain the visible error and rollback handling illustrated below rather than swallowing a deployment failure. In the web editor, submit the complete transaction together: a later Run action is a different session, not a way to finish an earlier open transaction.
 
 ## Lab: publish a correction and a new sale
 
@@ -226,6 +241,8 @@ DROP TABLE IF EXISTS book.Lab08Sales;
 4. Microsoft Learn, [Ingest using T-SQL](https://learn.microsoft.com/en-us/fabric/data-warehouse/ingest-data-tsql), set-based materialization.
 5. Jovan Popovic, [Use ANY_VALUE for simpler grouping](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/use-any-value-for-simpler-grouping-of-results-in-fabric-data-warehouse-generally/5172050), analytical grouping pattern.
 6. Microsoft Learn, [ANY_VALUE](https://learn.microsoft.com/en-us/sql/t-sql/functions/any-value-transact-sql?view=fabric), nondeterminism and null handling.
+7. Tino Tereshko, [Build 2026 Warehouse roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), 4 June 2026; transactional ALTER GA announcement, reviewed 10 November.
+8. Microsoft Learn, [ALTER TABLE - Warehouse syntax and limitations](https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-table-transact-sql?view=fabric&preserve-view=true#syntax-for-warehouse-in-fabric), checked 10 November 2026; do not use the wider SQL Server syntax block as the Warehouse contract.
 
 ---
 

@@ -36,11 +36,11 @@ Chapters remain continuously numbered 1-42. The early anatomy chapter and dedica
 
 | Chapter | Subject |
 | --- | --- |
-| [7. T-SQL fundamentals for trustworthy analytics](parts/02-building-analytical-solutions/07-tsql-for-analytics.md) | Queries, joins, windows, analytical functions, REGEX and fuzzy-string preview. |
+| [7. T-SQL fundamentals for trustworthy analytics](parts/02-building-analytical-solutions/07-tsql-for-analytics.md) | Queries, strings/Unicode, date buckets, windows, analytical functions and matching. |
 | [8. Dimensional modeling: grain, keys, constraints, and collation](parts/02-building-analytical-solutions/08-dimensional-modeling.md) | Grain, facts, dimensions, keys, types, and constraints. |
-| [9. Building Warehouse Architectures, Loading and Accessing Data](parts/02-building-analytical-solutions/09-loading-and-accessing-data.md) | Medallion/hybrid designs, hosted and shortcut-backed data, three-part reads and materialization. |
-| [10. Transformations and Transactions](parts/02-building-analytical-solutions/10-transformations-and-transactions.md) | Incremental processing, correctness, and restartability. |
-| [11. T-SQL Compatibility](parts/02-building-analytical-solutions/11-tsql-compatibility.md) | Engine differences, inlining mechanisms, types and schema dependencies. |
+| [9. Building Warehouse Architectures, Loading and Accessing Data](parts/02-building-analytical-solutions/09-loading-and-accessing-data.md) | Medallion/hybrid designs, shortcuts, three-part reads, COPY/client bulk loading and materialization. |
+| [10. Transformations and Transactions](parts/02-building-analytical-solutions/10-transformations-and-transactions.md) | Incremental publication, supported transactional ALTER, correctness and restartability. |
+| [11. T-SQL Compatibility](parts/02-building-analytical-solutions/11-tsql-compatibility.md) | Engine differences, type widening, inlining mechanisms and schema dependencies. |
 | [12. Security and Governance](parts/02-building-analytical-solutions/12-security-and-governance.md) | Identity, SQL permissions, data access paths, and governance. |
 | [13. Power BI, Fabric IQ, and Other Clients](parts/02-building-analytical-solutions/13-power-bi-and-clients.md) | Model identities, Direct Lake source binding, IQ/SQL MCP and result extraction. |
 
@@ -62,7 +62,7 @@ Chapters remain continuously numbered 1-42. The early anatomy chapter and dedica
 | --- | --- |
 | [17. Warehouse architecture: six building blocks, one analytical service](parts/04-how-the-engine-works/17-warehouse-architecture.md) | The six building blocks and their responsibilities in one analytical service. |
 | [18. Polaris: Understanding the Distributed Engine](parts/04-how-the-engine-works/18-polaris.md) | Architectural lineage, compute/state separation, and distributed work. |
-| [19. Unified query optimizer: choose the work before scheduling it](parts/04-how-the-engine-works/19-unified-query-optimizer.md) | Costed alternatives, estimates, join choices and data movement. |
+| [19. Unified query optimizer: choose the work before scheduling it](parts/04-how-the-engine-works/19-unified-query-optimizer.md) | Costed alternatives, learned resource estimates, join choices and data movement. |
 | [20. Distributed query processing: turn a plan into coordinated work](parts/04-how-the-engine-works/20-distributed-query-processing.md) | Dependencies, tasks, scheduling, compute pools and concurrency. |
 | [21. Query execution engine: do useful work close to the data](parts/04-how-the-engine-works/21-query-execution-engine.md) | Batch execution, columnar data, caches and GPU integration. |
 | [22. Metadata and transaction management: decide which state is real](parts/04-how-the-engine-works/22-metadata-and-transaction-management.md) | Logical and physical state, ACID, isolation, locks and commit boundaries. |
@@ -124,6 +124,7 @@ Chapters remain continuously numbered 1-42. The early anatomy chapter and dedica
 | [G. Subject index](appendices/G-subject-index.md) | Alphabetical, linked topic finder. |
 | [H. Dated roadmap snapshot](appendices/H-roadmap-snapshot.md) | All 25 observed Data Warehouse/Planned cards, captured 9 November 2026, with live links and careful interpretation. |
 | [I. Chapter-by-chapter review](appendices/I-chapter-review.md) | Blog comparison, specific review outcomes and image coverage through every chapter 1-42. |
+| [J. Build 2026 coverage](appendices/J-build-2026-coverage.md) | All 21 material capability groups in the June Warehouse article, mapped to explanations and later evidence. |
 | [What's new](whats-new.md) | Verified product updates, earlier features, future plans and a separate list of manuscript changes. |
 | [Appendix index](appendices/README.md) | All reference material in one place. |
 | [Edition history](history.md) | Manuscript and structural revision record. |

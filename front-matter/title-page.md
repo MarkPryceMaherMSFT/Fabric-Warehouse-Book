@@ -7,7 +7,7 @@
 ![Cover of Microsoft Fabric Warehouse and SQL Analytics Endpoint: a navy and teal design with layered geometric forms](../assets/cover/front-cover.png)
 
 **First edition - illustrated manuscript draft**  
-**Revised 9 November 2026**
+**Revised 10 November 2026**
 
 An illustrated guide to building, understanding and operating analytical solutions with Microsoft Fabric SQL.
 

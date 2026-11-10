@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part IV contents](README.md) | [Previous: Chapter 18](18-polaris.md) | [Next: Chapter 20](20-distributed-query-processing.md)
 
-**Applies to:** Fabric Warehouse; shared optimization concepts for SQL analytics endpoint queries. **Level:** 200-300. **Evidence review:** 10 October 2026. Plan examples are explanatory, not captured customer plans.
+**Applies to:** Fabric Warehouse; shared optimization concepts for SQL analytics endpoint queries. **Level:** 200-300. **Evidence review:** architecture 10 October 2026; targeted Build-roundup resource-estimate follow-up 10 November. Plan examples are explanatory, not captured customer plans.
 
 ## SQL states the result, not the itinerary
 
@@ -29,6 +29,16 @@ The optimizer needs estimates before it can execute most of the work it is costi
 For the book seed, January contains all six facts. In a five-year warehouse, one January may be a small fraction. Identical SQL text can therefore imply different useful strategies. Correlations between columns can also challenge a compact model: product key and category are not independent, and neither are calendar year and date key.
 
 [Chapter 26](../05-statistics-and-performance/26-statistics.md) explains supported statistics inspection and maintenance. Updating every statistic indiscriminately is not a substitute for identifying which estimate is material to the plan. Accurate estimates also cannot remove the inherent cost of a legitimately large result.
+
+## Usage-based resource estimates: learn from actual cardinalities
+
+Tino Tereshko's [4 June 2026 Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), reviewed 10 November, describes **learned resource estimation**: actual cardinalities from previous executions inform subsequent row-count estimates. It describes correction of **underestimates** as existing behavior and announces extending the mechanism to **overestimates**. That is more specific than saying the optimizer vaguely "gets smarter."
+
+Imagine an intermediate estimated at 100,000 rows that actually produces ten million. An underestimated amount of work can lead to unsuitable resource requests or execution choices. The inverse matters too: reserving for ten million when the result is 100,000 can request more resources than necessary and reduce useful concurrency. These are explanatory numbers, not measurements or disclosed allocation formulas.
+
+Learning from prior executions is not the same operation as manually updating a base-column histogram, and it is not result-set caching. The article does not establish a supported feedback-reset command, exposed learning table, fixed number of repetitions, per-query activation switch or rollout guarantee for every tenant. Its overestimate extension is an **announcement**, not a separately verified universal current control. Do not import SQL Server memory-grant/cardinality-feedback switches as if they were Fabric Warehouse settings.
+
+For investigation, preserve equivalent query semantics, parameter selectivity, data state, statistics and workload conditions. A later faster run can still reflect warm data or result caching rather than corrected estimates. A changing or highly skewed input also makes past cardinality an imperfect predictor. Use supported plan/runtime evidence from [Chapter 27](../05-statistics-and-performance/27-query-plans-and-tuning.md), and retain representative cases instead of promising that repeated execution will eventually fix every poor plan.
 
 ## Distribution is a property of the intermediate result
 
@@ -71,6 +81,7 @@ The exercise produces two hypotheses and their assumptions, not an observed plan
 2. Nicolas Bruno and coauthors, [Unified Query Optimization in the Fabric Data Warehouse](https://www.microsoft.com/en-us/research/publication/unified-query-optimization-in-the-fabric-data-warehouse/), SIGMOD 2024; public abstract.
 3. Josep Aguilar-Saborit and coauthors, [Extending Polaris to Support Transactions](https://arxiv.org/pdf/2401.11162v1), January 2024 preprint, section 3.3.
 4. Microsoft Learn, [Statistics](https://learn.microsoft.com/en-us/fabric/data-warehouse/statistics) and [performance guidelines](https://learn.microsoft.com/en-us/fabric/data-warehouse/guidelines-warehouse-performance).
+5. Tino Tereshko, [From query acceleration to cache cooldown](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), published 4 June, modified 5 June 2026; usage-based resource-estimate discussion reviewed 10 November, with current rollout/control details not independently established.
 
 ---
 

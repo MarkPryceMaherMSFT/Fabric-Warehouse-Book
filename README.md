@@ -3,7 +3,7 @@
 ## From First Query to Engine Internals and Production Operations
 
 **Mark Pryce-Maher**  
-**First edition - illustrated manuscript draft | Revised 9 November 2026**
+**First edition - illustrated manuscript draft | Revised 10 November 2026**
 
 [![Front cover of Microsoft Fabric Warehouse and SQL Analytics Endpoint](assets/cover/front-cover.png)](front-matter/title-page.md)
 
@@ -43,6 +43,7 @@ The front matter also includes [publication notes](front-matter/publication-note
 | [What's new](whats-new.md) | Compare verified announcements, current contracts, earlier improvements and manuscript changes. |
 | [Dated roadmap snapshot](appendices/H-roadmap-snapshot.md) | Read the 25-card Data Warehouse planning snapshot taken 9 November 2026 without treating it as a delivery promise. |
 | [Chapter-by-chapter review](appendices/I-chapter-review.md) | Follow the blog comparison and illustration review through all 42 chapters. |
+| [Build 2026 coverage](appendices/J-build-2026-coverage.md) | Find every material topic in the June Warehouse roundup, with historical labels and later evidence kept separate. |
 | [Appendix index](appendices/README.md) | Find the bibliography, source register, feature ledger and coverage map. |
 | [Companion scripts](scripts/README.md) | Read each standalone example's target, prerequisites and effects. |
 | [Edition history](history.md) | See what changed in the manuscript. |
@@ -52,6 +53,8 @@ The two introductory implementations are independent, not automatically replicat
 ## A source-backed, evolving manuscript
 
 The expanded structure adds an early [Delta-table anatomy chapter](parts/01-getting-started/03-anatomy-of-a-delta-table.md), a dedicated [SQL analytics endpoint part](parts/03-sql-analytics-endpoint/README.md), and explicit links between SQL-engine and OneLake security. [Part II](parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#building-architectures-with-warehouse) develops the hosted-data/shortcut/Warehouse hybrid; [Part VII](parts/07-migration-and-production-design/README.md) covers native migration and the Synapse mirroring/migration toolkit. All 42 chapters remain sequential and illustrated.
+
+The **10 November follow-up** covers all 21 unique topic groups in Tino Tereshko's **4 June Build 2026 roundup**. It adds missing concatenation/Unicode/date-bucketing examples, transactional ALTER and widening details, learned resource estimates, BCP ingestion and editor/migration explanations. [Appendix J](appendices/J-build-2026-coverage.md) traces every group to a chapter. Announced pool-level cooldown scope and attributed performance/customer figures are preserved without inventing current controls or universal gains; the roadmap snapshot remains dated 9 November.
 
 The **9 November 2026 refresh** incorporates newer documentation plus the **Fabric Updates** and **sqltidy** blogs: REGEX/fuzzy-string contracts, scalar-UDF guidance, view refresh, GA Capacity Metrics navigation, iterative migration definitions, Direct Lake parameters and bounded AI-assisted review. The same-day SQL-pool announcement adds **mid-December/January preparation**, not an already active API change. See the [dated review](appendices/C-feature-status.md#9-november-2026-documentation-refresh) and [sources](appendices/D-bibliography.md#revision-2026-11-09); documentation additions are not presented as backend release dates.
 
