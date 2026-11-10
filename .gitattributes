@@ -1,0 +1,3 @@
+# Preserve the original bytes verified by the image and licence registers.
+assets/documentation/** -text
+licenses/** -text
