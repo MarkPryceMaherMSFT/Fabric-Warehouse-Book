@@ -62,6 +62,20 @@ The 10 October 2026 revision adds a dedicated architecture chapter, a chapter fo
 
 Public documentation, research, attributed technical articles and pinned code sources have different evidential roles; availability and preview qualifications remain visible. New metadata sync still has no verified upgrade of existing endpoints; on-demand billing/cache cooldown remain forward-looking, and whole-Warehouse cloning remains planned. The selective-refresh example now requires successful endpoint provisioning before submitting a request. CoddSpeed's summary remains based on its public abstract and award article because its full text was inaccessible. This is not a claim that every exercise has been executed in every Fabric configuration.
 
+## AI and why you should not steal this book
+
+Before you go too far, you might ask: did I use AI to help write this book? **Yes, I did.** Both this book and [*Fabric Mirroring: A Practical Guide*](https://github.com/MarkPryceMaherMSFT/Mirroring-Book) are AI-assisted. I use AI to help with research, reviewing public documentation, editing and error checking.
+
+The experience, ideas and practical explanations are mine, built on more than 20 years of working with data warehouses and helping customers. AI is useful, but it can make things up and it does not always like being told it is wrong. It helps me check the work; it does not replace my judgement or responsibility for what appears here.
+
+That assistance also makes keeping both books up to date much easier. AI helps me find documentation changes, compare them with the existing chapters and spot inconsistencies, so I can spend more time checking the details and explaining what matters. Updates still need review, and the dated references show when a feature or claim was checked.
+
+Like the Mirroring book, this book is online and free to read. That is an invitation to learn and contribute, not to copy it, remove the attribution or repackage it as your own work. A copied edition can quickly become outdated; improving the original helps everyone benefit from the corrections. Separately licensed third-party material retains its own permissions.
+
+If you find an error or something that no longer matches the public documentation, [raise an issue](https://github.com/MarkPryceMaherMSFT/Fabric-Warehouse-Book/issues). If you know a topic particularly well, lean in and help improve the relevant chapter.
+
+**So don't steal, join in!**
+
 Read the [publication notes](front-matter/publication-notes.md) and [third-party notices](THIRD_PARTY_NOTICES.md) before distributing material. Existing rights and source licences are retained; no blanket publication licence is introduced by this edition.
 
 The cover is original artwork inspired by the visual style of the author's *Fabric Mirroring: A Practical Guide*. Its [editable SVG](assets/cover/front-cover.svg) is kept alongside the embedded PNG. The decorative geometry is not a product architecture diagram.
