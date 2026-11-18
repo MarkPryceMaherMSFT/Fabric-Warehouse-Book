@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part II contents](README.md) | [Previous: Chapter 12](12-security-and-governance.md) | [Next: Chapter 14](../03-sql-analytics-endpoint/14-sql-analytics-endpoint.md)
 
-**Applies to:** Warehouse and Lakehouse SQL endpoint connections; Power BI semantic models and supported Fabric IQ consumers. **Level:** Foundation to intermediate. **Feature baseline:** original client/IQ review 9 October 2026; Direct Lake identity/deployment guidance and remote SQL MCP reviewed 9 November. Ontology bindings are preview, Fabric IQ MCP is GA, and remote SQL MCP is preview. Forthcoming Warehouse-specific IQ/connectivity announcements remain distinct. No client or report was connected to a tenant while preparing this chapter.
+**Applies to:** Warehouse and Lakehouse SQL endpoint connections; Power BI semantic models and supported Fabric IQ consumers. **Level:** Foundation to intermediate. **Feature baseline:** original client/IQ review 9 October; identity/deployment follow-up 9 November; targeted Ignite/monthly follow-up **18 November**. Ontology and SQL-agent extensions retain their own preview scope; GA semantic-model MCP and Advanced NL2SQL announcements do not make every agent integration GA. Server aliases are **coming in November**, not verified usable today. No tenant client/report was connected for this chapter.
 
 ## Start with a semantic contract
 
@@ -116,13 +116,31 @@ Using the existing `Lab11SalesModel`, write a review sheet for the question "sho
 
 Then propose the Customer and SaleLine ontology bindings on paper. Record their source columns, relationship key, measure owner, effective identity, and refresh assumptions. No ontology, MCP connection, or cloud agent is created by this exercise. Its purpose is to catch a changed definition of revenue before a conversational interface makes that mistake sound persuasive.
 
-### The forthcoming Warehouse-specific integration
+<a id="the-forthcoming-warehouse-specific-integration"></a>
+### Warehouse-specific integration: announced scope and remaining limits
 
-Bogdan Crivat's [29 September announcement](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/bringing-governed-analytics-into-the-flow-of-work-fabric-analytics-at-fabcon-eur/5368918) places **Fabric IQ integration for Data Warehouse** in its looking-ahead section. Keep that roadmap statement separate from both the available preview Warehouse ontology binding and the GA semantic-model MCP server. Neither establishes an available general-purpose IQ tool that directly runs arbitrary Warehouse SQL.
+Bogdan Crivat's [29 September announcement](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/bringing-governed-analytics-into-the-flow-of-work-fabric-analytics-at-fabcon-eur/5368918) placed **Fabric IQ integration for Data Warehouse** in Looking ahead. The newer [17 November Ignite article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) describes ontologies supplying shared business context and publishing data agents to Teams, Microsoft 365 Copilot, Copilot Studio or custom endpoints. That is an integration direction and consumer description, not a blanket GA milestone for every ontology, binding, publishing channel or arbitrary SQL-execution tool.
 
 The same article offers an **early look at semantic views in OneLake** as reusable business meaning near the data. That is not ordinary SQL `CREATE VIEW`, a materialized lake view, or a published replacement for Power BI semantic models. The inspected sources did not establish its complete authoring, calculation, security or execution contract, so no current syntax or rollout date is invented here.
 
-This IQ-specific roadmap statement does **not** mean all direct SQL agent integration is future work. The separate [remote Warehouse/SQL analytics endpoint MCP service](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehouse-mcp-server) already has an official **preview** contract, corroborated by Salil Kanade's August article. It executes SQL under the signed-in user's permissions rather than DAX through a Power BI model. [Chapter 36](../06-operating-the-platform/36-development-and-automation.md#remote-sql-mcp-execution-is-not-automatically-read-only) explains its endpoints, the documented tool-name disagreement and why SQL execution must not be advertised as automatically read-only.
+This does **not** mean all direct SQL agent integration is future work. The separate [remote Warehouse/SQL endpoint MCP guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehouse-mcp-server) documents SQL execution under the signed-in user's permissions, not DAX through a Power BI model. Earlier article evidence labelled it preview; the guide retrieved on 18 November has no explicit new GA milestone. Absence of a banner and a broad Ignite mention do not independently establish GA. [Chapter 36](../06-operating-the-platform/36-development-and-automation.md#remote-sql-mcp-execution-is-not-automatically-read-only) retains the endpoint/tool details and explains why execution is not automatically read-only.
+
+## Ignite AI integration: labels belong to the component
+
+The [17 November feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-november-2026-feature-summary/5414311), checked 18 November, gives different stages to closely related data-agent improvements:
+
+| Component | Announced stage and useful boundary |
+| --- | --- |
+| **Advanced NL2SQL** | **GA announced**, moving multi-step schema/filter/join reasoning to the standard-runtime SQL route. The retrieved older SQL-source guide still calls it preview-runtime-only; record that documentation lag, not a universal tenant rollout test. |
+| **Improved datetime reasoning** | **Preview runtime** capability. The summary describes current-date/user-time-zone awareness, default UTC interpretation and explicit source-time-zone instructions. Do not assign these guarantees to every core-GA agent or silently change the book's UTC data contract. |
+| **Multiple SQL topics and query templates** | **Preview**. Topics organize versioned business guidance; templates supply approved static/parameterized query patterns. Neither is permission to execute arbitrary SQL or proof that a matched query has the correct grain. |
+| **Advanced DAX** | Separately **GA announced** for semantic-model reasoning, not Warehouse SQL acceleration or native T-SQL capability. |
+| **Semantic-model configuration/topics and Build with AI extensions** | Preserve their preview/component-specific qualifications. Review proposed context and schema selections; business definitions, permissions and measure ownership still matter. |
+| **Up to 1,000 answer rows** | **Preview**, described as currently available in the **Fabric UI**, not every MCP/Copilot/Foundry integration. Planned full-response Excel downloads and expansion across integrations remain future, not today's extraction contract. |
+
+Reasoning through metadata and testing assumptions can improve answers, but an agent can still choose the wrong business definition, join or filter. Reconcile synthetic outputs against six sales, ten units and 365.00 before considering a real-data deployment. A confident narrative is not an independent correctness check.
+
+The summary also describes agent logs/traces in Application Insights/Foundry. It distinguishes operational metadata from user-level prompts, responses and generated queries, with separate tenant controls. Review the destination, access and retention before enabling user-data tracing; governance of an answer also includes where the diagnostic copy goes. None of these integrations is connected or enabled by the book.
 
 ## SQL clients: familiar protocol, explicit authentication
 
@@ -130,11 +148,15 @@ SSMS, the MSSQL extension for Visual Studio Code, and supported ODBC/JDBC client
 
 Specify the database explicitly. Since May 2026, omitted `Initial Catalog` connects to `master` rather than implicitly selecting a user Warehouse. `BookWarehouse` is a deliberate target, not a cosmetic label. Multiple Active Result Sets and SQL Server linked-server connections are not supported according to the current [connectivity reference](https://learn.microsoft.com/en-us/fabric/data-warehouse/connectivity).
 
+The [general Warehouse limitations](https://learn.microsoft.com/en-us/fabric/data-warehouse/limitations), rechecked **18 November 2026**, also require source/target **Fabric items to be in the same region** for supported item-to-item SQL connectivity, including across workspaces/capacities. Keep this regional boundary separate from the current same-workspace three-part query namespace. A cross-workspace announcement, alias or differently placed capacity is not proof of cross-region SQL support. This is not a requirement that every desktop SQL client be physically in that region, nor a substitute for each external-storage/shortcut connector's own contract.
+
 ### Direct Connectivity and friendly names: do not guess an endpoint
 
 The 29 September announcements describe **Direct Connectivity public preview as coming soon**. The October review did not establish an available activation procedure, driver requirements or routing contract. The roadmap observed **9 November** still lists TDS Redirect and Workspace-Friendly Connections as **planned public previews in Q4 2026**. Being inside that quarter is not evidence that they are available. Direct Connectivity is not another name for the established TDS connection below, and this chapter invents no switch or measured latency improvement.
 
-**Friendly workspace names** were also announced, but the exact connection-string meaning, release status, and hostname format remain unverified. A display name is not sufficient evidence for constructing a DNS name. Do not replace opaque identifiers inside an endpoint with `MyWorkspace`, infer a new suffix, or assume a rename leaves every client connection unchanged.
+**18 November Ignite follow-up:** the newer article announces a **more direct client-to-compute path for Private Link workspaces**. Keep that network scope explicit. It does not publish a complete new driver, routing/activation or firewall contract for this chapter, or prove that every broader TDS Redirect scenario has shipped. It is also a different capability from the older new-sync guide's Private Link restriction; one network improvement does not silently remove every other feature's limit.
+
+**Friendly workspace names** were also in the earlier announcements. Their display-name wording is not sufficient evidence for constructing DNS. The newer server-alias announcement below still has a future delivery qualification. Do not replace opaque identifiers with `MyWorkspace`, infer a suffix or assume a rename leaves every connection unchanged.
 
 For today's connection, copy the item's actual **SQL connection string** from Fabric, use supported authentication, and explicitly specify `Initial Catalog`/`Database`. Record the supplied endpoint as configuration rather than deriving it from a naming convention. Revisit driver, firewall, and rollout guidance when a Direct Connectivity contract is published. Friendly-name announcements also do not override Chapter 9's documented requirement to use IDs in OneLake COPY source URLs.
 
@@ -201,6 +223,12 @@ finally:
 The token audience is SQL, not Microsoft Graph or the Fabric control-plane API. When supplying an access-token attribute, do not also specify `UID`, `PWD`, `Authentication`, or `Trusted_Connection`; the [ODBC reference](https://learn.microsoft.com/en-us/sql/connect/odbc/using-azure-active-directory?view=sql-server-ver17) documents that conflict.
 
 This is an interactive-developer authentication choice, not an unattended service design. For automation, select a supported service-principal or managed/workload-identity arrangement and grant its permissions explicitly. Acquire a current token when establishing a new physical connection. Add bounded retries for transient failures, but never replay a write whose commit outcome is unknown without reconciliation.
+
+### Ignite server aliases are coming in November, not a current hostname rule
+
+**Coming in November, in the 17 November article; checked 18 November 2026. Not presented as usable today.** Workspace server aliases are described as **customer-defined endpoint names** to simplify connection and recovery management. That is useful design intent, not a released naming syntax or a guarantee of DNS behavior, alias creation rights, automatic failover or unchanged application sessions.
+
+Keep the actual supplied SQL endpoint in the existing connection template. When the feature's supported contract and a customer's access exist, review alias lifecycle, target identity, network/certificate expectations and recovery behavior before switching clients. No alias, DNS record or connection is changed here.
 
 ## Large extracts need a different question
 

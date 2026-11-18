@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part I contents](README.md) | [Previous: Chapter 5](05-first-lakehouse-and-sql-endpoint.md) | [Next: Chapter 7](../02-building-analytical-solutions/07-tsql-for-analytics.md)
 
-**Applies to:** eligible Warehouse and SQL analytics endpoint queries in a query-acceleration-enabled workspace. **Level:** 100. **Evidence cutoff:** 10 October 2026. **Status:** public preview announced 29 September 2026; older Learn onboarding guidance still describes limited-preview approval and regional restrictions. No acceleration setting is changed in this chapter.
+**Applies to:** eligible Warehouse and SQL analytics endpoint queries in a query-acceleration-enabled workspace. **Level:** 100. **Evidence scope:** original review 10 October; targeted Ignite status check **18 November 2026**. **Latest announcement label: Limited Preview.** Access requires the applicable approval/region conditions; the earlier September Public Preview wording is retained as history, not unrestricted current access. No acceleration setting is changed in this chapter.
 
 ## The sales question has become popular
 
@@ -80,11 +80,11 @@ The feature is also not a blanket accelerator for everything in Fabric. The docu
 
 ## Read the preview date carefully
 
-The public status changed during this book's revision window. Bogdan Crivat's **29 September 2026** FabCon Europe article announces GPU-accelerated Warehouse query execution in **public preview**. That is the current announcement-level status used here, not general availability.
+The public sources use different wording during this book's revision window. Bogdan Crivat's **29 September 2026** FabCon Europe article announces GPU-accelerated Warehouse query execution in **public preview**. Tino Tereshko's newer **17 November Ignite article** explicitly labels it **Limited Preview**. Keep the two dates visible; do not turn the older, broader wording into a claim that every customer can enable it today.
 
-The Learn overview dated **11 August 2026** still describes limited-preview registration, approval, and five supported regions. A later product article likewise discusses preview access. These sources answer different questions: the newer announcement establishes the broader preview milestone, while the onboarding material still warns that eligibility and access are not universal.
+The [Learn overview](https://learn.microsoft.com/en-us/fabric/data-warehouse/query-acceleration), rechecked 18 November, still describes limited-preview registration, approval and five supported regions. The book therefore treats acceleration as **restricted evaluation**, not GA or a prerequisite for ordinary customers. The exact Ignite label is Limited Preview, not Limited Private Preview; the latter is used for Warehouse Clones.
 
-Before planning an evaluation, verify current availability for your tenant, capacity region, and workspace with the current product guidance and your administrator. Do not move a production workspace or assume an absent toggle is a defect merely because an announcement says "public preview."
+Before planning an evaluation, verify approval and availability for your tenant, capacity region and workspace with current guidance and your administrator. Registration or a published benchmark is not approval. Do not move production or treat an absent toggle as a defect because an earlier announcement said Public Preview.
 
 There is no need to resolve this operational question for the six-row learning model. Leave acceleration unchanged and continue learning SQL.
 
@@ -124,7 +124,7 @@ GPU acceleration is a specialized helper inside the SQL execution story you alre
 
 ## References
 
-Public sources consulted through 10 October 2026:
+Original sources consulted through 10 October 2026, with a targeted Ignite/status follow-up on 18 November:
 
 1. Bogdan Crivat, [Bringing governed analytics into the flow of work](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/bringing-governed-analytics-into-the-flow-of-work-fabric-analytics-at-fabcon-eur/5368918), 29 September 2026, updated 30 September; public-preview announcement.
 2. Microsoft Learn, [Query acceleration](https://learn.microsoft.com/en-us/fabric/data-warehouse/query-acceleration), 11 August 2026; execution model, eligibility, older onboarding limits, and cancellation warning.
@@ -133,6 +133,7 @@ Public sources consulted through 10 October 2026:
 5. [Chapter 34: GPU acceleration](../06-operating-the-platform/34-gpu-acceleration.md), for the book's deeper evaluation and operations treatment.
 6. Dong He and coauthors, *Query Processing on Tensor Computation Runtimes*, PVLDB 15(11), 2022, §§3–4; Wei Cui and coauthors, *TQP++*, PVLDB 19(12), 2026, especially §10, pp.4126–4127. Full-paper links are in the discovery table; bibliography entries [PAPER05](../../appendices/D-bibliography.md#paper05) and [PAPER06](../../appendices/D-bibliography.md#paper06) record review scope.
 7. Matteo Interlandi, *From research to product*, 2 June 2026, updated 3 June; article linked above and registered as [TEAM12](../../appendices/D-bibliography.md#team12). CoddSpeed's award is independently confirmed by the [SIGMOD 2026 awards list](https://2026.sigmod.org/sigmod_awards.shtml); its abstract is registered as [PAPER04](../../appendices/D-bibliography.md#paper04).
+8. Tino Tereshko, [Fabric Data Warehouse at Ignite](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274), 17 November 2026; **Limited Preview**, checked 18 November. See [Appendix K](../../appendices/K-ignite-2026-availability.md) for the dated availability distinctions.
 
 ---
 

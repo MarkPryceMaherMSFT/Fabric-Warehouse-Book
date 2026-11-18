@@ -8,7 +8,7 @@
 **Subtitle:** From First Query to Engine Internals and Production Operations  
 **Author:** Mark Pryce-Maher  
 **Edition:** First edition, illustrated manuscript draft  
-**Manuscript revision:** 10 November 2026
+**Manuscript revision:** 18 November 2026
 
 This is a working manuscript, not a final typeset publication. The foreword is the author's own introduction, based on the career history and purpose he supplied for this edition; it is not a guest endorsement. Introductory wording remains subject to the author's editorial approval. No publisher, ISBN or publication date is implied.
 
@@ -30,6 +30,8 @@ Current Microsoft Learn and API references establish product contracts. Publishe
 
 These evidence types are deliberately kept separate. A research benchmark is not a service guarantee. An announcement of public preview does not establish universal tenant availability. A repository implementation is not proof of native product support. A source page's last-updated timestamp is not necessarily the date its code changed.
 
+**Availability policy:** Limited Preview, Private Preview and Limited Private Preview are restricted evaluations, not features ordinary customers can assume they can use now. Coming soon and a phrase such as Coming in November remain future delivery intentions, even during that month. Preserve the exact component label, observation date and access conditions; do not promote an adjacent preview merely because a section heading says GA.
+
 The selected public-script window is **8 October 2023 through 8 October 2026**. The register records meaningful commit dates where available and flags metadata-only touches. Older foundational research, notably the Polaris paper, remains part of the book because the date restriction applies to scripts, not the history of the engine.
 
 The source set includes Mark Pryce-Maher's public gists and GitHub repositories; Microsoft Fabric Toolbox; Microsoft Learn; and public material from Jovan Popovic, Srdjan Matin, Bogdan Crivat, Tino Tereshko, and other attributed Warehouse team contributors. A LinkedIn profile is an author-discovery lead, not itself evidence for a technical claim.
@@ -50,15 +52,19 @@ The [What's New page](../whats-new.md) records the verified FabCon scope and exp
 
 The **10 November targeted follow-up** reads Tino Tereshko's June Build roundup in full, confirms its 4 June publication / 5 June modification, and maps all 21 unique topic groups in [Appendix J](../appendices/J-build-2026-coverage.md). It adds original SQL/schema/optimizer/ingestion explanations and qualifies editor, migration, cache and benchmark claims. This is not a new all-source cutoff: the **9 November roadmap snapshot**, earlier chapter-wide audit, image retrieval dates, fixed script pins and research-review limits remain unchanged. No blog figures are copied and no tenant behavior is reported as tested.
 
+The **18 November Ignite follow-up** reads the 17 November Warehouse article and the directly relevant sections of the monthly summary. [Appendix K](../appendices/K-ignite-2026-availability.md) separates core-sync GA from the existing-endpoint Preview upgrade, restricted GPU/live-diagnostic/clone previews, future cooldown/aliases/plans/cards, and component-specific SQL/AI/operational stages. It updates chapter explanations and records where older linked Learn contracts still lag or conflict. This is not a tenant rollout test or a new date for untouched evidence; the roadmap snapshot, public code pins, seed, original figures and image/licence bytes remain unchanged.
+
+The later **18 November public-documentation audit** compares fixed 9/17 November public trees and reviews selected coverage leads plus changed adjacent guidance. All 166 Warehouse-folder text entries are unchanged, while specific lifecycle/security sources differ. [Appendix L](../appendices/L-public-documentation-audit.md) distinguishes those differences, withdrawn delayed guidance and older contracts newly explained. The new range-band listing is original read-only book SQL with synthetic offline expectations; no newly documented operating procedure is executed. A general platform support list or source timestamp is not used to promote a Warehouse-specific preview.
+
 Some announcement wording is intentionally unresolved. For example, a product-team reference to "Fabric UDFs GA" does not make every T-SQL function integration GA. OneLake column-level security, masking, and encryption are different controls; the reviewed evidence does not establish a new SQL-endpoint column-encryption feature. Read the [coverage map](../appendices/E-feature-coverage.md) and [dated status ledger](../appendices/C-feature-status.md) rather than treating a launch roundup as one universal support contract.
 
 ### Two release-status examples
 
-On 29 September 2026, a product announcement described GPU acceleration as public preview, while older Learn guidance still described limited-preview onboarding. The book preserves that chronology and directs readers to current eligibility rather than silently selecting one label.
+On 29 September 2026, a product announcement described GPU acceleration as Public Preview, while older Learn guidance described limited-preview onboarding. The newer **17 November Ignite article says Limited Preview**. The book preserves that discrepancy and requires approval/eligibility rather than treating the earlier wording as unrestricted access.
 
 A product-director roundup described Custom SQL Pools as GA, while some technical references and API routes retained preview or beta language. A product-level announcement does not justify deleting a required API parameter. The [feature ledger](../appendices/C-feature-status.md) records these and other time-sensitive distinctions.
 
-In the November pass, the official pool API how-to still used `beta=true`, while the detailed beta reference was not retrievable. Warehouse Clones appeared as a planned Q1 2027 public preview in the observed roadmap. Neither an inaccessible reference nor a planned quarter is silently converted into a current supported API.
+In the **9 November pass**, the official pool API how-to still used `beta=true`, while the detailed beta reference was not retrievable. Warehouse Clones appeared as a planned Q1 2027 public preview in that roadmap snapshot; the **17 November Limited Private Preview** announcement does not silently convert the future public stage into current general availability. Neither a missing contract nor a planned quarter supplies a supported API.
 
 ## Publication and code rights
 

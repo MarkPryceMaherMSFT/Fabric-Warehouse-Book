@@ -6,6 +6,8 @@
 
 A familiar SQL engine does not make every Fabric item a writable Warehouse. This part separates table ownership, SQL-serving metadata, supported objects, permissions and freshness. Chapter 15 develops synchronization; Chapter 16 develops OneLake access control, RLS and CLS. SQL-engine grants, RLS and CLS are covered separately in Chapter 12.
 
+**Targeted Ignite follow-up, 18 November 2026:** new metadata sync is **GA announced**, but the existing-endpoint upgrade is **Preview**. That changes generation/default planning, not the endpoint's table-write ownership or security model. [Chapter 15](15-metadata-sync-v1-v2.md#ignite-update-core-ga-existing-endpoint-upgrades-preview) explains the separate paths and the older linked guide's remaining qualifications; do not assume an old endpoint was upgraded automatically.
+
 ## Updating the historical sqltidy comparison
 
 Mark's [21 March 2025 comparison](https://medium.com/@sqltidy/understanding-the-differences-between-a-fabric-warehouse-and-a-sql-analytics-endpoint-bc0e00263923) emphasizes the shared SQL engine and the different table-creation/update paths. Those are the right starting questions. The book makes the **different supported contracts** explicit rather than interpreting "same engine" as interchangeable items.

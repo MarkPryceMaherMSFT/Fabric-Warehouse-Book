@@ -36,7 +36,7 @@ Chapters remain continuously numbered 1-42. The early anatomy chapter and dedica
 
 | Chapter | Subject |
 | --- | --- |
-| [7. T-SQL fundamentals for trustworthy analytics](parts/02-building-analytical-solutions/07-tsql-for-analytics.md) | Queries, strings/Unicode, date buckets, windows, analytical functions and matching. |
+| [7. T-SQL fundamentals for trustworthy analytics](parts/02-building-analytical-solutions/07-tsql-for-analytics.md) | Queries, strings/Unicode, date/range bands, windows, analytical functions and matching. |
 | [8. Dimensional modeling: grain, keys, constraints, and collation](parts/02-building-analytical-solutions/08-dimensional-modeling.md) | Grain, facts, dimensions, keys, types, and constraints. |
 | [9. Building Warehouse Architectures, Loading and Accessing Data](parts/02-building-analytical-solutions/09-loading-and-accessing-data.md) | Medallion/hybrid designs, shortcuts, three-part reads, COPY/client bulk loading and materialization. |
 | [10. Transformations and Transactions](parts/02-building-analytical-solutions/10-transformations-and-transactions.md) | Incremental publication, supported transactional ALTER, correctness and restartability. |
@@ -51,7 +51,7 @@ Chapters remain continuously numbered 1-42. The early anatomy chapter and dedica
 | Chapter | Subject |
 | --- | --- |
 | [14. The SQL analytics endpoint: shared engine, different contract](parts/03-sql-analytics-endpoint/14-sql-analytics-endpoint.md) | Shared SQL technology, item/write differences, source authority and reader contracts. |
-| [15. Metadata Sync: Legacy and New Architectures](parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md) | Sync generations, Delta/type compatibility, identity-aware discovery and refresh. |
+| [15. Metadata Sync: Legacy and New Architectures](parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md) | GA-core/Preview-upgrade distinction, generations, compatibility, identity-aware discovery and refresh. |
 | [16. OneLake security: follow the identity to the data](parts/03-sql-analytics-endpoint/16-onelake-security.md) | Endpoint modes and their side effects, groups and column-level access. |
 
 ### Part IV - How the engine works
@@ -92,7 +92,7 @@ Chapters remain continuously numbered 1-42. The early anatomy chapter and dedica
 | [32. Capacity Management](parts/06-operating-the-platform/32-capacity-management.md) | Baselines, bursting, smoothing, throttling, and operational controls. |
 | [33. Workload Management and SQL Pools](parts/06-operating-the-platform/33-workload-management-and-sql-pools.md) | Isolation, classification, resource limits, and pool pressure. |
 | [34. GPU Acceleration](parts/06-operating-the-platform/34-gpu-acceleration.md) | TQP, TQP++, CoddSpeed, verified awards, scoped experiments, observability, and workload economics. |
-| [35. Recovery and Retention](parts/06-operating-the-platform/35-recovery-and-retention.md) | Time travel, clones, snapshots, restore, and recovery planning. |
+| [35. Recovery and Retention](parts/06-operating-the-platform/35-recovery-and-retention.md) | Historical reads, table clones/snapshots, restricted Warehouse clone announcement and recovery. |
 | [36. Development and Automation](parts/06-operating-the-platform/36-development-and-automation.md) | Schema deployment, view refresh, Direct Lake parameter rules and SQL MCP/REST automation. |
 
 ### Part VII - Migration to Fabric Data Warehouse and production design
@@ -125,6 +125,8 @@ Chapters remain continuously numbered 1-42. The early anatomy chapter and dedica
 | [H. Dated roadmap snapshot](appendices/H-roadmap-snapshot.md) | All 25 observed Data Warehouse/Planned cards, captured 9 November 2026, with live links and careful interpretation. |
 | [I. Chapter-by-chapter review](appendices/I-chapter-review.md) | Blog comparison, specific review outcomes and image coverage through every chapter 1-42. |
 | [J. Build 2026 coverage](appendices/J-build-2026-coverage.md) | All 21 material capability groups in the June Warehouse article, mapped to explanations and later evidence. |
+| [K. Ignite 2026 availability](appendices/K-ignite-2026-availability.md) | Snapshot taken 18 November: GA, restricted previews and future delivery, without treating announcements as general customer access. |
+| [L. Public documentation audit](appendices/L-public-documentation-audit.md) | Fixed source comparison, actual adjacent changes and missed operational/development contracts, reviewed 18 November. |
 | [What's new](whats-new.md) | Verified product updates, earlier features, future plans and a separate list of manuscript changes. |
 | [Appendix index](appendices/README.md) | All reference material in one place. |
 | [Edition history](history.md) | Manuscript and structural revision record. |

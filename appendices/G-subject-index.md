@@ -18,6 +18,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Acknowledgements | [Acknowledgements](../front-matter/acknowledgements.md) |
 | Aggregation and grain | [7: Exact arithmetic and meaningful averages](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#exact-arithmetic-and-meaningful-averages); [25: Worked lab: aggregate at the business grain](../parts/04-how-the-engine-works/25-query-processing.md#worked-lab-aggregate-at-the-business-grain) |
 | AI-assisted query review | [27: A hypothesis generator, not autonomous tuning](../parts/05-statistics-and-performance/27-query-plans-and-tuning.md#ai-assisted-review-is-a-hypothesis-generator) |
+| Announcements versus availability | [Appendix K: exact preview and future-delivery labels](K-ignite-2026-availability.md#read-these-labels-literally) |
 | ALTER COLUMN and type widening | [11: Widen the contract without assuming every conversion](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#alter-column-widen-the-contract-without-assuming-every-conversion) |
 | ALTER TABLE in transactions | [10: One schema release](../parts/02-building-analytical-solutions/10-transformations-and-transactions.md#alter-table-inside-a-transaction-one-schema-release) |
 | API refresh, metadata | [15: Selected-table REST refresh that really fails on failure](../parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#selected-table-rest-refresh-that-really-fails-on-failure) |
@@ -66,12 +67,14 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Collation | [8: Collation is part of the key contract](../parts/02-building-analytical-solutions/08-dimensional-modeling.md#collation-is-part-of-the-key-contract); [11: Collation is semantics, not cosmetic metadata](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#collation-is-semantics-not-cosmetic-metadata) |
 | Column-level security | [16: Column-level security is not column-level encryption](../parts/03-sql-analytics-endpoint/16-onelake-security.md#column-level-security-is-not-column-level-encryption) |
 | Column permissions, SQL | [12: SQL-engine column-level security](../parts/02-building-analytical-solutions/12-security-and-governance.md#sql-engine-column-level-security) |
+| Coming soon / coming in November | [Appendix K: future delivery is not usable-today evidence](K-ignite-2026-availability.md#read-these-labels-literally) |
 | Compatibility, T-SQL | [11: Five engines, nine compatibility checks](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#five-engines-nine-compatibility-checks) |
 | Conflicts, migration definitions | [37: Iterate metadata without assuming data preservation](../parts/07-migration-and-production-design/37-migration-planning.md#iterate-metadata-without-assuming-data-preservation) |
 | Constraints | [8: Constraints describe; validation proves](../parts/02-building-analytical-solutions/08-dimensional-modeling.md#constraints-describe-validation-proves) |
 | Consumption units and vNodes | [31: A dated conversion, not a physical inventory](../parts/06-operating-the-platform/31-billing-and-consumption.md#a-dated-conversion-not-a-physical-inventory) |
 | Copilot, inline SQL assistance | [4: Inspect first, review generated SQL](../parts/01-getting-started/04-first-warehouse.md#table-overview-and-inline-copilot-inspect-first-review-generated-sql) |
 | COPY INTO and workspace identity | [9: Workspace Identity for COPY INTO: two authorization checks](../parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#workspace-identity-for-copy-into-two-authorization-checks) |
+| Cross-Warehouse project references | [36: Explicit project/DACPAC dependencies](../parts/06-operating-the-platform/36-development-and-automation.md#resolve-cross-warehouse-project-references-explicitly) |
 | CTEs | [7: CTEs organize reasoning, not storage](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#ctes-organize-reasoning-not-storage) |
 | Custom SQL pools | [33: Begin with the isolation problem](../parts/06-operating-the-platform/33-workload-management-and-sql-pools.md#begin-with-the-isolation-problem); [33: What a resource percentage means](../parts/06-operating-the-platform/33-workload-management-and-sql-pools.md#what-a-resource-percentage-means) |
 | Custom-to-unified pool transition | [33: Upcoming unification and client preparation](../parts/06-operating-the-platform/33-workload-management-and-sql-pools.md#upcoming-unification-prepare-clients-without-changing-todays-payload) |
@@ -159,6 +162,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Subject | Where to read |
 | --- | --- |
 | IDENTITY | [8: IDENTITY now exists, but not as a SQL Server clone](../parts/02-building-analytical-solutions/08-dimensional-modeling.md#identity-now-exists-but-not-as-a-sql-server-clone) |
+| Ignite 2026 | [Appendix K: dated announcement/availability crosswalk](K-ignite-2026-availability.md) |
 | Incremental migration | [37: Definition iteration and conflicts](../parts/07-migration-and-production-design/37-migration-planning.md#iterate-metadata-without-assuming-data-preservation); [41: Data copying and replay](../parts/07-migration-and-production-design/41-reconciliation-cutover-and-rollback.md#migration-assistant-incremental-migration-and-copy-job) |
 | Ingestion and external access | [9: Choose the route by what must move](../parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#choose-the-route-by-what-must-move); [9: Files: make parsing and authorization explicit](../parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#files-make-parsing-and-authorization-explicit) |
 | Inlining, scalar UDFs and ExprBlock | [11: Read the inlining mechanism, not just the word inlineable](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#read-the-inlining-mechanism-not-just-the-word-inlineable) |
@@ -203,6 +207,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | MCP, remote SQL versus Fabric IQ | [36: Remote SQL MCP execution is not automatically read-only](../parts/06-operating-the-platform/36-development-and-automation.md#remote-sql-mcp-execution-is-not-automatically-read-only); [13: IQ semantic-model route](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#fabric-iq-mcp-the-ga-semantic-model-route) |
 | MERGE | [11: Current support matters: IDENTITY and MERGE](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#current-support-matters-identity-and-merge) |
 | Metadata and transaction management | [22: Dedicated building block](../parts/04-how-the-engine-works/22-metadata-and-transaction-management.md) |
+| Metadata-sync upgrade, Preview | [15: Assess, remediate, then change](../parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#preview-upgrade-assess-remediate-then-change) |
 | Metadata sync v1 and v2 | [15: Legacy sync: useful automation with an asynchronous boundary](../parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#legacy-sync-useful-automation-with-an-asynchronous-boundary); [15: New sync: decoupled responsibilities, not universal synchronous discovery](../parts/03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#new-sync-decoupled-responsibilities-not-universal-synchronous-discovery) |
 | Migration assessment | [37: Make five contracts explicit](../parts/07-migration-and-production-design/37-migration-planning.md#make-five-contracts-explicit); [37: Inventory behavior as well as schema](../parts/07-migration-and-production-design/37-migration-planning.md#inventory-behavior-as-well-as-schema) |
 | Migration, other platforms | [40: Other estates: use a source-specific decision sheet](../parts/07-migration-and-production-design/40-migrating-other-platforms.md#other-estates-use-a-source-specific-decision-sheet) |
@@ -216,6 +221,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 
 | Subject | Where to read |
 | --- | --- |
+| Network allow lists and outbound protection | [12: Network routes are not data permissions](../parts/02-building-analytical-solutions/12-security-and-governance.md#a-network-allow-list-is-not-a-data-permission) |
 | NULL and date semantics | [7: Dates, strings, and NULL are not decoration](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#dates-strings-and-null-are-not-decoration) |
 
 [Back to index](#appendix-g-subject-index)
@@ -231,6 +237,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | OneLake storage architecture | [23: Storage building block](../parts/04-how-the-engine-works/23-storage-onelake-and-delta-log-publishing.md#onelake-is-the-storage-building-block-not-another-execution-engine) |
 | Optimizer and plans | [25: Logical alternatives and a bounded search](../parts/04-how-the-engine-works/25-query-processing.md#logical-alternatives-and-a-bounded-search); [27: What an estimated plan can tell you](../parts/05-statistics-and-performance/27-query-plans-and-tuning.md#what-an-estimated-plan-can-tell-you) |
 | ORDER BY ALL | [7: Projection changes can change presentation](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#order-by-all-projection-changes-can-change-presentation) |
+| Ownership takeover | [30: Warehouse owner and source-access identity](../parts/06-operating-the-platform/30-troubleshooting.md#warehouse-ownership-is-an-identity-dependency-not-a-permission-shortcut) |
 
 [Back to index](#appendix-g-subject-index)
 
@@ -250,6 +257,8 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Pool pressure | [33: Read pool pressure as events](../parts/06-operating-the-platform/33-workload-management-and-sql-pools.md#read-pool-pressure-as-events) |
 | Power BI | [13: Start with a semantic contract](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#start-with-a-semantic-contract); [13: Import, DirectQuery, and Direct Lake](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#import-directquery-and-direct-lake) |
 | Preview and GA distinctions | [Appendix C. Dated feature-status ledger](C-feature-status.md) |
+| Private and limited previews | [Appendix K: restricted evaluation is not general customer access](K-ignite-2026-availability.md#read-these-labels-literally) |
+| Public documentation audit | [Appendix L: fixed source comparison and missed guide detail](L-public-documentation-audit.md) |
 | Publication notes | [Publication notes](../front-matter/publication-notes.md) |
 
 [Back to index](#appendix-g-subject-index)
@@ -262,6 +271,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Quantiles and medians | [7: Medians and quantiles: say which distribution you mean](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#medians-and-quantiles-say-which-distribution-you-mean) |
 | Query execution engine | [21: Local execution building block](../parts/04-how-the-engine-works/21-query-execution-engine.md) |
 | Query Insights | [29: Read completed history deliberately](../parts/06-operating-the-platform/29-monitoring.md#read-completed-history-deliberately); [29: Reconstruct overlap, not imaginary causation](../parts/06-operating-the-platform/29-monitoring.md#reconstruct-overlap-not-imaginary-causation) |
+| Query labels | [29: Workflow label versus unique execution](../parts/06-operating-the-platform/29-monitoring.md#query-labels-identify-a-workflow-not-one-unique-execution) |
 | Query plans | [27: What an estimated plan can tell you](../parts/05-statistics-and-performance/27-query-plans-and-tuning.md#what-an-estimated-plan-can-tell-you) |
 | Query processing | [25: A query has more than one kind of work](../parts/04-how-the-engine-works/25-query-processing.md#a-query-has-more-than-one-kind-of-work) |
 
@@ -271,10 +281,12 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 
 | Subject | Where to read |
 | --- | --- |
+| Range bands | [7: Interval coverage and measure grain](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#range-bands-each-sale-must-match-the-intended-interval) |
 | Reader routes | [Appendix A. Glossary and reader routes](A-glossary-and-reader-routes.md) |
 | Reconciliation | [41: Compare equivalent states](../parts/07-migration-and-production-design/41-reconciliation-cutover-and-rollback.md#compare-equivalent-states); [41: Make duplicates observable](../parts/07-migration-and-production-design/41-reconciliation-cutover-and-rollback.md#make-duplicates-observable) |
 | Recovery objectives | [35: Define what must be recovered](../parts/06-operating-the-platform/35-recovery-and-retention.md#define-what-must-be-recovered); [35: Make recovery measurable](../parts/06-operating-the-platform/35-recovery-and-retention.md#make-recovery-measurable) |
 | REGEX functions and limits | [7: Regular expressions: validate a shape, not a business fact](../parts/02-building-analytical-solutions/07-tsql-for-analytics.md#regular-expressions-validate-a-shape-not-a-business-fact) |
+| Rejected-row files | [9: CSV/JSONL scope, diagnostic writes and partial acceptance](../parts/02-building-analytical-solutions/09-loading-and-accessing-data.md#rejected-row-files-are-a-scoped-diagnostic-write) |
 | Research-to-product boundary | [34: Productization choices](../parts/06-operating-the-platform/34-gpu-acceleration.md#the-research-to-product-boundary-is-explicit) |
 | Resource-estimate corrections | [19: Learn from actual cardinalities](../parts/04-how-the-engine-works/19-unified-query-optimizer.md#usage-based-resource-estimates-learn-from-actual-cardinalities) |
 | Result extraction | [13: Large extracts need a different question](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#large-extracts-need-a-different-question) |
@@ -296,6 +308,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | Scripts and provenance | [Companion scripts](../scripts/README.md); [Appendix B. Script-source register](B-script-source-register.md) |
 | Security, SQL | [12: Secure the route, not merely the table name](../parts/02-building-analytical-solutions/12-security-and-governance.md#secure-the-route-not-merely-the-table-name) |
 | Semantic models | [13: Start with a semantic contract](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#start-with-a-semantic-contract); [13: Identity is part of the model](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#identity-is-part-of-the-model) |
+| Server aliases | [13: Coming in November, not a current hostname rule](../parts/02-building-analytical-solutions/13-power-bi-and-clients.md#ignite-server-aliases-are-coming-in-november-not-a-current-hostname-rule) |
 | Shortcuts | [2: Shortcuts: reuse without another scheduled copy](../parts/01-getting-started/02-fabric-concepts-and-onelake.md#shortcuts-reuse-without-another-scheduled-copy) |
 | Shuffle and scheduling | [25: Better shuffle and scheduling: separate the announcement from the mechanism](../parts/04-how-the-engine-works/25-query-processing.md#better-shuffle-and-scheduling-separate-the-announcement-from-the-mechanism) |
 | Smoothing | [31: Why yesterday's work can appear at today's timepoint](../parts/06-operating-the-platform/31-billing-and-consumption.md#why-yesterdays-work-can-appear-at-todays-timepoint) |
@@ -317,6 +330,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 | --- | --- |
 | Table health | [28: Table health without pretending to repair it](../parts/05-statistics-and-performance/28-layout-caching-and-maintenance.md#table-health-without-pretending-to-repair-it) |
 | Table Overview | [4: Structure and context before preview](../parts/01-getting-started/04-first-warehouse.md#table-overview-and-inline-copilot-inspect-first-review-generated-sql) |
+| Temporary tables | [11: Default MDF-backed versus distributed Parquet-backed](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#two-temporary-table-implementations-one-session-boundary) |
 | Teradata migration | [40: Teradata: a documented metadata route, with preview boundaries](../parts/07-migration-and-production-design/40-migrating-other-platforms.md#teradata-a-documented-metadata-route-with-preview-boundaries) |
 | Throttling | [32: Throttling is not a mid-query cancellation policy](../parts/06-operating-the-platform/32-capacity-management.md#throttling-is-not-a-mid-query-cancellation-policy) |
 | Time travel | [35: Time travel answers a data question](../parts/06-operating-the-platform/35-recovery-and-retention.md#time-travel-answers-a-data-question) |
@@ -343,6 +357,7 @@ Use the [contents](../index.md) for the reading order, the [glossary](A-glossary
 
 | Subject | Where to read |
 | --- | --- |
+| Variable libraries | [36: Supported consumers and environment configuration](../parts/06-operating-the-platform/36-development-and-automation.md#separate-definition-environment-and-evidence) |
 | Views, migration | [11: Migrate view definitions, not just text](../parts/02-building-analytical-solutions/11-tsql-compatibility.md#migrate-view-definitions-not-just-text); [39: Adapt a public view-migration pattern safely](../parts/07-migration-and-production-design/39-migrating-sql-server-and-azure-sql.md#adapt-a-public-view-migration-pattern-safely) |
 | vNodes | [31: A dated conversion, not a physical inventory](../parts/06-operating-the-platform/31-billing-and-consumption.md#a-dated-conversion-not-a-physical-inventory) |
 | V-Order and maintenance | [28: Reconciling guidance that appears inconsistent](../parts/05-statistics-and-performance/28-layout-caching-and-maintenance.md#reconciling-guidance-that-appears-inconsistent) |

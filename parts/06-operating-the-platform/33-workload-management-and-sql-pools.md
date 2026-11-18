@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part VI contents](README.md) | [Previous: Chapter 32](32-capacity-management.md) | [Next: Chapter 34](34-gpu-acceleration.md)
 
-**Applies to:** Warehouse and SQL analytics endpoint; custom configuration is workspace-scoped. **Level:** Advanced operations. **Feature baseline:** original API review 9 October 2026; official guidance and the 9 November advance-notice blog reviewed 9 November. September announcements label custom pools and statement classification **GA**; technical API qualifications and the future unification timeline are kept separate.
+**Applies to:** Warehouse and SQL analytics endpoint; custom configuration is workspace-scoped. **Level:** Advanced operations. **Feature baseline:** original API review 9 October; advance notice 9 November; targeted Ignite/concept-guide recheck **18 November**. Custom pools/statement classification are **GA announced**; API-specific qualifications, forthcoming cooldown and the future unification timeline remain separate.
 
 ## Begin with the isolation problem
 
@@ -14,7 +14,7 @@ The useful question is not "How many pools can I create?" It is "Which workloads
 
 ## Resolve status separately from API syntax
 
-Tino Tereshko's [29 September 2026 announcement roundup](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC) explicitly lists **Custom SQL Pools GA** and calls out SELECT/NONSELECT statement-type routing. The [Fabric feature summary published the same day](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-september-2026-feature-summary/5325825) separately lists both custom pools and the statement-type classifier as generally available. However, the inspected [custom-pools Learn page](https://learn.microsoft.com/en-us/fabric/data-warehouse/custom-sql-pools), updated 2 September, still says preview. The [REST update reference](https://learn.microsoft.com/en-us/rest/api/fabric/warehouse/sql-pools/update-sql-pools-configuration%28beta%29), updated 15 September, still documents a beta interface requiring `beta=true`.
+September announcements explicitly label **custom SQL pools and statement classification GA**, and the [17 November Ignite article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) reiterates that stage. The [concept guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/custom-sql-pools), rechecked 18 November, now describes the classification/allocation model without the older preview banner. That is distinct from the previously inspected [beta REST update contract](https://learn.microsoft.com/en-us/rest/api/fabric/warehouse/sql-pools/update-sql-pools-configuration%28beta%29), which required `beta=true`.
 
 These dates should remain visible. A release announcement can be newer than the implementation examples without making the older parameter optional. This chapter uses the documented beta API contract where it discusses automation; it does not silently remove the query parameter because the feature has been announced GA.
 
@@ -34,6 +34,14 @@ On paper, compare the default split with an **illustrative**, not recommended, 7
 
 The classifier is neither an authorization boundary nor a spending cap. It does not grant INSERT permission, distinguish trusted users automatically, or establish an exact CU-hour budget. Observe the resulting `sql_pool_name` and workload outcomes after an approved pilot. Keep this design exercise separate from automation: the older beta REST examples do not publish a verified statement-type enum, so there is no new JSON payload to copy from this chapter. Nor should their single-classifier constraints be interpreted as permission to invent a combined application-and-statement rules engine.
 
+### The documented portal route does not invent an API enum
+
+The [portal configuration guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/configure-custom-sql-pools-portal), rechecked **18 November 2026**, explicitly exposes **Workspace settings > Data Warehouse > SQL Pools > Set up custom pools** to a workspace Administrator. Its selector offers **Application name (exact name)**, **Application name (regex)** and **Statement type**. This is an existing documented way to select statement routing, not a promise about an unverified REST enum.
+
+Before any approved Save, preserve the current full configuration and review every pool, the single default, read optimization and total compute percentages of **100% or less**. The change is workspace-scoped, not a private setting for one query. Verify observed `program_name`/`sql_pool_name` and statement identity after history arrives; do not infer correct routing from a successful sign-in alone.
+
+The API how-to rechecked on the same date still uses **`beta=true`**. Portal support, product GA and a future unified model do not remove that parameter from today's documented request. The existing lab remains proposal-only: it does not select Save, revert the workspace or submit a PATCH.
+
 ![Custom SQL pool workload organization](../../assets/documentation/custom-sql-pools.svg)
 
 *Documentation image D17. Microsoft, [Custom SQL pool workload organization](https://learn.microsoft.com/en-us/fabric/data-warehouse/custom-sql-pools); [original image](https://learn.microsoft.com/en-us/fabric/data-warehouse/media/custom-sql-pools/custom-sql-pools.svg). Unmodified source copy, retrieved 9 November 2026; [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) under the [Fabric documentation licence](https://github.com/MicrosoftDocs/fabric-docs/blob/aadea08f35c3edaa9c32535c772792f02555c9a4/LICENSE). This is the documented pool model, not the proposed January 2027 default or a guaranteed spend/latency boundary.*
@@ -46,7 +54,7 @@ For example, a proposed reporting/load/ad hoc split might allocate 50, 30, and 2
 
 The API allows percentages from 1 through 100, with the sum no greater than 100, and only one default pool. The current conceptual documentation permits up to eight custom pools. Capacity resizing changes the resources behind the percentages; a sufficiently small resulting allocation can leave a pool with zero nodes and cause requests to fail until reconfigured. Percentages are therefore not portable performance guarantees between SKUs.
 
-For the announced on-demand model, the workspace compute ceiling and these pool boundaries are intended to work together, as [Chapter 32](32-capacity-management.md) explains. That future commercial model does not need to be enabled for the GA pool feature to be useful, and a pool percentage must not be relabeled as its rolling 24-hour spending limit.
+For the separately announced **on-demand Preview**, workspace ceilings and these pool boundaries are intended to work together, as [Chapter 32](32-capacity-management.md) explains. That billing mode does not need to be enabled for the GA pool feature to be useful, and a pool percentage must not be relabelled as its rolling spending limit.
 
 The `optimizeForReads` property controls enhanced caching. Its documented API default is true. Mark Pryce-Maher's example configuration deliberately sets it false for a particular consumption-control use case. That is a choice to test, not a universal optimization. Removing warm-cache behavior can lower persistent allocation but worsen latency and repeated read work.
 
@@ -86,7 +94,7 @@ For automation, preserve **effective configuration, inactive saved configuration
 
 Do **not** remove today's required fields or beta parameter merely because an article shows a proposed future payload. The post explicitly directs readers to current REST documentation until rollout; its illustrative flag removal is not a new complete API schema or an additive-PATCH guarantee. Keep the full-configuration preservation safeguards above, verify the rolled-out contract, and approve a versioned client change separately. The book makes no pool update.
 
-The same article discusses reducing cache cooldown **once configurability becomes available**. Its one-minute illustration is not evidence that a one-minute setting can be applied today; [Chapter 28](../05-statistics-and-performance/28-layout-caching-and-maintenance.md#cache-cooldown-plan-the-trade-off-not-an-invented-setting) retains that boundary.
+The same article discusses reducing cache cooldown **once configurability becomes available**. The newer Ignite post calls it **coming in November**, not already available on 18 November. Neither that month nor the older one-minute illustration is evidence that a customer can apply a timer today; [Chapter 28](../05-statistics-and-performance/28-layout-caching-and-maintenance.md#cache-cooldown-plan-the-trade-off-not-an-invented-setting) retains that boundary.
 
 ## Mark's inventory-first automation pattern
 

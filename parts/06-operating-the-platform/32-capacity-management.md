@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part VI contents](README.md) | [Previous: Chapter 31](31-billing-and-consumption.md) | [Next: Chapter 33](33-workload-management-and-sql-pools.md)
 
-**Applies to:** Warehouse and SQL analytics endpoint within shared Fabric capacities, plus planning for announced on-demand billing. **Level:** Intermediate to advanced operations. **Feature baseline:** original controls reviewed 9 October 2026; future SQL-pool defaults reviewed against the 9 November advance notice. Guardrails depend on SKU/release; on-demand billing remains public preview coming soon.
+**Applies to:** Warehouse and SQL analytics endpoint within shared Fabric capacities, plus planning for announced on-demand billing. **Level:** Intermediate to advanced operations. **Feature baseline:** original controls 9 October; pool advance notice 9 November; targeted Ignite follow-up **18 November**. Guardrails depend on SKU/release. On-demand billing is announced **Preview**; cooldown is **coming in November**, not verified available to ordinary customers today.
 
 ## Manage a workload, not an isolated query
 
@@ -46,7 +46,9 @@ Avoid a retry storm. Clients should apply bounded retries only to failures that 
 
 ## Planned on-demand controls: compute ceiling is not spending limit
 
-The [September feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-september-2026-feature-summary/5325825) describes Warehouse **on-demand billing under Coming Soon**. [Chapter 31](31-billing-and-consumption.md) explains its planned actual CU-hour charges without smoothing, separate storage, and category-level enablement across the capacity. Its workspace compute ceilings introduce a useful resource-management question: how much instantaneous headroom should this workload have, rather than how much should every workload share?
+The [17 November Ignite article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) labels Warehouse on-demand billing **Preview**, updating September's Coming Soon account. It describes **capacity-level budget controls**, a separate Warehouse consumption category, and **workspace-level ceilings** at which queries queue and later resume. This is not a GA announcement or proof that a particular customer can activate it now.
+
+[Chapter 31](31-billing-and-consumption.md) keeps the earlier CU-hour/no-smoothing proposal, separate storage and category-level enablement tied to their source. A preview's supported commercial/operational contract must be checked before use. The design question remains useful: how much instantaneous headroom should this workload have, rather than how much should every workload share?
 
 ![Compute resources and accumulated consumption are separate limits in current shared capacity and planned on-demand billing](../../assets/diagrams/14-capacity-models.png)
 
@@ -69,7 +71,7 @@ Prepare a rollout decision rather than a fictitious configuration script. List a
 
 ## Overage and surge protection are not resizing
 
-At the 8 October 2026 baseline, the [overage configuration guide](https://learn.microsoft.com/en-us/fabric/enterprise/enable-capacity-overage), updated 29 September, explicitly says capacity overage is **generally available**, while its email notifications are preview. The [surge-protection guide](https://learn.microsoft.com/en-us/fabric/enterprise/surge-protection), also updated 29 September, labels **workspace-level surge protection preview**. These controls are distinct from the on-demand billing and cache cooldown features marked "coming soon" in Tino's 29 September roundup discussed below.
+At the 8 October 2026 baseline, the [overage configuration guide](https://learn.microsoft.com/en-us/fabric/enterprise/enable-capacity-overage), updated 29 September, explicitly says capacity overage is **generally available**, while its email notifications are preview. The [surge-protection guide](https://learn.microsoft.com/en-us/fabric/enterprise/surge-protection), also updated 29 September, labels **workspace-level surge protection preview**. These remain different controls from the on-demand Preview and still-forward-looking cooldown in the newer Ignite announcement.
 
 The [capacity-overage overview](https://learn.microsoft.com/en-us/fabric/enterprise/capacity-overage-overview) describes an F-SKU safety net: pay for eligible excess consumption when it would otherwise trigger throttling. This can keep new work admissible, with additional charges, but **does not enlarge the SKU, add memory, or increase execution resources**. Resource and concurrency limits remain. Resizing changes the purchased baseline and relevant resource ceilings; SQL pools divide available workspace backend resources. Neither is equivalent to paying off accumulated consumption.
 
@@ -140,7 +142,7 @@ Assign named owners for capacity, workspace configuration, application retries, 
 
 Maintain headroom for operational work. Recovery, statistics work, historical investigations, and deployments also need compute. A service sized to a perfectly regular business workload with no contingency may be hardest to repair when it is most stressed.
 
-Finally, distinguish announced features from controls verified in the environment. In his [29 September 2026 announcement roundup](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC), Tino Tereshko explicitly marks on-demand billing and cache cooldown as public preview **coming soon**, while listing custom SQL pools as GA. This distinction matters operationally: a planned billing or cache control is not an available remedy for today's incident. Nor does an announcement establish that an existing script supports every setting. Read the current public contract before introducing a control into an automated runbook.
+Finally, distinguish announced features from controls verified in the environment. At the **18 November check**, Ignite calls on-demand billing **Preview**, cooldown **coming in November**, GPU acceleration **Limited Preview** and Warehouse Clones **Limited Private Preview**; custom SQL pools are reiterated as GA. These labels are not interchangeable. An unapproved preview or promised November setting is not an available remedy for today's incident, and a product announcement does not establish that an existing script supports every setting. [Appendix K](../../appendices/K-ignite-2026-availability.md) preserves the exact dated distinctions.
 
 ## Key takeaways
 

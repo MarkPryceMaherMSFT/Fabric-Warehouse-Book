@@ -166,6 +166,16 @@ Column-level security, object-level grants, RLS, and dynamic data masking solve 
 
 Sensitivity labels, descriptions, owners, and lineage make a dataset understandable and governable, but do not replace an access policy. Assign responsibility for the dataset's purpose, retention, permitted exports, and reconciliation. When a derived table changes its meaning, update its documentation and downstream contracts rather than only changing the SQL.
 
+## A network allow list is not a data permission
+
+**Public documentation checked 18 November 2026.** Workspace outbound access protection (OAP) governs supported network routes; it does not replace item access, SQL grants or OneLake roles. Power BI OAP remains **Preview** for eligible Fabric F-capacity workspaces and covers semantic models and interactive `.pbix` reports. **Paginated reports, dashboards and scorecards are not supported in OAP-enabled workspaces**: unsupported existing items block enablement, and unsupported items cannot be created after it is enabled ([report reference](https://learn.microsoft.com/en-us/fabric/security/workspace-outbound-access-protection-power-bi-reports); [OAP overview](https://learn.microsoft.com/en-us/fabric/security/workspace-outbound-access-protection-overview)).
+
+Distinguish **report > semantic model** from **semantic model > data source**. A same-workspace interactive report/model connection is allowed, but that is not a same-workspace exemption for the model's Warehouse or OneLake source. The [semantic-model reference](https://learn.microsoft.com/en-us/fabric/security/workspace-outbound-access-protection-semantic-models) specifies a **SQL Server** connection rule for Import, DirectQuery and Direct Lake on SQL analytics endpoint, or an **ADLS Gen2** rule for Direct Lake on OneLake. A cross-workspace report/model connection separately needs a **Power BI Semantic Model** exception for the model's destination workspace in the report workspace.
+
+The public source deliberately removed paginated-report OAP guidance on **10 November** because deployment was delayed. This is a documentation withdrawal, not evidence that a generally released feature was deprecated or a promise of another delivery date. Do not reuse the removed Analysis Services/XMLA recipe as a supported current route; [Appendix L](../../appendices/L-public-documentation-audit.md) preserves the evidence.
+
+These are route-specific network checks, not changed effective identities or replacements for RLS/CLS. OAP is also not a complete export control: the report reference leaves exports and listed browser-side features outside its enforcement. Warehouse-specific outbound exceptions have their own limitations; neither a Power BI rule nor a generic supported-item heading authorizes an arbitrary Warehouse outbound connection. Review permissions, network policy and export controls separately. No network rule or workspace mode is changed here.
+
 ## SQL audit predicate filtering: choose what is captured
 
 **Generally available, announced August 2026 — Warehouse and SQL analytics endpoint.** SQL auditing is configurable, including selected action groups, filtering, and retention. Predicate filtering can reduce repetitive activity in the audit stream, but its benefit has a cost: a discarded event cannot later be queried from that audit trail.

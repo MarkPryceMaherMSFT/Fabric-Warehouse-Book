@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part VI contents](README.md) | [Previous: Chapter 30](30-troubleshooting.md) | [Next: Chapter 32](32-capacity-management.md)
 
-**Applies to:** Warehouse and Lakehouse SQL analytics endpoint; capacity and storage charges also involve other Fabric workloads. **Level:** Intermediate operations. **Feature baseline:** revision checked 9 October 2026. Rates below are dated, not contractual prices. Warehouse on-demand billing is **public preview coming soon**, distinguished from the current shared-capacity model.
+**Applies to:** Warehouse and Lakehouse SQL analytics endpoint; capacity and storage charges also involve other Fabric workloads. **Level:** Intermediate operations. **Feature baseline:** original revision 9 October; targeted Ignite follow-up **18 November 2026**. Rates below retain their original dates, not contractual prices. Warehouse on-demand billing is **Preview announced 17 November**, not GA or universal customer access, and is distinct from shared-capacity accounting.
 
 ## Three questions that should not share one answer
 
@@ -14,7 +14,9 @@ Keep four units visible in every report: elapsed seconds, allocated vCore-second
 
 ## On-demand billing: a planned commercial model, not a new name for vNodes
 
-**Public preview coming soon.** Tino Tereshko's [29 September roundup](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC) uses that status explicitly; Kim Manis's [platform announcement](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/build-deploy-and-govern-microsoft-fabric-at-scale/5369145) says availability is expected in the coming weeks. The [September feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-september-2026-feature-summary/5325825) provides the planned accounting and governance model under its Coming Soon section. Screenshots and forward-looking descriptions are not instructions to assume the feature is enabled today.
+**Preview announced at Ignite; availability check 18 November 2026.** The [17 November Warehouse article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) now labels on-demand billing **Preview**, describing capacity-level budget controls, workspace ceilings and separate Data Warehouse consumption. This updates September's Coming Soon description; it does not establish GA, access for every customer or a complete activation/pricing contract.
+
+The [September feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-september-2026-feature-summary/5325825) supplies the earlier accounting/governance proposal below. Keep those details tied to their source until a customer's preview terms and current operating reference confirm them. No billing category or capacity setting is changed by this book.
 
 The proposed model charges **actual compute consumption in CU-hours without smoothing**, with storage charged separately. Enablement is at **billing-category level across a capacity's workspaces**, not an isolated per-query choice. The Warehouse category is described as covering Warehouses, SQL analytics endpoints, Warehouse snapshots, and notebooks running T-SQL. Planned options include on-demand categories alongside provisioned F2-or-higher capacity and the zero-provisioned F0 entry point; neither means free compute or storage.
 
@@ -22,7 +24,9 @@ Within that category, each workspace is intended to scale up to a configured **c
 
 ![Current shared-capacity consumption and smoothing compared with announced on-demand CU-hour billing, workspace compute ceilings and a separate rolling spending limit](../../assets/diagrams/14-capacity-models.png)
 
-*Figure 14 — Conceptual comparison of current and announced capacity models.* Read the on-demand side as a design to evaluate when its public preview becomes available. A workspace compute ceiling controls available execution resources; a rolling CU-hour limit controls admission after accumulated spending. Neither box is an exact per-query currency meter.
+*Figure 14 — Conceptual comparison of shared-capacity and announced on-demand models.* Read the on-demand side under an approved, documented preview contract, not as a control every customer can enable now. A workspace compute ceiling controls execution resources; a rolling CU-hour limit controls admission after accumulated spending. Neither box is an exact per-query currency meter.
+
+The original illustration's announced-model labels are not a later availability declaration. At the 18 November source check, on-demand is announced **Preview**, while cache cooldown still has a separate future-delivery label.
 
 | Question | Current shared-capacity accounting | Announced on-demand model |
 | --- | --- | --- |
@@ -30,7 +34,7 @@ Within that category, each workspace is intended to scale up to a configured **c
 | How is consumption evaluated? | SQL background consumption is generally smoothed over 24 hours. | CU-hours without smoothing. |
 | What is the workspace control? | Available backend resources, SKU guardrails, and pool allocation. | A workspace compute ceiling, complemented by custom pools. |
 | Does storage disappear from the bill? | No. | No; storage remains separate. |
-| Can this chapter assume it is available? | These are the documented existing mechanisms below. | No; public preview is coming soon at the revision cutoff. |
+| Can this chapter assume it is available? | These are the documented shared-capacity mechanisms below. | No; the Preview announcement does not verify a customer's access, activation or applicable commercial terms. |
 
 The planned **rolling 24-hour spending limit** is distinct from the compute ceiling: the summary says new operations pause at the spending limit while in-flight operations finish. That is not the same as ordinary queueing when execution resources are full, and not a promise of zero additional consumption after the threshold. [Chapter 32](32-capacity-management.md) works through those admission distinctions.
 
@@ -134,7 +138,7 @@ Pausing an F capacity stops subsequent compute operation, but [remaining smoothe
 - Use 0.538 and 3.446 only as dated rates, and label derived equivalents.
 - Correlate items and UTC windows; never join the two unrelated operation identifiers.
 - Treat per-query showback as a model and account for its missing evidence.
-- On-demand billing is coming soon; actual CU-hours, workspace ceilings, and rolling spending limits are different concepts.
+- On-demand billing is announced Preview, not universal access; actual CU-hours, workspace ceilings and rolling spending limits are different concepts.
 
 ## References
 

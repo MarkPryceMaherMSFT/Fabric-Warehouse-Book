@@ -2,7 +2,15 @@
 
 [Book contents](../../index.md) | [Part III contents](README.md) | [Previous: Chapter 14](14-sql-analytics-endpoint.md) | [Next: Chapter 16](16-onelake-security.md)
 
-**Applies to:** Lakehouse SQL analytics endpoints; related endpoints only where their documentation explicitly applies. **Level:** intermediate to advanced. **Scope:** synchronization, compatibility and REST identity contracts rechecked 9 November 2026. The core sync references are unchanged from the October baseline: new metadata sync remains **preview**, with no verified upgrade of existing endpoints. "MD Sync v1" and "v2" are book shorthand, not official API version numbers.
+**Applies to:** Lakehouse SQL analytics endpoints; related endpoints only where their documentation explicitly applies. **Level:** intermediate to advanced. **Scope:** original operating/REST contracts checked 9 November; Ignite announcements and linked guidance rechecked **18 November 2026**. **Core new sync: GA announced 17 November. Existing-endpoint upgrade: Preview.** The retrieved detailed guide still describes the earlier preview path; the distinction below supersedes the book's older blanket preview/no-upgrade description. "MD Sync v1" and "v2" are book shorthand, not official API version numbers.
+
+## Ignite update: core GA, existing-endpoint upgrades Preview
+
+Both the [17 November Warehouse Ignite article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) and [November feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-november-2026-feature-summary/5414311) announce **new metadata sync as generally available**. The monthly summary makes an essential separate statement: **the on-demand upgrade path for existing endpoints is preview**.
+
+It describes new sync as the default in **new workspaces**, and for **newly created endpoints in existing workspaces**. The control remains under **Workspace settings > Warehouse settings > New metadata sync**. Changing that setting **does not upgrade an existing endpoint**. Verify the actual generation; do not infer it from today's default, the item's name or a successful refresh.
+
+The release description includes LOBs, endpoint time travel and **Delta checkpoint V2 compatibility**. These do not remove type, retention, authorization or client restrictions, and do not establish GA for every separately preview-labelled subfeature. The detailed Learn sync guide retrieved on 18 November, and its public source, still say preview/new-endpoints-only. Preserve that documentation lag rather than ignoring the newer GA announcement or inventing the missing upgrade contract. [Appendix K](../../appendices/K-ignite-2026-availability.md) records this dated reconciliation.
 
 ## Define what needs to become fresh
 
@@ -26,9 +34,9 @@ Legacy sync also explains why a table can be visible in Lakehouse Explorer befor
 
 ## New sync: decoupled responsibilities, not universal synchronous discovery
 
-The new architecture, announced in May 2026 and still marked preview in current Learn, uses an external-tables-based approach to Delta-log parsing and catalog creation. It decouples schema and data refresh. It includes periodic background data refresh and an on-demand data refresh when an incoming read detects that data is not fresh.
+The new architecture, first announced in May 2026 preview and announced GA at Ignite on 17 November, uses an external-tables-based approach to Delta-log parsing and catalog creation. It decouples schema and data refresh. It includes periodic background data refresh and an on-demand data refresh when an incoming read detects that data is not fresh.
 
-**Rakesh Krishnan's 21 May 2026 announcement**, [New metadata sync and more in SQL Analytics Endpoint (Preview)](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/new-metadata-sync-and-more-in-sql-analytics-endpoint-preview/5183137), explains the product-team motivation: shorten the delay between landing data and querying it. Separating data changes from schema changes matters because another batch of sales usually changes rows, not the table definition. The on-query path can address that existing-table freshness gap without treating every read as a complete catalog-discovery exercise. The announcement's seconds-rather-than-minutes ambition is not a contractual SLA, and its preview designation remains consistent with current Learn. Neither the announcement nor the architecture makes all schema changes synchronous.
+**Rakesh Krishnan's 21 May 2026 announcement**, [New metadata sync and more in SQL Analytics Endpoint (Preview)](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/new-metadata-sync-and-more-in-sql-analytics-endpoint-preview/5183137), explains the product-team motivation: shorten the delay between landing data and querying it. Separating data changes from schema changes matters because another batch of sales usually changes rows, not the table definition. The on-query path can address that existing-table freshness gap without treating every read as a complete catalog-discovery exercise. Its preview label is historical; the November GA announcement is newer. Seconds-rather-than-minutes and the Ignite article's "always" freshness language are not a contractual SLA, proof of successful synchronization despite errors, or a promise of synchronous discovery of every schema change.
 
 The important word is **data**. Query-triggered freshness does not imply that every newly created table, renamed column, or type change is synchronously discovered during arbitrary SQL compilation. A query against an unknown column cannot be treated as proof that all catalog-discovery work has already completed.
 
@@ -36,21 +44,35 @@ The important word is **data**. Query-triggered freshness does not imply that ev
 
 *Figure 11 — Conceptual comparison of synchronization generations.* Trace a new column along the schema path and another batch of rows along the data path. Only the latter has the documented incoming-query freshness path; the diagram does not promise synchronous discovery of every new object.
 
-Enablement is also specific. The workspace setting applies to **new SQL analytics endpoints** created after opt-in. Existing endpoints remain on legacy metadata sync according to the current documentation. Turning on the workspace switch and retesting an old Lakehouse therefore does not constitute a v1/v2 comparison.
+Enablement is also specific. The older guide describes opting in before creating a new endpoint; the November summary announces new-endpoint defaults. Neither description makes a workspace-setting change an existing-endpoint upgrade. Turning on that switch and retesting an old Lakehouse therefore does not constitute a v1/v2 comparison.
 
-For a controlled evaluation, create a new isolated schema-enabled Lakehouse after enabling the setting and record its endpoint ID and creation context. Do not drop and recreate a production endpoint merely to chase the preview. Preserve dependencies, permissions, views, connection settings, and rollback requirements before planning any migration.
+For a controlled new-endpoint evaluation, verify the workspace behavior, create an isolated schema-enabled Lakehouse and record its endpoint ID and generation. Do not drop and recreate a production endpoint to chase a new default. Existing endpoints have a separately announced preview upgrade, not permission for an unreviewed migration.
 
 Mark's [22 July 2026 generation-discovery article](https://medium.com/@sqltidy/what-version-of-md-sync-am-i-running-7d11e6caa0ab) shows the item properties displaying **Metadata sync: Legacy** or **New**. Record that read-only property where the current interface exposes it, alongside creation/enablement history. An API route containing `/v1`, a similar item name or a successful refresh is not a substitute for identifying the endpoint's generation.
 
 The documented limitations include unsupported multipart Delta checkpoints and inability to enable new metadata sync with workspace private link at the checked date. Eligibility is a product and tenant question; an announcement is not proof that a given workspace can enable the feature.
 
+### Preview upgrade: assess, remediate, then change
+
+**Preview, not a GA migration path for every existing customer.** The monthly summary names this sequence:
+
+1. Use **GetStatus** to establish the existing endpoint's state.
+2. Run **Preflight** to identify tables requiring attention; review and approve any source/schema remediation with its owner.
+3. Address the findings and rerun Preflight before proceeding under the actual preview contract.
+4. Invoke **Upgrade** only after access and the change are approved; follow the **long-running operation** to its terminal outcome.
+5. Recheck endpoint status, table-level sync health, expected schema/data and consumer access independently.
+
+Those are the announcement's operation names, **not verified REST URLs, request bodies, status enums or permission requirements**. The retrieved detailed guide did not yet supply that complete contract, so this chapter provides no executable upgrade request or automatic retry/recreation workaround. A normal metadata-refresh POST is not an upgrade operation.
+
+Preserve item/endpoint identities, SQL objects, permissions, dependencies and recovery requirements before a pilot. Keep source commit, SQL observation and operation outcome as separate evidence. A successful upgrade response is not proof that every downstream report, historical query, shortcut or identity still behaves correctly.
+
 ### The differences that affect a deployment
 
-| Question | Legacy sync ("v1") | New metadata sync ("v2", preview) |
+| Question | Legacy sync ("v1") | New metadata sync ("v2"; GA announced, upgrade Preview) |
 | --- | --- | --- |
 | What drives normal freshness? | Asynchronous background discovery and synchronization. | Background processing plus query-triggered data refresh for an existing table when needed. |
 | Are schema and data changes treated alike? | Follow the legacy background synchronization path. | Separate responsibilities; an on-query data refresh is not a promise of synchronous schema discovery. |
-| Does changing the workspace setting upgrade an existing endpoint? | Existing endpoints remain on the legacy implementation. | The documented opt-in applies to newly created endpoints. |
+| Does changing the workspace setting upgrade an existing endpoint? | No; an old endpoint does not convert automatically. | New-endpoint defaults are announced; existing endpoints require the separate preview assessment/upgrade path. |
 | Which additional SQL controls are available? | Do not assume the new procedure or DMV exists. | Table-data refresh through `sys.sp_dw_refresh_ext_table` and log-status diagnostics through `sys.dm_db_external_tables_log_status`. |
 | What about large strings? | The endpoint overview documents the legacy 8 KB truncation limitation. | `varchar(max)` support requires new metadata sync, subject to the applicable type limits. |
 | What about SQL endpoint time travel? | Do not assume Warehouse time-travel syntax is available here. | Current endpoint time-travel support requires new sync and remains subject to preview, Delta retention, and compatibility rules. |
@@ -79,7 +101,9 @@ ORDER BY s.name, t.name, c.column_id;
 
 `max_length = -1` identifies a MAX declaration; it does not mean unlimited capacity or prove that an end-to-end transfer preserved every byte. The canonical six-row book seed has no long narrative and may return no rows here. Do not enlarge its columns merely to manufacture a LOB demonstration.
 
-For a separate, approved compatibility test, specify synthetic payloads below and above the legacy boundary, include multibyte characters, and compare source byte lengths with SQL `DATALENGTH` and the final client's received value. Check content as well as length. Casting an already truncated SQL value to `varchar(max)` cannot recover the missing content. If long text is a release requirement, ask: **which endpoint generation will serve it, is the preview dependency acceptable, and which consumer proves completeness?** Neither a metadata refresh nor an existing workspace's opt-in switch upgrades a legacy endpoint.
+For a separate, approved compatibility test, specify synthetic payloads below and above the legacy boundary, include multibyte characters, and compare source byte lengths with SQL `DATALENGTH` and the final client's received value. Check content as well as length. Casting an already truncated SQL value to `varchar(max)` cannot recover the missing content. If long text is a release requirement, ask: **which endpoint generation will serve it, does reaching it require the preview upgrade, and which consumer proves completeness?** Neither a metadata refresh nor an existing workspace's switch upgrades a legacy endpoint.
+
+The Ignite article additionally names **VARBINARY(MAX)** for endpoint binary content. Treat binary exposure as its own compatibility test: inspect actual SQL metadata and compare source bytes with the client-delivered value. Do not assume a string-width check proves binary preservation or transfer Warehouse/SQL Server size assumptions to every endpoint/consumer without its specific contract. No long-text or binary payload is added to the shared six-row seed.
 
 ## Check table features and column representation separately
 
@@ -94,6 +118,7 @@ The [current interoperability matrix](https://learn.microsoft.com/en-us/fabric/f
 | ID-based Delta column mapping | Not supported by this endpoint, even where another reader such as Direct Lake has different support. |
 | `TIMESTAMP_NTZ` | Not supported; do not equate it with ordinary Delta `TIMESTAMP`. |
 | Multipart checkpoints with new metadata sync | Remain a documented new-sync limitation; enabling a feature in the writer does not make it compatible. |
+| Delta checkpoint V2 | Compatibility is announced in the 17 November new-sync release. This is a different feature from deprecated multipart checkpoints; verify the endpoint's actual generation and readiness. |
 
 Separately, the [autogenerated SQL type mapping](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-types#autogenerated-data-types-in-the-sql-analytics-endpoint) says unlisted Delta types do not appear as SQL table columns. Nested values are not automatically flattened. Delta `BYTE`/`TINYINT`/`SHORT`/`SMALLINT` map to SQL `smallint`; ordinary `TIMESTAMP` maps to `datetime2`. Compare the expected column list, types and values with `sys.columns`, not just table names and row counts. Retain the generation-specific large-string qualification above.
 
@@ -101,7 +126,7 @@ Also inspect **discovery and schema-evolution blockers**. External Delta data sh
 
 ### Historical SQL reads need retained Delta history
 
-Endpoint time travel remains **preview and new-sync-only**. Its statement-level `OPTION (FOR TIMESTAMP AS OF ...)` hint uses UTC with at most three fractional-second digits; it is not Spark's table-level time-travel syntax. Historical reads use the latest schema and require the underlying files to remain available under the Lakehouse table's **VACUUM retention**, not Warehouse retention.
+The Ignite article includes endpoint time travel in the new-sync release, while the retrieved **specific time-travel reference still labels endpoint historical reads preview and requires new sync**. The core-sync GA announcement is not used to invent a separate time-travel GA milestone or unrestricted historical access for a newly upgraded endpoint. Its statement-level `OPTION (FOR TIMESTAMP AS OF ...)` hint uses UTC with at most three fractional-second digits; it is not Spark's table-level time-travel syntax. Historical reads use the latest schema and require underlying files under the Lakehouse table's **VACUUM retention**, not Warehouse retention.
 
 The [time-travel reference](https://learn.microsoft.com/en-us/fabric/data-warehouse/time-travel) excludes this syntax in Power BI Desktop DirectQuery and **Explore this data**. Proving a historical read in a SQL editor is therefore not proof that every client can issue it. [Chapter 28](../05-statistics-and-performance/28-layout-caching-and-maintenance.md#reconciling-guidance-that-appears-inconsistent) connects retained history to source-owned maintenance; [Chapter 35](../06-operating-the-platform/35-recovery-and-retention.md) separates historical reads from recovery.
 
@@ -208,7 +233,7 @@ A high version is not inherently better than another table's lower version: log 
 
 ## Lab: validate the handoff
 
-**Prerequisites:** the Chapter 5 Lakehouse seed, the two selected tables, a notebook running as an authorized identity, and its SQL endpoint connection. Determine legacy versus new-sync status from creation and enablement history. The REST exercise does not require you to pretend a legacy endpoint is new.
+**Prerequisites:** the Chapter 5 Lakehouse seed, the two selected tables, a notebook running as an authorized identity, and its SQL endpoint connection. Determine legacy versus new-sync status from the actual property and creation/approved-upgrade history, not today's default alone. The REST exercise does not require you to pretend a legacy endpoint is new or run a preview upgrade.
 
 First, run a read-only SQL baseline for the core sample. Then execute `15-refresh-selected-tables.py` in the notebook, with its default selection. Finally, rerun the SQL baseline.
 
@@ -236,7 +261,7 @@ Repeated resets, aggressive polling, and table rewrites can turn a narrow freshn
 ## Key takeaways
 
 - Discovery, schema, data freshness, and statistics are different responsibilities.
-- New sync is preview and opt-in for new endpoints; existing endpoints are not automatically upgraded.
+- Core new sync is GA announced; the existing-endpoint upgrade is Preview, never an automatic consequence of changing the workspace setting.
 - REST `/v1`, MD Sync generations, and Delta checkpoints are unrelated version axes.
 - Require per-table success; never equate HTTP `200` with complete refresh success.
 - Verify the discovery operation's identity support and the table's feature/type compatibility before retrying.
@@ -254,6 +279,8 @@ Repeated resets, aggressive polling, and table rewrites can turn a narrow freshn
 9. Microsoft Learn, [List SQL Endpoints](https://learn.microsoft.com/en-us/rest/api/fabric/sqlendpoint/items/list-sql-endpoints) and [Get Lakehouse](https://learn.microsoft.com/en-us/rest/api/fabric/lakehouse/items/get-lakehouse), operation-specific identity support and `sqlEndpointProperties`; rechecked 9 November 2026.
 10. Microsoft Learn, [SQL endpoint overview and limitations](https://learn.microsoft.com/en-us/fabric/data-engineering/lakehouse-sql-analytics-endpoint), [type mapping](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-types#autogenerated-data-types-in-the-sql-analytics-endpoint) and [time travel](https://learn.microsoft.com/en-us/fabric/data-warehouse/time-travel), unchanged existing contracts rechecked 9 November 2026.
 11. Microsoft Fabric Toolbox, [parent-item discovery and refresh notebook](https://github.com/microsoft/fabric-toolbox/blob/6a0a0dfa51566e356316ccaa6607a11a93f41529/samples/notebook-refresh-tables-in-sql-endpoint/MDSyncNewRESTAPI.ipynb), substantive revision 5 August 2025; reference-only, not a newly adopted implementation.
+12. Tino Tereshko, [Fabric Data Warehouse at Ignite](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274), 17 November 2026; new-sync GA, LOB/history and checkpoint V2 announcement; reviewed 18 November.
+13. Katie Murray, [November feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-november-2026-feature-summary/5414311), 17 November 2026; explicit GA-core/Preview-upgrade split, new-endpoint defaults and named readiness/upgrade sequence; reviewed 18 November. The linked Learn/public source still described the older path at this check.
 
 ---
 

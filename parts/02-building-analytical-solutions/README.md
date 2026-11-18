@@ -20,7 +20,7 @@ The section includes an original diagram, a same-workspace read-only example ove
 
 | Chapter | Subject |
 | --- | --- |
-| [7. T-SQL fundamentals for trustworthy analytics](07-tsql-for-analytics.md) | Queries, strings/Unicode, date buckets, windows, analytical functions and matching. |
+| [7. T-SQL fundamentals for trustworthy analytics](07-tsql-for-analytics.md) | Queries, strings/Unicode, date/range bands, windows, analytical functions and matching. |
 | [8. Dimensional modeling: grain, keys, constraints, and collation](08-dimensional-modeling.md) | Grain, facts, dimensions, keys, types, and constraints. |
 | [9. Building Warehouse Architectures, Loading and Accessing Data](09-loading-and-accessing-data.md) | Medallion/hybrid designs, shortcuts, three-part reads, COPY/client bulk loading and materialization. |
 | [10. Transformations and Transactions](10-transformations-and-transactions.md) | Incremental publication, supported transactional ALTER, correctness and restartability. |

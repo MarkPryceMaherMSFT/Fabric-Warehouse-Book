@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part VI contents](README.md) | [Previous: Chapter 33](33-workload-management-and-sql-pools.md) | [Next: Chapter 35](35-recovery-and-retention.md)
 
-**Applies to:** eligible SQL execution in Warehouses and SQL analytics endpoints within an acceleration-enabled workspace. **Level:** Advanced performance and operations. **Evidence scope:** research/operational review 10 October 2026; targeted Build-roundup chronology and benchmark follow-up 10 November. Public preview was announced on 29 September; older Learn pages still describe limited-preview approval. This is not a GA or universal-availability claim.
+**Applies to:** eligible SQL execution in Warehouses and SQL analytics endpoints within an acceleration-enabled workspace. **Level:** Advanced performance and operations. **Evidence scope:** research/operations review 10 October; Build follow-up 10 November; targeted Ignite follow-up **18 November 2026**. **Latest announcement: Limited Preview**, with approval/region restrictions. September Public Preview wording is historical, not a claim of unrestricted access or GA.
 
 ## Acceleration is an execution choice, not a new database
 
@@ -18,14 +18,15 @@ The [Learn overview](https://learn.microsoft.com/en-us/fabric/data-warehouse/que
 
 ## Read the release timeline instead of flattening it
 
-Four statements belong in the release record:
+Five statements belong in the release record:
 
 1. Tino Tereshko's **4 June 2026** [Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621) labels GPU acceleration **Coming Soon**. Its phrase "the coming few weeks" is historical, not a fresh countdown from the reader's visit.
 2. The Learn overview dated **11 August 2026** calls the feature limited preview, describes requesting approval, and lists supported regions.
 3. Bogdan Crivat's **29 September 2026** [FabCon Europe announcement](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/bringing-governed-analytics-into-the-flow-of-work-fabric-analytics-at-fabcon-eur/5368918) says GPU-accelerated Warehouse query execution enters **public preview**.
-4. Actual workspace eligibility, regional rollout, permissions, and availability still need verification before an operator attempts enablement.
+4. Tino Tereshko's **17 November 2026** [Ignite article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) calls it **Limited Preview** and describes an August release. This is the latest explicit announcement label checked here.
+5. Actual approval, workspace eligibility, region and permissions still need verification before an operator attempts enablement. Registration is not approval.
 
-The newer announcement supersedes a blanket description of the product as only an old limited preview. It does not establish that every tenant and region can immediately turn it on. Nor does it make the feature generally available.
+The September and November terminology is not flattened into one label or interpreted as proof of a backend rollback. The current practical rule is **restricted evaluation**, consistent with the retrieved Learn onboarding guide. Neither the old Public Preview wording nor a performance chart establishes ordinary-customer access today.
 
 The August page lists East US, East US 2, South Central US, South East Asia, and Germany West Central. This is a dated list, not a permanent deployment constraint. Consult current eligibility guidance rather than migrating a production workspace based solely on this chapter. The accompanying [ten-things product article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/10-things-to-know-about-gpu-powered-query-acceleration-in-fabric-data-warehouse-/5359441) also discusses preview access and five regions, illustrating why announcement status and onboarding instructions must be tracked separately.
 
@@ -82,7 +83,7 @@ This is an evolutionary architecture: retain the optimizer and SQL service, iden
 
 The review scope is **CoddSpeed's abstract, bibliographic record, and award article—not its full text**. The ACM endpoints were inaccessible during this revision. The summaries of CAL/DAL and the CoddSpeed measurements below are consequently attributed to the article, without invented paper-section citations. References to FPGAs, ASICs, or network accelerators describe architectural flexibility, not a hardware-selection menu for a Fabric workspace.
 
-The June article describes early access as forthcoming. That is a historical release statement, not October availability evidence; the September public-preview announcement and current onboarding guidance remain the operational references.
+The June article describes early access as forthcoming. That is a historical release statement, not current availability evidence; the November Limited Preview label and approval-based onboarding must also be read before an operational decision.
 
 ## Reported experiments: preserve the comparison, not just the multiplier
 
@@ -93,6 +94,12 @@ The following are **authors' reported measurements**, not benchmarks executed or
 The **4 June Build article** reports **up to 7 times** faster performance than three unnamed leading cloud warehouses. It also reports completing a full **22-query, 100-GB workload in approximately five seconds** across **one to 64 concurrent users**, describing near-flat response times in that tested range.
 
 The article does not provide a complete reproducible query/configuration package, named competitor configurations, cache methodology or CU accounting. The figures therefore remain attributed product-team claims, not a certified TPC comparison, universal concurrency guarantee or equal-cost result. Do not combine them with CoddSpeed's CPU-Fabric comparisons, TQP++'s warmed GPU-resident research timings, or Bogdan's later F64/1,000-user experiment. Those have different baselines and measurement boundaries.
+
+### Ignite: a separate 300-GB DirectQuery comparison
+
+The **17 November Ignite article** reports roughly **twice the performance at one-third lower cost than competing offerings** on a **300-GB DirectQuery benchmark**. This is an attributed vendor comparison, not a measurement made for this book. Its complete competitor/configuration, cache and cost-reconstruction details are not supplied in that article.
+
+Keep it separate from June's 100-GB/22-query provider comparison, CPU-Fabric CoddSpeed results, research GPU-resident timings and Bogdan's F64 experiment. It does not establish the same saving versus a customer's current CPU Warehouse, a new meter rate or unrestricted access to the Limited Preview.
 
 ### TQP++: warmed execution and the cost of moving the input
 
@@ -226,7 +233,7 @@ Adopt when measured benefits at the required concurrency outweigh whole-workspac
 
 ## Key takeaways
 
-- September's public-preview announcement and August's approval guidance are distinct dated evidence.
+- September's Public Preview wording, November's Limited Preview label and approval guidance remain distinct; do not promise ordinary-customer access.
 - CPUs and GPUs cooperate; eligibility and partial acceleration matter.
 - TQP, TQP++, and CoddSpeed describe related but different systems; research JTF was not adopted in the product.
 - Resident-input research timings and service warm/cold-cache comparisons are different experiments.
@@ -250,6 +257,7 @@ Adopt when measured benefits at the required concurrency outweigh whole-workspac
 12. Kaushik Rajan and coauthors, [Scalable GPU Acceleration of Scalar Functions in Analytical Databases: Compilation, Benchmarking, and Optimization](https://www.vldb.org/pvldb/vol19/p1441-rajan.pdf), PVLDB 19(7), pp.1441–1454, 2026; [PAPER08](../../appendices/D-bibliography.md#paper08).
 13. Conference award records: [SIGMOD 2026](https://2026.sigmod.org/sigmod_awards.shtml), [VLDB 2022](https://www.vldb.org/2022/?conference-awards), and [VLDB 2026](https://vldb.org/2026/conference-awards.html), checked 10 October 2026.
 14. Tino Tereshko, [From query acceleration to cache cooldown: Everything new in Fabric Data Warehouse at Build 2026](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621), published 4 June, modified 5 June 2026; full article reviewed 10 November. Its provider-comparison claims are not independently reproduced here.
+15. Tino Tereshko, [Fabric Data Warehouse at Ignite: Built for AI-era analytics](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274), 17 November 2026; **Limited Preview** and distinct 300-GB DirectQuery comparison, checked 18 November.
 
 ---
 

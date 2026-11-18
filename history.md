@@ -4,6 +4,26 @@
 
 This records changes to the manuscript, not a complete Microsoft Fabric product-release history. For dated product claims, use the [feature-status ledger](appendices/C-feature-status.md).
 
+## 18 November 2026 - Public documentation comparison and missed operating detail
+
+Followed the Warehouse documentation hub and complete TOC, compared non-truncated public source inventories at the fixed 9/17 November revisions, and read selected existing guides plus all sixteen changed adjacent lifecycle/security entries. All 166 Warehouse-folder text entries were unchanged; this confirms the documented Ignite/reference lag rather than invalidating newer announcements. Added [Appendix L](appendices/L-public-documentation-audit.md) with scope, exact pins, comparison results and chapter outcomes.
+
+Added existing-contract explanations for direct file reads/first-file Parquet inference, CSV/JSONL rejected-row outputs and diagnostic-write permissions, identity-preserving COPY/reseed, temporary-table variants/session lifecycle, regional SQL boundaries, ownership takeover, query labels and the pool portal. Added an original read-only price-band example with explicit interval/grain checks.
+
+Expanded client-project references, definition-generation effects, conditional stale-SDK repair, validation troubleshooting and variable-library applicability. Added route-specific Power BI outbound-protection guidance and the actual **10 November withdrawal of delayed paginated-report documentation**, without claiming runtime feature retirement or a replacement date. General platform/item-list changes are not treated as new Warehouse/endpoint GA.
+
+The preceding Ignite edits remain intact. Historical snapshots, original SQL/Python examples and companion scripts, fixed public-code pins, the canonical seed and image/licence bytes are preserved; the added range-band query is original and checked offline, not tenant-tested. No Fabric operation, preview enrollment, diagnostic upload, ownership/network change, dependency update or deployment was performed.
+
+## 18 November 2026 - Ignite announcements with explicit availability boundaries
+
+Reviewed Tino Tereshko's complete Warehouse Ignite article and the Warehouse plus directly related SQL-agent, Activator and MLV sections of Katie Murray's November summary, both published 17 November. Added [Appendix K](appendices/K-ignite-2026-availability.md), with 31 editorial coverage rows and explicit GA, Preview, Limited Preview, Limited Private Preview, Coming soon and Coming in November distinctions. A promised delivery month is not represented as a feature customers can use today.
+
+Updated endpoint chapters for **core new-sync GA versus the Preview existing-endpoint upgrade**, including new defaults, readiness/remediation/LRO sequence, announced binary MAX and checkpoint V2 compatibility. Preserved the retrieved guides' older qualifications and missing operation contracts rather than inventing upgrade payloads or promoting every related time-travel feature to GA.
+
+Expanded restricted Warehouse clone/refresh scope, latest limited GPU wording and its separate vendor benchmark, recent shuffle/scheduling, future cooldown/aliases/plans/cards, on-demand Preview, component-specific AI/lifecycle guidance and GA Activator Warehouse alerts including Private Link. Updated What's New, status/coverage/source references, navigation, index and edition notes. Earlier September/June announcement wording remains dated history.
+
+The 42-chapter/seven-part structure, 9 November roadmap snapshot, original source pins, companion scripts, seed and image/licence bytes remain unchanged. No preview enrollment, tenant operation, alert, AI invocation, live deployment or benchmark reproduction was performed. No blog artwork was copied.
+
 ## 10 November 2026 - Complete Build 2026 Warehouse article coverage
 
 Reviewed Tino Tereshko's requested Build roundup in full, confirming publication on 4 June and modification on 5 June 2026. Added [Appendix J](appendices/J-build-2026-coverage.md), mapping all 21 unique topic groups to chapter explanations and later evidence; the duplicated CRUD mention is counted once. Corrected the bibliography's previously unconfirmed publication date.

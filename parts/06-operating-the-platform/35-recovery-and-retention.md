@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part VI contents](README.md) | [Previous: Chapter 34](34-gpu-acceleration.md) | [Next: Chapter 36](36-development-and-automation.md)
 
-**Applies to:** Warehouse recovery, historical queries, table clones, and snapshots; SQL endpoint time travel has separate prerequisites and Lakehouse retention. **Level:** Intermediate to advanced operations. **Feature baseline:** original revision checked 9 October 2026; snapshot boundaries and the Warehouse-clone roadmap rechecked 9 November. Warehouse-level CLONE remains a future planned preview, not the existing table-clone feature.
+**Applies to:** Warehouse recovery, historical queries, table clones, and snapshots; SQL endpoint time travel has separate prerequisites and Lakehouse retention. **Level:** Intermediate to advanced operations. **Feature baseline:** original revision 9 October; snapshot/roadmap follow-up 9 November; targeted Ignite check **18 November**. **Warehouse Clones: Limited Private Preview**, not generally available to customers and not the existing table-clone feature.
 
 ## Define what must be recovered
 
@@ -30,7 +30,7 @@ Retained historical files occupy storage. The cost depends on the volume and pat
 
 Historical data is not a historical copy of every schema definition. The current schema participates in the query. A column that did not exist at the requested time cannot be treated as if it did. Dropping and recreating a table loses the old table's history even when the replacement has the same name. Explicit projection is therefore safer than an unexamined `SELECT *` during recovery.
 
-The SQL analytics endpoint now has time-travel support documented as preview, but only for endpoints created with new metadata sync enabled. Its historical data availability depends on the underlying Lakehouse table's vacuum retention, not the Warehouse's 30-day default. Do not run Warehouse retention instructions against a Lakehouse and assume Spark's historical files are protected.
+The specific SQL analytics endpoint time-travel reference still describes **preview, new-sync prerequisites**. Ignite announces core sync GA and includes time travel in its release description, but the existing-endpoint upgrade is separately Preview. Do not infer universal historical-read access or a separate time-travel GA milestone. [Chapter 15](../03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#historical-sql-reads-need-retained-delta-history) records that distinction. Historical availability depends on Lakehouse VACUUM retention, not the Warehouse's 30-day default; Warehouse retention instructions do not protect Spark's historical files.
 
 The time-travel reference also excludes the hint in **Power BI Desktop DirectQuery** and **Explore this data**. A successful historical SELECT in a SQL editor does not establish support in those clients. Retained history, latest-schema compatibility and client applicability are independent checks.
 
@@ -60,20 +60,24 @@ These distinctions matter during a release. A snapshot may stabilize data while 
 
 ## Warehouse-level CLONE: prepare the use case, not the syntax
 
-**Future planned preview, not an available lab dependency.** Tino Tereshko's [29 September roundup](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC) called Warehouse CLONE "public preview coming soon," while Bogdan Crivat's [FabCon Europe article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/bringing-governed-analytics-into-the-flow-of-work-fabric-analytics-at-fabcon-eur/5368918) placed warehouse clones in its looking-ahead discussion. The [public roadmap](https://roadmap.fabric.microsoft.com/?product=datawarehouse), inspected 9 November, lists Warehouse Clones as **planned public preview in Q1 2027**. That is a changeable plan, not a release commitment or evidence of present availability.
+**Limited Private Preview, announced 17 November; checked 18 November 2026. Not an ordinary-customer lab dependency.** Tino Tereshko's [Ignite article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) describes writable point-in-time Warehouse environments **within or across workspaces and capacities**, without an initial full copy. It also describes refreshing a clone to a newer restore point **while retaining its item and endpoint**.
 
-This is a broader proposed scope than today's **`CREATE TABLE ... AS CLONE OF ...`** table operation. The current [table-clone documentation](https://learn.microsoft.com/en-us/fabric/data-warehouse/clone-table#limitations) still explicitly excludes cloning an entire warehouse or schema. A roadmap description of cross-workspace Warehouse clones does not make cross-workspace **table** cloning available today.
+These are capabilities described for a **restricted private evaluation**, not generally available cloning that every customer can enable today. Signing up is not admission. The article does not supply a complete public syntax, operation schema, permission-inheritance or recovery contract, so no whole-Warehouse clone/refresh command is invented here.
+
+The older September Coming Soon statements and the [roadmap snapshot taken 9 November](../../appendices/H-roadmap-snapshot.md#snapshot-9-november-2026), which lists planned **public preview Q1 2027**, remain dated history/planning. A limited private preview and a future public-preview target can coexist. This follow-up does not rewrite that earlier snapshot or promise its delivery date.
+
+This is a broader, separate scope from today's **`CREATE TABLE ... AS CLONE OF ...`** table operation. The [table-clone documentation](https://learn.microsoft.com/en-us/fabric/data-warehouse/clone-table#limitations) still excludes cloning an entire warehouse or schema through that operation. Announced cross-workspace Warehouse clones do not make cross-workspace **table** cloning available through the existing syntax.
 
 The distinction matters for development. A team testing a change to `FactSales` may need one isolated table representation and its related test dependencies. A team rehearsing a release across facts, dimensions, views, and procedures wants a coherent environment, including permissions and external connections. Repeating table-clone operations is not evidence that the complete environment has been cloned. A read-only snapshot, in turn, cannot serve as a writable release rehearsal.
 
-Before evaluating the future warehouse-level capability, define what "copy" must include:
+Before an approved private-preview evaluation or a future general-customer rollout, define what "copy" must include:
 
 - Is the goal writable development, stable reporting, selective recovery, or a disaster-recovery copy?
 - Must all tables represent one point in time, and which definitions and dependencies must accompany them?
 - What source permissions, destination access, security inheritance, and cross-workspace rules must the eventual contract document?
 - How will ownership, retained storage, compute charges, independent changes, and cleanup be verified?
 
-The announcement does not establish those answers. Do not infer whole-warehouse syntax, security inheritance, cross-workspace support, or independent-backup guarantees from the table feature. This chapter therefore offers no runnable warehouse-CLONE statement. Today's recovery plan must use currently documented mechanisms; a future clone can be evaluated against the checklist rather than quietly becoming an untested dependency.
+The announcement establishes an intended cross-workspace/capacity and refresh scope, not the complete answers to that checklist. Do not infer syntax, security inheritance or independent-backup guarantees from the table feature. This chapter supplies no runnable whole-Warehouse statement; an ordinary customer's recovery plan must use mechanisms they can actually access and verify, not quietly depend on a Limited Private Preview.
 
 ## Restore in-place is a coordinated replacement
 
@@ -134,7 +138,7 @@ Rehearsals should validate row counts, business totals, duplicate behavior, perm
 - Retention extension cannot recreate lost history; reduction is consequential.
 - Time travel, clones, snapshots, restore points, and item recovery are distinct.
 - Warehouse snapshots stabilize data, not every schema dependency.
-- Warehouse-level CLONE remains planned; current table cloning does not provide that scope.
+- Whole-Warehouse clones are Limited Private Preview, not ordinary-customer availability; current table cloning does not provide that scope.
 - FindChanges' safe variant returns a snapshot, not CDC.
 - Recover data and the process that produces it together.
 

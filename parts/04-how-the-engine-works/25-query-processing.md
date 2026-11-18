@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part IV contents](README.md) | [Previous: Chapter 24](24-fabric-platform-integration.md) | [Next: Chapter 26](../05-statistics-and-performance/26-statistics.md)
 
-**Applies to:** Fabric Warehouse and Lakehouse SQL analytics endpoint reads; Warehouse-specific write behavior is identified separately. **Level:** intermediate to advanced. **Scope:** public architecture and release evidence checked 9 October 2026. Example plan alternatives are explanatory, not captured tenant plans.
+**Applies to:** Fabric Warehouse and Lakehouse SQL analytics endpoint reads; Warehouse-specific write behavior is identified separately. **Level:** intermediate to advanced. **Scope:** public architecture/release baseline 9 October; targeted Ignite shuffle/scheduling follow-up **18 November 2026**. Example plan alternatives are explanatory, not captured tenant plans.
 
 ## A query has more than one kind of work
 
@@ -84,7 +84,9 @@ Tino Tereshko's [29 September roundup](https://www.linkedin.com/posts/valentinot
 
 There is a more specific, documented September improvement: **Distributed Bitmap Filters (GA)**. The [September feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-september-2026-feature-summary/5325825) explains that selective fact/dimension joins can filter irrelevant rows before the join, reducing unnecessary data movement and resource requests. Picture a large sales fact table joined to a product dimension filtered to one category: eliminating nonmatching candidates before redistribution can leave less work for the exchange and join. The filter is an execution optimization, not a replacement for the join's correctness checks.
 
-Distributed Bitmap Filters are one evidenced way to reduce pre-join movement; the sources do **not** establish that they explain every shuffle improvement in the roundup or constitute a complete shuffle rewrite. The summary's customer performance examples are vendor observations under particular conditions, not measurements of the book seed. A filter retaining nearly every row offers a different opportunity from one retaining a small subset.
+Distributed Bitmap Filters are one evidenced way to reduce pre-join movement; they are not themselves a complete description of the shuffle implementation. The summary's customer performance examples are vendor observations under particular conditions, not measurements of the book seed. A filter retaining nearly every row offers a different opportunity from one retaining a small subset.
+
+**Ignite follow-up, checked 18 November 2026:** the [17 November Warehouse article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) says a **rebuilt distributed shuffle and enhanced task scheduling rolled out in recent days**. It reports **70% performance improvement on an industry-standard benchmark over the past year**, combining these with earlier bitmap filters and learned resource estimates. This is a vendor-reported combined benchmark trend, not proof that the new shuffle alone gives 70%, every query is 70% faster, or consumption falls by that amount. No complete reproducible benchmark/configuration or new scheduler algorithm is established by the article.
 
 A useful evaluation therefore asks two questions. **Did the query reduce rows or width before movement?** Examine the supported plan and representative execution evidence, remembering that storage-scan MB are not shuffle MB. **Did the same workload improve under contention?** Compare throughput, tail latency, pool pressure, and concurrency under matched conditions. A faster isolated run does not prove a scheduling improvement, and neither kind of engine improvement fixes a slow client downloading an unnecessarily large result.
 

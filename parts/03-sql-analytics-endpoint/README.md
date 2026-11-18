@@ -10,12 +10,14 @@ The SQL analytics endpoint shares Warehouse SQL technology while retaining a sou
 
 Complete the independent Warehouse/Lakehouse setup and the shared SQL/security foundations. No mode or permission change is required merely to read this part.
 
+**Ignite follow-up, checked 18 November 2026:** new metadata sync is GA announced; upgrading an existing endpoint is separately Preview. The workspace setting does not perform that upgrade. Chapter 15 explains the dated source/reference distinction without making a preview change necessary for the labs.
+
 ## Chapter index
 
 | Chapter | Subject |
 | --- | --- |
 | [14. The SQL analytics endpoint: shared engine, different contract](14-sql-analytics-endpoint.md) | Shared SQL technology, item/write differences, source authority and reader contracts. |
-| [15. Metadata Sync: Legacy and New Architectures](15-metadata-sync-v1-v2.md) | Sync generations, Delta/type compatibility, identity-aware discovery and refresh. |
+| [15. Metadata Sync: Legacy and New Architectures](15-metadata-sync-v1-v2.md) | GA-core/Preview-upgrade distinction, sync generations, compatibility, discovery and refresh. |
 | [16. OneLake security: follow the identity to the data](16-onelake-security.md) | Endpoint modes and their side effects, groups and column-level access. |
 
 ## By the end of this part

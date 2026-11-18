@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part I contents](README.md) | [Previous: Chapter 4](04-first-warehouse.md) | [Next: Chapter 6](06-gpu-acceleration-overview.md)
 
-**Applies to:** a schema-enabled Fabric Lakehouse, its Spark notebook, and its SQL analytics endpoint. **Level:** 100. **Feature scope:** core walkthrough checked 8 October 2026; UI guide updated 9 October; discovery and provisioning boundaries rechecked 9 November. This seed does not require the new metadata-sync preview.
+**Applies to:** a schema-enabled Fabric Lakehouse, its Spark notebook, and its SQL analytics endpoint. **Level:** 100. **Feature scope:** core walkthrough checked 8 October 2026; discovery/provisioning rechecked 9 November; targeted Ignite sync-status follow-up **18 November**. Core new sync is GA announced; upgrading an existing endpoint is separately Preview and is not required for this seed.
 
 ## One dataset, a different writer
 
@@ -138,7 +138,9 @@ These are inspection steps, not instructions to drop a constraint, remove a secu
 
 The [metadata-sync documentation](https://learn.microsoft.com/en-us/fabric/data-engineering/sql-analytics-endpoint-metadata-sync) explains background discovery and refresh. Use the endpoint explorer's refresh action when appropriate, and allow the operation to finish. Repeatedly rerunning the seed will not make discovery safer or faster.
 
-As of this edition, new metadata sync is a preview that must be enabled for newly created endpoints; existing endpoints do not automatically upgrade when the workspace option changes. Its query-triggered data refresh does not make every table-discovery or schema-change operation synchronous. This lab works without opting into that preview. [Chapter 15](../03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md) covers version-specific diagnostics and refresh commands.
+**Ignite update, checked 18 November 2026:** the [November feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-november-2026-feature-summary/5414311) announces **new metadata sync GA**, default for new workspaces and newly created endpoints in existing workspaces. It separately labels **on-demand upgrades of existing endpoints Preview**. A workspace-setting change does not convert an old endpoint. Identify the actual generation rather than relying on creation date or today's default alone.
+
+Query-triggered data refresh does not make every table-discovery or schema-change operation synchronous or remove compatibility/permission checks. This lab needs no preview upgrade, endpoint recreation or new API. [Chapter 15](../03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#ignite-update-core-ga-existing-endpoint-upgrades-preview) reconciles the older linked guide with the new announcement and separates refresh from upgrade.
 
 Do not try to fix a missing Lakehouse table by running the Warehouse `CREATE TABLE` seed at the endpoint. The endpoint is read-only for the underlying table data. Creating a view there is a different operation and cannot repair a failed Spark load.
 

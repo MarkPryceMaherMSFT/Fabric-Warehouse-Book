@@ -2,11 +2,48 @@
 
 [Book contents](../index.md) | [Appendices](README.md) | [Source register](B-script-source-register.md) | [Bibliography](D-bibliography.md)
 
-**Original evidence review: 8 October 2026; feature extension: 9 October; targeted documentation refresh: 9 November; full Build-roundup follow-up: 10 November 2026.** This ledger records what the inspected public sources say, not what has been enabled in any particular tenant. No Fabric tenant was queried for this manuscript. Announcement date, substantive documentation change, API version and actual availability are different facts.
+**Latest targeted reviews: 18 November 2026 - Ignite and public documentation.** Earlier reviews: 8-10 October and 9-10 November. This ledger records public evidence, not what is enabled in a tenant. No Fabric tenant was queried. Announcement date, documentation change, API version and actual availability are different facts; older tables retain their original dated context.
 
 Use four questions when reading a changing service: **What was announced? What does the current reference document? What can this tenant use? What is still forward-looking?** A newer announcement may change release terminology without updating every API page. Conversely, a sample that succeeds somewhere is not evidence of general availability. `updated_at` is page metadata, not necessarily a feature release date.
 
 For the complete bounded review, use [What's New](../whats-new.md), the [25-card roadmap snapshot taken 9 November 2026](H-roadmap-snapshot.md#snapshot-9-november-2026), and the [chapter-by-chapter comparison](I-chapter-review.md). Roadmap target stage/quarter is not current availability, and a past-looking Planned card does not force an already documented capability back into a future state.
+
+## 18 November 2026 public documentation comparison
+
+[Appendix L](L-public-documentation-audit.md) records complete source-tree comparison plus the selected current-body review. **No Warehouse-folder text changed across the 166 entries between the 9 November and pinned 17 November revisions.** This does not cancel Ignite's newer GA/restricted/future-stage announcements; several specific implementation guides still lag.
+
+| Finding | Availability or support consequence |
+| --- | --- |
+| **Paginated-report outbound-protection guidance deliberately withdrawn 10 November** | Current Power BI OAP remains **Preview** for supported interactive reports/models; paginated reports, dashboards and scorecards are unsupported in those protected workspaces. No replacement delivery date or proven runtime deprecation is inferred. |
+| **Data Build Tool job OAP Preview changed to unsupported** | Item-specific protected-workspace support, not a ban on dbt SQL clients targeting Warehouse. |
+| **General lifecycle support-list changes** | Fabric Apps/catalog additions and Metrics Set cleanup do not make Warehouse CI/CD 2.0 or native endpoint lifecycle GA. Variable-library direct consumers still exclude Warehouse/SQL endpoint items. |
+| **Workspace Identity guide edits** | Editorial, not new identity privileges or changed COPY permissions. Existing SQL/OneLake identity-mode caveats remain. |
+| **Older technical guidance newly incorporated** | File queries/diagnostics, COPY identity preservation, temp-table variants, regional SQL/ownership/label controls and client-project repair are documented existing contracts, not separately established November releases. |
+
+Sources [DOCS01-DOCS06](D-bibliography.md#public-documentation-audit-18-november-2026) distinguish actual content changes, newly explained old guidance and unchanged existing coverage. No new preview control is activated or assumed usable.
+
+## 18 November 2026 Ignite availability review
+
+The two supplied posts were published **17 November**. [Appendix K](K-ignite-2026-availability.md) gives the complete scoped crosswalk and [IGN01-IGN06](D-bibliography.md#ignite-review-18-november-2026) record actual source review. **Limited/private previews require restricted access; Coming soon and Coming in November are not usable-today evidence.** A generic Preview label is not silently expanded to Public Preview, and GA applies to the named component, not adjacent preview features.
+
+| Topic | Latest verified announcement wording | Book treatment on 18 November |
+| --- | --- | --- |
+| **New metadata sync core / existing-endpoint upgrade** | Core **Generally Available**; upgrade **Preview** in the monthly summary. | Chapter 15 supersedes the older blanket preview/no-upgrade description. New-endpoint defaults do not upgrade old endpoints. GetStatus/Preflight/Upgrade/LRO are described without invented API payloads; the retrieved older guide still lags. |
+| **LOB/history/checkpoint features** | Included with the new-sync release; individual stages not universally assigned GA. | Chapter 15 separates VARCHAR/MAX, announced binary MAX, source retention and checkpoint V2 from multipart checkpoints. The specific time-travel guide retains preview/new-sync/client restrictions. |
+| **Warehouse Clones** | **Limited Private Preview**. | Restricted evaluation, not ordinary-customer availability. Chapter 35 explains announced cross-workspace/capacity writable clones and refresh retaining item/endpoint identity, without runnable commands or inherited-security guesses. |
+| **GPU acceleration** | **Limited Preview**. | Chapters 6/34 retain September Public Preview wording as history, not unrestricted current access. Approval/region gates remain; the new 300-GB vendor comparison is separate from earlier benchmarks. |
+| **Live Query Troubleshooting** | **Limited Preview**. | Chapter 29 distinguishes restricted new diagnostics from existing live DMVs and the GA operations skill. |
+| **Cache cooldown / server aliases** | Both **coming in November**. | Future delivery intention, not a claim that customers can use them on 18 November. Chapters 28/13 explain purpose without timer, alias, DNS or API invention. |
+| **Graphical plans / DW Monitor cards** | **Coming soon**. | Chapters 27/29 retain supported existing plan/diagnostic paths, not new UI prerequisites. |
+| **On-demand billing** | **Preview**, newer than September Coming Soon. | Chapters 31/32 separate announced category/budget/workspace controls from shared-capacity accounting. No universal enrollment, activation, pricing or GA is inferred. |
+| **Custom SQL pools** | **Generally Available**, reiterated. | Chapter 33's conceptual guide no longer carries the older banner at recheck; operation-specific API qualifications and the future January unification remain separate. |
+| **Shuffle/scheduling and vNode insights** | Recent shuffle/scheduling rollout and near-real-time usage enhancements described. | Chapter 25 attributes the combined 70% year-over-year benchmark claim. Chapter 29 does not invent usage fields/cadence absent from the retrieved view reference. |
+| **SQL, functions and web development** | Reiterated; linked specific language/UDF/analytical articles retain **Preview**. | Existing optional examples remain qualified; unlabelled web-designer bullets do not establish GA for every UI component. |
+| **Native endpoint CI/CD** | Broader Warehouse/endpoint workflow description without a complete new endpoint contract. | Chapter 36 records that current detailed native Git/pipeline guides remain Warehouse Preview and exclude endpoint items. No unsupported deployment procedure is invented. |
+| **Activator Warehouse alerts** | **Generally Available**, including **Private Link**. | Chapters 4/29 update the earlier preview label for this component, while retaining schedule, identity, cost and notification/action review. |
+| **AI-agent and MLV adjacency** | Advanced NL2SQL **GA announced**; datetime/topics/templates, file-ingesting MLVs and update/delete refresh have separate **Preview** labels. | Chapters 13/9 retain runtime, channel and writer boundaries. A core GA or standard-runtime rollout does not promote its extensions; a Lakehouse feature is not Warehouse SQL DDL. |
+
+This table supersedes corresponding older availability conclusions below, not their historical source records. The **9 November roadmap snapshot is unchanged**; a later private-preview announcement does not silently redate a future public-preview plan.
 
 ## 10 November 2026 Build-roundup follow-up
 

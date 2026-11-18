@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part II contents](README.md) | [Previous: Chapter 8](08-dimensional-modeling.md) | [Next: Chapter 10](10-transformations-and-transactions.md)
 
-**Applies to:** Warehouse-led and hybrid architectures, Warehouse ingestion and Lakehouse SQL analytics endpoint reads. **Level:** Foundation to intermediate. **Feature baseline:** ingestion review 9 October; architecture/shortcut contracts checked 9 November; targeted BCP/Build-roundup review 10 November 2026. Workspace Identity for COPY INTO is GA; BCP API ingestion retains its documented preview scope. Examples are prepared for reader execution, not tenant-tested for this manuscript.
+**Applies to:** Warehouse-led and hybrid architectures, Warehouse ingestion and Lakehouse SQL analytics endpoint reads. **Level:** Foundation to intermediate. **Feature baseline:** ingestion 9 October; architecture/BCP follow-ups 9-10 November; targeted Ignite/MLV follow-up **18 November 2026**. Workspace Identity COPY is GA; BCP and the newly discussed MLV file-ingestion/update-delete features retain their own preview scope. Examples are prepared for reader execution, not tenant-tested.
 
 ## Start with the destination contract
 
@@ -109,6 +109,14 @@ A live shortcut or mirrored table is not automatically an **immutable bronze arc
 
 **Roadmap boundary - snapshot 9 November 2026:** the roadmap lists **Shortcuts in Fabric Data Warehouse** as **Planned / Public preview / Q1 2027**. The architecture taught here uses the existing **Lakehouse shortcut plus SQL endpoint** route; it does not depend on that future Warehouse-native feature. See the [dated snapshot](../../appendices/H-roadmap-snapshot.md#snapshot-9-november-2026) before using any target quarter in a design commitment.
 
+### Ignite Lakehouse preparation remains a separate writer
+
+**18 November 2026 follow-up:** the [17 November feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-november-2026-feature-summary/5414311) announces **file ingestion through materialized lake views as Preview**. CSV/Parquet in OneLake can become a Lakehouse Delta bronze output through the documented **`USING OneLake_Files`** route, then feed downstream views and the SQL analytics endpoint. The [Spark SQL reference](https://learn.microsoft.com/en-us/fabric/data-engineering/materialized-lake-views/create-materialized-lake-view) distinguishes table-based definitions from file-based options and schema/refresh modes.
+
+The same summary describes broader optimal-refresh support for RIGHT OUTER JOIN, LEFT ANTI JOIN, CROSS JOIN and ORDER BY, plus scheduled-refresh failure emails. Eligible update/delete refresh remains a **separate Preview**, requiring source CDF and the documented unique-output refresh hint. Broader clause support does not make every query incremental or remove key/data-quality checks.
+
+These are **Lakehouse/Spark preparation features**, not Warehouse `CREATE MATERIALIZED VIEW`, automatic Warehouse file ingestion or SQL-endpoint write support. Validate source ownership, file replay/change semantics, schema evolution, refresh outcome and notification recipients before a pilot. The book creates no MLV, schedule or alert and does not alter the shared seed.
+
 For an existing estate, selecting this end-state architecture is separate from moving into it. [Part VII](../07-migration-and-production-design/README.md) covers assessment, source-specific migration, continuing synchronization, reconciliation and cutover.
 
 ## Choose the route by what must move
@@ -179,6 +187,16 @@ The small lab uses a single statement because it teaches correctness, not throug
 
 An external file has two contracts: its format and its accessibility. CSV requires agreed quoting, separators, headers, encoding, and date conventions. Parquet carries types but can still contain inconsistent schemas across files. JSONL can evolve between records. Inspect representative bad records, not just a convenient first sample.
 
+### File queries are not automatic Delta-table discovery
+
+**Existing contracts rechecked 18 November 2026.** The dedicated [CSV/TSV](https://learn.microsoft.com/en-us/fabric/data-warehouse/query-delimited-files), [JSON](https://learn.microsoft.com/en-us/fabric/data-warehouse/query-json-files) and [Parquet](https://learn.microsoft.com/en-us/fabric/data-warehouse/query-parquet-files) guides explicitly cover file queries through **both Warehouse and the Lakehouse SQL analytics endpoint** using `OPENROWSET`. This does not contradict the earlier Tables-shortcut rule: querying files returns a result; it does not automatically register them as a Delta table or authorize endpoint table writes.
+
+Warehouse queries need an **absolute source URL** or a supported configured root referenced through `DATA_SOURCE`. A Lakehouse endpoint example using a contextual relative `/Files/...` path is not a portable Warehouse path. Keep the existing absolute-URL templates below rather than blindly copying the shortest documentation example.
+
+For several Parquet files, the guide says inferred schema comes from the **first file accessed**, not a union of every file's columns. Use explicit `WITH` projection/types and validate evolving files; a wildcard does not establish a stable schema or batch boundary. This remains different from reading a transactional Delta table's active snapshot.
+
+For JSON, distinguish one-object-per-line JSONL from a whole JSON document or array. Explicit JSON paths can project nested values. The Parquet file reader can also expose supported structs/arrays as JSON text and use JSON operations to extract/expand them. That file-query route does **not** make every nested Delta column automatically appear in the endpoint catalog. Expanding an array changes row grain, so reconcile parent measures before summing them again.
+
 The optional template below assumes an approved CSV containing the book fact columns in exactly their listed order. It creates a separate empty target, so it cannot append the same six rows to the previous stage.
 
 **Template T-SQL - Warehouse; replace the storage URL; creates and loads only `Lab07FileSales`. Requires source read access and appropriate bulk-load/target permissions.**
@@ -208,6 +226,16 @@ WITH
 Do not put a storage key or token into the manuscript, source control, or a troubleshooting screenshot. By default, current `COPY INTO` documentation describes source access using the executing user's Microsoft Entra identity. Its workspace-identity option separates source access from the caller's SQL permissions, but has additional workspace-role and source-authorization requirements. It is not a way to bypass access checks.
 
 Specify rejection policy deliberately. A job that accepts malformed records up to a threshold needs an owner for quarantine inspection and reconciliation. An inaccessible reject location can itself cause failure. Never interpret successful completion as proof that every business record was accepted.
+
+### Rejected-row files are a scoped diagnostic write
+
+The [T-SQL ingestion error guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/troubleshoot-ingestion-errors), reviewed **18 November**, documents `MAXERRORS` tolerance and `ERRORFILE` diagnostics for **CSV/JSONL T-SQL ingestion**: COPY, BULK INSERT and supported DML using OPENROWSET. It explicitly does **not** extend that rejected-row-file contract to pipeline ingestion, Parquet inputs or SQL reads from Delta/Warehouse/mirrored tables. Use each route's own error evidence.
+
+`ERRORFILE` must be configured under the **same storage location used for source reads**, not another storage account. The identity accessing the source also needs permission to **create diagnostic folders/files** there. The read-only source grant used by the plain Workspace Identity example below is therefore not sufficient for this optional output. Review a narrowly scoped diagnostic destination and its write permission separately; do not broaden every source grant just to make logging succeed.
+
+Diagnostics are grouped beneath `_rejectedrows`, with execution/time context and structured `error.jsonl` plus rejected source records. Capture the actual per-execution paths and result metadata rather than globbing unrelated batches together. These files can contain original business values, so apply source-appropriate access, retention and deletion controls.
+
+A tolerated-error success is a **partial acceptance**, not proof of complete business ingestion. Reconcile input, accepted and rejected records, preserve failures and correct only the approved rejected subset or use an explicit replay-safe staging process. Reloading the whole source folder after some rows committed can duplicate accepted rows. Do not copy the guide's illustrative DROP/recreate remediation into a production loader without a separate data/recovery decision. No reject-output path or load is created by this chapter.
 
 ## Workspace Identity for COPY INTO: two authorization checks
 

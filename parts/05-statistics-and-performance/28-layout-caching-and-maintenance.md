@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part V contents](README.md) | [Previous: Chapter 27](27-query-plans-and-tuning.md) | [Next: Chapter 29](../06-operating-the-platform/29-monitoring.md)
 
-**Applies to:** Warehouse-managed tables and Lakehouse tables read through the SQL analytics endpoint; maintenance ownership differs. **Level:** Intermediate to advanced. **Feature baseline:** original revision checked 9 October 2026; health-result and retained-history boundaries rechecked 9 November; announced cooldown scope reviewed 10 November. Warehouse data clustering is labeled preview in the cited Learn reference. Cache cooldown remains forward-looking, not an available control assumed by the labs.
+**Applies to:** Warehouse-managed tables and Lakehouse tables read through the SQL analytics endpoint; maintenance ownership differs. **Level:** Intermediate to advanced. **Feature baseline:** original revision 9 October; health/history follow-up 9 November; cooldown follow-ups 10 and **18 November**. Warehouse clustering retains its reference's preview qualification. **Cooldown: coming in November**, not an available-today control assumed by the labs.
 
 ## Start with the owner of the files
 
@@ -61,7 +61,9 @@ The tiny book seed is particularly useful for learning this distinction. The cur
 
 ## Cache cooldown: plan the trade-off, not an invented setting
 
-**Forward-looking; source follow-up 10 November 2026.** Tino Tereshko's [4 June Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621) explicitly announces a **SQL-pool-level cooldown duration** and describes cache nodes scaling with demand. The intended choice is to retain warm data longer for latency-sensitive arrivals or shorten its resource lifetime when that trade-off fits the workload. This establishes the announced pool scope, not a verified current activation or charging contract.
+**Coming in November, according to the 17 November Ignite article; checked 18 November 2026. Not presented as usable today.** [The announcement](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) reiterates **SQL-pool-level** retention of warm data between bursts, or a shorter lifetime to reduce idle allocation/cost. Being inside November does not prove that the control has shipped to a customer's workspace.
+
+Tino Tereshko's [4 June Build roundup](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/from-query-acceleration-to-cache-cooldown-everything-new-in-fabric-data-warehous/5191621) already described that scope and demand-scaled cache nodes. Those establish the intended model, not a verified current activation or charging contract.
 
 His [29 September announcement](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC) still calls public preview coming soon. Bogdan Crivat's [FabCon Europe article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/bringing-governed-analytics-into-the-flow-of-work-fabric-analytics-at-fabcon-eur/5368918) connects cooldown with flexibility in consumption and isolation. The reviewed sources do not establish a currently supported timer range, default, configuration syntax, exact cache-layer behavior or billing formula. This book therefore supplies no cache-TTL API or `ALTER DATABASE` cooldown command, and does not adopt the June headline's elimination of cold latency as an operational guarantee.
 

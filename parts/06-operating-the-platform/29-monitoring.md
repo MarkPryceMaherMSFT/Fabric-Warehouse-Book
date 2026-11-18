@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part VI contents](README.md) | [Previous: Chapter 28](../05-statistics-and-performance/28-layout-caching-and-maintenance.md) | [Next: Chapter 30](30-troubleshooting.md)
 
-**Applies to:** Warehouse and SQL analytics endpoint; individual monitoring surfaces have different scope and permissions. **Level:** Intermediate to advanced. **Feature baseline:** original revision checked 9 October 2026; Capacity Metrics navigation reviewed against 4 November documentation and its specific **GA announcement**. The broader Monitor guide and `WarehouseExecutions` retain preview scope; the operations skill is GA, while the separately announced agentic monitoring experience remains coming soon.
+**Applies to:** Warehouse and SQL analytics endpoint; monitoring surfaces have different scope and permissions. **Level:** Intermediate to advanced. **Feature baseline:** original revision 9 October; Capacity Metrics follow-up 4 November; targeted Ignite/monthly follow-up **18 November**. **Activator Warehouse alerting: GA announced. Live Query Troubleshooting: Limited Preview. New graphical plans/Monitor cards: coming soon.** Existing Monitor/workspace-monitoring qualifications remain separate.
 
 ## Match the instrument to the question
 
@@ -52,6 +52,12 @@ The screen also offers cancellation. Its documented action can cancel unselected
 
 History can take up to 15 minutes to appear, and Monitor shows at most 10,000 rows for the selected filters. Narrow a busy interval instead of treating the grid as a complete archive. A currently running request belongs in live observation; a completed event belongs in the history path once it has arrived.
 
+### Ignite diagnostics: future UI is not today's DMV contract
+
+The [17 November Ignite article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274), checked 18 November, uses **three different qualifications**: **graphical query plan - coming soon**, **Live Query Troubleshooting - Limited Preview**, and **DW Monitor diagnostic-card enhancements - coming soon**. None becomes an ordinary-customer feature merely because the conference demonstrated it.
+
+Plans before execution and activity during execution are useful evidence for different questions. Their announced interfaces do not replace today's documented DMVs/history, promote an estimated plan to actual timings or authorize query cancellation. Restricted preview access needs approval; a future card is not a control the incident runbook can assume is present. [Chapter 27](../05-statistics-and-performance/27-query-plans-and-tuning.md) retains the supported estimated-plan path.
+
 ### Open Monitor from Capacity Metrics without inventing an ID join
 
 The [4 November Monitor guidance](https://learn.microsoft.com/en-us/fabric/data-warehouse/monitor#open-monitor-from-the-capacity-metrics-app) documents **Monitor in warehouse** navigation from the Capacity Metrics app. For Warehouse scope, the supported operation categories include **Warehouse Query**, **Warehouse Query (Accelerated)**, and **Warehouse Snapshot Query**. The action opens the associated item and a relevant time range; it does not resolve a Capacity Metrics operation to one unique SQL statement.
@@ -77,6 +83,12 @@ Query shape, literal values, and execution identity serve different purposes. Us
 The [history-analysis script](../../scripts/29-history-analysis.sql) adapts the prioritization ideas in Mark's `fabric-warehouse-demo` samples [6]. It groups by query shape, client, status, and result-cache state. It casts elapsed values before aggregation to avoid small integer accumulation problems and does not require a permanent collector installation.
 
 The repository's collector is informative but not an archival policy by itself. In its pinned version, Warehouse collection clears and refreshes a physical snapshot table; endpoint collection returns results rather than creating a permanent endpoint table. Repeated snapshots of the same 30-day window would duplicate executions if blindly appended. A durable archive needs a source-item plus execution-identifier key, an overlap window for late arrivals, explicit collection errors, and a retention policy for query text.
+
+### Query labels identify a workflow, not one unique execution
+
+The [query-label guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/query-label), rechecked **18 November 2026**, documents `OPTION (LABEL = '...')` for both analytical SQL surfaces. The labelled comparisons in Chapter 27 use that existing contract. Adopt a stable, sanitized workflow/statement name, optionally versioned, so comparable runs can be found through the documented Query Insights `label` field.
+
+Many executions can share one label. Retain the connected item, UTC window and **distributed statement ID** for an individual run; a label is not an execution key, an authentication attribute, a pool classifier or a Capacity Metrics billing join. Avoid customer names, secrets and sensitive parameters in labels. Completed-history delay still applies, so a missing immediate label match is not proof that the statement never ran.
 
 ## Reconstruct overlap, not imaginary causation
 
@@ -131,6 +143,14 @@ There is a particularly important identifier distinction. **`WarehouseExecutions
 
 `CpuTimeMs` supports workload comparison, not invoice reconciliation. Keep any modeled per-query charge allocation explicitly labeled as a model. Query Insights and workspace monitoring both omit categories of work that may matter to capacity consumption.
 
+## Activator alerting: GA does not mean no side effects
+
+The [17 November feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-november-2026-feature-summary/5414311) explicitly announces **Activator alerting for Warehouse as generally available, including workspaces protected by Private Link**. This supersedes its earlier editor-integration preview label, not every separate Activator action or preview feature.
+
+The [specific alert guide](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/data-activator/set-alerts-warehouse-sql-query) starts from a Warehouse **SELECT**, then configures a rule, run frequency, condition, action and save location. A query returning a qualifying event can drive email, Teams or a Fabric activity. This is an operational workflow, not passive inspection: repeated queries consume compute, and actions can disclose result context or change another item.
+
+Before creating a rule, approve its exact query, schedule, effective identity, condition, recipients/action target and owner. Test no-match, repeated-match and failure behavior with approved synthetic data; do not assume one business incident produces only one notification. Network support for this integration does not lift unrelated Private Link restrictions in another feature. No alert, notification or Fabric action is created or executed by this chapter.
+
 ## Agent-assisted diagnosis: available skill, forthcoming experience
 
 There are two release stories here, not one. Tino's [29 September roundup](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC) marks **agentic monitoring and diagnostics coming soon**. The [September summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-september-2026-feature-summary/5325825) describes forthcoming AI Insights in DW Monitor: condition-driven insights and an evidence-grounded conversational investigation. That is not proof that every Admin currently has an AI investigation control.
@@ -150,6 +170,8 @@ If four of ten rows show pressure, the safe statement is "four of these ten obse
 Use pressure evidence to contextualize an incident and identify a test. Do not automatically downsize a capacity because few pressure rows appear, or declare a pool healthy because its last event is old. Capacity decisions require representative demand, deadlines, ingestion, concurrency, and the wider consumption picture.
 
 The [roadmap snapshot taken 9 November 2026](../../appendices/H-roadmap-snapshot.md#snapshot-9-november-2026) lists **Vnode utilization in Query Insights SQL pool insights**, planned **GA / Q4 2026**. It points to an observability improvement, not a current column contract. Do not invent a utilization field or infer instantaneous allocated nodes from a CU equivalent because a feature is planned.
+
+**Ignite follow-up, 18 November:** the Warehouse article now describes **near-real-time vNode usage enhancements**. The retrieved [view reference][8] still lists configuration/pressure fields, not a new complete usage-series schema. Record the enhancement as announced, inspect the actually supported schema before automation, and do not invent a column name or fixed collection cadence. The existing pressure-event percentage remains an event percentage, not wall-clock utilization.
 
 ## Worked incident review and lab
 
@@ -178,6 +200,8 @@ The expected deliverable is an evidence chain with identifiers and clock definit
 6. [Mark Pryce-Maher, workspace history collector and analytics][6], revision `805b43d2d07ce951f47ad9c23c17f0a53f0e2091`, 21 August 2026; authorized source, no license inferred.
 7. [Microsoft Learn, Warehouse workspace monitoring][7], preview schema dated 28 September 2026, updated 5 October.
 8. [Microsoft Learn, SQL pool insights][8], event-based reporting semantics.
+9. Tino Tereshko, [Fabric Data Warehouse at Ignite](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274), 17 November 2026; restricted/future diagnostics and vNode enhancement description, reviewed 18 November.
+10. Katie Murray, [November feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-november-2026-feature-summary/5414311), 17 November 2026; Activator Warehouse alerting GA including Private Link, reviewed 18 November.
 
 [1]: https://learn.microsoft.com/en-us/fabric/data-warehouse/monitoring-overview
 [2]: https://learn.microsoft.com/en-us/fabric/data-warehouse/monitor-using-dmv

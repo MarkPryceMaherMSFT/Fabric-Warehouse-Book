@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part II contents](README.md) | [Previous: Chapter 10](10-transformations-and-transactions.md) | [Next: Chapter 12](12-security-and-governance.md)
 
-**Applies to:** Warehouse and Lakehouse SQL analytics endpoint, with write differences identified below. **Level:** Intermediate. **Feature baseline:** original engine comparison retained at 8 October 2026; scalar-UDF, string-function and view-refresh additions reviewed 9 November; targeted ALTER COLUMN review 10 November 2026. Native scalar UDFs, Warehouse external UDF integration and ALTER COLUMN remain preview. This is a compatibility investigation, not a claim of tenant validation.
+**Applies to:** Warehouse and Lakehouse SQL analytics endpoint, with write differences identified below. **Level:** Intermediate. **Feature baseline:** original engine comparison 8 October; SQL/view/ALTER follow-ups 9-10 November; targeted Ignite UDF-announcement follow-up **18 November 2026**. Native scalar UDFs, Warehouse external UDF integration and ALTER COLUMN retain their specific preview scope. This is a compatibility investigation, not a claim of tenant validation.
 
 ## Familiar language, different contract
 
@@ -33,6 +33,14 @@ The Lakehouse SQL endpoint adds another boundary: its underlying table data is r
 The differences within a row can change a design. Dedicated-pool transactions do not support `CREATE TABLE` inside a user transaction; Fabric supports specified transactional DDL. Serverless metadata transactions do not make CETAS and upstream file changes one data transaction. See the separate [dedicated transaction rules](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-transactions) and [Fabric transaction rules](https://learn.microsoft.com/en-us/fabric/data-warehouse/transactions). SQL Server's [transaction](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/begin-transaction-transact-sql?view=sql-server-ver17) and [isolation](https://learn.microsoft.com/en-us/sql/t-sql/statements/set-transaction-isolation-level-transact-sql?view=sql-server-ver17) controls must not be generalized to either service.
 
 Likewise, [Synapse collation](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/reference-collation-types), [dedicated constraints](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-table-constraints), and [dedicated identity](https://learn.microsoft.com/en-us/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-tables-identity) have their own qualifications. The [Fabric temp-table article](https://learn.microsoft.com/en-us/fabric/data-warehouse/temp-tables) explicitly scopes its guarantees to Warehouse; this matrix makes no unverified promise about endpoint temporary staging. The Synapse feature overview still labels dedicated-pool `MERGE` preview at this comparison date; that label does not override Fabric's GA status.
+
+### Two temporary-table implementations, one session boundary
+
+**Existing Warehouse guidance rechecked 18 November 2026.** The [temporary-table guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/temp-tables) distinguishes the default **non-distributed, MDF-backed** `#temp` from a **distributed, Parquet-backed** table explicitly created with `WITH (DISTRIBUTION = ROUND_ROBIN)`. Supported ALTER operations apply to the distributed form, **not the default MDF-backed form**. A supported temporary distribution clause does not become persistent-table physical-design syntax.
+
+Both are session-scoped, hidden from other sessions and removed when their session ends or the object is dropped. Global `##temp` tables are not supported, and time-travel hints do not rewind a temporary table. A temporary object is not a way to acquire SELECT permission on a protected source, and the guide's broad storage/type wording does not override supported types or real resource limits.
+
+Keep the client session explicit. In the **Fabric web editor**, separate Run actions and its GO handling do not preserve one ongoing session; a later run cannot depend on a temporary table from an earlier one. Use the complete intended batch or an appropriate persistent client connection. Ordinary SSMS batch separators and the web editor's session lifecycle must not be conflated.
 
 ### Two small translations with larger consequences
 
@@ -325,6 +333,8 @@ Consequently, restrictions involving loops, multiple returns, CTEs, or direct gr
 | `1` | Scalar UDF inlining. |
 | `2` | Expression Block inlining. |
 | `3` | Either mechanism. |
+
+**Ignite follow-up, checked 18 November:** the [17 November Warehouse article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) reiterates branches, loops, **BREAK/CONTINUE**, creation-time checks, control-flow resource estimation and plan visibility. Its linked scalar-UDF article remains explicitly **Preview**. These improvements do not make every function eligible, remove call-site restrictions or turn the separate remote Python integration into native SQL execution.
 
 **Runnable read-only T-SQL - Warehouse or SQL endpoint with scalar-UDF preview support and catalog visibility.** This inspects visible native SQL scalar-function metadata; it creates no function.
 

@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part V contents](README.md) | [Previous: Chapter 26](26-statistics.md) | [Next: Chapter 28](28-layout-caching-and-maintenance.md)
 
-**Applies to:** Fabric Warehouse and Lakehouse SQL analytics endpoint, except where stated. **Level:** Intermediate to advanced. **Feature baseline:** original estimated-plan/history exercises 8 October 2026; the blog-grounded AI-review extension checked 9 November. AI functions remain optional **preview** and are not required for the core tuning lab.
+**Applies to:** Fabric Warehouse and Lakehouse SQL analytics endpoint, except where stated. **Level:** Intermediate to advanced. **Feature baseline:** original plan/history exercises 8 October; AI-review extension 9 November; targeted Ignite diagnostic-status check **18 November 2026**. AI functions remain optional **preview**; the future graphical-plan UI and restricted live-troubleshooting experience are not required for the core lab.
 
 ## Start with a question, not a hint
 
@@ -43,6 +43,8 @@ GO
 Read the plan from its inputs toward the final result. Ask where rows are removed, where their width increases, and where results must meet. Do not assume every familiar SQL Server operator has identical distributed implementation details in Fabric. Nor should a missing SQL Server DMV be replaced with an invented Fabric equivalent. The supported estimated plan and observed request history already answer useful questions.
 
 Keep the plan format separate from its viewing tool. The [September 2026 feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-september-2026-feature-summary/5325825), checked for this revision on 9 October, places the Fabric editor's **Estimated Graphical Query Plan** under **Coming Soon**. Existing `SHOWPLAN_XML` and inspection through a supported client do not depend on that future portal experience. A friendlier diagram will make estimates easier to explore; it will not turn them into actual row counts, elapsed timings, or CU charges.
+
+**Ignite follow-up, checked 18 November 2026:** the [17 November Warehouse article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) still calls the **graphical query plan coming soon**, and separately calls **Live Query Troubleshooting Limited Preview**. These are not generally usable new portal features on the strength of the announcement. The existing SHOWPLAN exercise remains independent of both; [Chapter 29](../06-operating-the-platform/29-monitoring.md#ignite-diagnostics-future-ui-is-not-todays-dmv-contract) distinguishes restricted live diagnostics from today's DMVs.
 
 An unexpectedly large join output is especially important. Before blaming estimation, check the data. This book's keys are not enforced uniqueness guarantees. Two customer rows with the same key can multiply fact rows and revenue. Adding `DISTINCT` might hide the symptom while introducing additional work and changing the business result. The right correction is to establish the intended relationship and repair or deliberately model duplicates.
 

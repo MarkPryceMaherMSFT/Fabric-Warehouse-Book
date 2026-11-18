@@ -128,6 +128,40 @@ Expect **1 January: four lines, seven units, 185.00** and **3 January: two lines
 
 A bare string literal is not a valid typed date argument for this function, and mismatched date/origin types can error. Bucketing does not convert time zones, define a fiscal calendar, provide a unique event sequence or capture changes for a migration. Decide those contracts separately.
 
+## Range bands: each sale must match the intended interval
+
+**Existing documented technique, reviewed 18 November 2026; not a new Ignite feature.** Microsoft's [range-band guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/analyze-range-bands) groups measures by business-defined intervals rather than each distinct value. This differs from date bucketing: a price-band helper defines its own boundaries and labels.
+
+**Original read-only T-SQL - either unchanged seeded SQL surface.** The CTE supplies three small bands without creating a helper table.
+
+```sql
+WITH PriceBands AS
+(
+    SELECT CAST('Under 25' AS varchar(30)) AS BandLabel,
+           CAST(0.00 AS decimal(12,2)) AS LowerBound,
+           CAST(25.00 AS decimal(12,2)) AS UpperBound,
+           1 AS BandSort
+    UNION ALL
+    SELECT '25 to under 50', 25.00, 50.00, 2
+    UNION ALL
+    SELECT '50 to under 100', 50.00, 100.00, 3
+)
+SELECT b.BandLabel,
+       COUNT_BIG(*) AS SalesLines,
+       SUM(f.Quantity) AS Units,
+       CAST(SUM(f.Quantity * f.UnitPrice) AS decimal(18,2)) AS Revenue
+FROM PriceBands AS b
+JOIN book.FactSales AS f
+  ON f.UnitPrice >= b.LowerBound
+ AND f.UnitPrice < b.UpperBound
+GROUP BY b.BandLabel, b.BandSort
+ORDER BY b.BandSort;
+```
+
+Expect **Under 25: one line, three units, 30.00**; **25 to under 50: two lines, three units, 75.00**; **50 to under 100: three lines, four units, 260.00**. Totals remain six lines, ten units and 365.00. Values exactly 25 and 50 enter the band whose lower boundary they equal, not both adjacent bands.
+
+For production, prove that each intended input matches **exactly one** band. Overlaps multiply measures; gaps, NULLs and values outside the declared domain can disappear from this inner join. The last upper bound of 100 covers this seed, not every future price. A unique band label, or a NOT ENFORCED constraint on a stored helper, does not validate interval coverage. Give presentation an explicit sort key rather than relying on alphabetical labels.
+
 ## Join cardinality determines whether totals are believable
 
 A join connects rows according to its predicate. It does not automatically know that a dimension key is unique. If one fact row finds two matching customer rows, the result contains two copies of that fact's measures.
@@ -477,6 +511,7 @@ Queries can execute successfully while answering the wrong question. Your strong
 20. Microsoft Learn, [pipe concatenation](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/string-concatenation-pipes-transact-sql?view=fabric&preserve-view=true) and [compound assignment](https://learn.microsoft.com/en-us/sql/t-sql/language-elements/compound-assignment-pipes-transact-sql?view=fabric&preserve-view=true), analytical-SQL applicability, NULL semantics and intermediate/variable truncation.
 21. Microsoft Learn, [UNISTR](https://learn.microsoft.com/en-us/sql/t-sql/functions/unistr-transact-sql?view=fabric&preserve-view=true), Unicode escapes, input types and collation.
 22. Microsoft Learn, [DATE_BUCKET](https://learn.microsoft.com/en-us/sql/t-sql/functions/date-bucket-transact-sql?view=fabric&preserve-view=true), positive width, typed origin, result type and errors. References 20-22 checked 10 November 2026.
+23. Microsoft Learn, [Analyze data with range bands](https://learn.microsoft.com/en-us/fabric/data-warehouse/analyze-range-bands), existing interval/helper technique rechecked 18 November 2026; the listing and synthetic thresholds above are original book examples, not copied source SQL.
 
 ---
 

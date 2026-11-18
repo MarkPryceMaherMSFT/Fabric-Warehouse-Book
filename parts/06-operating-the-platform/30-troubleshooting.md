@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part VI contents](README.md) | [Previous: Chapter 29](29-monitoring.md) | [Next: Chapter 31](31-billing-and-consumption.md)
 
-**Applies to:** Warehouse and Lakehouse SQL analytics endpoint; publication and metadata-sync investigations are deliberately separate. **Level:** Intermediate to advanced. **Feature baseline:** original revision checked 9 October 2026; Monitor navigation, endpoint discovery and security/type blockers rechecked 9 November. New metadata sync remains preview where explicitly enabled.
+**Applies to:** Warehouse and Lakehouse SQL analytics endpoint; publication and metadata-sync investigations are deliberately separate. **Level:** Intermediate to advanced. **Feature baseline:** original revision 9 October; discovery/security follow-up 9 November; targeted Ignite update **18 November**. Core new sync is GA announced; existing-endpoint upgrade and restricted diagnostic experiences have separate qualifications.
 
 ## Preserve the symptom before changing the system
 
@@ -30,6 +30,14 @@ FROM book.FactSales;
 The untouched seed should return six rows, quantity ten, and revenue `365.00`. If the table has legitimately changed, these are no longer its expected totals. Establish the comparison version before calling a different answer stale. A tiny aggregate can validate a connection and object; it cannot prove that a wide production export has adequate bandwidth or that a complex join will finish.
 
 For connection failures, distinguish endpoint reachability, authentication, authorization, and database selection. Preserve driver messages and the application's timeout settings. Blindly granting broader roles can obscure the original issue and create a security problem. Follow the permissions model in Chapter 12 rather than treating Admin as a diagnostic requirement for every user.
+
+### Warehouse ownership is an identity dependency, not a permission shortcut
+
+The [ownership guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/change-ownership), rechecked **18 November 2026**, says a Warehouse uses its owner's identity for OneLake access. Record the actual owner when investigating a deactivated account or source-access failure, rather than assuming the current SQL caller and item owner are the same principal.
+
+Changing that owner is a separately approved administrative action. The documented workspace roles include Administrator, Member and Contributor, but possessing a role is not approval for an incident assistant to take over an item. The portal's **Take Over** assigns ownership only to the **currently signed-in user**; it is not an arbitrary-owner or SPN picker. The guide directs an SPN scenario to its authenticated API/PowerShell route, which is **Warehouse-specific and does not apply to a SQL analytics endpoint**.
+
+Preserve dependencies and verify the intended new owner's source access and consumer behavior after an approved change. A successful takeover does not recreate source permissions or resolve endpoint identity-mode policy. No ownership, credential or role is changed by this troubleshooting exercise.
 
 ## Investigation one: repeated cancellations near a boundary
 
@@ -113,9 +121,9 @@ Before calling an absence "lag," inspect the [table-feature and column checks in
 
 Preserve the distinction between **data synchronization and security synchronization**. Changing endpoint identity mode cancels running and queued queries across the workspace's SQL analytics endpoints and can delete SQL roles/function metadata; it is not a freshness reset. OneLake role changes have their own propagation window. Reconcile the effective reader identity and saved policy definitions through [Chapter 16](../03-sql-analytics-endpoint/16-onelake-security.md#security-changes-are-operational-changes), without broadening access to make a diagnostic pass.
 
-Then establish which metadata-sync implementation the endpoint uses. The new preview applies to endpoints created after the workspace option is enabled; existing endpoints are not automatically converted [4]. It separates schema and data handling and includes query-triggered data refresh. That does not make every new-table discovery or schema change synchronous.
+Then establish which metadata-sync implementation the endpoint actually uses. The **17 November summary** announces core new sync GA and new-endpoint defaults, while **upgrading an existing endpoint is Preview**. Existing endpoints are not automatically converted by changing a workspace setting. The retrieved older guide still describes the earlier opt-in path [4]; follow [Chapter 15's dated reconciliation](../03-sql-analytics-endpoint/15-metadata-sync-v1-v2.md#ignite-update-core-ga-existing-endpoint-upgrades-preview), not an assumption that all endpoints changed overnight. Separate schema/data handling and query-triggered refresh still do not make every discovery event synchronous.
 
-**Runnable listing with a feature prerequisite.** Execute only on a SQL analytics endpoint using the new metadata sync preview. This reads documented sync-status fields [5]; it does not request a refresh.
+**Runnable listing with a feature prerequisite.** Execute only on a SQL analytics endpoint verified to use new metadata sync and expose this documented DMV. This reads sync-status fields [5]; it requests neither refresh nor preview upgrade.
 
 ```sql
 SELECT TOP (100)
@@ -159,7 +167,7 @@ The [GA SQL DW operations skill](https://community.fabric.microsoft.com/blog/fbc
 
 Consider the earlier timeout cluster. A useful assistant response would identify affected applications, separate failures from cancellations, cite the observed interval and source views, and identify missing client-side timeout evidence. "Increase all timeouts" is not an evidence-backed conclusion. Likewise, overlapping expensive queries and pool-pressure events support a contention hypothesis, not proof that a specific request caused the entire capacity charge.
 
-The broader **agentic monitoring and diagnostics experience remains coming soon** in [Tino's announcement](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC). Do not wait for that interface to collect today's evidence, or treat it as the release status of the already available operations skill. For either experience, review four things before acting: the exact item and time range, the evidence source and its omissions, whether the recommendation is reversible, and who authorizes its execution. A permission error or no rows is a reported limitation, not a reason to fabricate a diagnosis or broaden access automatically.
+The **17 November Ignite article** still marks new DW Monitor diagnostic cards **coming soon**, and names **Live Query Troubleshooting as Limited Preview**. Neither is an ordinary-customer prerequisite for today's DMVs or the already GA operations skill. [Chapter 29](29-monitoring.md#ignite-diagnostics-future-ui-is-not-todays-dmv-contract) separates those scopes. Review the exact item/time range, evidence source and omissions, reversibility and change authorization. A permission error or no rows is a reported limitation, not a reason to fabricate a diagnosis or broaden access automatically.
 
 For this chapter, rehearse that review on the paper incident only. Do not install or run a skill, connect an agent to a tenant, or approve a remediation to finish the exercise.
 
@@ -185,7 +193,7 @@ No tenant was queried for this manuscript. These diagnostics create no objects a
 1. [Mark Pryce-Maher, canceled-query buckets][1], substantive gist revision `a6ec44863ef08bf165c5bf198e95d53ae25e7048`, 14 September 2026; adapted with neutral CPU naming and no assumed timeout.
 2. [Microsoft Learn, Troubleshoot query blocking][2], Warehouse lock investigation.
 3. [Microsoft fabric-toolbox, sp_KillQueries][3], pinned 7 October 2026 repository snapshot; MIT; linked as cautionary source, not executed.
-4. [Microsoft Learn, SQL endpoint metadata sync][4], new-sync preview and eligibility.
+4. [Microsoft Learn, SQL endpoint metadata sync][4], retrieved guide retaining older preview/opt-in wording; Chapter 15 records the newer Ignite GA-core/Preview-upgrade announcement.
 5. [Microsoft Learn, external-table log-status DMV][5], public schema and permissions.
 6. [Mark Pryce-Maher, selected-table metadata refresh][6], substantive revision `ae4988bf8c833ca581cd1fe8071855bdddebfb47`, 16 August 2026.
 7. [Microsoft Learn, Warehouse Delta Lake logs][7], publication direction and PAUSED/AUTO behavior.

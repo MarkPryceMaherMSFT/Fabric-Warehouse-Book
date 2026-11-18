@@ -182,6 +182,12 @@ Only one table in a session can have `IDENTITY_INSERT` on. While it is on, an ex
 
 This is a controlled sequence, not an atomic migration framework. If the connection fails after the explicit insert, stop automatic writers, reconnect, inspect the isolated target, and complete the required reseed before allowing generated inserts. The catch block restores the session setting for catchable errors, but cannot handle a terminated connection. Preserve a migration ledger and validate imported keys in a real load: explicit insertion is precisely where a simplistic "identity always prevents duplicates" claim becomes unsafe.
 
+### Bulk migration must preserve keys deliberately too
+
+The [dedicated identity-migration guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/migrate-identity-columns), rechecked **18 November 2026**, also documents **`COPY INTO ... WITH (IDENTITY_INSERT = 'ON')`** for importing original keys at scale. That COPY option is a separate statement-level load contract, not evidence that a session setting in one client automatically applies to another connection or pipeline.
+
+Map the source identity column explicitly, reconcile imported keys and child references, then run the documented **`DBCC CHECKIDENT('schema.table', RESEED)`** before resuming generated inserts. Neither key generation nor the metadata constraint repairs duplicates already imported. This is existing supported migration guidance newly made explicit here, not a new November launch or a reason to run another load against the canonical seed.
+
 ## Collation is part of the key contract
 
 If a source treats `abc` and `ABC` as different customer identifiers but a target compares them case-insensitively, two distinct entities can collapse during matching. Conversely, a case-sensitive target can split identifiers a source treated as equivalent. Collation therefore affects correctness, not merely sorting.

@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part I contents](README.md) | [Previous: Chapter 3](03-anatomy-of-a-delta-table.md) | [Next: Chapter 5](05-first-lakehouse-and-sql-endpoint.md)
 
-**Applies to:** Fabric Warehouse; the creation and seed steps do not run on a Lakehouse SQL analytics endpoint. **Level:** 100. **Feature scope:** core walkthrough checked 8 October 2026; editor references rechecked 9 November; targeted Build editor-announcement follow-up 10 November. No preview integration is required for the seed.
+**Applies to:** Fabric Warehouse; the creation and seed steps do not run on a Lakehouse SQL analytics endpoint. **Level:** 100. **Feature scope:** core walkthrough checked 8 October 2026; editor/Build follow-ups 9-10 November; targeted Ignite/Activator status update **18 November**. No preview integration is required for the seed.
 
 ## What a successful first lab proves
 
@@ -95,6 +95,8 @@ The current [SQL editor guide](https://learn.microsoft.com/en-us/fabric/data-war
 
 Tino Tereshko's [29 September roundup](https://www.linkedin.com/posts/valentinotereshko_speed-run-of-fabric-data-warehouse-announcements-activity-7510726240522293248-r4tC) names **no-code table creation** and **table deep dive** among a mixed preview/GA group of UI updates. Their individual release status and exact workflows were not independently established by the public sources available for this revision.
 
+The [17 November Ignite article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) also names table overviews, a **no-code table designer** and interactive result visualizations. It does not assign a separate new GA milestone to each. This review records the richer experience without inventing a designer workflow or making it necessary for the reproducible seed.
+
 No-code creation addresses the desire to define a table without hand-authoring every statement; a deeper table inspection experience can help a reader understand an existing object. Neither description removes the need to check types, names, permissions, or data meaning. We therefore keep the explicit, reproducible seed rather than inventing a sequence of buttons.
 
 The already documented **Save as table** action is a specific alternative: it uses `CREATE TABLE AS SELECT` to materialize a query into a selected Warehouse. That is a write creating another table, not simply saving a query tab, and it is not proof of the newly announced no-code workflow. Do not use it to replace the book's core tables.
@@ -117,6 +119,8 @@ Salil Kanade's **8 September 2026** [editor article](https://community.fabric.mi
 | Create an Activator rule from a SQL SELECT | Preview | Scheduled query work and notification/activity actions have cost, permission and outbound effects. A rule is not enabled by reading this chapter. |
 
 These are component-specific announcement labels, not a promise that every adjacent preview has shipped. [Chapter 13](../02-building-analytical-solutions/13-power-bi-and-clients.md) handles semantic models and identity; [Chapter 29](../06-operating-the-platform/29-monitoring.md) distinguishes diagnosis from alerting or intervention.
+
+**Later status, checked 18 November:** the [17 November feature summary](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-november-2026-feature-summary/5414311) explicitly announces **Activator alerting for Warehouse as GA, including Private Link support**. This supersedes that component's September preview label in the historical table, not every other editor integration. Scheduling query execution and email/Teams/Fabric actions still needs deliberate approval; see [Chapter 29](../06-operating-the-platform/29-monitoring.md#activator-alerting-ga-does-not-mean-no-side-effects).
 
 The June Build roundup additionally names **Copy Job creation** and **Fabric Ontologies** in its preview editor-integration group. Creating a Copy job configures movement with source, target, schedule and write-policy responsibilities; it is not CTAS or automatic CDC. An ontology supplies business concepts and relationships over governed data, not a second SQL engine or automatic access grants. [Chapter 9](../02-building-analytical-solutions/09-loading-and-accessing-data.md#client-bulk-copy-is-not-server-side-copy-into) explains the loading routes, and [Chapter 13](../02-building-analytical-solutions/13-power-bi-and-clients.md) separates ontology, model and SQL contracts. No additional job, ontology or AI call is required for the first lab.
 

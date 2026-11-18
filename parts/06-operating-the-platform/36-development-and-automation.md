@@ -2,7 +2,7 @@
 
 [Book contents](../../index.md) | [Part VI contents](README.md) | [Previous: Chapter 35](35-recovery-and-retention.md) | [Next: Chapter 37](../07-migration-and-production-design/37-migration-planning.md)
 
-**Applies to:** Warehouse schema lifecycle, associated semantic-model deployment and operational automation; Lakehouse SQL endpoint lifecycle has important differences. **Level:** Intermediate to advanced development. **Feature baseline:** original revision checked 9 October 2026; view refresh, scalar-UDF, Direct Lake parameter rules, REST identity and remote SQL MCP guidance reviewed 9 November. Warehouse CI/CD 2.0 with DacFx, pre/post-deployment scripts, native scalar UDFs, external Fabric Functions integration and remote SQL MCP retain their documented preview scope. VS Code Schema Compare is GA.
+**Applies to:** Warehouse schema lifecycle, associated semantic-model deployment and operational automation; Lakehouse SQL endpoint lifecycle has important differences. **Level:** Intermediate to advanced development. **Feature baseline:** original revision 9 October; November contract follow-up 9 November; targeted Ignite/native-lifecycle/MCP recheck **18 November**. Warehouse CI/CD 2.0, pre/post scripts and native/external SQL UDF integrations retain their specific preview scope. Broader announced endpoint workflows do not override the retrieved native endpoint exclusions. Schema Compare is separately GA; no new remote-SQL-MCP GA milestone is inferred.
 
 ## A commit is not a deployment, and a deployment is not recovery
 
@@ -15,6 +15,8 @@ Recovery is separate again. Reverting a Git commit cannot recreate data lost by 
 ## Separate definition, environment, and evidence
 
 Keep desired SQL definitions in source control, organized by schema and object type. Keep environment mappings separate: workspace IDs, Warehouse item IDs, connection endpoints, application names, and permitted destinations. Store credentials in an approved identity or secret-management mechanism, never in the repository, a notebook output, or a generated deployment log.
+
+[Variable libraries](https://learn.microsoft.com/en-us/fabric/cicd/variable-library/variable-library-overview#supported-items) can centralize non-secret environment configuration for **supported consumers**, such as pipelines, notebooks and Lakehouse shortcuts. Each library has one active value set per workspace, and consumers resolve values in their own context, not necessarily when they deploy. At the **18 November 2026** check, Warehouse and SQL analytics endpoint items are **not listed as direct consumers**. A pipeline using a Warehouse is not the Warehouse item consuming the library; do not infer native SQL-project/SQLCMD substitution or automatic connection rewriting from the library's own Git support.
 
 A third category is release evidence: the source revision, artifact checksum, target identity, comparison result, approvals, execution status, and post-deployment checks. These are not interchangeable with desired state. Record them so a later operator can answer which artifact reached which environment.
 
@@ -34,13 +36,25 @@ Existing Git-integrated Warehouses need the documented [system-file upgrade](htt
 
 The safe sequence is to commit existing work first, then apply the available system update, review the generated `.sqlproj` and other system-file differences, and commit that update separately. The documented action updates **all Warehouses of that item type in the workspace**, not an individually selected Warehouse. Inventory the workspace before treating an upgrade as a one-item experiment. This is planning guidance, not an instruction to edit a version number manually or upgrade a production workspace for the lab.
 
+The [system-file version history](https://learn.microsoft.com/en-us/fabric/data-warehouse/warehouse-system-file-version-history) makes the generation-2.0 diff concrete: it records a `Microsoft.Build.Sql` reference of **2.3.0-preview.1**, adds system references and a project-level `.gitignore`, moves shared queries into the project-root **`.sharedqueries`** folder, and re-extracts definitions for constraints, identity, clustering and consistent modeling/formatting. The shared-query folder is hidden by default on macOS/Linux. A large generated diff needs review; it is not by itself proof that business logic changed or those engine capabilities launched with the format migration.
+
+### Ignite endpoint lifecycle announcement is not an executable contract
+
+The [17 November Ignite article](https://community.fabric.microsoft.com/blog/fbc_fabricupdatesblogs/fabric-data-warehouse-at-ignite-built-for-ai-era-analytics/5414274) describes CI/CD 2.0/DacFx across **Warehouse and SQL analytics endpoint workflows**. The detailed [Git guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/git-integration) and [deployment-pipeline guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/deploy-pipelines), rechecked 18 November, still label the native Warehouse integration **preview** and explicitly exclude native SQL analytics endpoint version-control/pipeline support.
+
+This is a dated scope discrepancy, not permission to guess a native endpoint deployment procedure or declare GA from a launch bullet. Keep Warehouse project deployment, supported SQL-object scripting and the announced endpoint-native direction distinct. Confirm the endpoint-specific supported contract and actual access before adopting it; no project metadata, system version or live endpoint is changed to bypass the gap.
+
 ## Database projects provide a schema contract
 
-The [current project guidance](https://learn.microsoft.com/en-us/fabric/data-warehouse/develop-warehouse-project) supports SDK-style SQL database projects targeting **Synapse Data Warehouse in Microsoft Fabric**. Its October 2026 example uses `Microsoft.Build.Sql` 2.3.0 and the `Microsoft.SqlServer.Dacpacs.FabricDw` system reference 170.0.4. Those are dated examples; select reviewed versions compatible with your current toolchain rather than embedding an unbounded "latest" dependency.
+The [project guidance](https://learn.microsoft.com/en-us/fabric/data-warehouse/develop-warehouse-project) supports **only SDK-style** SQL database projects targeting **Synapse Data Warehouse in Microsoft Fabric**, with provider `Microsoft.Data.Tools.Schema.Sql.SqlDwUnifiedDatabaseSchemaProvider`. The walkthrough checked **18 November 2026** illustrates `Microsoft.Build.Sql` **2.3.0** and system package `Microsoft.SqlServer.Dacpacs.FabricDw` **170.0.4**. That is distinct from the version-history example's **2.3.0-preview.1** reference; neither establishes an evergreen pin or a universal minimum-version matrix. Retain reviewed, compatible tool/package versions, not an unbounded latest dependency.
 
 The Fabric-specific target matters. A generic SQL Server project may accept syntax or object types that Fabric does not support. Likewise, an old Fabric-targeted compiler may reject newly supported syntax. A failed build can indicate a dependency mismatch rather than unsupported engine functionality.
 
 For system-object references, the current documentation calls out the `master` database-literal metadata on the Fabric system package. Omitting it can allow a build to pass but make later Script or Publish actions fail. This illustrates why compilation, deployment planning, and execution are distinct validation stages.
+
+The documented VS Code workflow requires the .NET SDK and both SQL Database Projects and SQL Server (`mssql`) extensions. Its build workflow currently requires **PowerShell as the extension's default terminal**; that is not a rule that every standalone `dotnet build` must use PowerShell.
+
+Before rewriting valid SQL after a build failure, inspect the repository's SDK reference. The [stale-project troubleshooting guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/troubleshoot-git-integration#out-of-date-sqlproj-in-the-git-repository) describes old definitions after workspace connection/branching, restore or Git synchronization before the upgraded definition is committed back. If a healthy Warehouse already exists on the current definition format, the preferred repair is a **completed workspace-to-Git commit** regenerating the definition, with all changes preserved and reviewed. If no target Warehouse exists, that route is unavailable: review and commit a compatible SDK correction instead. Viewing/exporting a diff alone does not rewrite `.sqlproj`. No such repair or deployment is required by the book's lab.
 
 Build locally before connecting a deployment identity:
 
@@ -122,7 +136,26 @@ That is a sensible default, but it means "deployment succeeded" and "target exac
 
 Security principals and permissions are not automatically handled as ordinary schema promotion. Database settings, workspace controls, credentials, and capacity assignments also need separate treatment. Do not assume a Warehouse deployment has reproduced the complete environment.
 
-Cross-item dependencies require particular care. Use explicit dependency order and environment-aware references, and avoid cyclic Warehouse dependencies. Keep collations consistent between environments. Current Git and deployment-pipeline references still document lack of SQL analytics endpoint support for those native lifecycle paths. Announced future endpoint support does not justify treating an endpoint as a Warehouse deployment target.
+### Resolve cross-Warehouse project references explicitly
+
+The [cross-Warehouse project guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/cross-warehouse-development-database-projects) describes **two Warehouse items in the same workspace**, developed as separate VS Code projects. Add the referenced project or built DACPAC as a database reference with **Same server, different database**, and parameterize the remote Warehouse name through the documented SQLCMD-variable mechanism for the intended environment. A three-part SQL name alone does not define the project dependency.
+
+Build without unresolved references, then publish the referenced Warehouse before its consumer. Keep dependencies one-way; a separately reviewed bridge-object script must wait until its required Warehouses are ready. This is an explicit **client-project** workflow, not proof that native Fabric Git automatically orchestrates cross-item dependencies or substitutes environment names. No untested project XML is supplied.
+
+Keep collations consistent. The [Ignite scope discrepancy above](#ignite-endpoint-lifecycle-announcement-is-not-an-executable-contract) does not make an endpoint a supported native Warehouse deployment target while the detailed guides still exclude that item.
+
+### Diagnose validation failures before weakening safeguards
+
+The [Warehouse Git troubleshooting guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/troubleshoot-git-integration) distinguishes failures that can look like unsupported SQL:
+
+| Symptom or modeling pattern | Bounded response |
+| --- | --- |
+| An object references its own Warehouse as `database.schema.object` | Use `schema.object` for that local reference; preserve genuine cross-Warehouse database qualifiers. |
+| One statement references multiple tables in another Warehouse | Alias-qualify every column, even one whose name occurs in only one source. Runtime success does not prove that project validation can bind it. |
+| Different spellings of the same external schema in a case-insensitive setup | Use one capitalization matching the referenced schema. The documented duplicate-schema issue concerns different objects in that schema; do not change database collation as the first repair. |
+| `SQL71501` lists duplicate candidates containing `::` | First rule out genuinely missing objects or ambiguous columns. For the documented validation issue, review explicit columns instead of SELECT-star in CTEs/derived tables, isolate repeated sources in views, and avoid the documented join of OPENROWSET with another dynamically shaped source. Escalate unresolved cases with the affected definition, not disabled validation or dropped unrelated objects. |
+
+Also distinguish normalized extraction from lost settings. An explicit column `COLLATE` equal to the Warehouse default is omitted as redundant and does not appear as a Git/pipeline difference; an override differing from the default is retained. These are existing troubleshooting contracts newly made explicit, not new engine releases.
 
 ### Refresh dependent view metadata after schema changes
 
@@ -189,7 +222,7 @@ These scripts are **not validated against the database model at build time**. Th
 
 ## Remote SQL MCP: execution is not automatically read-only
 
-The [Fabric Data Warehouse remote MCP guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehouse-mcp-server) documents a **preview** service for Warehouse and SQL analytics endpoint access. This is distinct from [Fabric IQ MCP's GA Power BI semantic-model route](../02-building-analytical-solutions/13-power-bi-and-clients.md#fabric-iq-mcp-the-ga-semantic-model-route). Remote SQL MCP provides SQL execution; it does not require a semantic model or make every future Warehouse-specific IQ integration available.
+The [Fabric Data Warehouse remote MCP guide](https://learn.microsoft.com/en-us/fabric/data-warehouse/data-warehouse-mcp-server) documents Warehouse and SQL analytics endpoint SQL access. Earlier source evidence labels the service preview; the guide rechecked **18 November** supplies the contract without an explicit new GA milestone, and Ignite does not establish one. Do not infer GA merely from an absent banner. This remains distinct from [Fabric IQ MCP's GA Power BI semantic-model route](../02-building-analytical-solutions/13-power-bi-and-clients.md#fabric-iq-mcp-the-ga-semantic-model-route). SQL execution does not require a semantic model or make every announced IQ integration available.
 
 The guide supplies a global endpoint and an item-scoped endpoint:
 

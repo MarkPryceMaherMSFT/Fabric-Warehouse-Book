@@ -18,6 +18,8 @@ The chapters develop the explanation; these reference pages help you look up a t
 | [H. Dated roadmap snapshot](H-roadmap-snapshot.md) | Exact planning labels/targets observed on 9 November 2026, not a current release contract or delivery commitment. |
 | [I. Chapter-by-chapter review](I-chapter-review.md) | Relevant blog/source comparisons and illustration coverage for all 42 chapters. |
 | [J. Build 2026 Warehouse announcement coverage](J-build-2026-coverage.md) | All 21 material topic groups in the requested June roundup, with announcement dates, chapter links and later contracts. |
+| [K. Ignite 2026 announcements and availability](K-ignite-2026-availability.md) | 18 November snapshot: GA versus preview upgrades, restricted evaluations, coming soon and promised-November delivery. |
+| [L. Public documentation audit](L-public-documentation-audit.md) | Complete source-inventory comparison, material adjacent changes and existing guide details newly incorporated. |
 
 ## Companion material
 
